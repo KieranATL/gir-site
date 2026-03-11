@@ -2704,7 +2704,7 @@
             <div class="preform-stage stage-window active" data-stage="1">
                 <div class="preform-label">Municipal Services Building · Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/image2.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/nowserving.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     <span class="preform-number">G142.</span> Your number is called.
@@ -2718,7 +2718,7 @@
             <div class="preform-stage stage-handoff" data-stage="2">
                 <div class="preform-label">Intake Station · Form Issuance</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="s4ClerkPhoto" src="images/image5.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="s4ClerkPhoto" src="images/hello.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     The clerk looks up from their computer screen and offers a practiced smile.<br><br>
@@ -2733,7 +2733,7 @@
             <div class="preform-stage stage-seated" data-stage="3">
                 <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="stageThreeClerkPhoto" src="images/image3.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="stageThreeClerkPhoto" src="images/holdingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     You explain what you need. They listen, nod once, and reach beneath the counter. What comes back is heavier than you expected  -  a thick packet of forms, maybe forty pages, secured with a binder clip. They set it on the counter in front of you.
@@ -2748,7 +2748,7 @@
             <div class="preform-stage stage-weight" data-stage="4">
                 <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="weightClerkPhoto" src="images/image3.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="weightClerkPhoto" src="images/takingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     You pick it up. It has some weight to it.<br><br>
@@ -4334,7 +4334,7 @@
             <div class="preform-stage active" style="opacity:1;pointer-events:auto;padding:28px;position:absolute;inset:0;">
                 <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img src="images/image4.png" id="incompleteClerkPhoto" alt="Clerk reviewing incomplete forms" class="clerk-photo">
+                    <img src="images/reading.png" id="incompleteClerkPhoto" alt="Clerk reviewing incomplete forms" class="clerk-photo">
                 </div>
                 <div class="preform-copy">
                     The clerk pages through the packet without looking up. After a moment they set it on the counter and slide it back toward you.
@@ -4458,11 +4458,12 @@
         
         // ── Narrative image map ─────────────────────────────────────────────
         const CLERK_IMAGES = {
-            screen:   'images/0.png',
-            greeting: 'images/image2.png',
-            handoff:  'images/image3.png',
-            failure:  'images/image4.png',
-            success:  'images/image5.png',
+            screen:   'images/nowserving.png',
+            greeting: 'images/hello.png',
+            holding:  'images/holdingpaper.png',
+            handoff:  'images/takingpaper.png',
+            failure:  'images/reading.png',
+            success:  'images/typing.png',
         };
 
         function applyClerkImages() {
@@ -4470,9 +4471,9 @@
                 const el = document.getElementById(id);
                 if (el) el.src = CLERK_IMAGES[key];
             };
-            set('stageOneClerkPhoto',  'greeting');
+            set('stageOneClerkPhoto',  'screen');
             set('s4ClerkPhoto',        'greeting');
-            set('stageThreeClerkPhoto','handoff');
+            set('stageThreeClerkPhoto','holding');
             set('weightClerkPhoto',    'handoff');
             set('completionClerkPhoto','handoff');
             set('incompleteClerkPhoto','failure');
