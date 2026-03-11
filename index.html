@@ -1886,6 +1886,17 @@
             line-height: 1.6;
             box-shadow: 3px 5px 14px rgba(0,0,0,0.4), inset 0 -2px 6px rgba(0,0,0,0.08);
         }
+        .doc-face.privacy  {
+            background: linear-gradient(165deg, #fff7f2 0%, #ffe9dd 100%);
+            color: #3a1410;
+            border-top: 5px solid #a42020;
+            border-left: 2px solid #a42020;
+            border-right: 2px solid #a42020;
+            border-bottom: 2px solid #6d1010;
+            font-family: 'Times New Roman', serif;
+            font-size: 8.2px;
+            line-height: 1.42;
+        }
         .doc-dhead { font-weight:700; font-size:6.8px; letter-spacing:0.8px;
                      border-bottom:0.5px solid currentColor; padding-bottom:3px; margin-bottom:5px; }
         .doc-dtitle { font-weight:700; font-size:8.5px; margin-bottom:4px; }
@@ -1963,6 +1974,17 @@
             background: #fef08a;
             font-family: 'Caveat', cursive; font-size: 18px; line-height:1.7;
             max-width: 320px; padding: 32px 36px;
+        }
+        .dm-paper.privacy {
+            background: #fffaf4;
+            border-top: 8px solid #9f1d1d;
+            border-left: 2px solid #8a7b66;
+            border-right: 2px solid #8a7b66;
+            border-bottom: 2px solid #8a7b66;
+        }
+        .dm-paper.privacy .dm-title {
+            color: #8f1717;
+            border-bottom-color: #8f1717;
         }
         .dm-close {
             position: sticky; top: 0; float: right; clear: both;
@@ -2644,6 +2666,16 @@
                     <div class="doc-dhead">APPLICANT FEEDBACK FORM</div>
                     <div class="doc-dbody" style="font-style:italic;">"I have been coming here for three years. Every time they tell me I need a different form..."</div>
                     <div class="doc-dbody" style="margin-top:4px;font-size:6.5px;opacity:0.55;">[Staff note: no action taken]</div>
+                </div>
+            </div>
+
+            <!-- Doc 9: Experience Privacy Notice (read first) -->
+            <div class="pinned-doc" style="top:72px;left:470px;transform:rotate(-4.2deg);" onclick="openBulletinDoc('privacy')">
+                <div class="bpin bpin-red"></div>
+                <div class="doc-face privacy" style="width:188px;">
+                    <div class="doc-dhead" style="font-size:7.1px;letter-spacing:1px;">READ FIRST</div>
+                    <div class="doc-dtitle" style="font-size:9.4px;line-height:1.25;">EXPERIENCE PRIVACY NOTICE</div>
+                    <div class="doc-dbody" style="opacity:0.82;">This is an artistic/educational experience. Your responses stay in your browser and can be cleared at any time.</div>
                 </div>
             </div>
 
@@ -6121,6 +6153,23 @@
                       '</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">This Notice supersedes APPLICANT NOTICE (Rev. 04/2018) &nbsp;&middot;&nbsp; Form OAP-PN-7 (Rev. 02/2023)</div>'
+            },
+            privacy: {
+                paper: 'privacy',
+                html: '<div class="dm-header">EXPERIENCE INFORMATION</div>' +
+                      '<div class="dm-title">EXPERIENCE PRIVACY NOTICE</div>' +
+                      '<div class="dm-body">' +
+                      '<p>A quick plain-language note from the creator before you begin:</p>' +
+                      '<p>This is an artistic/educational experience, not a real government form.</p>' +
+                      '<p>Nothing you type here is saved or stored outside of your own browser.</p>' +
+                      '<p>Your responses may be saved in your browser so the experience can remember your place.</p>' +
+                      '<p>This means data may be stored locally on your own device, not in a central record. I do not have access to anything you submit.</p>' +
+                      '<p>You can clear it anytime with reset/clear.</p>' +
+                      '<p>Like most websites, the hosting service may still collect basic technical logs (for example: IP address, browser type, and access time).</p>' +
+                      '<p>If you continue, you are acknowledging this setup.</p>' +
+                      '</div>' +
+                      '<div class="dm-rule"></div>' +
+                      '<div class="dm-footer">Posted for participant transparency &nbsp;&middot;&nbsp; Updated March 2026</div>'
             },
             statement: {
                 paper: 'official',
