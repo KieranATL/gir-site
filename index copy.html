@@ -209,12 +209,12 @@
 
 
         /* Pages 23–28: Submission / continuation pages (neutral, modern feel) */
-        .page[data-page="29"],
-        .page[data-page="30"],
         .page[data-page="31"],
         .page[data-page="32"],
         .page[data-page="33"],
-        .page[data-page="34"] {
+        .page[data-page="34"],
+        .page[data-page="35"],
+        .page[data-page="36"] {
             background: #f8f4ec;
             font-family: 'Courier Prime', monospace;
             font-size: 11px;
@@ -1194,163 +1194,13 @@
         .dev-btn:hover { color: #fff; background: #0f0; }
 
         /* === PHASE II→III UPDATE OVERLAY === */
-        
-        /* ── Form 2 submission dialog (Windows 98 style) ─────────────────── */
         #p2UpdateOverlay {
             position: fixed;
             inset: 0;
             z-index: 10000;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.85);
             display: none;
             align-items: center;
-            justify-content: center;
-        }
-        #p2UpdateOverlay.active { display: flex; }
-        .p2-dialog {
-            background: #d4d0c8;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            width: 380px;
-            max-width: 96vw;
-            font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
-            font-size: 11px;
-            color: #000;
-        }
-        .p2-dialog-titlebar {
-            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-            color: #fff;
-            padding: 3px 4px 3px 7px;
-            font-weight: bold;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            user-select: none;
-        }
-        .p2-dialog-titlebar-icon {
-            width: 14px;
-            height: 14px;
-            background: #d4d0c8;
-            margin-right: 5px;
-            display: inline-block;
-            vertical-align: middle;
-            font-size: 9px;
-            line-height: 14px;
-            text-align: center;
-            color: #000;
-        }
-        .p2-dialog-titlebar-btns {
-            display: flex;
-            gap: 2px;
-        }
-        .p2-dialog-titlebar-btn {
-            width: 16px;
-            height: 14px;
-            background: #d4d0c8;
-            border: 1px solid;
-            border-color: #fff #808080 #808080 #fff;
-            font-size: 9px;
-            line-height: 12px;
-            text-align: center;
-            color: #000;
-            cursor: default;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .p2-dialog-body {
-            padding: 14px 14px 12px;
-        }
-        .p2-dialog-icon-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .p2-dialog-hourglass {
-            font-size: 24px;
-            line-height: 1;
-            flex-shrink: 0;
-            animation: p2hg-spin 1.8s steps(1) infinite;
-        }
-        @keyframes p2hg-spin {
-            0%   { content: ''; }
-            50%  { transform: rotate(180deg); }
-            100% { transform: rotate(0deg); }
-        }
-        .p2-dialog-message {
-            font-size: 11px;
-            line-height: 1.5;
-            color: #000;
-        }
-        .p2-dialog-progress-wrap {
-            border: 1px solid;
-            border-color: #808080 #ffffff #ffffff #808080;
-            background: #ffffff;
-            height: 20px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-        .p2-dialog-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: repeating-linear-gradient(
-                90deg,
-                #000080 0px,
-                #000080 13px,
-                #d4d0c8 13px,
-                #d4d0c8 15px
-            );
-            transition: width 0.5s steps(8, end);
-        }
-        .p2-dialog-statusline {
-            font-size: 10px;
-            color: #000080;
-            font-family: 'Courier New', monospace;
-            min-height: 14px;
-            margin-bottom: 8px;
-        }
-        .p2-dialog-log {
-            border: 1px solid;
-            border-color: #808080 #ffffff #ffffff #808080;
-            background: #ffffff;
-            padding: 4px 6px;
-            font-size: 10px;
-            font-family: 'Courier New', monospace;
-            color: #000;
-            height: 72px;
-            overflow-y: auto;
-            margin-bottom: 12px;
-            line-height: 1.55;
-        }
-        .p2-dialog-log-line { display: block; }
-        .p2-dialog-divider {
-            height: 2px;
-            border-top: 1px solid #808080;
-            border-bottom: 1px solid #fff;
-            margin: 0 -14px 10px;
-        }
-        .p2-dialog-footer {
-            text-align: center;
-        }
-        .p2-dialog-ok-btn {
-            background: #d4d0c8;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            padding: 4px 0;
-            min-width: 75px;
-            font-size: 11px;
-            font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
-            cursor: pointer;
-            display: none;
-            color: #000;
-        }
-        .p2-dialog-ok-btn:active {
-            border-color: #808080 #ffffff #ffffff #808080;
-            padding: 5px 0 3px;
-        }
-
             justify-content: center;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -1500,469 +1350,6 @@
             justify-content: center;
         }
         
-        /* ── Phase 2→3 Transition Overlay ────────────────────────────────── */
-
-        /* ── OAP.GOV subdomain pages (Privacy / Accessibility / Contact) ── */
-        .oap-page-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 10100;
-            background: #e8e8e0;
-            display: none;
-            flex-direction: column;
-            overflow-y: auto;
-            font-family: Times New Roman, Georgia, serif;
-            font-size: 13px;
-            color: #111;
-        }
-        .oap-page-overlay.active { display: flex; }
-        .oap-page-topbar {
-            background: #1a3a6b;
-            color: #fff;
-            padding: 0;
-            flex-shrink: 0;
-        }
-        .oap-page-topbar-inner {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 10px 16px 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .oap-page-topbar-logo {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            font-size: 18px;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-        .oap-page-topbar-logo span {
-            font-size: 10px;
-            font-weight: normal;
-            letter-spacing: 0;
-            display: block;
-            opacity: 0.85;
-        }
-        .oap-page-topbar-back {
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            color: #c8d8f0;
-            text-decoration: underline;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-        .oap-page-topbar-back:hover { color: #fff; }
-        .oap-page-navband {
-            background: #2e5fa3;
-            padding: 0;
-            flex-shrink: 0;
-        }
-        .oap-page-navband-inner {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 5px 16px;
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            color: #c8d8f0;
-        }
-        .oap-page-navband-inner a {
-            color: #c8d8f0;
-            text-decoration: none;
-            margin-right: 16px;
-        }
-        .oap-page-divband {
-            height: 3px;
-            background: linear-gradient(90deg, #c8a020 0%, #e0bc40 50%, #c8a020 100%);
-            flex-shrink: 0;
-        }
-        .oap-page-body {
-            flex: 1;
-            max-width: 760px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 28px 16px 48px;
-        }
-        .oap-page-h1 {
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-            color: #1a3a6b;
-            border-bottom: 2px solid #1a3a6b;
-            padding-bottom: 6px;
-            margin: 0 0 18px;
-        }
-        .oap-page-meta {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 20px;
-            font-family: Arial, sans-serif;
-        }
-        .oap-page-body h2 {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            color: #1a3a6b;
-            margin: 24px 0 6px;
-            border-left: 3px solid #c8a020;
-            padding-left: 8px;
-        }
-        .oap-page-body p {
-            margin: 0 0 10px;
-            line-height: 1.6;
-        }
-        .oap-page-body ul {
-            margin: 0 0 10px 18px;
-            line-height: 1.6;
-        }
-        .oap-page-body table {
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 12px;
-            margin-bottom: 14px;
-        }
-        .oap-page-body table th {
-            background: #dde4ef;
-            padding: 5px 8px;
-            text-align: left;
-            font-family: Arial, sans-serif;
-            border: 1px solid #b0b8cc;
-        }
-        .oap-page-body table td {
-            padding: 5px 8px;
-            border: 1px solid #b0b8cc;
-            vertical-align: top;
-        }
-        .oap-page-notice {
-            background: #fff8dc;
-            border: 1px solid #c8a020;
-            padding: 10px 14px;
-            font-size: 11px;
-            margin-bottom: 16px;
-            font-family: Arial, sans-serif;
-        }
-        .oap-page-footer {
-            background: #1a3a6b;
-            color: #aab8cc;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            padding: 10px 16px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        #phaseTransitionOverlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9000;
-            background: #f0f2f5;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        #phaseTransitionOverlay.active { display: flex; }
-        .pt-shell {
-            width: 100%;
-            max-width: 560px;
-            padding: 24px 16px;
-        }
-        .pt-device-bar {
-            background: #e2e4e8;
-            border-radius: 8px 8px 0 0;
-            padding: 8px 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-bottom: 1px solid #c8cace;
-        }
-        .pt-device-dot {
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            background: #c0c2c6;
-        }
-        .pt-address-bar {
-            flex: 1;
-            background: #fff;
-            border-radius: 4px;
-            padding: 3px 10px;
-            font-size: 11px;
-            color: #6b7280;
-            border: 1px solid #d1d5db;
-            letter-spacing: .01em;
-        }
-        .pt-email-card {
-            background: #fff;
-            border: 1px solid #d1d5db;
-            border-top: none;
-            border-radius: 0 0 8px 8px;
-            overflow: hidden;
-        }
-        .pt-email-header {
-            background: #1e3a5f;
-            padding: 18px 24px 14px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .pt-oap-logo {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: .12em;
-            color: #fff;
-            opacity: 0.95;
-        }
-        .pt-oap-divider {
-            width: 1px;
-            height: 18px;
-            background: rgba(255,255,255,0.25);
-        }
-        .pt-oap-sub {
-            font-size: 10.5px;
-            color: rgba(255,255,255,0.65);
-            letter-spacing: .04em;
-        }
-        .pt-email-meta {
-            padding: 14px 24px 10px;
-            border-bottom: 1px solid #e5e7eb;
-            background: #fafafa;
-        }
-        .pt-email-subject {
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 5px;
-        }
-        .pt-email-from {
-            font-size: 11px;
-            color: #6b7280;
-        }
-        .pt-email-from span {
-            color: #374151;
-            font-weight: 500;
-        }
-        .pt-email-body {
-            padding: 20px 24px 10px;
-            font-size: 13px;
-            color: #374151;
-            line-height: 1.7;
-        }
-        .pt-email-body p {
-            margin: 0 0 12px;
-        }
-        .pt-email-body p:last-child { margin-bottom: 0; }
-        .pt-notice-block {
-            background: #eff6ff;
-            border-left: 3px solid #1d4ed8;
-            padding: 10px 14px;
-            margin: 14px 0;
-            font-size: 12.5px;
-            color: #1e3a5f;
-            font-weight: 500;
-        }
-        .pt-email-footer {
-            padding: 12px 24px 20px;
-            border-top: 1px solid #e5e7eb;
-            background: #fafafa;
-        }
-        .pt-cta-btn {
-            display: inline-block;
-            padding: 10px 26px;
-            background: #1d4ed8;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            letter-spacing: .02em;
-            margin-bottom: 14px;
-        }
-        .pt-cta-btn:hover { background: #1e40af; }
-        .pt-fine-print {
-            font-size: 10.5px;
-            color: #9ca3af;
-            line-height: 1.5;
-        }
-        .pt-fine-print a { color: #6b7280; text-decoration: underline; }
-
-        /* ── Form 3 entry: retrieval screen ──────────────────────────────── */
-        #p3RetrievalScreen {
-            position: absolute;
-            inset: 0;
-            z-index: 500;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            transition: opacity 0.5s ease;
-        }
-        #p3RetrievalScreen.fading { opacity: 0; pointer-events: none; }
-        #p3RetrievalScreen.gone  { display: none; }
-        .p3r-inner {
-            width: 380px;
-            max-width: 90vw;
-        }
-        .p3r-agency {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: #6b7280;
-            margin-bottom: 22px;
-        }
-        .p3r-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 6px;
-        }
-        .p3r-subtitle {
-            font-size: 11px;
-            color: #9ca3af;
-            margin-bottom: 24px;
-            font-family: monospace;
-            letter-spacing: .03em;
-        }
-        .p3r-bar-wrap {
-            height: 2px;
-            background: #e5e7eb;
-            border-radius: 2px;
-            margin-bottom: 22px;
-            overflow: hidden;
-        }
-        .p3r-bar-fill {
-            height: 100%;
-            background: #1d4ed8;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-        .p3r-checklist {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 24px;
-        }
-        .p3r-checklist li {
-            font-size: 12px;
-            color: #9ca3af;
-            padding: 5px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid #f3f4f6;
-            transition: color 0.2s ease;
-        }
-        .p3r-checklist li.done { color: #374151; }
-        .p3r-check {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1.5px solid #d1d5db;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8px;
-            color: transparent;
-            transition: all 0.2s ease;
-        }
-        .p3r-checklist li.done .p3r-check {
-            background: #1d4ed8;
-            border-color: #1d4ed8;
-            color: #fff;
-        }
-        .p3r-record-found {
-            display: none;
-            padding: 12px 14px;
-            border-left: 3px solid #1d4ed8;
-            background: #eff6ff;
-            font-size: 12px;
-            color: #1e3a5f;
-            font-weight: 500;
-        }
-        .p3r-record-found.visible { display: block; }
-        .p3r-record-found.flagged {
-            border-left-color: #d97706;
-            background: #fffbeb;
-            color: #92400e;
-        }
-        .p3r-record-found.returned {
-            border-left-color: #b91c1c;
-            background: #fef2f2;
-            color: #991b1b;
-        }
-
-        /* ── Form 3 entry: tier banner ────────────────────────────────────── */
-        #p3EntryBanner {
-            display: none;
-            padding: 9px 44px;
-            font-size: 11.5px;
-            font-weight: 500;
-            align-items: flex-start;
-            gap: 8px;
-            line-height: 1.5;
-            border-bottom: 1px solid transparent;
-        }
-        #p3EntryBanner.visible { display: flex; }
-        #p3EntryBanner.tier-approved   { background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
-        #p3EntryBanner.tier-conditional { background:#fffbeb; color:#92400e; border-color:#fde68a; }
-        #p3EntryBanner.tier-flagged     { background:#fff7ed; color:#9a3412; border-color:#fed7aa; }
-        #p3EntryBanner.tier-returned    { background:#fef2f2; color:#991b1b; border-color:#fecaca; }
-        .p3eb-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-        .p3eb-body { flex: 1; }
-        .p3eb-primary { font-weight: 700; margin-bottom: 2px; }
-        .p3eb-secondary { font-weight: 400; opacity: 0.85; font-size: 11px; }
-        .p3eb-flags { margin-top: 4px; font-size: 10.5px; opacity: 0.8; }
-
-        /* ── Form 3: system-locked fields ────────────────────────────────── */
-        .p3-system-locked {
-            display: none !important;
-        }
-        .p3-system-display {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 9px 12px 7px;
-            cursor: default;
-        }
-        .p3-system-display-value {
-            font-size: 14px;
-            color: #1e293b;
-            font-weight: 500;
-            line-height: 1.3;
-        }
-        .p3-system-display-source {
-            font-size: 10px;
-            color: #94a3b8;
-            letter-spacing: .02em;
-            margin-top: 3px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .p3-system-lock-icon {
-            display: inline-block;
-            width: 8px;
-            height: 9px;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 1.5px;
-            position: relative;
-            top: 0px;
-        }
-        .p3-system-lock-icon::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 5px;
-            border: 1.5px solid #cbd5e1;
-            border-bottom: none;
-            border-radius: 2px 2px 0 0;
-            top: -5px;
-            left: 1px;
-        }
-
         /* ── Form 3 branch / interstitial pages ──────────────────────────── */
         .p3-branch-page {
             display: none;
@@ -3266,7 +2653,7 @@
 
 .page[data-page="10"], .page[data-page="11"] { background: #ece8d8; font-family: 'Josefin Slab', serif; font-size: 12px; }
 .page[data-page="23"], .page[data-page="24"] { background: #e8e4d4; font-family: 'Courier Prime', monospace; font-size: 11px; }
-.page[data-page="33"], .page[data-page="34"] { background: #f0ecdc; font-family: 'Special Elite', cursive; font-size: 11.5px; }
+.page[data-page="35"], .page[data-page="36"] { background: #f0ecdc; font-family: 'Special Elite', cursive; font-size: 11.5px; }
         
         /* ─── NEW FORM 1 PAGES ──────────────────────────────────────── */
         /* Pages 8-9: Administrative Acknowledgment era (formal serif) */
@@ -3284,7 +2671,8 @@
             font-size: 11.5px;
         }
         /* Pages 29-30: Cross-Reference / Supplemental era (mixed) */
-        .page[data-page="29"] {
+        .page[data-page="29"],
+        .page[data-page="30"] {
             background: #f0ecdc;
             font-family: 'Special Elite', cursive;
             font-size: 11.5px;
@@ -3442,7 +2830,7 @@
             <div class="preform-stage stage-window active" data-stage="1">
                 <div class="preform-label">Municipal Services Building · Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/nowserving.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/hello.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     <span class="preform-number">G142.</span> Your number is called.
@@ -3481,6 +2869,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="preform-stage stage-weight" data-stage="4">
                 <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
@@ -3856,10 +3245,10 @@
                     Sharing is limited to agencies operating under applicable data-sharing agreements. Your submission reference number will be used to link cross-agency records. This authorization remains in effect for the duration of your active administrative record.
                 </p>
                 <div style="margin-top:16px;padding:8px 12px;border:1px dashed #888;">
-                    <div style="display:flex;align-items:flex-start;gap:8px;font-size:10.5px;line-height:1.5;">
-                        <span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;flex-shrink:0;margin-top:2px;"></span>
-                        <span>I object to interdepartmental data sharing as described above. (See Section 12-C for objection procedures. Processing timelines may be extended.)</span>
-                    </div>
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-size:10.5px;line-height:1.5;cursor:pointer;">
+                        <input type="checkbox" id="dataShareObjection" style="margin-top:2px;flex-shrink:0;">
+                        <span>&#9633;&ensp; I object to interdepartmental data sharing as described above. (See Section 12-C for objection procedures. Processing timelines may be extended.)</span>
+                    </label>
                 </div>
             </div>
             <div class="button-container">
@@ -4261,10 +3650,10 @@
                 </p>
                 <div style="border-top:1px solid #888;padding-top:12px;margin-top:12px;">
                     <p style="font-size:10px;font-weight:bold;margin-bottom:6px;">COMPLIANCE ACKNOWLEDGMENT:</p>
-                    <div style="display:flex;gap:8px;font-size:10.5px;margin-bottom:8px;align-items:flex-start;">
-                        <span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;flex-shrink:0;margin-top:2px;"></span>
+                    <label style="display:flex;gap:8px;font-size:10.5px;cursor:pointer;margin-bottom:8px;">
+                        <input type="checkbox" id="complianceAck">
                         <span>I acknowledge and affirm compliance as described above.</span>
-                    </div>
+                    </label>
                     <div style="display:flex;gap:20px;margin-top:10px;">
                         <div style="flex:0.5;">
                             <div style="border-bottom:1px solid #555;height:20px;margin-bottom:3px;">
@@ -4836,7 +4225,7 @@
 
                 <div class="form-group" style="margin-top: 8px;">
                     <label>If signing on behalf of another individual, please indicate your relationship and authority below:</label>
-                    <textarea id="representativeAuthority" style="height: 80px; width: 100%; box-sizing: border-box; border: 1.5px solid #666; background: #eee9d8; font-family: inherit; font-size: 12px; padding: 6px 8px; resize: none; line-height: 1.7; display: block; margin-top: 4px;"></textarea>
+                    <textarea id="representativeAuthority" style="height: 100px;"></textarea>
                 </div>
             </div>
 
@@ -4926,8 +4315,52 @@
 
         <!-- PAGE 17: Submission Confirmation -->
 
-        <!-- PAGE 29: Supplemental Notes -->
+        <!-- PAGE 29: Cross-Reference Verification -->
         <div class="page" data-page="29" style="font-family:'Special Elite',cursive;">
+            <div class="page-header" style="font-family:'Special Elite',cursive;">
+                <span class="page-title">CROSS-REFERENCE VERIFICATION</span>
+                <span class="page-number">Inserted per Directive 2008-04</span>
+            </div>
+            <div class="page-content" style="font-family:'Special Elite',cursive;font-size:11.5px;line-height:1.8;">
+                <div style="border:1px solid #777;padding:6px 10px;margin-bottom:14px;font-size:9.5px;text-align:center;letter-spacing:1.2px;background:#ede9db;">
+                    RECORD CROSS-VERIFICATION REQUIRED — CONFIRM ALL ENTRIES BEFORE PROCEEDING
+                </div>
+                <p style="font-size:10px;color:#555;margin-bottom:12px;line-height:1.6;">Verify that the entries below match the information you submitted in the corresponding sections. Discrepancies will be noted in your administrative record.</p>
+
+                <div id="crossRefWarning" style="display:none;background:#fff0c0;border:1px solid #998800;padding:8px 12px;margin:10px 0;font-size:10px;font-family:'Courier Prime',monospace;line-height:1.6;">
+                    &#9888; <strong>DISCREPANCY DETECTED.</strong> The name entered below does not match the name entered in Section B. Return to Section B and verify your entries before continuing. This discrepancy has been noted in your administrative record.
+                </div>
+
+                <div style="margin-bottom:12px;padding:8px 10px;border:1px solid #ccc;background:#f8f5ec;">
+                    <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">VERIFICATION 1 &mdash; FULL LEGAL NAME</div>
+                    <div style="font-size:10px;color:#555;margin-bottom:4px;">Restate the full legal name submitted in Section B (Personal Identification):</div>
+                    <input type="text" id="crossRefName" oninput="checkCrossReference()" style="width:100%;border:none;border-bottom:1.5px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:12px;color:#1a1a5a;height:22px;padding:0 4px;" placeholder="Full Legal Name">
+                </div>
+
+                <div style="margin-bottom:12px;padding:8px 10px;border:1px solid #ccc;background:#f8f5ec;">
+                    <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">VERIFICATION 2 &mdash; DATE OF BIRTH</div>
+                    <div style="font-size:10px;color:#555;margin-bottom:4px;">Restate the date of birth submitted in Section B:</div>
+                    <input type="text" id="crossRefDob" style="width:200px;border:none;border-bottom:1.5px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:12px;color:#1a1a5a;height:22px;padding:0 4px;" placeholder="MM/DD/YYYY">
+                </div>
+
+                <div style="margin-bottom:12px;padding:8px 10px;border:1px solid #ccc;background:#f8f5ec;">
+                    <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">VERIFICATION 3 &mdash; CURRENT ADDRESS</div>
+                    <div style="font-size:10px;color:#555;margin-bottom:4px;">Confirm the current address entered in Section B is still accurate:</div>
+                    <label style="display:flex;gap:8px;align-items:center;font-size:10.5px;cursor:pointer;">
+                        <input type="checkbox" id="crossRefAddrConfirm">&ensp; Address confirmed as accurate and current.
+                    </label>
+                </div>
+
+                <p style="font-size:9.5px;color:#666;margin-top:10px;line-height:1.5;font-style:italic;">Completion of this page is required. Discrepancies identified at this stage will be forwarded to the cross-record verification unit. You will not be notified of non-material discrepancy notations.</p>
+            </div>
+            <div class="button-container">
+                <button class="prev-button" onclick="prevPage()">Return to Previous Page</button>
+                <button class="proceed-button" onclick="nextPage()">Proceed to Next Page</button>
+            </div>
+        </div>
+
+        <!-- PAGE 30: Supplemental Notes -->
+        <div class="page" data-page="30" style="font-family:'Special Elite',cursive;">
             <div class="page-header" style="font-family:'Special Elite',cursive;">
                 <span class="page-title">SUPPLEMENTAL NOTES / ADDITIONAL INFORMATION</span>
                 <span class="page-number">Page (Supplemental)</span>
@@ -4937,23 +4370,13 @@
                     USE THIS PAGE FOR ADDITIONAL INFORMATION — ATTACH CONTINUATION SHEETS IF NECESSARY
                 </div>
                 <p style="font-size:10px;color:#555;margin-bottom:10px;line-height:1.6;">Provide any supplemental information relevant to your submission. Reference the section number to which each note applies. If additional space is required, attach numbered continuation sheets.</p>
-                <div style="margin-top:4px;">
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                </div>
-                <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:10.5px;flex-wrap:wrap;">
+                <textarea id="supplementalNotes" rows="10" style="width:100%;border:1px solid #999;background:#f8f5ec;font-family:'Courier New',monospace;font-size:11px;padding:6px;box-sizing:border-box;resize:none;line-height:1.9;" placeholder="Section reference — Note&#10;Section reference — Note&#10;..."></textarea>
+                <div style="margin-top:12px;display:flex;align-items:center;gap:14px;font-size:10.5px;">
                     <span>Continuation sheets attached:</span>
-                    <span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;"></span> Yes</span>
-                    <span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;"></span> No</span>
-                    <span style="margin-left:12px;">Number of sheets:</span><span style="display:inline-block;width:40px;border-bottom:1px solid #555;height:18px;"></span>
+                    <label style="cursor:pointer;"><input type="radio" name="contSheets" value="yes">&ensp;Yes</label>
+                    <label style="cursor:pointer;"><input type="radio" name="contSheets" value="no">&ensp;No</label>
+                    <span style="margin-left:16px;">Number of sheets:</span>
+                    <input type="text" id="contSheetCount" style="width:40px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;">
                 </div>
                 <p style="font-size:9.5px;color:#666;margin-top:14px;line-height:1.5;font-style:italic;">Continuation sheets must be numbered, signed, and include your name and submission reference number at the top of each sheet. Unnumbered or unsigned attachments may not be included in the record.</p>
             </div>
@@ -4963,7 +4386,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="30">
+        <div class="page" data-page="31">
             <div class="page-header">
                 OMB Control No. 1978-0101<br>
                 Expires: 03/31/2023<br>
@@ -5006,7 +4429,7 @@
                 </div>
             </div>
         </div>
-        <div class="page" data-page="31">
+        <div class="page" data-page="32">
             <div class="page-header">
                 <span class="page-title">SECTION E  -  DEMOGRAPHIC CLASSIFICATION</span>
                 <span class="page-number">Page 24 of 28</span>
@@ -5069,7 +4492,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="32">
+        <div class="page" data-page="33">
             <div class="page-header">
                 <span class="page-title">SECTION E  -  SUPPLEMENTAL CLASSIFICATION</span>
                 <span class="page-number">Page 25 of 28</span>
@@ -5149,7 +4572,7 @@
                 <button class="proceed-button" onclick="nextPage()">Proceed to Next Page</button>
             </div>
         </div>
-        <div class="page" data-page="33" style="font-family:'Courier New',Courier,monospace;background:#eeece6;filter:contrast(0.97);">
+        <div class="page" data-page="34" style="font-family:'Courier New',Courier,monospace;background:#eeece6;filter:contrast(0.97);">
             <div class="page-header" style="font-family:'Courier New',Courier,monospace;background:#d8d4c8;">
                 <span class="page-title" style="font-size:10px;letter-spacing:0.5px;">ADMINISTRATIVE AMENDMENT INSERT</span>
                 <span class="page-number">Page 26 of 28</span>
@@ -5190,7 +4613,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="34" style="font-family:'Times New Roman',serif;">
+        <div class="page" data-page="35" style="font-family:'Times New Roman',serif;">
             <div class="page-header" style="font-family:'Times New Roman',serif;">
                 <span class="page-title">ADMINISTRATIVE ROUTING SHEET  -  OFFICE USE ONLY</span>
                 <span class="page-number">Page 27 of 28</span>
@@ -5254,7 +4677,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="35" style="font-family:'Times New Roman',serif;font-size:11px;">
+        <div class="page" data-page="36" style="font-family:'Times New Roman',serif;font-size:11px;">
             <div class="page-header" style="font-family:'Times New Roman',serif;">
                 <span class="page-title">FORM GIR-01 (Rev. 03/2000)</span>
                 <span class="page-number">Page 28 of 28</span>
@@ -5470,10 +4893,10 @@
 
     <script>
         let currentPage = 1;
-        const totalPages = 35;
+        const totalPages = 36;
         const initialsStartPage = 5;
         const classificationPage = 14;
-        const submissionPage = 33;
+        const submissionPage = 34;
         const STORAGE_FIELDS_KEY = 'gir01_fields';
         const STORAGE_REVIEW_KEY = 'gir01_needsReview';
         const ZOOM_STORAGE_KEY = 'gir01_zoom';
@@ -5604,7 +5027,7 @@ function girComputeOutcome() {
                 const el = document.getElementById(id);
                 if (el) el.src = CLERK_IMAGES[key];
             };
-            set('stageOneClerkPhoto',  'screen');
+            set('stageOneClerkPhoto',  'greeting');
             set('s4ClerkPhoto',        'greeting');
             set('stageThreeClerkPhoto','handoff');
             set('weightClerkPhoto',    'handoff');
@@ -5613,6 +5036,8 @@ function girComputeOutcome() {
             set('clerkComputerPhoto',  'success');
             set('postUpdateClerkPhoto','success');
             set('clerkGateImage','greeting');
+            const ws = document.getElementById('waitingScreen');
+            if (ws) ws.style.backgroundImage = "url('" + CLERK_IMAGES.screen + "')";
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -6781,51 +6206,31 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             setTimeout(function() {
                 var overlay = document.getElementById('p2UpdateOverlay');
                 if (overlay) overlay.classList.add('active');
-                // ── Windows 98 dialog animation ──────────────────
-                var bar    = document.getElementById('p2DialogProgressFill');
-                var status = document.getElementById('p2DialogStatus');
-                var log    = document.getElementById('p2DialogLog');
-                var hg     = document.getElementById('p2DialogHourglass');
-
-                function p2log(msg) {
-                    if (!log) return;
-                    var line = document.createElement('span');
-                    line.className = 'p2-dialog-log-line';
-                    line.textContent = msg;
-                    log.appendChild(line);
-                    log.scrollTop = log.scrollHeight;
+                var items = document.querySelectorAll('#p2UpdateOverlay .p3-checklist li');
+                if (!items.length) {
+                    var btnNow = document.getElementById('p2UpdateContinueBtn');
+                    if (btnNow) btnNow.style.display = 'block';
+                    return;
                 }
-                function p2progress(pct, msg) {
-                    if (bar) bar.style.width = pct + '%';
-                    if (status) status.textContent = msg;
-                }
-
-                var steps = [
-                    { pct: 20,  status: 'Verifying form fields...',         log: '> Field validation: checking required entries' },
-                    { pct: 42,  status: 'Establishing server connection...',  log: '> Connecting to OAP-DB01.oap.gov.local' },
-                    { pct: 64,  status: 'Transmitting record data...',         log: '> POST /gir03/submit  HTTP/1.1  [200 OK]' },
-                    { pct: 85,  status: 'Writing to database...',              log: '> Record write: SUCCESS' },
-                    { pct: 100, status: 'Submission complete.',                log: '> Confirmation no. GIR-' + new Date().getFullYear() + String(Date.now()).slice(-6) }
-                ];
-
-                p2log('> Initializing submission handler...');
-                steps.forEach(function(step, i) {
+                items.forEach(function(item, i) {
                     setTimeout(function() {
-                        p2progress(step.pct, step.status);
-                        p2log(step.log);
-                        if (i === steps.length - 1) {
-                            if (hg) hg.style.animation = 'none';
+                        item.classList.add('done');
+                        if (i === items.length - 1) {
                             setTimeout(function() {
+                                var spinner = document.getElementById('p2UpdateSpinner');
+                                var check = document.getElementById('p2UpdateCheck');
+                                if (spinner) spinner.style.display = 'none';
+                                if (check) check.style.display = 'flex';
                                 var btn = document.getElementById('p2UpdateContinueBtn');
-                                if (btn) btn.style.display = 'inline-block';
-                            }, 500);
+                                if (btn) btn.style.display = 'block';
+                            }, 600);
                         }
-                    }, 700 * (i + 1));
+                    }, 800 * (i + 1));
                 });
                 setTimeout(function() {
                     var btnFallback = document.getElementById('p2UpdateContinueBtn');
-                    if (btnFallback) btnFallback.style.display = 'inline-block';
-                }, 8000);
+                    if (btnFallback) btnFallback.style.display = 'block';
+                }, 6000);
             }, 1200);
         }
 
@@ -7011,9 +6416,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	                el.classList.remove('active', 'fade-out', 'complete');
 	                el.style.display = '';
 	            });
-	            var ph4 = document.getElementById('phase4');
-	            if (ph4) ph4.style.display = 'none';
-	            ['systemOverlay','phaseTwoOverlay','phaseThreeOverlay','p2UpdateOverlay','clerkGateOverlay','submissionOverlay','phaseTransitionOverlay'].forEach(function(id){
+	            ['systemOverlay','phaseTwoOverlay','phaseThreeOverlay','p2UpdateOverlay','clerkGateOverlay','submissionOverlay'].forEach(function(id){
 	                var el = document.getElementById(id);
 	                if (el) {
 	                    el.classList.remove('active', 'complete', 'fade-out');
@@ -7158,232 +6561,23 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         var p3BranchFlags = { nmChecked: false, adChecked: false, psChecked: false, sigChecked: false, consentChecked: false };
         var p3TotalPages = 21;
 
-        
-        // ── Form 3 entry: retrieval + pre-fill + lock ─────────────────────
-
-        function p3StartEntry() {
-            girSet('p3AcknowledgmentAccepted', true);
-            // Show phaseThreeOverlay but retrieval screen sits on top
+        function startPhaseThree() {
+            var p2Update = document.getElementById('p2UpdateOverlay');
+            var phaseTwo = document.getElementById('phaseTwoOverlay');
+            var postUpdate = document.getElementById('postUpdateClerkOverlay');
             var phaseThree = document.getElementById('phaseThreeOverlay');
+            if (p2Update) p2Update.classList.remove('active');
+            if (phaseTwo) phaseTwo.classList.remove('active');
+            if (postUpdate) postUpdate.classList.remove('active');
             if (phaseThree) {
                 phaseThree.classList.add('active');
                 phaseThree.style.display = 'flex';
             }
-            girLoad();
-            girComputeOutcome();
-
-            // Populate ref line
-            var refLine = document.getElementById('p3rRefLine');
-            var ticket = localStorage.getItem('ticketNumber') || '';
-            var p1Name = (document.getElementById('fullLegalName') || {}).value || '';
-            if (refLine) {
-                refLine.textContent = 'GIR-2024  ·  Ref: GIR-' + (ticket || Date.now().toString().slice(-6));
+            try {
+                p3GoPage(1);
+            } catch (err) {
+                console.error('Phase III start failed:', err);
             }
-
-            // Animate retrieval checklist
-            var steps = ['p3rc1','p3rc2','p3rc3','p3rc4','p3rc5'];
-            var bar   = document.getElementById('p3rBarFill');
-            steps.forEach(function(id, i) {
-                setTimeout(function() {
-                    var el = document.getElementById(id);
-                    if (el) el.classList.add('done');
-                    if (bar) bar.style.width = Math.round(((i + 1) / steps.length) * 100) + '%';
-                }, 320 + i * 380);
-            });
-
-            // Show "record found" message after steps complete
-            setTimeout(function() {
-                var found = document.getElementById('p3rRecordFound');
-                var disp  = GIR.finalDisposition || 'approved';
-                if (found) {
-                    found.classList.add('visible');
-                    if (disp === 'returned') found.classList.add('returned');
-                    else if (disp === 'flagged') found.classList.add('flagged');
-                }
-                // Pre-fill fields now (hidden under retrieval screen)
-                p3PopulateFromPrior();
-                // Fade out retrieval screen and show form
-                setTimeout(function() {
-                    var screen = document.getElementById('p3RetrievalScreen');
-                    if (screen) {
-                        screen.classList.add('fading');
-                        setTimeout(function() {
-                            screen.classList.add('gone');
-                            p3ShowEntryBanner();
-                            try { p3GoPage(1); } catch(e) { console.error(e); }
-                        }, 520);
-                    }
-                }, 900);
-            }, 320 + steps.length * 380 + 200);
-        }
-
-        function p3PopulateFromPrior() {
-            // Name: Form 1 fullLegalName or Form 2 p2LegalName
-            var p1Full = ((document.getElementById('fullLegalName') || {}).value || '').trim();
-            var p2Full = ((document.getElementById('p2LegalName')   || {}).value || '').trim();
-            var src    = p1Full || p2Full;
-            if (src) {
-                var parts = src.split(/\s+/);
-                var first = parts[0] || '';
-                var last  = parts.length > 1 ? parts[parts.length - 1] : '';
-                var mid   = parts.length > 2 ? parts.slice(1, -1).join(' ') : '';
-                p3SetSystemField('p3_firstName', first, 'Verified from prior submissions');
-                p3SetSystemField('p3_lastName',  last,  'Verified from prior submissions');
-                if (mid) p3SetSystemField('p3_middleName', mid, 'Verified from prior submissions');
-            }
-
-            // DOB: Form 2 p2Dob
-            var dob = ((document.getElementById('p2Dob') || {}).value || '').trim();
-            if (dob) p3SetSystemField('p3_dob', dob, 'Source: aggregated administrative data');
-
-            // Address: Form 1 or Form 2
-            var addr = ((document.getElementById('address')    || {}).value || '').trim()
-                    || ((document.getElementById('p2Address')  || {}).value || '').trim();
-            if (addr) p3SetSystemField('p3_street', addr, 'Derived from existing administrative records');
-
-            // Prior names: Form 1 alt names
-            var alt1 = ((document.getElementById('p1_altName1') || {}).value || '').trim();
-            var alt2 = ((document.getElementById('p1_altName2') || {}).value || '').trim();
-            if (alt1) p3SetSystemField('p3_priorName1', alt1, 'Source: prior submission records');
-            if (alt2) p3SetSystemField('p3_priorName2', alt2, 'Source: prior submission records');
-        }
-
-        function p3SetSystemField(fieldId, value, sourceLabel) {
-            var input = document.getElementById(fieldId);
-            if (!input || !value) return;
-            input.value = value;
-
-            // Mark input as locked
-            input.classList.add('p3-system-locked');
-            input.setAttribute('data-system-locked', '1');
-            input.setAttribute('data-source-label', sourceLabel);
-
-            // Build static display div
-            var display = document.createElement('div');
-            display.className = 'p3-system-display';
-            display.setAttribute('data-for', fieldId);
-
-            var valDiv = document.createElement('div');
-            valDiv.className = 'p3-system-display-value';
-            valDiv.textContent = value;
-
-            var srcDiv = document.createElement('div');
-            srcDiv.className = 'p3-system-display-source';
-            srcDiv.innerHTML = '<span class="p3-system-lock-icon"></span>' + sourceLabel;
-
-            display.appendChild(valDiv);
-            display.appendChild(srcDiv);
-
-            // Insert after the input
-            if (input.parentNode) {
-                input.parentNode.insertBefore(display, input.nextSibling);
-            }
-        }
-
-        function p3ShowEntryBanner() {
-            var disp   = GIR.finalDisposition || 'approved';
-            var banner = document.getElementById('p3EntryBanner');
-            var icon   = document.getElementById('p3ebIcon');
-            var primary   = document.getElementById('p3ebPrimary');
-            var secondary = document.getElementById('p3ebSecondary');
-            var flags     = document.getElementById('p3ebFlags');
-            if (!banner) return;
-
-            // Build flag detail string
-            var flagList = [];
-            if (GIR.nameMismatch)            flagList.push('name inconsistency across submission sources');
-            if (GIR.addressContinuityGap)    flagList.push('address continuity discrepancy');
-            if (GIR.priorSubmissionConflict) flagList.push('prior name record conflict');
-            if (GIR.p2LegalHistory && GIR.p2LegalHistory !== 'none') flagList.push('legal/compliance history on file');
-            if (GIR.p2ForeignContacts === 'yes') flagList.push('foreign national contact disclosure');
-            if (GIR.inconsistencyCount >= 2)  flagList.push('multiple submission inconsistencies');
-
-            var tierConfig = {
-                approved: {
-                    cls: 'tier-approved',
-                    icon: '✓',
-                    primary: 'Administrative record located. No active flags.',
-                    secondary: 'Prior submission data has been migrated to the current schema. Most fields have been pre-populated from existing records. Please review and proceed.'
-                },
-                conditional: {
-                    cls: 'tier-conditional',
-                    icon: '▲',
-                    primary: 'Administrative record located. Routine review flag attached.',
-                    secondary: 'One or more entries in your record require verification before this recertification can be processed. Pre-populated fields are indicated below.'
-                },
-                flagged: {
-                    cls: 'tier-flagged',
-                    icon: '⚠',
-                    primary: 'Administrative record located. Record flagged for discrepancy review.',
-                    secondary: 'Your file has been flagged. A review notice has been attached. Pre-populated fields reflect data currently on record. Discrepancies have been logged.'
-                },
-                returned: {
-                    cls: 'tier-returned',
-                    icon: '⚠',
-                    primary: 'Administrative record located. File referred to enhanced review.',
-                    secondary: 'This file requires full field verification before recertification can proceed. All pre-populated values must be confirmed. Contact the Office of Administrative Processing if you believe this designation is in error.'
-                }
-            };
-
-            var cfg = tierConfig[disp] || tierConfig.approved;
-            banner.className = 'p3EntryBanner visible ' + cfg.cls;
-            if (icon)      icon.textContent     = cfg.icon;
-            if (primary)   primary.textContent  = cfg.primary;
-            if (secondary) secondary.textContent = cfg.secondary;
-            if (flags && flagList.length) {
-                flags.textContent = 'Noted: ' + flagList.join('; ') + '.';
-            }
-            banner.classList.add('visible');
-
-            // For "returned" tier, unlock all system fields so user must re-verify
-            if (disp === 'returned') {
-                document.querySelectorAll('.p3-system-locked').forEach(function(inp) {
-                    inp.classList.remove('p3-system-locked');
-                    // Update source label to indicate re-entry required
-                    var display = document.querySelector('.p3-system-display[data-for="' + inp.id + '"]');
-                    if (display) {
-                        var srcDiv = display.querySelector('.p3-system-display-source');
-                        if (srcDiv) srcDiv.innerHTML = '<span class="p3-system-lock-icon"></span>Requires re-entry — enhanced review';
-                    }
-                });
-            }
-        }
-
-
-        function showPhaseTransition() {
-            // Populate recipient name and ref from GIR state
-            var nameEl = document.getElementById('pt-recipient');
-            var refEl  = document.getElementById('pt-ref-num');
-            if (nameEl) {
-                var stored = (document.getElementById('fullLegalName') || {}).value || '';
-                var p2Name = (document.getElementById('p2LegalName') || {}).value || '';
-                var display = stored || p2Name || 'Record Holder';
-                nameEl.textContent = display;
-            }
-            if (refEl) {
-                var ticket = localStorage.getItem('ticketNumber') || '';
-                refEl.textContent = 'Ref: GIR-' + (ticket || Date.now().toString().slice(-6));
-            }
-            var overlay = document.getElementById('p2UpdateOverlay');
-            if (overlay) overlay.classList.remove('active');
-            var p2Overlay = document.getElementById('phaseTwoOverlay');
-            if (p2Overlay) p2Overlay.classList.remove('active');
-            var trans = document.getElementById('phaseTransitionOverlay');
-            if (trans) trans.classList.add('active');
-        }
-
-        function startPhaseThree() {
-            // Hide all prior overlays
-            var p2Update   = document.getElementById('p2UpdateOverlay');
-            var phaseTwo   = document.getElementById('phaseTwoOverlay');
-            var postUpdate = document.getElementById('postUpdateClerkOverlay');
-            var transScrn  = document.getElementById('phaseTransitionOverlay');
-            if (p2Update)   p2Update.classList.remove('active');
-            if (phaseTwo)   phaseTwo.classList.remove('active');
-            if (postUpdate) postUpdate.classList.remove('active');
-            if (transScrn)  transScrn.classList.remove('active');
-            // Hand off to entry sequence
-            p3StartEntry();
         }
 
         function p3GoPage(n) {
@@ -8445,310 +7639,25 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
 <!-- PHASE II → III UPDATE OVERLAY -->
 <div id="p2UpdateOverlay">
-    <div class="p2-dialog">
-        <div class="p2-dialog-titlebar">
-            <span><span class="p2-dialog-titlebar-icon">&#9633;</span>GIR-03 Electronic Submission Portal</span>
-            <div class="p2-dialog-titlebar-btns">
-                <div class="p2-dialog-titlebar-btn">_</div>
-                <div class="p2-dialog-titlebar-btn">&#9633;</div>
-                <div class="p2-dialog-titlebar-btn">&#215;</div>
-            </div>
+    <div class="p3-modal">
+        <div class="p3-spinner-wrap">
+            <div class="p3-spinner" id="p2UpdateSpinner"></div>
+            <div class="p3-check-icon" id="p2UpdateCheck">&#10003;</div>
         </div>
-        <div class="p2-dialog-body">
-            <div class="p2-dialog-icon-row">
-                <div class="p2-dialog-hourglass" id="p2DialogHourglass">&#8987;</div>
-                <div class="p2-dialog-message">Processing submission.<br>Please do not close this window or navigate away.</div>
-            </div>
-            <div class="p2-dialog-progress-wrap">
-                <div class="p2-dialog-progress-fill" id="p2DialogProgressFill"></div>
-            </div>
-            <div class="p2-dialog-statusline" id="p2DialogStatus">Initializing...</div>
-            <div class="p2-dialog-log" id="p2DialogLog"></div>
-            <div class="p2-dialog-divider"></div>
-            <div class="p2-dialog-footer">
-                <button class="p2-dialog-ok-btn" id="p2UpdateContinueBtn" onclick="showPhaseTransition()">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- PHASE 2→3 TRANSITION: Time-gap narrative screen -->
-<div id="phaseTransitionOverlay">
-    <div class="pt-shell">
-        <div class="pt-device-bar">
-            <div class="pt-device-dot"></div>
-            <div class="pt-device-dot"></div>
-            <div class="pt-device-dot"></div>
-            <div class="pt-address-bar">mail.oap.gov/inbox &mdash; Administrative Notice</div>
-        </div>
-        <div class="pt-email-card">
-            <div class="pt-email-header">
-                <div class="pt-oap-logo">OAP.GOV</div>
-                <div class="pt-oap-divider"></div>
-                <div class="pt-oap-sub">Office of Administrative Processing</div>
-            </div>
-            <div class="pt-email-meta">
-                <div class="pt-email-subject">ACTION REQUIRED &mdash; Periodic Recertification of General Information Record</div>
-                <div class="pt-email-from">From: <span>no-reply@oap.gov</span> &nbsp;&middot;&nbsp; To: <span id="pt-recipient">Record Holder</span> &nbsp;&middot;&nbsp; <span style="font-style:italic;" id="pt-ref-num">Ref: GIR-——</span></div>
-            </div>
-            <div class="pt-email-body">
-                <p>This is an automated notice from the Office of Administrative Processing.</p>
-                <p>Our records indicate that your General Information Record (GIR) was submitted through our in-office intake process. As part of the Department&rsquo;s ongoing commitment to modernizing administrative services, all legacy records have been migrated to the OAP Online Portal.</p>
-                <div class="pt-notice-block">
-                    Periodic recertification of your General Information Record is now required. Records not recertified within the applicable review window may be placed in inactive status pending further action.
-                </div>
-                <p>You may complete this process from any internet-connected device at your convenience. There is no need to visit our offices in person. The OAP Online Portal is available 24 hours a day, 7 days a week.</p>
-                <p>Your record has been pre-populated where prior data is available. Some fields may require re-entry due to format changes introduced during system migration. Please review all sections carefully before submitting.</p>
-            </div>
-            <div class="pt-email-footer">
-                <button class="pt-cta-btn" onclick="startPhaseThree()">Access Your Record &rarr;</button>
-                <div class="pt-fine-print">
-                    This notice was sent to the address associated with your administrative record.<br>
-                    If you believe you received this in error, contact the Office of Administrative Processing in writing.<br>
-                    <br>
-                    Department of Civic Standardization &nbsp;&middot;&nbsp; Office of Administrative Processing<br>
-                    <a href="javascript:void(0)" onclick="oapPageOpen('oapPrivacyPage')">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="javascript:void(0)" onclick="oapPageOpen('oapAccessibilityPage')">Accessibility</a> &nbsp;&middot;&nbsp; <a href="javascript:void(0)" onclick="oapPageOpen('oapContactPage')">Contact</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- OAP.GOV Page: Privacy Policy -->
-<div id="oapPrivacyPage" class="oap-page-overlay">
-    <div class="oap-page-topbar">
-        <div class="oap-page-topbar-inner">
-            <div class="oap-page-topbar-logo">OAP.GOV<span>Office of Administrative Processing</span></div>
-            <button class="oap-page-topbar-back" onclick="oapPageClose('oapPrivacyPage')">&#8592; Back to Inbox</button>
-        </div>
-    </div>
-    <div class="oap-page-navband">
-        <div class="oap-page-navband-inner">
-            Home &nbsp;&rsaquo;&nbsp; Privacy Policy
-        </div>
-    </div>
-    <div class="oap-page-divband"></div>
-    <div class="oap-page-body">
-        <div class="oap-page-h1">Privacy Policy</div>
-        <div class="oap-page-meta">OAP-PVP-2024-01 &nbsp;&middot;&nbsp; Effective: January 1, 2024 &nbsp;&middot;&nbsp; Supersedes: OAP-PVP-2019-03</div>
-
-        <div class="oap-page-notice">
-            This policy describes how the Office of Administrative Processing collects, uses, and protects personally identifiable information (PII) submitted through the OAP Online Portal and associated intake systems.
-        </div>
-
-        <h2>Authority</h2>
-        <p>Information is collected pursuant to the General Information Records Act (GIRA), Title 8, Section 3042, and related departmental directives. Collection is authorized under 5 U.S.C. &sect; 552a (Privacy Act of 1974), as amended. Disclosure is voluntary; however, failure to provide requested information may result in delay or denial of administrative processing.</p>
-
-        <h2>Information Collected</h2>
-        <p>The OAP Online Portal collects the following categories of personally identifiable information:</p>
-        <ul>
-            <li>Legal name, date of birth, and government-issued identification numbers</li>
-            <li>Current and prior residential addresses (up to ten years)</li>
-            <li>Employment history and financial disclosure records</li>
-            <li>Foreign travel and foreign national contact information</li>
-            <li>Mental health and substance use self-disclosure responses</li>
-            <li>Prior legal history, including civil and criminal matters</li>
-            <li>Electronic signature and attestation records</li>
-            <li>Device metadata, session identifiers, and submission timestamps</li>
+        <div class="p3-modal-title" id="p2UpdateTitle">Processing Submission</div>
+        <div class="p3-modal-sub" id="p2UpdateSub">Please wait...</div>
+        <ul class="p3-checklist">
+            <li><div class="p3-check-badge">&#10003;</div>Validating</li>
+            <li><div class="p3-check-badge">&#10003;</div>Encrypting</li>
+            <li><div class="p3-check-badge">&#10003;</div>Contacting servers</li>
+            <li><div class="p3-check-badge">&#10003;</div>Migrating record</li>
         </ul>
-
-        <h2>Use of Information</h2>
-        <p>Information submitted through this portal is used exclusively for the purpose of administrative record processing, recertification review, and identity continuity verification. Records may be shared with other departmental components for cross-reference review pursuant to a Memorandum of Understanding (MOU) or applicable system of records notice (SORN).</p>
-        <p>OAP does not sell, rent, or otherwise disclose PII to commercial entities. Information may be disclosed to law enforcement agencies pursuant to a lawful request, court order, or in furtherance of the Department&rsquo;s administrative functions.</p>
-
-        <h2>Routine Uses</h2>
-        <table>
-            <tr><th>Recipient</th><th>Purpose</th><th>Authority</th></tr>
-            <tr><td>Department of Civic Standardization — Internal Review Board</td><td>Cross-reference and discrepancy adjudication</td><td>GIRA &sect; 3042(c)</td></tr>
-            <tr><td>Office of Inspector General</td><td>Audit and integrity review</td><td>IG Act of 1978</td></tr>
-            <tr><td>Interagency Data Clearinghouse</td><td>Identity continuity matching</td><td>MOU-IDC-2021-04</td></tr>
-            <tr><td>Law Enforcement (as applicable)</td><td>Investigative referral</td><td>Lawful order or subpoena</td></tr>
-        </table>
-
-        <h2>Data Retention</h2>
-        <p>Records submitted through this portal are retained for a minimum of seven (7) years from the date of submission, or for the duration of the associated administrative record, whichever is longer. Records subject to active adjudication are retained until final disposition and for three (3) years thereafter.</p>
-
-        <h2>Security</h2>
-        <p>The OAP Online Portal employs administrative, physical, and technical safeguards to protect submitted information in accordance with Federal Information Security Management Act (FISMA) requirements. All data transmissions are encrypted using Transport Layer Security (TLS) 1.2 or higher.</p>
-
-        <h2>Your Rights</h2>
-        <p>Under the Privacy Act of 1974, you have the right to request access to records maintained about you, to request amendment of inaccurate records, and to file a statement of disagreement. To exercise these rights, submit a written request to the OAP Privacy Act Officer at the address listed on the Contact page. Please include your full legal name, date of birth, and the record identifier (ICN or GIR reference number) associated with your file.</p>
-
-        <h2>Cookies and Session Data</h2>
-        <p>This portal uses session cookies and local browser storage solely to maintain form state during an active session. No persistent tracking cookies are employed. Session data is cleared upon portal exit.</p>
-
-        <h2>Contact the Privacy Act Officer</h2>
-        <p>Questions or concerns regarding this privacy policy may be directed to the OAP Privacy Act Officer at <em>privacy@oap.gov</em> or in writing to the address listed on the Contact page.</p>
-    </div>
-    <div class="oap-page-footer">
-        Department of Civic Standardization &nbsp;&middot;&nbsp; Office of Administrative Processing &nbsp;&middot;&nbsp; OAP.GOV &nbsp;&middot;&nbsp; This page last reviewed: January 2024
-    </div>
-</div>
-
-<!-- OAP.GOV Page: Accessibility -->
-<div id="oapAccessibilityPage" class="oap-page-overlay">
-    <div class="oap-page-topbar">
-        <div class="oap-page-topbar-inner">
-            <div class="oap-page-topbar-logo">OAP.GOV<span>Office of Administrative Processing</span></div>
-            <button class="oap-page-topbar-back" onclick="oapPageClose('oapAccessibilityPage')">&#8592; Back to Inbox</button>
-        </div>
-    </div>
-    <div class="oap-page-navband">
-        <div class="oap-page-navband-inner">
-            Home &nbsp;&rsaquo;&nbsp; Accessibility
-        </div>
-    </div>
-    <div class="oap-page-divband"></div>
-    <div class="oap-page-body">
-        <div class="oap-page-h1">Accessibility</div>
-        <div class="oap-page-meta">OAP-ACC-2024-01 &nbsp;&middot;&nbsp; Effective: January 1, 2024</div>
-
-        <div class="oap-page-notice">
-            The Office of Administrative Processing is committed to making its electronic services accessible to all individuals, including those with disabilities, in accordance with applicable law.
-        </div>
-
-        <h2>Legal Basis</h2>
-        <p>This portal is designed and maintained in accordance with Section 508 of the Rehabilitation Act of 1973 (29 U.S.C. &sect; 794d), as amended, and the Americans with Disabilities Act of 1990 (42 U.S.C. &sect; 12101 et seq.). The OAP Online Portal strives to conform to the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA.</p>
-
-        <h2>Accessibility Features</h2>
-        <p>The following accessibility features have been implemented in this portal:</p>
-        <ul>
-            <li>All form fields include descriptive labels and instructions</li>
-            <li>Error messages identify the affected field and describe the required correction</li>
-            <li>Page structure uses semantic heading hierarchy</li>
-            <li>Keyboard navigation is supported throughout the portal</li>
-            <li>Color is not used as the sole means of conveying information</li>
-            <li>Session timeouts include advance warning with option to extend</li>
-        </ul>
-
-        <h2>Known Limitations</h2>
-        <p>OAP is actively working to address the following known accessibility gaps:</p>
-        <ul>
-            <li>Some legacy form sections may not be fully compatible with older screen reader software</li>
-            <li>Certain document attachments may not include embedded text alternatives</li>
-            <li>The animated progress indicator during record retrieval includes no pause control</li>
-        </ul>
-        <p>If you encounter an accessibility barrier not described here, please report it using the contact information below.</p>
-
-        <h2>Requesting Accommodations</h2>
-        <p>If you require an accommodation to complete the General Information Record recertification process, you may:</p>
-        <ul>
-            <li>Contact the OAP Accessibility Coordinator at <em>accessibility@oap.gov</em></li>
-            <li>Call Administrative Operations at (202) 555-4417, TTY: (202) 555-4418</li>
-            <li>Visit our in-person intake window during business hours (see Contact page for location and hours)</li>
-        </ul>
-        <p>In-person completion of the GIR recertification is available upon request. Please contact our office at least three (3) business days in advance to arrange an appointment.</p>
-
-        <h2>Third-Party Content</h2>
-        <p>Where third-party tools or services are incorporated into this portal, OAP has made reasonable efforts to ensure their accessibility. OAP is not responsible for accessibility limitations in third-party content beyond its direct control.</p>
-
-        <h2>Feedback</h2>
-        <p>We welcome feedback on the accessibility of the OAP Online Portal. Please send accessibility-related comments to <em>accessibility@oap.gov</em>. We aim to respond within five (5) business days.</p>
-
-        <h2>Formal Complaints</h2>
-        <p>If you are dissatisfied with our response to an accessibility concern, you may file a formal complaint with the Department of Civic Standardization Office of Civil Rights, or with the U.S. Department of Justice, Civil Rights Division.</p>
-    </div>
-    <div class="oap-page-footer">
-        Department of Civic Standardization &nbsp;&middot;&nbsp; Office of Administrative Processing &nbsp;&middot;&nbsp; OAP.GOV &nbsp;&middot;&nbsp; This page last reviewed: January 2024
-    </div>
-</div>
-
-<!-- OAP.GOV Page: Contact -->
-<div id="oapContactPage" class="oap-page-overlay">
-    <div class="oap-page-topbar">
-        <div class="oap-page-topbar-inner">
-            <div class="oap-page-topbar-logo">OAP.GOV<span>Office of Administrative Processing</span></div>
-            <button class="oap-page-topbar-back" onclick="oapPageClose('oapContactPage')">&#8592; Back to Inbox</button>
-        </div>
-    </div>
-    <div class="oap-page-navband">
-        <div class="oap-page-navband-inner">
-            Home &nbsp;&rsaquo;&nbsp; Contact
-        </div>
-    </div>
-    <div class="oap-page-divband"></div>
-    <div class="oap-page-body">
-        <div class="oap-page-h1">Contact</div>
-        <div class="oap-page-meta">Last Updated: March 2024</div>
-
-        <div class="oap-page-notice">
-            For questions related to your General Information Record or OAP Online Portal submission, use the contact information below. Do not include sensitive personal information (such as full Social Security numbers or financial account numbers) in email correspondence.
-        </div>
-
-        <h2>Administrative Operations</h2>
-        <table>
-            <tr><th>Method</th><th>Details</th><th>Hours</th></tr>
-            <tr><td>Phone</td><td>(202) 555-4417</td><td>Mon–Fri, 8:30 AM – 4:30 PM ET</td></tr>
-            <tr><td>TTY</td><td>(202) 555-4418</td><td>Mon–Fri, 8:30 AM – 4:30 PM ET</td></tr>
-            <tr><td>Fax</td><td>(202) 555-4490</td><td>24 hours (received next business day)</td></tr>
-            <tr><td>Email</td><td>admin-ops@oap.gov</td><td>Responses within 3–5 business days</td></tr>
-        </table>
-
-        <h2>In-Person Intake Window</h2>
-        <p>The OAP In-Person Intake Window accepts walk-in visitors during the hours listed below. Appointments are recommended for complex matters.</p>
-        <table>
-            <tr><th>Location</th><td>Municipal Services Building, Room 104<br>Intake Window &mdash; East Corridor</td></tr>
-            <tr><th>Walk-in Hours</th><td>Tuesday and Thursday, 9:00 AM – 12:00 PM ET</td></tr>
-            <tr><th>Appointment Hours</th><td>Monday through Friday, 8:30 AM – 4:00 PM ET<br>(subject to staff availability)</td></tr>
-        </table>
-
-        <h2>Mailing Address</h2>
-        <p>
-            Office of Administrative Processing<br>
-            Department of Civic Standardization<br>
-            Attn: GIR Records Unit<br>
-            P.O. Box 8020<br>
-            Washington, DC &nbsp;20090-8020
-        </p>
-        <p>Allow 10–15 business days for processing of mailed correspondence. Include your Individual Classification Number (ICN) or GIR reference number on all correspondence.</p>
-
-        <h2>Specific Inquiries</h2>
-        <table>
-            <tr><th>Topic</th><th>Contact</th></tr>
-            <tr><td>Privacy Act requests (access / amendment)</td><td>privacy@oap.gov</td></tr>
-            <tr><td>Accessibility accommodations</td><td>accessibility@oap.gov</td></tr>
-            <tr><td>Record status and processing timelines</td><td>(202) 555-4417, ext. 2</td></tr>
-            <tr><td>ICN assignment and corrections</td><td>(202) 555-4417, ext. 3</td></tr>
-            <tr><td>Appeals and adjudication inquiries</td><td>appeals@oap.gov &nbsp;(written requests only)</td></tr>
-            <tr><td>Technical support (portal access issues)</td><td>portal-support@oap.gov</td></tr>
-            <tr><td>Media inquiries</td><td>communications@oap.gov</td></tr>
-        </table>
-
-        <h2>Response Times</h2>
-        <p>Standard inquiries submitted by phone or email are responded to within three (3) to five (5) business days. Requests involving access to records or formal amendments are processed within twenty (20) business days, in accordance with Privacy Act requirements. Complex or multi-agency matters may require additional time; OAP will notify you in writing if additional time is needed.</p>
-
-        <h2>After-Hours Emergencies</h2>
-        <p>The OAP does not maintain an after-hours emergency line. If your matter is urgent, submit an email to <em>admin-ops@oap.gov</em> with the subject line <strong>URGENT &mdash; [your ICN or GIR reference number]</strong>. Urgent requests are reviewed on the next business day.</p>
-    </div>
-    <div class="oap-page-footer">
-        Department of Civic Standardization &nbsp;&middot;&nbsp; Office of Administrative Processing &nbsp;&middot;&nbsp; OAP.GOV &nbsp;&middot;&nbsp; This page last reviewed: January 2024
+        <button class="p3-continue-btn" id="p2UpdateContinueBtn" onclick="startPhaseThree()">Continue &rarr;</button>
     </div>
 </div>
 
 <!-- PHASE III: MODERN GOV PORTAL -->
 <div id="phaseThreeOverlay">
-
-    <!-- ── Form 3 Retrieval Screen ──────────────────────────────────────── -->
-    <div id="p3RetrievalScreen">
-        <div class="p3r-inner">
-            <div class="p3r-agency">Office of Administrative Processing &nbsp;&middot;&nbsp; OAP.GOV</div>
-            <div class="p3r-title">Retrieving Administrative Record</div>
-            <div class="p3r-subtitle" id="p3rRefLine">GIR-2024 &nbsp;&middot;&nbsp; Initializing&hellip;</div>
-            <div class="p3r-bar-wrap"><div class="p3r-bar-fill" id="p3rBarFill"></div></div>
-            <ul class="p3r-checklist" id="p3rChecklist">
-                <li id="p3rc1"><div class="p3r-check">&#10003;</div>Querying record index</li>
-                <li id="p3rc2"><div class="p3r-check">&#10003;</div>Retrieving prior submission data</li>
-                <li id="p3rc3"><div class="p3r-check">&#10003;</div>Cross-referencing administrative sources</li>
-                <li id="p3rc4"><div class="p3r-check">&#10003;</div>Verifying identity indices</li>
-                <li id="p3rc5"><div class="p3r-check">&#10003;</div>Migrating fields to current schema</li>
-            </ul>
-            <div class="p3r-record-found" id="p3rRecordFound">
-                Administrative record located.
-            </div>
-        </div>
-    </div>
-
     <div class="p3-header">
         <div class="p3-header-logo">OAP.GOV</div>
         <div style="color:#fff;opacity:0.4;font-size:18px;">|</div>
@@ -8759,17 +7668,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
     <div class="p3-progress-bar-wrap">
         <div class="p3-progress-bar-fill" id="p3ProgressBar" style="width:5%;"></div>
     </div>
-    
-    <!-- ── Form 3 Entry Banner (tier-dependent) ──────────────────────────── -->
-    <div id="p3EntryBanner">
-        <div class="p3eb-icon" id="p3ebIcon">&mdash;</div>
-        <div class="p3eb-body">
-            <div class="p3eb-primary" id="p3ebPrimary"></div>
-            <div class="p3eb-secondary" id="p3ebSecondary"></div>
-            <div class="p3eb-flags" id="p3ebFlags"></div>
-        </div>
-    </div>
-
     <div class="p3-body">
 
         <!-- PAGE 1 -->
@@ -9506,7 +8404,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         </div>
 
         <!-- PHASE 4 -->
-<div id="phase4" style="display:none;">
+<div id="phase4">
     <div class="p4-header">
         <div class="p4-header-title">Office of Administrative Processing — Records Portal</div>
         <div style="font-size:11px;" id="p4RefNum">REF: —</div>
@@ -9571,7 +8469,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         </div>
 
         <div class="p4-footer">
-            Office of Administrative Processing &nbsp;&bull;&nbsp; GIR Records Portal v2.4.1 &nbsp;&bull;&nbsp; Effective Date: 2024-01-01
+            Office of Administrative Processing &nbsp;&bull;&nbsp; GIR Records Portal v2.4.1 &nbsp;&bull;&nbsp; Effective Date: 2024-01-01 &nbsp;&bull;&nbsp; <a href="#" style="color:#9ca3af;">Privacy Policy</a> &nbsp;&bull;&nbsp; <a href="#" style="color:#9ca3af;">Contact Records Office</a>
         </div>
     </div>
     <div class="p4-modal-overlay" id="p4Modal">
@@ -9755,15 +8653,5 @@ function p4OpenModal(t) {
 function p4CloseModal() {
     document.getElementById('p4Modal').classList.remove('open');
 }
-
-        // ── OAP.GOV page overlay helpers ─────────────────────────────────
-        function oapPageOpen(id) {
-            var el = document.getElementById(id);
-            if (el) { el.classList.add('active'); el.scrollTop = 0; }
-        }
-        function oapPageClose(id) {
-            var el = document.getElementById(id);
-            if (el) el.classList.remove('active');
-        }
 </script>
 </body>
