@@ -2574,6 +2574,17 @@
             line-height: 1.6;
             box-shadow: 3px 5px 14px rgba(0,0,0,0.4), inset 0 -2px 6px rgba(0,0,0,0.08);
         }
+        .doc-face.privacy  {
+            background: linear-gradient(165deg, #fff7f2 0%, #ffe9dd 100%);
+            color: #3a1410;
+            border-top: 5px solid #a42020;
+            border-left: 2px solid #a42020;
+            border-right: 2px solid #a42020;
+            border-bottom: 2px solid #6d1010;
+            font-family: 'Times New Roman', serif;
+            font-size: 8.2px;
+            line-height: 1.42;
+        }
         .doc-dhead { font-weight:700; font-size:6.8px; letter-spacing:0.8px;
                      border-bottom:0.5px solid currentColor; padding-bottom:3px; margin-bottom:5px; }
         .doc-dtitle { font-weight:700; font-size:8.5px; margin-bottom:4px; }
@@ -2651,6 +2662,17 @@
             background: #fef08a;
             font-family: 'Caveat', cursive; font-size: 18px; line-height:1.7;
             max-width: 320px; padding: 32px 36px;
+        }
+        .dm-paper.privacy {
+            background: #fffaf4;
+            border-top: 8px solid #9f1d1d;
+            border-left: 2px solid #8a7b66;
+            border-right: 2px solid #8a7b66;
+            border-bottom: 2px solid #8a7b66;
+        }
+        .dm-paper.privacy .dm-title {
+            color: #8f1717;
+            border-bottom-color: #8f1717;
         }
         .dm-close {
             position: sticky; top: 0; float: right; clear: both;
@@ -3289,6 +3311,36 @@
             font-family: 'Special Elite', cursive;
             font-size: 11.5px;
         }
+        
+        /* ── Text-only pages: increased font size for readability ─────────── */
+        .page[data-page="1"],
+        .page[data-page="2"]  { font-size: 14px; line-height: 1.7; }
+
+        .page[data-page="3"]  { font-size: 20px; line-height: 1.7; }
+        .page[data-page="3"] .page-content { font-size: 20px; line-height: 1.7; }
+
+        .page[data-page="4"],
+        .page[data-page="5"],
+        .page[data-page="6"]  { font-size: 14px; line-height: 1.7; }
+
+        .page[data-page="9"],
+        .page[data-page="10"],
+        .page[data-page="11"],
+        .page[data-page="12"] { font-size: 14px; line-height: 1.7; }
+
+        .page[data-page="13"],
+        .page[data-page="14"],
+        .page[data-page="15"] { font-size: 15px; line-height: 1.75; }
+
+        .page[data-page="16"],
+        .page[data-page="17"],
+        .page[data-page="18"] { font-size: 16px; line-height: 1.8; }
+
+        .page[data-page="29"],
+        .page[data-page="30"],
+        .page[data-page="33"],
+        .page[data-page="34"] { font-size: 14px; line-height: 1.7; }
+
         </style>
 </head>
 <body>
@@ -3385,6 +3437,16 @@
                 </div>
             </div>
 
+            <!-- Doc 9: Experience Privacy Notice (read first) -->
+            <div class="pinned-doc" style="top:72px;left:470px;transform:rotate(-4.2deg);" onclick="openBulletinDoc('privacy')">
+                <div class="bpin bpin-red"></div>
+                <div class="doc-face privacy" style="width:188px;">
+                    <div class="doc-dhead" style="font-size:7.1px;letter-spacing:1px;">READ FIRST</div>
+                    <div class="doc-dtitle" style="font-size:9.4px;line-height:1.25;">EXPERIENCE PRIVACY NOTICE</div>
+                    <div class="doc-dbody" style="opacity:0.82;">This is an artistic/educational experience. Your responses stay in your browser and can be cleared at any time.</div>
+                </div>
+            </div>
+
             <!-- Ticket Dispenser -->
             <div class="ticket-dispenser">
                 <div class="td-label">TAKE A NUMBER</div>
@@ -3440,7 +3502,6 @@
         <div class="preform-card">
                 
             <div class="preform-stage stage-window active" data-stage="1">
-                <div class="preform-label">Municipal Services Building · Intake Window 3</div>
                 <div class="gov-window-scene">
                     <img class="clerk-photo" id="stageOneClerkPhoto" src="images/nowserving.png" alt="Intake clerk">
                 </div>
@@ -3469,28 +3530,26 @@
             </div>
 
             <div class="preform-stage stage-seated" data-stage="3">
-                <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
                     <img class="clerk-photo" id="stageThreeClerkPhoto" src="images/holdingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
-                    You explain what you need. They listen, nod once, and reach beneath the counter. What comes back is heavier than you expected  -  a thick packet of forms, maybe forty pages, secured with a binder clip. They set it on the counter in front of you.
+                    You explain what you need. They listen, nod once, and reach beneath the counter. What comes back is heavier than you expected  -  a thick packet of forms, maybe forty pages, secured with a binder clip. They hand it directly to you.
                     <div class="preform-actions">
                         <button class="preform-btn preform-skip" onclick="skipPreform()">Skip Intro</button>
-                        <button class="preform-btn" onclick="advancePreform()">Pick It Up</button>
+                        <button class="preform-btn" onclick="advancePreform()">Take Packet</button>
                     </div>
                 </div>
             </div>
 
             <div class="preform-stage stage-weight" data-stage="4">
-                <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="weightClerkPhoto" src="images/holdingpaper.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="weightClerkPhoto" src="images/takingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
-                    You pick it up. It has some weight to it.<br><br>
+                    You take the packet from their hands. It has some weight to it.<br><br>
                     &ldquo;How long does this usually take?&rdquo; you ask.<br><br>
-                    They tilt their head slightly. &ldquo;Depends on the person.&rdquo; A pause. &ldquo;Most people take it home. But you are welcome to fill it out here.&rdquo;<br><br>
+                    They tilt their head slightly. &ldquo;Depends on the person.&rdquo; After a pause, they add, &ldquo;Most people take it home, but you can fill it out here if you prefer.&rdquo;<br><br>
                     &ldquo;If you have any questions while you&rsquo;re filling it out,&rdquo; they add, &ldquo;bring it back and we&rsquo;ll take a look.&rdquo;
                     <div class="preform-actions">
                         <button class="preform-btn preform-skip" onclick="skipPreform()">Skip Intro</button>
@@ -3584,7 +3643,7 @@
                 <span class="page-title">DEFINITIONS OF ADMINISTRATIVE TERMS</span>
                 <span class="page-number">Page 3 of 28</span>
             </div>
-            <div class="page-content" style="font-family:'Times New Roman',serif;font-size:13.5px;line-height:1.7;">
+            <div class="page-content" style="font-family:'Times New Roman',serif;font-size:20px;line-height:1.7;">
                 <div class="form-section-title" style="font-family:'Times New Roman',serif;letter-spacing:1px;">PART I  -  GENERAL DEFINITIONS</div>
                 <p style="font-size:9.5px;font-style:italic;margin-bottom:10px;">The following terms apply throughout this record packet. Where terminology appearing in prior editions of this record differs from definitions herein, current definitions shall control. See Administrative Bulletin 04-12 for superseded terminology.</p>
 
@@ -3803,7 +3862,7 @@
                 <p style="font-size:11px;margin-bottom:14px;line-height:1.7;">
                     Submission does not constitute final determination. Acceptance of this record for processing is subject to the standards in effect at the time of intake. The submitting party acknowledges that subsequent administrative review may alter, supplement, or reclassify this record without further notice.
                 </p>
-                <div style="margin-top:18px;padding:10px;border:1px solid #888;background:#f8f5ec;">
+                <div style="margin-top:18px;padding:10px;border:1px solid #888;background:transparent;">
                     <p style="font-size:10.5px;margin-bottom:10px;font-weight:bold;letter-spacing:0.5px;">ACKNOWLEDGMENT OF RECEIPT</p>
                     <div style="display:flex;gap:20px;margin-bottom:12px;">
                         <div style="flex:1;">
@@ -3839,9 +3898,10 @@
                     AUTHORIZATION FOR RECORD SHARING — DATA PROTOCOL UPDATE JANUARY 2004
                 </div>
                 <p style="font-size:11px;margin-bottom:12px;line-height:1.7;">
-                    Submission of this record constitutes authorization for the Office of Administrative Processing to share the following categories of information with cooperating interdepartmental authorities, unless written objection is filed prior to processing:
+                    Submission of this record constitutes authorization for the Office of Administrative Processing to share the following categories of information with cooperating interdepartmental authorities.
+                    Authorization is required for standard processing and routing.
                 </p>
-                <div style="margin:10px 0;padding:8px 12px;border:1px solid #888;background:#f8f5ec;">
+                <div style="margin:10px 0;padding:8px 12px;border:1px solid #888;background:transparent;">
                     <div style="font-size:10px;font-weight:bold;margin-bottom:6px;letter-spacing:0.5px;">CATEGORIES OF AUTHORIZED RECORD SHARING:</div>
                     <div style="font-size:10.5px;line-height:2;">
                         &#9679;&ensp; Identity and identifying information, including names, aliases, and biographic data<br>
@@ -3855,10 +3915,10 @@
                 <p style="font-size:10.5px;margin:12px 0;line-height:1.7;color:#333;">
                     Sharing is limited to agencies operating under applicable data-sharing agreements. Your submission reference number will be used to link cross-agency records. This authorization remains in effect for the duration of your active administrative record.
                 </p>
-                <div style="margin-top:16px;padding:8px 12px;border:1px dashed #888;">
+                <div style="margin-top:16px;padding:8px 12px;border:1px dashed #888;background:transparent;">
                     <div style="display:flex;align-items:flex-start;gap:8px;font-size:10.5px;line-height:1.5;">
-                        <span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;flex-shrink:0;margin-top:2px;"></span>
-                        <span>I object to interdepartmental data sharing as described above. (See Section 12-C for objection procedures. Processing timelines may be extended.)</span>
+                        <span style="white-space:nowrap;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1DataShareObjection" style="background:transparent;"> ]</span>
+                        <span>I object to interdepartmental data sharing as described above. (Marking this box with an X routes the packet for exception review and prevents standard submission.)</span>
                     </div>
                 </div>
             </div>
@@ -4315,7 +4375,7 @@
                         <input type="text" id="gapConfirm" placeholder="Initials" style="width:50px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;margin-left:8px;">
                     </div>
                     <div style="font-size:10px;color:#555;margin-top:6px;">If a gap exists, describe and reference the relevant section:</div>
-                    <textarea id="gapDescription" rows="2" placeholder="Describe any gap. Reference section: ____" style="width:100%;border:1px solid #888;background:#f8f5ec;font-family:'Courier New',monospace;font-size:10.5px;padding:4px;box-sizing:border-box;resize:none;margin-top:4px;"></textarea>
+                    <textarea id="gapDescription" style="width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <div style="margin-bottom:12px;">
                     <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">CERTIFYING STATEMENT:</div>
@@ -4446,12 +4506,12 @@
 
                 <div class="form-group">
                     <label>If your identifying information has changed within the past twelve (12) months, please provide clarification in the space below.</label>
-                    <textarea id="idChangeExplanation" style="height: 180px;"></textarea>
+                    <textarea id="idChangeExplanation" style="height:180px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Please provide any additional identifying information necessary to ensure administrative clarity and prevent misclassification.</label>
-                    <textarea id="additionalIdentifyingInfo" style="height: 180px;"></textarea>
+                    <textarea id="additionalIdentifyingInfo" style="height:180px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <p style="font-size: 8px; margin-top: 6px;">You may attach additional pages if space is insufficient. All supplemental materials must include your Full Legal Name and Date of Birth on each page.</p>
@@ -4507,13 +4567,13 @@
 
                 <div class="form-group">
                     <label>If your presence has been intermittent, provide dates and duration of each absence exceeding seven (7) consecutive days:</label>
-                    <textarea id="presenceIntermittent" style="height: 155px;"></textarea>
+                    <textarea id="presenceIntermittent" style="height:155px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Insufficient temporal detail may result in provisional residency determination subject to later revision.</p>
 
                 <div class="form-group">
                     <label>If your status has changed during the past twelve (12) months, please describe the nature, effective date, and administrative basis of the change:</label>
-                    <textarea id="statusChanged" style="height: 155px;"></textarea>
+                    <textarea id="statusChanged" style="height:155px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Supporting documentation may be attached where clarification is required. Absence of documentation does not prevent review but may result in provisional classification.</p>
             </div>
@@ -4560,18 +4620,18 @@
 
                 <div class="form-group">
                     <label>If yes, please provide any prior submission numbers, case identifiers, or reference codes, if known:</label>
-                    <textarea id="priorIdentifiers" style="height: 100px;"></textarea>
+                    <textarea id="priorIdentifiers" style="height:100px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Please list all prior legal names, aliases, designations, or identifying markers used within the past ten (10) years, regardless of duration or perceived relevance:</label>
-                    <textarea id="priorNamesAliases" style="height: 130px;"></textarea>
+                    <textarea id="priorNamesAliases" style="height:130px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Omission of prior identifiers may impede record reconciliation and result in provisional classification.</p>
 
                 <div class="form-group">
                     <label>If prior records may exist under a different classification, jurisdiction, or administrative status, provide a detailed explanation sufficient to permit reconciliation across systems:</label>
-                    <textarea id="priorJurisdictionExplanation" style="height: 130px;"></textarea>
+                    <textarea id="priorJurisdictionExplanation" style="height:130px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Incomplete disclosure may delay review or necessitate manual investigation.</p>
             </div>
@@ -4618,7 +4678,7 @@
 
                 <div class="form-group">
                     <label>If yes, describe each proceeding. Include: nature of charge or inquiry, jurisdiction, approximate date, and final disposition. Records that have been sealed, expunged, or otherwise modified remain disclosable for administrative purposes. Attach additional pages if necessary.</label>
-                    <textarea id="legalProceedingDetail" style="height: 90px;"></textarea>
+                    <textarea id="legalProceedingDetail" style="height:90px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -4640,7 +4700,7 @@
 
                 <div class="form-group">
                     <label>If yes, list each organization, your approximate dates of affiliation, and the nature of your participation:</label>
-                    <textarea id="orgMemberDetail" style="height: 80px;"></textarea>
+                    <textarea id="orgMemberDetail" style="height:80px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
             </div>
             <div class="button-container">
@@ -4685,7 +4745,7 @@
 
                 <div class="form-group">
                     <label>If yes, describe each substance, estimated frequency of use, and approximate date of most recent use:</label>
-                    <textarea id="substanceUseDetail" style="height: 70px;"></textarea>
+                    <textarea id="substanceUseDetail" style="height:70px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -4768,12 +4828,12 @@
 
                 <div class="form-group">
                     <label>If this submission is made in response to prior communication from this office, please reference the notice or correspondence below:</label>
-                    <textarea id="basisSubmissionReference" style="height: 130px;"></textarea>
+                    <textarea id="basisSubmissionReference" style="height:130px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>If uncertain as to the basis of submission, please provide a detailed explanation of the circumstances prompting completion. Submissions lacking a clear administrative basis may be reclassified at the discretion of the reviewing authority:</label>
-                    <textarea id="basisExplanation" style="height: 280px;"></textarea>
+                    <textarea id="basisExplanation" style="height:280px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
             </div>
 
@@ -4836,7 +4896,7 @@
 
                 <div class="form-group" style="margin-top: 8px;">
                     <label>If signing on behalf of another individual, please indicate your relationship and authority below:</label>
-                    <textarea id="representativeAuthority" style="height: 80px; width: 100%; box-sizing: border-box; border: 1.5px solid #666; background: #eee9d8; font-family: inherit; font-size: 12px; padding: 6px 8px; resize: none; line-height: 1.7; display: block; margin-top: 4px;"></textarea>
+                    <textarea id="representativeAuthority" style="height: 80px; width: 100%; box-sizing: border-box; border: 1.5px solid #666; background: transparent; font-family: inherit; font-size: 12px; padding: 6px 8px; resize: none; line-height: 1.7; display: block; margin-top: 4px;"></textarea>
                 </div>
             </div>
 
@@ -5196,7 +5256,7 @@
                 <span class="page-number">Page 27 of 28</span>
             </div>
             <div class="page-content" style="font-family:'Times New Roman',serif;font-size:11px;line-height:1.8;">
-                <div style="border:2px solid #333;padding:6px 12px;margin-bottom:16px;font-size:9.5px;text-align:center;letter-spacing:2px;background:#f0ede6;">
+                <div style="border:2px solid #333;padding:6px 12px;margin-bottom:16px;font-size:9.5px;text-align:center;letter-spacing:2px;background:transparent;">
                     FOR ADMINISTRATIVE STAFF USE ONLY<br>
                     DO NOT COMPLETE  -  DO NOT DETACH
                 </div>
@@ -5230,7 +5290,7 @@
 
                 <div style="margin-top:14px;">
                     <div style="font-size:9.5px;font-weight:bold;margin-bottom:6px;">CLASSIFICATION NOTES:</div>
-                    <div style="border:1px solid #999;height:60px;background:#fafaf6;"></div>
+                    <div style="border:1px solid #999;height:60px;background:transparent;"></div>
                 </div>
 
                 <div style="display:flex;gap:20px;margin-top:16px;">
@@ -5254,7 +5314,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="35" style="font-family:'Times New Roman',serif;font-size:11px;">
+        <div class="page" data-page="35" style="font-family:'Times New Roman',serif;font-size:14px;">
             <div class="page-header" style="font-family:'Times New Roman',serif;">
                 <span class="page-title">FORM GIR-01 (Rev. 03/2000)</span>
                 <span class="page-number">Page 28 of 28</span>
@@ -5434,10 +5494,10 @@
                     <img src="images/reading.png" id="incompleteClerkPhoto" alt="Clerk reviewing incomplete forms" class="clerk-photo">
                 </div>
                 <div class="preform-copy">
-                    The clerk pages through the packet without looking up. After a moment they set it on the counter and slide it back toward you.
-                    <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #8b7355;background:rgba(0,0,0,0.12);font-size:11px;line-height:1.6;">
+                    The clerk pages through the packet without looking up. After a moment, they hand it back to you.
+                    <div style="margin-top:14px;font-size:11px;line-height:1.6;">
                         Unfortunately, I can't input your data until it is fully completed.<br>
-                        Please review each page, then bring it back to the window so we can look it over together.
+                        Please review each page, then bring it back to the window and we'll look it over together.
                     </div>
                     <div class="preform-actions">
                         <button class="preform-btn" onclick="returnToFormFromIncomplete()">Return to seat and complete forms</button>
@@ -5459,7 +5519,7 @@
                 </div>
                 <div class="preform-copy">
                     You place the completed packet on the counter. The clerk accepts it without comment, checks that each page has been initialed, and sets it face-down in the wire tray to the left.
-                    <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #8b7355;background:rgba(0,0,0,0.12);font-size:11px;line-height:1.6;">
+                    <div style="margin-top:14px;font-size:11px;line-height:1.6;">
                         Accepted under current criteria. Record remains subject to periodic re-evaluation.
                     </div>
                     <div style="margin-top:10px;font-size:11px;opacity:0.8;">You are told to allow six to eight weeks for a determination. You are not told what is being determined.</div>
@@ -5607,7 +5667,7 @@ function girComputeOutcome() {
             set('stageOneClerkPhoto',  'screen');
             set('s4ClerkPhoto',        'greeting');
             set('stageThreeClerkPhoto','handoff');
-            set('weightClerkPhoto',    'handoff');
+            set('weightClerkPhoto',    'acceptance');
             set('completionClerkPhoto','acceptance');
             set('incompleteClerkPhoto','failure');
             set('clerkComputerPhoto',  'success');
@@ -5856,7 +5916,12 @@ function girComputeOutcome() {
                 });
             }).map((group) => group.id);
 
-            const needsReview = missingFieldIds.length > 0 || missingGroupIds.length > 0;
+            const dataShareObjection = document.getElementById('p1DataShareObjection');
+            const objectionMark = dataShareObjection ? dataShareObjection.value.trim() : '';
+            const hasDataShareObjection = /^x$/i.test(objectionMark);
+            girSet('consentPartial', hasDataShareObjection);
+
+            const needsReview = missingFieldIds.length > 0 || missingGroupIds.length > 0 || hasDataShareObjection;
             localStorage.setItem(STORAGE_REVIEW_KEY, needsReview ? '1' : '0');
             return !needsReview;
         }
@@ -7045,7 +7110,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	                         String(now.getDate()).padStart(2, '0') + '/' +
 	                         now.getFullYear();
 	            var longText = 'Testing autofill flow for validation and submission transitions in this form.';
-	            var skipIds = { p2AddressBar: true };
+	            var skipIds = { p2AddressBar: true, p1DataShareObjection: true };
 
 	            document.querySelectorAll('input, textarea, select').forEach(function(el) {
 	                if (el.disabled || el.readOnly) return;
@@ -7653,6 +7718,23 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                       '</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">This Notice supersedes APPLICANT NOTICE (Rev. 04/2018) &nbsp;&middot;&nbsp; Form OAP-PN-7 (Rev. 02/2023)</div>'
+            },
+            privacy: {
+                paper: 'privacy',
+                html: '<div class="dm-header">EXPERIENCE INFORMATION</div>' +
+                      '<div class="dm-title">EXPERIENCE PRIVACY NOTICE</div>' +
+                      '<div class="dm-body">' +
+                      '<p>A quick plain-language note from the creator before you begin:</p>' +
+                      '<p>This is an artistic/educational experience, not a real government form.</p>' +
+                      '<p>Nothing you type here is saved or stored outside of your own browser.</p>' +
+                      '<p>Your responses may be saved in your browser so the experience can remember your place.</p>' +
+                      '<p>This means data may be stored locally on your own device, not in a central record. I do not have access to anything you submit.</p>' +
+                      '<p>You can clear it anytime with reset/clear.</p>' +
+                      '<p>Like most websites, the hosting service may still collect basic technical logs (for example: IP address, browser type, and access time).</p>' +
+                      '<p>If you continue, you are acknowledging this setup.</p>' +
+                      '</div>' +
+                      '<div class="dm-rule"></div>' +
+                      '<div class="dm-footer">Posted for participant transparency &nbsp;&middot;&nbsp; Updated March 2026</div>'
             },
             statement: {
                 paper: 'official',
