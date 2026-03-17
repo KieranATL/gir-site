@@ -454,14 +454,17 @@
             display: inline-block;
             width: 18px;
             max-width: 18px;
-            border: 1px solid #333;
+            border: none;
+            border-bottom: 1.5px solid #333;
             background: transparent;
             text-align: center;
             font-family: 'Caveat', cursive;
             font-size: 14px;
             font-weight: 700;
-            padding: 0 1px;
+            line-height: 1;
+            padding: 0 0 1px 0;
             margin: 0 2px;
+            vertical-align: baseline;
         }
 
         /* Phase I checkbox styling */
@@ -3076,6 +3079,8 @@
             font-size: 11px; padding: 5px 8px; margin-bottom: 4px;
             border: 1px solid; display: flex; align-items: center; gap: 8px;
         }
+        .p2-val-item.pending { background: #f5f5f5; border-color: #9aa0a6; color: #2f3437; }
+        .p2-val-item.running { background: #fff9e6; border-color: #c9a227; color: #5b4700; }
         .p2-val-item.pass { background: #f0fff0; border-color: #008000; color: #004400; }
         .p2-val-item.fail { background: #fff0f0; border-color: #cc0000; color: #660000; }
         .p2-val-icon { font-family: monospace; font-weight: bold; min-width: 30px; }
@@ -3873,7 +3878,7 @@
                         </div>
                         <div style="flex:2;">
                             <div style="border-bottom:1px solid #555;height:22px;margin-bottom:3px;">
-                                <input type="text" id="admAckDate" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:12px;color:#1a1a5a;height:20px;padding:0 4px;" placeholder="MM/DD/YYYY">
+                                <input type="text" id="admAckDate" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:12px;color:#1a1a5a;height:20px;padding:0 4px;">
                             </div>
                             <div style="font-size:9px;color:#666;">Date of Receipt</div>
                         </div>
@@ -3917,7 +3922,7 @@
                 </p>
                 <div style="margin-top:16px;padding:8px 12px;border:1px dashed #888;background:transparent;">
                     <div style="display:flex;align-items:flex-start;gap:8px;font-size:10.5px;line-height:1.5;">
-                        <span style="white-space:nowrap;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1DataShareObjection" style="background:transparent;"> ]</span>
+                        <span style="white-space:nowrap;"><input type="text" class="checkbox-field" maxlength="2" id="p1DataShareObjection" style="background:transparent;"></span>
                         <span>I object to interdepartmental data sharing as described above. (Marking this box with an X routes the packet for exception review and prevents standard submission.)</span>
                     </div>
                 </div>
@@ -4334,7 +4339,7 @@
                         </div>
                         <div style="flex:1.5;">
                             <div style="border-bottom:1px solid #555;height:20px;margin-bottom:3px;">
-                                <input type="text" id="complianceDate" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:11px;color:#1a1a5a;height:18px;padding:0 2px;" placeholder="MM/DD/YYYY">
+                                <input type="text" id="complianceDate" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:11px;color:#1a1a5a;height:18px;padding:0 2px;">
                             </div>
                             <div style="font-size:8.5px;color:#666;">Date</div>
                         </div>
@@ -4364,15 +4369,15 @@
                     <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">RECORD CONTINUITY PERIOD:</div>
                     <div style="display:flex;gap:12px;align-items:center;font-size:10.5px;">
                         <span>From:</span>
-                        <input type="text" id="continuityFrom" placeholder="MM/YYYY" style="width:90px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;">
+                        <input type="text" id="continuityFrom" style="width:90px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;">
                         <span>To:</span>
-                        <input type="text" id="continuityTo" placeholder="MM/YYYY" style="width:90px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;">
+                        <input type="text" id="continuityTo" style="width:90px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;">
                     </div>
                 </div>
                 <div style="margin-bottom:12px;">
                     <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">GAPS IN RECORD HISTORY:</div>
                     <div style="font-size:10.5px;margin-bottom:4px;">No material gap exists in my record history for the above period.
-                        <input type="text" id="gapConfirm" placeholder="Initials" style="width:50px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;margin-left:8px;">
+                        <input type="text" id="gapConfirm" style="width:50px;border:none;border-bottom:1px solid #555;background:transparent;font-family:'Courier New',monospace;font-size:11px;padding:0 4px;margin-left:8px;">
                     </div>
                     <div style="font-size:10px;color:#555;margin-top:6px;">If a gap exists, describe and reference the relevant section:</div>
                     <textarea id="gapDescription" style="width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
@@ -4381,7 +4386,7 @@
                     <div style="font-size:10px;font-weight:bold;margin-bottom:4px;">CERTIFYING STATEMENT:</div>
                     <p style="font-size:10px;line-height:1.6;">I certify that the above information accurately describes the continuity of my administrative record and that no material omission has been made.</p>
                     <div style="border-bottom:1px solid #555;height:20px;margin:8px 0;">
-                        <input type="text" id="continuityCertName" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:11px;color:#1a1a5a;height:18px;padding:0 4px;" placeholder="Printed Name">
+                        <input type="text" id="continuityCertName" style="width:100%;border:none;background:transparent;font-family:'Courier New',monospace;font-size:11px;color:#1a1a5a;height:18px;padding:0 4px;">
                     </div>
                     <div style="font-size:8.5px;color:#666;">Submitting Party</div>
                 </div>
@@ -4433,10 +4438,10 @@
                     <label>Sex:</label>
                     <div style="display:flex;gap:24px;margin-top:4px;">
                         <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">
-                            [ <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_M_id"> ] Male
+                            <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_M_id"> Male
                         </label>
                         <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">
-                            [ <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_F_id"> ] Female
+                            <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_F_id"> Female
                         </label>
                     </div>
                     <p style="font-size:8px;margin-top:3px;">Enter sex as it appears on your most current government-issued identification. See Form OAP-88 if amendment is required.</p>
@@ -4470,51 +4475,16 @@
                     <label>Race:</label>
                     <p style="font-size:8px;margin-bottom:4px;">(Check the one category that best describes the applicant's racial background)</p>
                     <div style="display:flex;flex-direction:column;gap:3px;">
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_W_id"> ] White</label>
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_B_id"> ] Black</label>
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_H_id"> ] Hispanic</label>
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_A_id"> ] Asian or Pacific Islander</label>
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_I_id"> ] American Indian or Alaskan Native</label>
-                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_O_id"> ] Other: <input type="text" id="p1_race_other_id" style="width:180px;border:none;border-bottom:1px solid #333;background:transparent;margin-left:4px;"></label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_W_id"> White</label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_B_id"> Black</label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_H_id"> Hispanic</label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_A_id"> Asian or Pacific Islander</label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_I_id"> American Indian or Alaskan Native</label>
+                        <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_O_id"> Other: <input type="text" id="p1_race_other_id" style="width:180px;border:none;border-bottom:1px solid #333;background:transparent;margin-left:4px;"></label>
                     </div>
                     <p style="font-size:8px;margin-top:3px;">Classification based on self-identification. See Definitions, Section II for applicable standards.</p>
                 </div>
 
-                <div class="form-group" style="margin-top:10px;">
-                    <label>Annual Income (Household):</label>
-                    <input type="text" id="p1_income" style="width:220px;">
-                    <p style="font-size:8px;margin-top:3px;">Enter approximate annual household income for the most recent calendar year. If declining to state, enter N/A.</p>
-                </div>
-
-                <div class="form-group" style="margin-top:10px;">
-                    <label>Marital Status:</label>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
-                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_mar_S_id"> ] Single</label>
-                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_mar_M_id"> ] Married</label>
-                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_mar_D_id"> ] Divorced</label>
-                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_mar_W_id"> ] Widowed</label>
-                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_mar_Sep_id"> ] Separated</label>
-                    </div>
-                </div>
-
-                <div class="form-group" style="margin-top:10px;">
-                    <label>Height: &nbsp;&nbsp; <input type="text" id="p1_height" style="width:45px;"> ft. &nbsp; <input type="text" id="p1_height_in" style="width:45px;"> in.
-                    &nbsp;&nbsp;&nbsp;&nbsp; Weight: &nbsp; <input type="text" id="p1_weight" style="width:55px;"> lbs.
-                    &nbsp;&nbsp;&nbsp;&nbsp; Eye Color: &nbsp; <input type="text" id="p1_eyecolor" style="width:80px;">
-                    &nbsp;&nbsp;&nbsp;&nbsp; Hair Color: &nbsp; <input type="text" id="p1_haircolor" style="width:80px;"></label>
-                </div>
-
-                <div class="form-group">
-                    <label>If your identifying information has changed within the past twelve (12) months, please provide clarification in the space below.</label>
-                    <textarea id="idChangeExplanation" style="height:180px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Please provide any additional identifying information necessary to ensure administrative clarity and prevent misclassification.</label>
-                    <textarea id="additionalIdentifyingInfo" style="height:180px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
-                </div>
-
-                <p style="font-size: 8px; margin-top: 6px;">You may attach additional pages if space is insufficient. All supplemental materials must include your Full Legal Name and Date of Birth on each page.</p>
             </div>
 
             <div class="button-container">
@@ -4548,14 +4518,48 @@
                 <p>This section establishes your administrative relationship to the jurisdiction. Classification of residency status may affect review routing, eligibility determinations, and record continuity. Please ensure all entries reflect your circumstances as they existed on the date of submission.</p>
                 <p style="font-size:8.5px;color:#666;font-style:italic;margin-top:6px;margin-bottom:10px;line-height:1.5;">Selected categories determine routing pathway and review queue assignment. Records that cannot be reconciled across systems may be held in provisional status.</p>
 
+                <div class="form-group" style="margin-top:10px;">
+                    <label>Annual Income (Household):</label>
+                    <input type="text" id="p1_income" style="width:220px;">
+                    <p style="font-size:8px;margin-top:3px;">Enter approximate annual household income for the most recent calendar year. If declining to state, enter N/A.</p>
+                </div>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <label>Marital Status:</label>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_mar_S_id"> Single</label>
+                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_mar_M_id"> Married</label>
+                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_mar_D_id"> Divorced</label>
+                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_mar_W_id"> Widowed</label>
+                        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:normal;"><input type="text" class="checkbox-field" maxlength="2" id="p1_mar_Sep_id"> Separated</label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <label>Height: &nbsp;&nbsp; <input type="text" id="p1_height" style="width:45px;"> ft. &nbsp; <input type="text" id="p1_height_in" style="width:45px;"> in.
+                    &nbsp;&nbsp;&nbsp;&nbsp; Weight: &nbsp; <input type="text" id="p1_weight" style="width:55px;"> lbs.
+                    &nbsp;&nbsp;&nbsp;&nbsp; Eye Color: &nbsp; <input type="text" id="p1_eyecolor" style="width:80px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hair Color: &nbsp; <input type="text" id="p1_haircolor" style="width:80px;"></label>
+                </div>
+
+                <div class="form-group" style="margin-top:8px;">
+                    <label>If your identifying information has changed within the past twelve (12) months, please provide clarification in the space below.</label>
+                    <input type="text" id="idChangeExplanation" style="width:100%;box-sizing:border-box;border:none;border-bottom:1.5px solid #333;background:transparent;padding:2px 4px;margin-top:3px;font-family:'Caveat',cursive;font-size:16px;font-weight:600;color:#1a1a1a;">
+                </div>
+
+                <div class="form-group" style="margin-top:8px;">
+                    <label>Please provide any additional identifying information necessary to ensure administrative clarity and prevent misclassification.</label>
+                    <input type="text" id="additionalIdentifyingInfo" style="width:100%;box-sizing:border-box;border:none;border-bottom:1.5px solid #333;background:transparent;padding:2px 4px;margin-top:3px;font-family:'Caveat',cursive;font-size:16px;font-weight:600;color:#1a1a1a;">
+                </div>
+
                 <div class="form-group">
                     <label>Current Status Within Jurisdiction (check all that apply):</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryResident"> ] Permanent Resident</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryTemporary"> ] Temporary Resident</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryVisitor"> ] Visitor (90 days or fewer)</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryTransitional"> ] Transitional Status</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryOtherMark"> ] Other (please describe): <input type="text" id="statusPrimaryOtherText" style="width: 250px; margin-left: 5px; border-bottom: 1px solid #333; border-top: none; border-left: none; border-right: none; background: transparent;"></label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryResident"> Permanent Resident</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryTemporary"> Temporary Resident</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryVisitor"> Visitor (90 days or fewer)</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryTransitional"> Transitional Status</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="statusPrimaryOtherMark"> Other (please describe): <input type="text" id="statusPrimaryOtherText" style="width: 250px; margin-left: 5px; border-bottom: 1px solid #333; border-top: none; border-left: none; border-right: none; background: transparent;"></label>
                     </div>
                 </div>
                 <p style="font-size: 8px;">If multiple statuses apply, indicate the status that most closely reflects your current administrative standing.</p>
@@ -4567,15 +4571,10 @@
 
                 <div class="form-group">
                     <label>If your presence has been intermittent, provide dates and duration of each absence exceeding seven (7) consecutive days:</label>
-                    <textarea id="presenceIntermittent" style="height:155px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
+                    <textarea id="presenceIntermittent" style="height:110px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Insufficient temporal detail may result in provisional residency determination subject to later revision.</p>
 
-                <div class="form-group">
-                    <label>If your status has changed during the past twelve (12) months, please describe the nature, effective date, and administrative basis of the change:</label>
-                    <textarea id="statusChanged" style="height:155px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
-                </div>
-                <p style="font-size: 8px; margin-top: -5px;">Supporting documentation may be attached where clarification is required. Absence of documentation does not prevent review but may result in provisional classification.</p>
             </div>
 
             <div class="button-container">
@@ -4610,28 +4609,34 @@
                 <p style="font-size:8.5px;color:#666;font-style:italic;margin-top:6px;margin-bottom:10px;line-height:1.5;">Potential cross-record conflicts require confirmation before final disposition. Interjurisdictional mismatches may extend processing timelines.</p>
 
                 <div class="form-group">
+                    <label>If your status has changed during the past twelve (12) months, please describe the nature, effective date, and administrative basis of the change:</label>
+                    <textarea id="statusChanged" style="height:72px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
+                </div>
+                <p style="font-size: 8px; margin-top: -5px;">Supporting documentation may be attached where clarification is required. Absence of documentation does not prevent review but may result in provisional classification.</p>
+
+                <div class="form-group">
                     <label>Have you previously submitted information to this office or any cooperating authority?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedYes"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedNo"> ] No</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedUnsure"> ] Unsure</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedYes"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedNo"> No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="priorSubmittedUnsure"> Unsure</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>If yes, please provide any prior submission numbers, case identifiers, or reference codes, if known:</label>
-                    <textarea id="priorIdentifiers" style="height:100px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
+                    <textarea id="priorIdentifiers" style="height:80px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Please list all prior legal names, aliases, designations, or identifying markers used within the past ten (10) years, regardless of duration or perceived relevance:</label>
-                    <textarea id="priorNamesAliases" style="height:130px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
+                    <textarea id="priorNamesAliases" style="height:95px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Omission of prior identifiers may impede record reconciliation and result in provisional classification.</p>
 
                 <div class="form-group">
                     <label>If prior records may exist under a different classification, jurisdiction, or administrative status, provide a detailed explanation sufficient to permit reconciliation across systems:</label>
-                    <textarea id="priorJurisdictionExplanation" style="height:130px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
+                    <textarea id="priorJurisdictionExplanation" style="height:95px;width:100%;box-sizing:border-box;border:1.5px solid #777;background:transparent;font-family:inherit;font-size:11px;padding:5px 7px;resize:none;line-height:1.7;display:block;margin-top:3px;"></textarea>
                 </div>
                 <p style="font-size: 8px; margin-top: -5px;">Incomplete disclosure may delay review or necessitate manual investigation.</p>
             </div>
@@ -4670,9 +4675,9 @@
                 <div class="form-group">
                     <label>Have you ever been the subject of a criminal, civil, or administrative proceeding, regardless of outcome or subsequent record modification?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="legalProceedingY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="legalProceedingN"> ] No</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="legalProceedingU"> ] Unsure</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="legalProceedingY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="legalProceedingN"> No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="legalProceedingU"> Unsure</label>
                     </div>
                 </div>
 
@@ -4684,8 +4689,8 @@
                 <div class="form-group">
                     <label>Have you ever been the subject of a background investigation, security clearance review, or suitability determination conducted by any federal, state, local, or private entity?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="bgInvestigationY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="bgInvestigationN"> ] No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="bgInvestigationY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="bgInvestigationN"> No</label>
                     </div>
                 </div>
 
@@ -4693,8 +4698,8 @@
                     <label>Are you now or have you ever been a member of any organization whose activities include influencing governmental policy, administrative classification, or the allocation of civic resources?</label>
                     <p style="font-size:8px;margin-top:2px;margin-bottom:5px;">"Membership" includes formal enrollment, regular participation, financial contribution, or other sustained affiliation, regardless of whether the organization maintains formal membership records.</p>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="orgMemberY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="orgMemberN"> ] No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="orgMemberY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="orgMemberN"> No</label>
                     </div>
                 </div>
 
@@ -4737,9 +4742,9 @@
                 <div class="form-group">
                     <label>Have you used any controlled or regulated substance, as defined above, within the past fifteen (15) years?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="substanceUseY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="substanceUseN"> ] No</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="substanceUseD"> ] Decline to Answer</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="substanceUseY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="substanceUseN"> No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="substanceUseD"> Decline to Answer</label>
                     </div>
                 </div>
 
@@ -4751,36 +4756,36 @@
                 <div class="form-group">
                     <label>Have you ever used a controlled substance that was prescribed to another individual?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="substanceRxOtherY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="substanceRxOtherN"> ] No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="substanceRxOtherY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="substanceRxOtherN"> No</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Do you currently consume alcohol?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholN"> ] No</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholD"> ] Decline to Answer</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholN"> No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholD"> Decline to Answer</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>If yes, how would you characterize your frequency of use?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq1"> ] Rarely (less than once per month)</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq2"> ] Occasionally (1–3 times per month)</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq3"> ] Regularly (once per week or more)</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq4"> ] Daily</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq1"> Rarely (less than once per month)</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq2"> Occasionally (1–3 times per month)</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq3"> Regularly (once per week or more)</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholFreq4"> Daily</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Has alcohol use ever interfered with your work, relationships, or fulfillment of administrative, professional, or civic responsibilities?</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactY"> ] Yes</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactN"> ] No</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactD"> ] Decline to Answer</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactY"> Yes</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactN"> No</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="alcoholImpactD"> Decline to Answer</label>
                     </div>
                 </div>
             </div>
@@ -4817,12 +4822,12 @@
                 <div class="form-group">
                     <label>Basis of Submission (select all that apply):</label>
                     <div class="checkbox-group">
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionInitial"> ] Initial Record Establishment</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionUpdate"> ] Update to Existing Record</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionCompliance"> ] Compliance Verification</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionClarification"> ] Status Clarification</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionReview"> ] Periodic Review Requirement</label>
-                        <label>[ <input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionOtherMark"> ] Other (please describe): <input type="text" id="basisSubmissionOtherText" style="width: 200px; margin-left: 5px; border-bottom: 1px solid #333; border-top: none; border-left: none; border-right: none; background: transparent;"></label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionInitial"> Initial Record Establishment</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionUpdate"> Update to Existing Record</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionCompliance"> Compliance Verification</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionClarification"> Status Clarification</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionReview"> Periodic Review Requirement</label>
+                        <label><input type="text" class="checkbox-field" maxlength="2" id="basisSubmissionOtherMark"> Other (please describe): <input type="text" id="basisSubmissionOtherText" style="width: 200px; margin-left: 5px; border-bottom: 1px solid #333; border-top: none; border-left: none; border-right: none; background: transparent;"></label>
                     </div>
                 </div>
 
@@ -4998,22 +5003,13 @@
                 </div>
                 <p style="font-size:10px;color:#555;margin-bottom:10px;line-height:1.6;">Provide any supplemental information relevant to your submission. Reference the section number to which each note applies. If additional space is required, attach numbered continuation sheets.</p>
                 <div style="margin-top:4px;">
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
-                    <div style="border-bottom:1px solid #888;height:22px;width:100%;"></div>
+                    <textarea id="supplementalNotes" style="width:100%;height:240px;box-sizing:border-box;border:1px solid #888;background:repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 21px, #c7c3b8 21px, #c7c3b8 22px);padding:8px 10px;font-family:'Caveat',cursive;font-size:18px;font-weight:600;color:#1a1a1a;line-height:22px;resize:none;"></textarea>
                 </div>
                 <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:10.5px;flex-wrap:wrap;">
                     <span>Continuation sheets attached:</span>
-                    <span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;"></span> Yes</span>
-                    <span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:13px;height:13px;border:1.5px solid #555;"></span> No</span>
-                    <span style="margin-left:12px;">Number of sheets:</span><span style="display:inline-block;width:40px;border-bottom:1px solid #555;height:18px;"></span>
+                    <span style="display:inline-flex;align-items:center;gap:5px;"><input type="text" class="checkbox-field" maxlength="2" id="suppAttachYes"> Yes</span>
+                    <span style="display:inline-flex;align-items:center;gap:5px;"><input type="text" class="checkbox-field" maxlength="2" id="suppAttachNo"> No</span>
+                    <span style="margin-left:12px;">Number of sheets:</span><input type="text" id="suppSheetCount" style="width:42px;border:none;border-bottom:1px solid #555;height:18px;background:transparent;padding:0 2px;font-family:'Caveat',cursive;font-size:16px;font-weight:600;color:#1a1a1a;">
                 </div>
                 <p style="font-size:9.5px;color:#666;margin-top:14px;line-height:1.5;font-style:italic;">Continuation sheets must be numbered, signed, and include your name and submission reference number at the top of each sheet. Unnumbered or unsigned attachments may not be included in the record.</p>
             </div>
@@ -5039,14 +5035,21 @@
                 <div style="margin-top:24px;padding:14px 18px;border:1px solid #aaa;background:rgba(0,0,0,0.03);">
                     <p style="font-size:10px;font-weight:700;margin-bottom:10px;letter-spacing:0.5px;">APPLICANT ACKNOWLEDGMENT</p>
                     <p style="font-size:9px;margin-bottom:10px;line-height:1.6;">I acknowledge that the information provided in this record is accurate and complete to the best of my knowledge. I understand that submission constitutes attestation under applicable administrative standards, and that any material inconsistency may result in reclassification, return, or other administrative action.</p>
+                    <div style="margin-top:6px;margin-bottom:8px;font-size:10px;">
+                        <input type="text" class="checkbox-field" maxlength="2" id="submitConfirmAck"> I affirm this acknowledgment. <span style="color:#8b0000;">*</span>
+                    </div>
                     <div style="display:flex;gap:40px;margin-top:14px;align-items:flex-end;">
                         <div style="flex:2;">
-                            <div style="border-bottom:1px solid #555;height:24px;"></div>
-                            <div style="font-size:8px;margin-top:3px;">Signature</div>
+                            <input type="text" id="submitConfirmSignature" style="width:100%;height:24px;border:none;border-bottom:1px solid #555;background:transparent;padding:0 4px;font-family:'Caveat',cursive;font-size:18px;font-weight:600;color:#1a1a1a;">
+                            <div style="font-size:8px;margin-top:3px;">Signature <span style="color:#8b0000;">*</span></div>
+                        </div>
+                        <div style="flex:2;">
+                            <input type="text" id="submitConfirmPrintedName" style="width:100%;height:24px;border:none;border-bottom:1px solid #555;background:transparent;padding:0 4px;font-family:'Caveat',cursive;font-size:18px;font-weight:600;color:#1a1a1a;">
+                            <div style="font-size:8px;margin-top:3px;">Printed Name <span style="color:#8b0000;">*</span></div>
                         </div>
                         <div style="flex:1;">
-                            <div style="border-bottom:1px solid #555;height:24px;"></div>
-                            <div style="font-size:8px;margin-top:3px;">Date</div>
+                            <input type="text" id="submitConfirmDate" style="width:100%;height:24px;border:none;border-bottom:1px solid #555;background:transparent;padding:0 4px;font-family:'Caveat',cursive;font-size:16px;font-weight:600;color:#1a1a1a;">
+                            <div style="font-size:8px;margin-top:3px;">Date <span style="color:#8b0000;">*</span></div>
                         </div>
                     </div>
                 </div>
@@ -5078,8 +5081,8 @@
                     <label class="form-label">E-1. SEX OF RECORD <span class="required-mark">*</span></label>
                     <div class="form-note">As recorded on government-issued identification. If amended, attach Form OAP-88 (Amendment of Record).</div>
                     <div class="checkbox-row">
-                        <label class="checkbox-item">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_M"> ] Male</label>
-                        <label class="checkbox-item">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_sex_F"> ] Female</label>
+                        <label class="checkbox-item"><input type="text" class="checkbox-field" maxlength="2" id="p1_sex_M"> Male</label>
+                        <label class="checkbox-item"><input type="text" class="checkbox-field" maxlength="2" id="p1_sex_F"> Female</label>
                     </div>
                 </div>
 
@@ -5087,35 +5090,35 @@
                     <label class="form-label">E-2. RACIAL/ETHNIC CATEGORY <span class="required-mark">*</span></label>
                     <div class="form-note">Part A: Is the person of Hispanic or Latino origin? (check one)</div>
                     <div class="checkbox-row">
-                        <label class="checkbox-item">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_hispanic_Y"> ] Yes, Hispanic or Latino</label>
-                        <label class="checkbox-item">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_hispanic_N"> ] No, Not Hispanic or Latino</label>
+                        <label class="checkbox-item"><input type="text" class="checkbox-field" maxlength="2" id="p1_hispanic_Y"> Yes, Hispanic or Latino</label>
+                        <label class="checkbox-item"><input type="text" class="checkbox-field" maxlength="2" id="p1_hispanic_N"> No, Not Hispanic or Latino</label>
                     </div>
                     <div class="form-note" style="margin-top:8px;">Part B: Racial Category (check one)</div>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_W"> ] White</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_B"> ] Black or African American</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_A"> ] Asian</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_I"> ] American Indian or Alaska Native</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_P"> ] Native Hawaiian or Other Pacific Islander</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_race_X"> ] Other</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_W"> White</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_B"> Black or African American</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_A"> Asian</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_I"> American Indian or Alaska Native</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_P"> Native Hawaiian or Other Pacific Islander</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_race_X"> Other</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">E-3. RELIGIOUS AFFILIATION <span style="font-size:10px;font-weight:normal;">(Optional  -  see Privacy Act Notice, Page 19)</span></label>
-                    <input type="text" class="form-input" id="p1_religion" placeholder="State denomination or affiliation, or write NONE">
+                    <input type="text" class="form-input" id="p1_religion">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">E-4. CITIZENSHIP STATUS <span class="required-mark">*</span></label>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_USC_B"> ] U.S. Citizen (by birth)</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_USC_N"> ] U.S. Citizen (naturalized)</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_LPR"> ] Lawful Permanent Resident</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_VISA"> ] Nonimmigrant Visa Holder</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_REF"> ] Refugee / Asylee</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_SL"> ] Stateless / No Nationality</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_OTH"> ] Other (specify below)</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_USC_B"> U.S. Citizen (by birth)</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_USC_N"> U.S. Citizen (naturalized)</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_LPR"> Lawful Permanent Resident</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_VISA"> Nonimmigrant Visa Holder</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_REF"> Refugee / Asylee</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_SL"> Stateless / No Nationality</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_citizen_OTH"> Other (specify below)</label>
                     </div>
                     <div class="form-group" style="margin-top:6px;display:flex;gap:12px;">
                         <div style="flex:1;"><label class="form-label" style="font-size:10px;">If naturalized  -  Certificate No.:</label><input type="text" class="form-input" id="p1_natCert"></div>
@@ -5141,51 +5144,51 @@
                     <label class="form-label">E-5. DISABILITY/HANDICAP STATUS</label>
                     <div class="form-note">Disclosure is voluntary. Completion will not affect processing. See Privacy Act Notice below.</div>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_N"> ] No known handicap</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_M"> ] Physical  -  mobility impairment</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_V"> ] Physical  -  sensory (vision)</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_H"> ] Physical  -  sensory (hearing)</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_C"> ] Cognitive or developmental</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_P"> ] Psychiatric / mental health</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_disability_D"> ] Prefer not to disclose</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_N"> No known handicap</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_M"> Physical  -  mobility impairment</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_V"> Physical  -  sensory (vision)</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_H"> Physical  -  sensory (hearing)</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_C"> Cognitive or developmental</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_P"> Psychiatric / mental health</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_disability_D"> Prefer not to disclose</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">E-6. EMPLOYMENT STATUS <span class="required-mark">*</span></label>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_FT"> ] Employed  -  Full-time</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_PT"> ] Employed  -  Part-time</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_SE"> ] Self-employed</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_U"> ] Unemployed, seeking</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_NL"> ] Not in labor force</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_R"> ] Retired</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_employ_S"> ] Student</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_FT"> Employed  -  Full-time</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_PT"> Employed  -  Part-time</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_SE"> Self-employed</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_U"> Unemployed, seeking</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_NL"> Not in labor force</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_R"> Retired</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_employ_S"> Student</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">E-7. HIGHEST EDUCATION COMPLETED <span class="required-mark">*</span></label>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_0"> ] Less than high school</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_1"> ] High school diploma / GED</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_2"> ] Some college, no degree</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_3"> ] Associate degree</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_4"> ] Bachelor's degree</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_edu_5"> ] Graduate or professional degree</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_0"> Less than high school</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_1"> High school diploma / GED</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_2"> Some college, no degree</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_3"> Associate degree</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_4"> Bachelor's degree</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_edu_5"> Graduate or professional degree</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">E-8. ANNUAL HOUSEHOLD INCOME <span class="required-mark">*</span></label>
                     <div class="checkbox-row" style="flex-wrap:wrap;">
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_0"> ] Under $10,000</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_1"> ] $10,000–$24,999</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_2"> ] $25,000–$49,999</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_3"> ] $50,000–$74,999</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_4"> ] $75,000–$99,999</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_5"> ] $100,000 or more</label>
-                        <label class="checkbox-item" style="width:48%;">[ <input type="text" class="checkbox-field" maxlength="2" id="p1_income_X"> ] Prefer not to state</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_0"> Under $10,000</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_1"> $10,000–$24,999</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_2"> $25,000–$49,999</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_3"> $50,000–$74,999</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_4"> $75,000–$99,999</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_5"> $100,000 or more</label>
+                        <label class="checkbox-item" style="width:48%;"><input type="text" class="checkbox-field" maxlength="2" id="p1_income_X"> Prefer not to state</label>
                     </div>
                 </div>
 
@@ -5558,7 +5561,11 @@
             'basisExplanation',
             'signatureName',
             'signaturePrintedName',
-            'signatureDate'
+            'signatureDate',
+            'submitConfirmSignature',
+            'submitConfirmPrintedName',
+            'submitConfirmDate',
+            'submitConfirmAck'
         ];
 
         const FIELD_META = {
@@ -5566,11 +5573,11 @@
             preferredName: { label: 'Preferred Name', page: 11 },
             dob: { label: 'Date of Birth', page: 11 },
             address: { label: 'Current Address', page: 11 },
-            idChangeExplanation: { label: 'Recent Identifier Changes', page: 11 },
-            additionalIdentifyingInfo: { label: 'Additional Identifying Information', page: 11 },
+            idChangeExplanation: { label: 'Recent Identifier Changes', page: 12 },
+            additionalIdentifyingInfo: { label: 'Additional Identifying Information', page: 12 },
             dateInitialPresence: { label: 'Date of Initial Presence', page: 12 },
             presenceIntermittent: { label: 'Intermittent Presence Details', page: 12 },
-            statusChanged: { label: 'Status Change Description', page: 12 },
+            statusChanged: { label: 'Status Change Description', page: 13 },
             priorIdentifiers: { label: 'Prior Submission Identifiers', page: 13 },
             priorNamesAliases: { label: 'Prior Names or Aliases', page: 13 },
             priorJurisdictionExplanation: { label: 'Cross-Jurisdiction Explanation', page: 13 },
@@ -5578,10 +5585,32 @@
             basisExplanation: { label: 'Submission Basis Explanation', page: 14 },
             signatureName: { label: 'Signature', page: 15 },
             signaturePrintedName: { label: 'Printed Name', page: 15 },
-            signatureDate: { label: 'Signature Date', page: 15 }
+            signatureDate: { label: 'Signature Date', page: 15 },
+            submitConfirmSignature: { label: 'Submission Confirmation Signature', page: 30 },
+            submitConfirmPrintedName: { label: 'Submission Confirmation Printed Name', page: 30 },
+            submitConfirmDate: { label: 'Submission Confirmation Date', page: 30 },
+            submitConfirmAck: { label: 'Submission Confirmation Acknowledgment', page: 30 }
         };
 
         const REQUIRED_GROUPS = [
+            {
+                id: 'sexSelection',
+                label: 'Sex',
+                page: 11,
+                fields: ['p1_sex_M_id', 'p1_sex_F_id']
+            },
+            {
+                id: 'raceSelection',
+                label: 'Race',
+                page: 11,
+                fields: ['p1_race_W_id', 'p1_race_B_id', 'p1_race_H_id', 'p1_race_A_id', 'p1_race_I_id', 'p1_race_O_id']
+            },
+            {
+                id: 'maritalStatus',
+                label: 'Marital Status',
+                page: 12,
+                fields: ['p1_mar_S_id', 'p1_mar_M_id', 'p1_mar_D_id', 'p1_mar_W_id', 'p1_mar_Sep_id']
+            },
             {
                 id: 'statusPrimary',
                 label: 'Current Status Within Jurisdiction',
@@ -5599,6 +5628,18 @@
                 label: 'Basis of Submission',
                 page: 14,
                 fields: ['basisSubmissionInitial', 'basisSubmissionUpdate', 'basisSubmissionCompliance', 'basisSubmissionClarification', 'basisSubmissionReview', 'basisSubmissionOtherMark']
+            },
+            {
+                id: 'legalHistory',
+                label: 'Legal History',
+                page: 14,
+                fields: ['legalProceedingY', 'legalProceedingN', 'legalProceedingU']
+            },
+            {
+                id: 'supplementalContinuation',
+                label: 'Continuation Sheets Attached',
+                page: 29,
+                fields: ['suppAttachYes', 'suppAttachNo']
             }
         ];
 
@@ -6130,6 +6171,12 @@ function girComputeOutcome() {
         var p2RevalidateConfirmed = false;
         var p2ProcessingResumed = false;
         var p2ProcessingStep = 0;
+        var p2ValidationTimers = [];
+
+        function p2ClearValidationTimers() {
+            p2ValidationTimers.forEach(function(tid) { clearTimeout(tid); });
+            p2ValidationTimers = [];
+        }
 
         // Field validation definitions per page
         function p2GetPageRequirements(pageNum) {
@@ -6519,24 +6566,54 @@ function girComputeOutcome() {
         function p2PopulateValidationList() {
             var list = document.getElementById('p2ValidationList');
             if (!list) return;
+            p2ClearValidationTimers();
             var items = [
-                { label: 'Submission reference verified', pass: true },
-                { label: 'Identity fields normalized', pass: true },
-                { label: 'Classification combination routable', pass: true },
-                { label: 'Narrative within field constraints', pass: true },
-                { label: 'Cross-record check complete', pass: true },
-                { label: 'Attestation signatures confirmed', pass: true }
+                { label: 'Submission reference verified' },
+                { label: 'Identity fields normalized' },
+                { label: 'Classification combination routable' },
+                { label: 'Narrative within field constraints' },
+                { label: 'Cross-record check complete' },
+                { label: 'Attestation signatures confirmed' }
             ];
             list.innerHTML = '';
+            var rows = [];
             items.forEach(function(item) {
                 var div = document.createElement('div');
-                div.className = 'p2-val-item ' + (item.pass ? 'pass' : 'fail');
-                div.innerHTML = '<span class="p2-val-icon">' + (item.pass ? '[OK]' : '[!]') + '</span> ' + item.label;
+                div.className = 'p2-val-item pending';
+                div.innerHTML = '<span class="p2-val-icon">[...]</span> ' + item.label;
                 list.appendChild(div);
+                rows.push(div);
             });
-            // Enable continue since all pass initially
+
             var btn7 = document.getElementById('p2ContinueBtn7');
-            if (btn7) btn7.disabled = false;
+            if (btn7) btn7.disabled = true;
+            var notice = document.getElementById('p2RevalidateNotice');
+            if (notice) notice.style.display = 'none';
+
+            function runStep(i) {
+                if (p2CurrentPage !== 7) return;
+                if (i >= rows.length) {
+                    if (btn7) btn7.disabled = false;
+                    return;
+                }
+                var row = rows[i];
+                row.classList.remove('pending', 'pass', 'fail');
+                row.classList.add('running');
+                row.querySelector('.p2-val-icon').textContent = '[...]';
+
+                var t = setTimeout(function() {
+                    if (p2CurrentPage !== 7) return;
+                    row.classList.remove('running');
+                    row.classList.add('pass');
+                    row.querySelector('.p2-val-icon').textContent = '[OK]';
+                    var t2 = setTimeout(function() { runStep(i + 1); }, 160);
+                    p2ValidationTimers.push(t2);
+                }, 420);
+                p2ValidationTimers.push(t);
+            }
+
+            var starter = setTimeout(function() { runStep(0); }, 180);
+            p2ValidationTimers.push(starter);
         }
 
         function p2ReconfirmField() {
@@ -6656,6 +6733,7 @@ function girComputeOutcome() {
 	        }
 
         function p2ShowPage(num) {
+            if (num !== 7) p2ClearValidationTimers();
             // Remove any ephemeral pages (404, confirmation)
             var ep = document.getElementById('p2EphemeralPage');
             if (ep) ep.remove();
@@ -8454,7 +8532,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 <div class="p2-combo-msg">Validation refreshed under updated criteria. Please re-confirm this field.</div>
                 <button class="p2-combo-btn" onclick="p2ReconfirmField()">Reconfirm</button>
             </div>
-            <button class="p2-save-btn" onclick="p2SaveDraft(7)">Save Draft</button>
             <div class="p2-nav">
                 <button class="p2-nav-btn" id="p2BackBtn7" onclick="p2GoPage(6)">&#9668; Back</button>
                 <span class="p2-page-counter">Page 7 of 9 &nbsp;|&nbsp; GIR-03</span>
