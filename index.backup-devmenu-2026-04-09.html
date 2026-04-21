@@ -756,8 +756,7 @@
             flex: 0 0 350px;
             min-height: 350px;
             height: 350px;
-            width: min(100%, 525px);
-            align-self: center;
+            width: 100%;
             overflow: hidden;
             background: linear-gradient(180deg, #4a5057 0%, #3a3f46 55%, #2f343a 100%);
         }
@@ -802,7 +801,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            object-position: center center;
+            object-position: center top;
             transform: none;
             z-index: 1;
             pointer-events: none;
@@ -1141,57 +1140,42 @@
 
         /* === DEV PANEL === */
         #devPanel {
-            display: flex;
-            align-items: center;
-            margin-left: 4px;
+            position: fixed !important;
+            bottom: 16px !important;
+            right: 16px !important;
+            z-index: 99999 !important;
+            display: block !important;
+            min-width: 110px;
+            font-family: monospace;
+            font-size: 11px;
         }
         #devToggle {
-            background: rgba(59,130,246,0.16);
-            color: #dbeafe;
-            border: 1px solid rgba(147,197,253,0.75);
-            border-radius: 999px;
-            padding: 4px 12px;
-            font-weight: 700;
+            background: #111;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 6px 10px;
+            font-weight: bold;
             cursor: pointer;
             display: block;
-            white-space: nowrap;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 10px;
-            font-family: 'Courier Prime', monospace;
-            transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
-        }
-        #devToggle:hover {
-            background: rgba(59,130,246,0.28);
-            border-color: #bfdbfe;
-            color: #fff;
-        }
-        #devToggle.is-open {
-            background: rgba(37,99,235,0.38);
-            border-color: #dbeafe;
-            color: #fff;
+            width: 100%;
+            text-align: left;
+            font-size: 11px;
+            font-family: monospace;
         }
         #devMenu {
-            position: fixed;
-            top: 60px;
-            right: 0;
-            bottom: 0;
-            width: min(360px, 92vw);
-            background: rgba(8,16,30,0.98);
-            color: #9ef89e;
-            border-left: 1px solid rgba(74,222,128,0.6);
-            box-shadow: -12px 0 30px rgba(0,0,0,0.35);
-            padding: 12px;
-            transform: translateX(104%);
-            transition: transform 180ms ease;
+            display: none;
+            background: rgba(0,0,0,0.92);
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 8px;
+            max-height: 70vh;
             overflow-y: auto;
-            z-index: 9201;
-            display: block;
+            width: 220px;
         }
-        #devMenu.open { transform: translateX(0); }
+        #devMenu.open { display: block; }
         .dev-section {
-            color: #fde68a;
-            margin: 10px 0 4px;
+            color: #ff0;
+            margin: 6px 0 2px;
             font-size: 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -1200,18 +1184,17 @@
             display: block;
             width: 100%;
             background: none;
-            color: #9ef89e;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            padding: 4px 6px;
+            color: #0f0;
+            border: none;
+            padding: 2px 0;
             text-align: left;
             cursor: pointer;
             font-size: 11px;
-            font-family: 'Courier Prime', monospace;
+            font-family: monospace;
         }
         .dev-btn-danger { color: #f87171 !important; }
         .dev-btn-danger:hover { color: #fca5a5 !important; }
-        .dev-btn:hover { color: #fff; background: rgba(34,197,94,0.35); border-color: rgba(74,222,128,0.65); }
+        .dev-btn:hover { color: #fff; background: #0f0; }
         .dev-page-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1219,25 +1202,12 @@
             margin-bottom: 8px;
         }
         .dev-page-btn {
-            border: 1px solid rgba(74,222,128,0.35);
+            border: 1px solid rgba(0,255,0,0.25);
             padding: 2px 3px;
             text-align: center;
         }
         .dev-page-btn:hover {
             border-color: #fff;
-        }
-        @media (max-width: 900px) {
-            #devMenu {
-                top: 56px;
-                width: min(320px, 96vw);
-            }
-            .p3-header {
-                padding: 0 16px;
-                gap: 10px;
-            }
-            #devToggle {
-                padding: 4px 10px;
-            }
         }
 
         /* === PHASE II→III UPDATE OVERLAY === */
@@ -1518,9 +1488,6 @@
             font-size: 15px;
             font-weight: 600;
             color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         .p3-header-sep { flex: 1; }
         .p3-header-tag {
@@ -1811,16 +1778,6 @@
             color: #1e3a5f;
             font-weight: 500;
         }
-        .pt-branch-list {
-            margin: 10px 0 14px 18px;
-            padding: 0;
-            color: #334155;
-            font-size: 12.5px;
-            line-height: 1.6;
-        }
-        .pt-branch-list li { margin: 0 0 6px; }
-        .pt-branch-list li:last-child { margin-bottom: 0; }
-        .pt-branch-list.hidden { display: none; }
         .pt-email-footer {
             padding: 12px 24px 20px;
             border-top: 1px solid #e5e7eb;
@@ -2031,11 +1988,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             min-height: 420px;
         }
-        .p3-branch-page.active {
-            display: block;
-            flex: 1;
-            overflow-y: auto;
-        }
+        .p3-branch-page.active { display: block; }
         .p3-branch-notice {
             border-left: 3px solid #b91c1c;
             background: #fef2f2;
@@ -2233,45 +2186,6 @@
             font-weight: 400;
             color: #ef4444;
             margin-left: 2px;
-        }
-        .p3-page-error-summary {
-            display: none;
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-radius: 8px;
-            padding: 14px 16px;
-            margin: 0 0 22px;
-            color: #991b1b;
-        }
-        .p3-page-error-summary.visible { display: block; }
-        .p3-page-error-title {
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .p3-page-error-list {
-            margin: 0;
-            padding-left: 18px;
-            font-size: 13px;
-            line-height: 1.55;
-        }
-        .p3-page-error-list li { margin-bottom: 4px; }
-        .p3-field.has-error .p3-input,
-        .p3-field.has-error .p3-select,
-        .p3-field.has-error .p3-textarea {
-            border-color: #dc2626;
-            background: #fff8f8;
-        }
-        .p3-check-group.has-error .p3-check-item,
-        .p3-radio-group.has-error .p3-radio-item {
-            border-color: #fca5a5;
-            background: #fff8f8;
-        }
-        .p3-field-error {
-            margin-top: 8px;
-            font-size: 12px;
-            color: #b91c1c;
-            line-height: 1.45;
         }
         .p3-footer {
             background: #fff;
@@ -2625,13 +2539,9 @@
             position: absolute;
             cursor: pointer;
             transition: transform 100ms ease;
-            z-index: 6;
         }
         .pinned-doc:hover { z-index: 20; }
         .pinned-doc:hover .doc-face { box-shadow: 5px 7px 18px rgba(0,0,0,0.55); }
-        .pinned-doc.board-back { z-index: 0; opacity: 0.96; }
-        .pinned-doc.board-back:hover { z-index: 0; }
-        .pinned-doc.board-static { z-index: 14; }
         .bpin {
             width: 11px; height: 11px;
             border-radius: 50%;
@@ -2672,14 +2582,6 @@
             color: #2a2a1a;
             border-left: 3px solid #c0a020;
             font-family: 'Courier New', monospace;
-        }
-        .doc-face.academic {
-            border-top: 3px solid #7a1f2a !important;
-            border-left: 3px solid #7a1f2a !important;
-        }
-        .doc-face.academic .doc-dhead {
-            color: #5f1620;
-            border-bottom-color: rgba(95,22,32,0.45);
         }
         .doc-face.sticky   {
             background: linear-gradient(160deg, #ffe87a 0%, #f0d555 100%);
@@ -2773,17 +2675,6 @@
         .dm-paper.official  { background: #f5f1e8; }
         .dm-paper.aged      { background: #e6dbbd; }
         .dm-paper.memo      { background: #fafaee; }
-        .dm-paper.academic {
-            background: #f7f2ea;
-            border-top: 8px solid #7a1f2a;
-            border-left: 2px solid #8a7b66;
-            border-right: 2px solid #8a7b66;
-            border-bottom: 2px solid #8a7b66;
-        }
-        .dm-paper.academic .dm-title {
-            color: #5f1620;
-            border-bottom-color: #5f1620;
-        }
         .dm-paper.sticky-lg {
             background: #fef08a;
             font-family: 'Caveat', cursive; font-size: 18px; line-height:1.7;
@@ -2831,16 +2722,6 @@
             background:
                 linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.34)),
                 linear-gradient(180deg, #3d4248 0%, #2d3238 100%);
-        }
-        .waiting-scene-image {
-            width: min(100%, 525px);
-            height: 350px;
-            display: block;
-            object-fit: cover;
-            object-position: center;
-            border: 1px solid rgba(236,230,216,0.18);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-            margin: 10px auto 18px;
         }
         .waiting-text-area {
             flex: 1;
@@ -2900,164 +2781,7 @@
             justify-content: center !important;
             padding: 16px !important;
             overflow-y: auto !important;
-            position: fixed !important;
         }
-        .p2-desktop-shortcut {
-            position: absolute;
-            top: 22px;
-            left: 20px;
-            width: 82px;
-            text-align: center;
-            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
-            font-size: 11px;
-            color: #fff;
-            cursor: pointer;
-            user-select: none;
-            z-index: 20;
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.65);
-        }
-        .p2-desktop-shortcut:hover .p2-desktop-label {
-            background: rgba(0, 0, 128, 0.42);
-        }
-        .p2-ms-icon-art {
-            width: 36px;
-            height: 36px;
-            margin: 0 auto 6px;
-            border: 2px solid;
-            border-color: #ffffff #7a7a7a #7a7a7a #ffffff;
-            background:
-                linear-gradient(135deg, #efefef 0%, #c8c8c8 100%);
-            box-shadow: inset 0 0 0 2px #b6b6b6;
-            position: relative;
-        }
-        .p2-ms-icon-art::before {
-            content: '✱';
-            position: absolute;
-            left: 50%;
-            top: 47%;
-            transform: translate(-50%, -50%);
-            font-size: 18px;
-            color: #a11212;
-            text-shadow: 0 1px 0 #fff;
-        }
-        .p2-desktop-label {
-            display: inline-block;
-            padding: 2px 4px;
-            line-height: 1.2;
-            border: 1px dotted transparent;
-        }
-        #p2MinesweeperWindow {
-            position: absolute;
-            top: 72px;
-            left: 20px;
-            width: 272px;
-            background: #c0c0c0;
-            border: 2px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            box-shadow: 2px 2px 0 #000;
-            display: none;
-            z-index: 21;
-            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
-            color: #000;
-        }
-        .p2-ms-titlebar {
-            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 4px 3px 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            user-select: none;
-        }
-        .p2-ms-close {
-            width: 16px;
-            height: 14px;
-            border: 1px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            background: #d4d0c8;
-            color: #000;
-            font-size: 10px;
-            line-height: 1;
-            padding: 0;
-            cursor: default;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .p2-ms-inner {
-            padding: 6px;
-        }
-        .p2-ms-hud {
-            border: 2px inset #808080;
-            background: #d4d0c8;
-            padding: 5px 6px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 6px;
-            font-size: 10px;
-        }
-        .p2-ms-counter {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: 700;
-            min-width: 34px;
-            text-align: right;
-        }
-        .p2-ms-new-btn {
-            border: 1px solid;
-            border-color: #ffffff #808080 #808080 #ffffff;
-            background: #d4d0c8;
-            padding: 1px 6px;
-            font-size: 10px;
-            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
-            cursor: default;
-        }
-        .p2-ms-status {
-            font-size: 10px;
-            min-height: 14px;
-            color: #303030;
-            margin-bottom: 5px;
-            letter-spacing: 0.1px;
-        }
-        .p2-ms-board {
-            display: grid;
-            grid-template-columns: repeat(9, 24px);
-            gap: 0;
-            border: 3px inset #808080;
-            width: max-content;
-            background: #bdbdbd;
-        }
-        .p2-ms-cell {
-            width: 24px;
-            height: 24px;
-            border: 2px solid;
-            border-color: #ffffff #7a7a7a #7a7a7a #ffffff;
-            background: #c0c0c0;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1;
-            padding: 0;
-            margin: 0;
-            cursor: default;
-            user-select: none;
-            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
-        }
-        .p2-ms-cell.revealed {
-            border: 1px solid #808080;
-            background: #bdbdbd;
-            cursor: default;
-        }
-        .p2-ms-cell.mine { background: #efc7c7; color: #000; }
-        .p2-ms-cell.flagged { color: #b10b0b; }
-        .p2-ms-cell.n1 { color: #0000ff; }
-        .p2-ms-cell.n2 { color: #008000; }
-        .p2-ms-cell.n3 { color: #ff0000; }
-        .p2-ms-cell.n4 { color: #000080; }
-        .p2-ms-cell.n5 { color: #800000; }
-        .p2-ms-cell.n6 { color: #008080; }
-        .p2-ms-cell.n7 { color: #000000; }
-        .p2-ms-cell.n8 { color: #666666; }
         .ie-window {
             width: 860px;
             max-width: 98vw;
@@ -3347,27 +3071,6 @@
 .p4-modal-overlay.open { display: flex; }
 .p4-modal { background: #fff; border-radius: 10px; padding: 28px 32px; max-width: 520px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 .p4-modal-close { background: #111827; color: #fff; border: none; border-radius: 6px; padding: 8px 20px; cursor: pointer; }
-.p4-journey-lead { margin: 0 0 10px; color: #1f2937; line-height: 1.65; }
-.p4-journey-list { margin: 0; padding: 0; list-style: none; }
-.p4-journey-item {
-    margin: 0 0 10px;
-    padding: 10px 12px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    color: #334155;
-    line-height: 1.6;
-    font-size: 13px;
-}
-.p4-journey-item:last-child { margin-bottom: 0; }
-.p4-journey-outcome {
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px solid #e5e7eb;
-    color: #111827;
-    font-size: 13px;
-    line-height: 1.6;
-}
 #exodusOverlay { display: none; position: fixed; inset: 0; z-index: 700; overflow: hidden; background: radial-gradient(circle at 30% 20%, #1a2333 0%, #090d14 45%, #05070c 100%); color: #e8eefc; font-family: 'Courier Prime', 'Courier New', monospace; }
 #exodusOverlay.active { display: flex; align-items: center; justify-content: center; }
 #exodusOverlay::before { content: ''; position: absolute; inset: -20%; background: repeating-linear-gradient(0deg, rgba(124,164,255,0.06) 0 2px, rgba(0,0,0,0) 2px 5px); pointer-events: none; animation: exodusScan 4s linear infinite; }
@@ -3723,10 +3426,10 @@
             <!-- Doc 2: Program Statement (easter egg) -->
             <div class="pinned-doc" style="top:20px;left:262px;transform:rotate(1.8deg);" onclick="openBulletinDoc('statement')">
                 <div class="bpin bpin-blue"></div>
-                <div class="doc-face official academic" style="width:192px;">
+                <div class="doc-face official" style="width:192px;">
                     <div class="doc-dhead">ADMINISTRATIVE RECORD STANDARDS DIV.</div>
-                    <div class="doc-dtitle">REGULATORY DISCLOSURE</div>
-                    <div class="doc-dbody">Pursuant to Regulatory Framework 7.4(c), applicants are advised that GIR-03 functions as a procedural mechanism for intake, standardization, and record governance. Completion burdens are normal operational features and not evidence of error...</div>
+                    <div class="doc-dtitle">GIR-03 PROGRAM STATEMENT</div>
+                    <div class="doc-dbody">This office administers the General Information Record in accordance with current classification standards. Applicants are advised of the following. This process does not merely document existing identity. It determines what can become administratively real by translating lived circumstances into processable categories, routable records...</div>
                 </div>
             </div>
 
@@ -3750,10 +3453,18 @@
                 </div>
             </div>
 
+            <!-- Doc 5: Sticky note -->
+            <div class="pinned-doc" style="top:52px;left:604px;transform:rotate(3.2deg);" onclick="openBulletinDoc('sticky')">
+                <div class="bpin bpin-gold"></div>
+                <div class="doc-face sticky" style="width:108px;">
+                    Out at 2:15<br>back by 3.<br><br>Lunch in the<br>break room<br>if anyone wants.<br><br> -  M
+                </div>
+            </div>
+
             <!-- Doc 6: Project Narrative (actual abstract) -->
             <div class="pinned-doc" style="top:296px;left:218px;transform:rotate(-0.7deg);" onclick="openBulletinDoc('abstract')">
                 <div class="bpin bpin-ivory"></div>
-                <div class="doc-face memo academic" style="width:195px;">
+                <div class="doc-face memo" style="width:195px;">
                     <div class="doc-dhead" style="font-size:6px;letter-spacing:0.6px;">GIR-03: GENERAL INFORMATION RECORD</div>
                     <div class="doc-dtitle" style="font-size:7.5px;">Project Narrative  -  Submitted for Administrative Documentation</div>
                     <div class="doc-dbody">GIR-03 is an interactive work that appropriates the material form of government administrative documentation to examine the affective and political dimensions of bureaucratic encounter. Participants navigate a 28-page intake form modeled on actual administrative instruments...</div>
@@ -3790,30 +3501,6 @@
                 </div>
             </div>
 
-            <!-- Sign: Bring originals/copies/patience (upper-left, bold red) -->
-            <div class="pinned-doc board-static" style="top:20px;left:22px;transform:rotate(-1deg);">
-                <div class="bpin bpin-red"></div>
-                <div class="doc-face official" style="width:188px;padding:10px 12px;border-top:3px solid #9f1d1d;color:#b91c1c;">
-                    <div class="doc-dhead" style="color:#7f1d1d;">INTAKE REMINDER</div>
-                    <div class="doc-dtitle" style="font-size:18px;line-height:1.15;color:#b91c1c;font-weight:700;">Bring originals. Bring copies. Bring patience.</div>
-                </div>
-            </div>
-
-            <!-- Sign: Upcoming city events (Parks and Rec easter egg, back layer) -->
-            <div class="pinned-doc" data-randomize="1" style="top:364px;left:286px;transform:rotate(1deg);" onclick="openBulletinDoc('events')">
-                <div class="bpin bpin-green"></div>
-                <div class="doc-face memo" style="width:252px;padding:10px 12px;">
-                    <div class="doc-dhead">UPCOMING CITY EVENTS</div>
-                    <div class="doc-dbody" style="font-size:7.2px;line-height:1.55;">
-                        Tue 7:00 PM — Save JJ's / City Hall listening session<br>
-                        Wed 6:30 PM — The Pit historical overlook walk<br>
-                        Thu 8:00 PM — Mouserat at The Bulge<br>
-                        Sat 9:00 AM — Cones of Dunshire regional qualifier<br>
-                        Sun 11:00 AM — Li'l Sebastian remembrance ride
-                    </div>
-                </div>
-            </div>
-
             <!-- Ticket Dispenser -->
             <div class="ticket-dispenser">
                 <div class="td-label">TAKE A NUMBER</div>
@@ -3832,7 +3519,7 @@
             <div class="ts-dept">DEPT. OF CIVIC STANDARDIZATION<br>OFFICE OF ADMINISTRATIVE PROCESSING</div>
             <div class="ts-num">G142</div>
             <div class="ts-sub">GIR-03 PROCESSING · WINDOW 3</div>
-            <div class="ts-instr">Please retain this number and be seated.<br>You will be called in order.<br>Do not approach the counter until<br>your number is announced.</div>
+            <div class="ts-instr">Please retain this number and be seated.<br>You will be called in order.<br>Do not approach the window until<br>your number is announced.</div>
             <button class="ts-go" onclick="proceedToWaiting()">PROCEED TO WAITING AREA →</button>
         </div>
     </div>
@@ -3849,10 +3536,9 @@
     <div id="waitingScreen">
         <div class="preform-card waiting-card">
             <div class="preform-label">Municipal Services Building &middot; First Floor &middot; Intake Area</div>
-            <img class="waiting-scene-image" src="images/gir-scene-00-waiting-room.png" alt="Municipal waiting room">
             <div class="waiting-text-area">
-                You find a seat near the window. The room holds maybe forty chairs, arranged in rows of seven, most of them empty. A television mounted in the corner runs CNN on mute, closed captions lagging a few words behind. Somebody left a paper cup on the seat next to you.<br><br>
-                A speaker announces numbers in a flat, even tone.<br><br>
+                You find a seat near the window. The room holds maybe forty chairs, arranged in rows of four, most of them empty. A television mounted in the corner runs CNN on mute, closed captions lagging a few words behind. Somebody left a paper cup on the seat next to you.<br><br>
+                A speaker above the door announces numbers in a flat, even tone.<br><br>
                 <span class="w-num">G138.</span>&ensp;A man near the back folds his newspaper and stands.<br><br>
                 <span class="w-num">G139.</span><br>
                 <span class="w-num">G139.</span><br>
@@ -3861,7 +3547,7 @@
                 <span class="w-num">G140.</span>&ensp;A woman gathering a folder from her lap rises toward the counter.<br><br>
                 <span class="w-num">G141.</span><br><br>
             </div>
-            <div class="preform-actions"><button class="preform-btn" onclick="beginPreform()">Continue</button></div>
+            <div style="margin-top:16px;padding:0 4px;"><button class="w-btn" onclick="beginPreform()">Continue</button></div>
         </div>
     </div>
 
@@ -3871,13 +3557,13 @@
                 
             <div class="preform-stage stage-window active" data-stage="1">
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/gir-scene-01-number-call.png" alt="Queue display showing G142 at Counter 3">
+                    <img class="clerk-photo" id="stageOneClerkPhoto" src="images/nowserving.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     <span class="preform-number">G142.</span> Your number is called.
                     <div class="preform-actions">
                         <button class="preform-btn preform-skip" onclick="skipPreform()">Skip Intro</button>
-                        <button class="preform-btn" onclick="advancePreform()">Approach Counter</button>
+                        <button class="preform-btn" onclick="advancePreform()">Approach Window</button>
                     </div>
                 </div>
             </div>
@@ -3885,10 +3571,10 @@
             <div class="preform-stage stage-handoff" data-stage="2">
                 <div class="preform-label">Intake Station · Form Issuance</div>
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="s4ClerkPhoto" src="images/gir-scene-02-first-interaction.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="s4ClerkPhoto" src="images/hello.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
-                    The clerk looks up from their computer screen with a practiced, neutral expression.<br><br>
+                    The clerk looks up from their computer screen and offers a practiced smile.<br><br>
                     “What can I help you with today?”
                     <div class="preform-actions">
                         <button class="preform-btn preform-skip" onclick="skipPreform()">Skip Intro</button>
@@ -3899,10 +3585,10 @@
 
             <div class="preform-stage stage-seated" data-stage="3">
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="stageThreeClerkPhoto" src="images/gir-scene-03-offering-papers.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="stageThreeClerkPhoto" src="images/holdingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
-                    You explain what you need. They listen, nod once, and reach beneath the counter. What comes back is thicker than you expected  -  a packet of forms, maybe forty pages, secured with a binder clip. They slide it toward you across the counter.
+                    You explain what you need. They listen, nod once, and reach beneath the counter. What comes back is heavier than you expected  -  a thick packet of forms, maybe forty pages, secured with a binder clip. They hand it directly to you.
                     <div class="preform-actions">
                         <button class="preform-btn preform-skip" onclick="skipPreform()">Skip Intro</button>
                         <button class="preform-btn" onclick="advancePreform()">Take Packet</button>
@@ -3912,7 +3598,7 @@
 
             <div class="preform-stage stage-weight" data-stage="4">
                 <div class="gov-window-scene">
-                    <img class="clerk-photo" id="weightClerkPhoto" src="images/gir-scene-03-packet-handoff.png" alt="Intake clerk">
+                    <img class="clerk-photo" id="weightClerkPhoto" src="images/takingpaper.png" alt="Intake clerk">
                 </div>
                 <div class="preform-copy">
                     You take the packet from their hands. It has some weight to it.<br><br>
@@ -5802,7 +5488,7 @@
                 <strong>No action required.</strong>
             </p>
 
-            <button class="update-confirm-btn" onclick="returnToWindowAfterUpdate()">Return to counter</button>
+            <button class="update-confirm-btn" onclick="returnToWindowAfterUpdate()">Return to window</button>
         </div>
     </div>
 
@@ -5811,12 +5497,12 @@
         <a class="reset-link preform-reset-link" onclick="resetForm()">reset experience</a>
         <div class="preform-card">
             <div class="preform-stage active" style="opacity:1;pointer-events:auto;padding:28px;position:absolute;inset:0;">
-                <div class="preform-label">Municipal Services Building &middot; Intake Counter 3</div>
+                <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
                     <img id="clerkComputerPhoto" class="clerk-photo" src="" alt="Clerk at computer">
                 </div>
                 <div class="preform-copy">
-                    The clerk reviews the documents. Satisfied, they turn to the terminal and begin entering information. After a moment they pause. <em>&ldquo;Hm,&rdquo;</em> they say. <em>&ldquo;Looks like the system is updating.&rdquo;</em>
+                    The clerk reviews the documents. Satisfied, they turn to the terminal and begin entering information. After a moment they pause. <em>&ldquo;Hm,&rdquo;</em> they say. <em>&ldquo;Looks like the system is updating.&rdquo;</em> They rotate the monitor toward you.
                     <div class="preform-actions">
                         <button class="preform-btn" onclick="proceedToSystemUpdate()">Look at monitor</button>
                     </div>
@@ -5830,7 +5516,7 @@
         <a class="reset-link preform-reset-link" onclick="resetForm()">reset experience</a>
         <div class="preform-card">
             <div class="preform-stage active" style="opacity:1;pointer-events:auto;padding:28px;position:absolute;inset:0;">
-                <div class="preform-label">Municipal Services Building &middot; Intake Counter 3</div>
+                <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
                     <img id="postUpdateClerkPhoto" class="clerk-photo" src="" alt="Clerk checking transfer">
                 </div>
@@ -5855,15 +5541,15 @@
         <a class="reset-link preform-reset-link" onclick="resetForm()">reset experience</a>
         <div class="preform-card">
             <div class="preform-stage active" style="opacity:1;pointer-events:auto;padding:28px;position:absolute;inset:0;">
-                <div class="preform-label">Municipal Services Building &middot; Intake Counter 3</div>
+                <div class="preform-label">Municipal Services Building &middot; Intake Window 3</div>
                 <div class="gov-window-scene">
-                    <img src="images/gir-scene-04-reviewing-paperwork.png" id="incompleteClerkPhoto" alt="Clerk reviewing incomplete forms" class="clerk-photo">
+                    <img src="images/reading.png" id="incompleteClerkPhoto" alt="Clerk reviewing incomplete forms" class="clerk-photo">
                 </div>
                 <div class="preform-copy">
                     The clerk pages through the packet without looking up. After a moment, they hand it back to you.
                     <div style="margin-top:14px;font-size:11px;line-height:1.6;">
-                        <em>&ldquo;Unfortunately, I can&rsquo;t input your data until it is fully completed.&rdquo;</em><br>
-                        <em>&ldquo;Please review each page, then bring it back to the counter and we&rsquo;ll look it over together.&rdquo;</em>
+                        Unfortunately, I can't input your data until it is fully completed.<br>
+                        Please review each page, then bring it back to the window and we'll look it over together.
                     </div>
                     <div class="preform-actions">
                         <button class="preform-btn" onclick="returnToFormFromIncomplete()">Return to seat and complete forms</button>
@@ -6093,13 +5779,12 @@ function girComputeOutcome() {
         
         // ── Narrative image map ─────────────────────────────────────────────
         const CLERK_IMAGES = {
-            screen:     'images/gir-scene-01-number-call.png',
-            greeting:   'images/gir-scene-02-first-interaction.png',
-            handoff:    'images/gir-scene-03-offering-papers.png',
-            acceptance: 'images/gir-scene-03-packet-handoff.png',
-            review:     'images/gir-scene-04-reviewing-paperwork.png',
-            failure:    'images/gir-scene-04-reviewing-paperwork.png',
-            success:    'images/gir-scene-05-clerk-terminal.png',
+            screen:     'images/nowserving.png',
+            greeting:   'images/hello.png',
+            handoff:    'images/holdingpaper.png',
+            acceptance: 'images/takingpaper.png',
+            failure:    'images/reading.png',
+            success:    'images/typing.png',
         };
 
         function applyClerkImages() {
@@ -6111,7 +5796,7 @@ function girComputeOutcome() {
             set('s4ClerkPhoto',        'greeting');
             set('stageThreeClerkPhoto','handoff');
             set('weightClerkPhoto',    'acceptance');
-            set('completionClerkPhoto','review');
+            set('completionClerkPhoto','acceptance');
             set('incompleteClerkPhoto','failure');
             set('clerkComputerPhoto',  'success');
             set('postUpdateClerkPhoto','success');
@@ -6222,7 +5907,6 @@ function girComputeOutcome() {
             var bulletinEl = document.getElementById('bulletinOverlay');
             var waitingEl  = document.getElementById('waitingScreen');
             if (waitingEl) waitingEl.style.display = 'none';
-            if (typeof randomizeBulletinCards === 'function') randomizeBulletinCards();
 
             // If preform is already done, skip straight to form
             if (localStorage.getItem('preformComplete')) {
@@ -6594,224 +6278,6 @@ function girComputeOutcome() {
 
         function proceedToUpdatedInterface() {
             startPhaseThree();
-        }
-
-        // ── Phase II Desktop App: Minesweeper (period-appropriate easter egg) ──
-        var p2MsState = {
-            rows: 9,
-            cols: 9,
-            mineCount: 10,
-            cells: [],
-            revealed: 0,
-            flags: 0,
-            over: false,
-            started: false,
-            timer: 0,
-            timerId: null,
-            initialized: false
-        };
-
-        function p2MsStopTimer() {
-            if (p2MsState.timerId) {
-                clearInterval(p2MsState.timerId);
-                p2MsState.timerId = null;
-            }
-        }
-
-        function p2MsStartTimer() {
-            if (p2MsState.timerId) return;
-            p2MsState.timerId = setInterval(function() {
-                p2MsState.timer += 1;
-                p2MsUpdateHud();
-            }, 1000);
-        }
-
-        function p2MsIndex(row, col) {
-            return row * p2MsState.cols + col;
-        }
-
-        function p2MsNeighbors(index) {
-            var row = Math.floor(index / p2MsState.cols);
-            var col = index % p2MsState.cols;
-            var list = [];
-            for (var dr = -1; dr <= 1; dr += 1) {
-                for (var dc = -1; dc <= 1; dc += 1) {
-                    if (dr === 0 && dc === 0) continue;
-                    var nr = row + dr;
-                    var nc = col + dc;
-                    if (nr < 0 || nr >= p2MsState.rows || nc < 0 || nc >= p2MsState.cols) continue;
-                    list.push(p2MsIndex(nr, nc));
-                }
-            }
-            return list;
-        }
-
-        function p2MsSetStatus(text) {
-            var el = document.getElementById('p2MsStatus');
-            if (el) el.textContent = text;
-        }
-
-        function p2MsUpdateHud() {
-            var minesEl = document.getElementById('p2MsMinesLeft');
-            var timerEl = document.getElementById('p2MsTimer');
-            if (minesEl) minesEl.textContent = String(p2MsState.mineCount - p2MsState.flags);
-            if (timerEl) timerEl.textContent = String(Math.min(999, p2MsState.timer));
-        }
-
-        function p2MsRenderBoard() {
-            var board = document.getElementById('p2MsBoard');
-            if (!board) return;
-            board.innerHTML = '';
-
-            p2MsState.cells.forEach(function(cell, index) {
-                var btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'p2-ms-cell';
-
-                if (cell.revealed) {
-                    btn.classList.add('revealed');
-                    if (cell.mine) {
-                        btn.classList.add('mine');
-                        btn.textContent = '*';
-                    } else if (cell.count > 0) {
-                        btn.classList.add('n' + cell.count);
-                        btn.textContent = String(cell.count);
-                    }
-                } else if (cell.flagged) {
-                    btn.classList.add('flagged');
-                    btn.textContent = 'F';
-                }
-
-                btn.addEventListener('click', function() {
-                    p2MsRevealCell(index);
-                });
-                btn.addEventListener('contextmenu', function(event) {
-                    event.preventDefault();
-                    p2MsToggleFlag(index);
-                });
-                board.appendChild(btn);
-            });
-
-            p2MsUpdateHud();
-        }
-
-        function p2MsRevealCell(index) {
-            if (!p2MsState.initialized || p2MsState.over) return;
-            var cell = p2MsState.cells[index];
-            if (!cell || cell.revealed || cell.flagged) return;
-
-            if (!p2MsState.started) {
-                p2MsState.started = true;
-                p2MsStartTimer();
-            }
-
-            if (cell.mine) {
-                p2MsState.over = true;
-                p2MsState.cells.forEach(function(c) {
-                    if (c.mine) c.revealed = true;
-                });
-                p2MsStopTimer();
-                p2MsSetStatus('Boom. Game over.');
-                p2MsRenderBoard();
-                return;
-            }
-
-            var stack = [index];
-            while (stack.length) {
-                var i = stack.pop();
-                var current = p2MsState.cells[i];
-                if (!current || current.revealed || current.flagged) continue;
-                current.revealed = true;
-                p2MsState.revealed += 1;
-                if (current.count === 0) {
-                    p2MsNeighbors(i).forEach(function(next) {
-                        var n = p2MsState.cells[next];
-                        if (n && !n.revealed && !n.flagged) stack.push(next);
-                    });
-                }
-            }
-
-            var safeCells = p2MsState.rows * p2MsState.cols - p2MsState.mineCount;
-            if (p2MsState.revealed >= safeCells) {
-                p2MsState.over = true;
-                p2MsStopTimer();
-                p2MsSetStatus('Board cleared. Nice work.');
-                p2MsState.cells.forEach(function(c) { if (c.mine) c.flagged = true; });
-            } else {
-                p2MsSetStatus('Right-click to flag mines.');
-            }
-            p2MsRenderBoard();
-        }
-
-        function p2MsToggleFlag(index) {
-            if (!p2MsState.initialized || p2MsState.over) return;
-            var cell = p2MsState.cells[index];
-            if (!cell || cell.revealed) return;
-            cell.flagged = !cell.flagged;
-            p2MsState.flags += cell.flagged ? 1 : -1;
-            p2MsRenderBoard();
-        }
-
-        function p2NewMinesweeperGame() {
-            p2MsStopTimer();
-            var total = p2MsState.rows * p2MsState.cols;
-            p2MsState.cells = Array.from({ length: total }, function() {
-                return { mine: false, count: 0, revealed: false, flagged: false };
-            });
-            p2MsState.revealed = 0;
-            p2MsState.flags = 0;
-            p2MsState.over = false;
-            p2MsState.started = false;
-            p2MsState.timer = 0;
-            p2MsState.initialized = true;
-
-            var placed = 0;
-            while (placed < p2MsState.mineCount) {
-                var idx = Math.floor(Math.random() * total);
-                if (!p2MsState.cells[idx].mine) {
-                    p2MsState.cells[idx].mine = true;
-                    placed += 1;
-                }
-            }
-
-            p2MsState.cells.forEach(function(cell, idx) {
-                if (cell.mine) return;
-                var count = 0;
-                p2MsNeighbors(idx).forEach(function(nidx) {
-                    if (p2MsState.cells[nidx].mine) count += 1;
-                });
-                cell.count = count;
-            });
-
-            p2MsSetStatus('Click a square to begin.');
-            p2MsRenderBoard();
-        }
-
-        function p2OpenMinesweeper() {
-            var win = document.getElementById('p2MinesweeperWindow');
-            if (win) {
-                win.style.display = 'block';
-                win.setAttribute('aria-hidden', 'false');
-            }
-            if (!p2MsState.initialized) p2NewMinesweeperGame();
-        }
-
-        function p2CloseMinesweeper(resetOnly) {
-            var win = document.getElementById('p2MinesweeperWindow');
-            if (win) {
-                win.style.display = 'none';
-                win.setAttribute('aria-hidden', 'true');
-            }
-            if (resetOnly === true) {
-                p2MsStopTimer();
-                p2MsState.initialized = false;
-                p2MsState.started = false;
-                p2MsState.over = false;
-                p2MsState.timer = 0;
-                p2MsState.flags = 0;
-                p2MsState.revealed = 0;
-                p2MsState.cells = [];
-            }
         }
 
         // ── Phase II State ────────────────────────────────────────────────
@@ -7390,7 +6856,6 @@ function girComputeOutcome() {
 	function initPhaseTwo() {
 	            const postOverlay = document.getElementById('postUpdateClerkOverlay');
 	            const phaseTwo = document.getElementById('phaseTwoOverlay');
-	            p2CloseMinesweeper(true);
 	            if (postOverlay) postOverlay.classList.remove('active');
 	            setFormVisibility(false);
 	            p2CurrentPage = 1;
@@ -7822,7 +7287,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
         // === DEV PANEL ===
 	                function devCloseAll() {
-            if (typeof p2CloseMinesweeper === 'function') p2CloseMinesweeper(true);
             // Close all narrative/modal surfaces.
             var bulletin = document.getElementById('bulletinOverlay');
             if (bulletin) bulletin.style.display = 'none';
@@ -7856,17 +7320,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	        function devSetFieldValue(el, value) {
 	            if (el.value !== value) el.value = value;
 	            devDispatchFieldEvents(el);
-	        }
-	        function devSetCheckboxState(id, checked) {
-	            var el = document.getElementById(id);
-	            if (!el || el.type !== 'checkbox') return;
-	            if (el.checked !== checked) el.checked = checked;
-	            devDispatchFieldEvents(el);
-	        }
-	        function devSetCheckboxFieldMark(id, marked) {
-	            var el = document.getElementById(id);
-	            if (!el) return;
-	            devSetFieldValue(el, marked ? 'X' : '');
 	        }
 	        function devPickRadioGroup(name, preferred) {
 	            var radios = Array.from(document.querySelectorAll('input[type="radio"][name="' + name + '"]'));
@@ -7903,7 +7356,13 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
 	                if (type === 'radio') return;
 
-	                if (type === 'checkbox') return;
+	                if (type === 'checkbox') {
+	                    if (!el.checked) {
+	                        el.checked = true;
+	                        devDispatchFieldEvents(el);
+	                    }
+	                    return;
+	                }
 
 	                var token = ((el.id || '') + ' ' + (el.name || '') + ' ' + (el.placeholder || '')).toLowerCase();
 	                var value = 'Test Value';
@@ -7913,8 +7372,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	                else if (type === 'tel' || /phone|tel/.test(token)) value = '555-0101';
 	                else if (type === 'number') value = '1';
 	                else if (tag === 'textarea') value = longText;
-	                else if (el.classList.contains('checkbox-field')) value = '';
-	                else if (el.maxLength > 0 && el.maxLength <= 2) value = 'X';
+	                else if (el.classList.contains('checkbox-field') || (el.maxLength > 0 && el.maxLength <= 2)) value = 'X';
 	                else if (/name|signature/.test(token)) value = 'Jordan Riley';
 	                else if (/address|street/.test(token)) value = '123 Main St';
 	                else if (/city/.test(token)) value = 'Clemson';
@@ -7949,38 +7407,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	            var p2Dob = document.getElementById('p2Dob');
 	            if (p2Dob) devSetFieldValue(p2Dob, usDate);
 
-	            // Checkbox strategy: set only required workflow checks and a coherent sample profile.
-	            [
-	                'p2ConsentAuto', 'p2Attest1', 'p2Attest2', 'p2Attest3',
-	                'p3_ack1', 'p3_ack2', 'p3_ack3', 'p3_dataUseAck',
-	                'p3_confirmAcc', 'p3_confirmConsent',
-	                'p3_gTrans', 'p3_pTheyThem', 'p3_rW'
-	            ].forEach(function(id) { devSetCheckboxState(id, true); });
-	            [
-	                'p3_gWoman', 'p3_gMan', 'p3_gNonbinary', 'p3_gGenderfluid', 'p3_gAgender', 'p3_gOther',
-	                'p3_pSheHer', 'p3_pHeHim', 'p3_pZeZir', 'p3_pOther',
-	                'p3_rB', 'p3_rL', 'p3_rA', 'p3_rI', 'p3_rP', 'p3_rME', 'p3_rSelf'
-	            ].forEach(function(id) { devSetCheckboxState(id, false); });
-
-	            // Paper-form checkbox fields are text inputs; clear all then mark one value per primary group.
-	            document.querySelectorAll('input.checkbox-field').forEach(function(el) { devSetFieldValue(el, ''); });
-	            [
-	                'statusPrimaryResident',
-	                'priorSubmittedNo',
-	                'basisSubmissionUpdate',
-	                'p1_sex_F_id',
-	                'p1_race_W_id',
-	                'p1_mar_S_id',
-	                'p1_sex_F',
-	                'p1_hispanic_N',
-	                'p1_race_W',
-	                'p1_citizen_USC_B',
-	                'p1_disability_N',
-	                'p1_employ_FT',
-	                'p1_edu_4',
-	                'p1_income_3'
-	            ].forEach(function(id) { devSetCheckboxFieldMark(id, true); });
-
 	            if (typeof p2NarrativeInput === 'function') p2NarrativeInput();
 	            if (typeof p2PriorRecordChanged === 'function') p2PriorRecordChanged();
 	            if (typeof p2PriorIdUnknownChanged === 'function') p2PriorIdUnknownChanged();
@@ -8006,45 +7432,26 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	            if (pageNum && pageNum !== 1) p2GoPage(pageNum);
 	            document.getElementById('devMenu').classList.remove('open');
 	        }
-	        function devPrepPhaseThree(showRetrieval) {
+	        function devGoP3(pageNum) {
+	            devCloseAll();
+	            setFormVisibility(false);
+	            var phaseThree = document.getElementById('phaseThreeOverlay');
+	            if (phaseThree) {
+	                phaseThree.classList.add('active');
+	                phaseThree.style.display = 'flex';
+	            }
+	            p3GoPage(pageNum || 1);
+	            document.getElementById('devMenu').classList.remove('open');
+	        }
+
+                function devEnsurePhaseThree() {
+            devCloseAll();
             setFormVisibility(false);
             var phaseThree = document.getElementById('phaseThreeOverlay');
             if (phaseThree) {
                 phaseThree.classList.add('active');
                 phaseThree.style.display = 'flex';
             }
-            var retrieval = document.getElementById('p3RetrievalScreen');
-            if (retrieval) {
-                retrieval.classList.remove('fading', 'gone');
-                if (showRetrieval !== true) retrieval.classList.add('gone');
-            }
-            var found = document.getElementById('p3rRecordFound');
-            if (found) found.classList.remove('visible', 'flagged', 'returned');
-            ['p3rc1','p3rc2','p3rc3','p3rc4','p3rc5'].forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) el.classList.remove('done');
-            });
-            var bar = document.getElementById('p3rBarFill');
-            if (bar) bar.style.width = '0%';
-            var banner = document.getElementById('p3EntryBanner');
-            if (banner) banner.classList.remove('visible', 'tier-approved', 'tier-conditional', 'tier-flagged', 'tier-returned');
-        }
-        function devGoP3(pageNum) {
-            devCloseAll();
-            var targetPage = pageNum || 1;
-            if (targetPage === 1) {
-                devPrepPhaseThree(true);
-                p3StartEntry();
-            } else {
-                devPrepPhaseThree(false);
-                p3GoPage(targetPage);
-            }
-            document.getElementById('devMenu').classList.remove('open');
-        }
-
-        function devEnsurePhaseThree() {
-            devCloseAll();
-            devPrepPhaseThree(false);
         }
         function devGoNarrative(screenId) {
             devCloseAll();
@@ -8066,7 +7473,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
             if (screenId === 'bulletin') {
                 var bulletin = document.getElementById('bulletinOverlay');
-                if (typeof randomizeBulletinCards === 'function') randomizeBulletinCards();
                 if (bulletin) bulletin.style.display = 'flex';
             } else if (screenId === 'ticket') {
                 var t = document.getElementById('ticketModal');
@@ -8084,6 +7490,8 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 openPreformStage(4);
             } else if (screenId === 'incomplete') {
                 openOverlay('incompleteOverlay');
+            } else if (screenId === 'clerk') {
+                openOverlay('clerkComputerOverlay');
             } else if (screenId === 'postupdate') {
                 openOverlay('postUpdateClerkOverlay');
             } else if (screenId === 'completion') {
@@ -8094,8 +7502,8 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 var trans = document.getElementById('phaseTransitionOverlay');
                 if (trans) trans.classList.add('active');
             } else if (screenId === 'phase3') {
-                devGoP3(1);
-                return;
+                devEnsurePhaseThree();
+                p3GoPage(1);
             }
 
             var menu = document.getElementById('devMenu');
@@ -8213,6 +7621,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 { label: 'Preform 3',  onClick: function() { devGoNarrative('pre3'); } },
                 { label: 'Preform 4',  onClick: function() { devGoNarrative('pre4'); } },
                 { label: 'Incomplete', onClick: function() { devGoNarrative('incomplete'); } },
+                { label: 'Clerk Fail', onClick: function() { devGoNarrative('clerk'); } },
                 { label: 'Clerk Pass', onClick: function() { devGoNarrative('postupdate'); } },
                 { label: 'Completion', onClick: function() { devGoNarrative('completion'); } },
                 { label: 'Phase II',   onClick: function() { devGoNarrative('phase2'); } },
@@ -8227,7 +7636,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 ad:      { resume: 5, a: '123 Main St, Clemson, SC', b: '914 Cedar Ave, Asheville, NC', note: 'Branch scenario loaded: address continuity' },
                 ps:      { resume: 16, a: 'Jordan Lynn Riley', b: 'J. R. Quinn', note: 'Branch scenario loaded: prior names conflict' },
                 sig:     { resume: 18, a: 'Jordan Riley', b: 'J. Riley', note: 'Branch scenario loaded: signature mismatch' },
-                consent: { resume: 3, a: 'Confirmed', b: 'Not confirmed', note: 'Branch scenario loaded: consent incomplete' }
+                consent: { resume: 3, a: '', b: '', note: 'Branch scenario loaded: consent incomplete' }
             };
             var c = cfg[branchId];
             if (!c) return;
@@ -8265,12 +7674,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 girIncrement('inconsistencyCount');
             }
             if (branchId === 'consent') {
-                var ack1 = document.getElementById('p3_ack1');
                 var ack = document.getElementById('p3_dataUseAck');
-                if (ack1 && !ack1.checked) {
-                    ack1.checked = true;
-                    devDispatchFieldEvents(ack1);
-                }
                 if (ack && ack.checked) {
                     ack.checked = false;
                     devDispatchFieldEvents(ack);
@@ -8635,96 +8039,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
 
-        function ptSetText(id, text) {
-            var el = document.getElementById(id);
-            if (el) el.textContent = text || '';
-        }
-
-        function ptPopulateNarrative() {
-            girLoad();
-            var disp = girComputeOutcome() || 'conditional';
-            var noticeByDisposition = {
-                approved: 'Periodic recertification is now required under the current GIR-2024 schema. Your record remains active, but confirmation of migrated fields is required to preserve uninterrupted status.',
-                conditional: 'Recertification is required with conditional review markers. Your record remains provisionally active pending confirmation of migrated fields and any flagged continuity elements.',
-                flagged: 'Enhanced recertification is required. Your legacy record contains unresolved continuity indicators and has been queued for parallel manual review during digital recertification.',
-                returned: 'Full digital resubmission is required. Legacy intake status does not meet current record reliability thresholds and cannot be carried forward without corrected recertification.'
-            };
-            var subjectByDisposition = {
-                approved: 'ACTION REQUIRED — Record Recertification Window Open (GIR-2024)',
-                conditional: 'ACTION REQUIRED — Conditional Recertification Notice (GIR-2024)',
-                flagged: 'ACTION REQUIRED — Enhanced Review Recertification Notice (GIR-2024)',
-                returned: 'MANDATORY RESUBMISSION — Legacy Record Not Migrated as Final (GIR-2024)'
-            };
-            var introByDisposition = {
-                approved: 'This is an automated continuity notice from the Office of Administrative Processing. Since your prior in-person submission, departmental record infrastructure has been consolidated into the GIR-2024 portal.',
-                conditional: 'This is an automated continuity notice from the Office of Administrative Processing. Your prior submission remains on file, but the migrated record carries conditional indicators under the current standard.',
-                flagged: 'This is an automated compliance notice from the Office of Administrative Processing. Your legacy file has been migrated with elevated review indicators tied to cross-record consistency thresholds.',
-                returned: 'This is an automated corrective notice from the Office of Administrative Processing. Your legacy file was received, but migration controls did not preserve it as a final, routable record.'
-            };
-            var actionByDisposition = {
-                approved: 'You may complete recertification from any internet-connected device. Most fields have been imported from legacy records and will appear locked where continuity is confirmed.',
-                conditional: 'You may complete recertification from any internet-connected device. Some fields have been imported, while others require direct verification before your record can proceed to final classification.',
-                flagged: 'You may complete recertification from any internet-connected device. Imported values are provided for reference, but flagged sections will require additional attention during this submission cycle.',
-                returned: 'You may complete resubmission from any internet-connected device. Imported values may appear for comparison only; required fields must be fully re-entered and attested under current protocol.'
-            };
-
-            ptSetText('pt-subject', subjectByDisposition[disp] || subjectByDisposition.conditional);
-            ptSetText('pt-body-intro', introByDisposition[disp] || introByDisposition.conditional);
-            ptSetText('pt-notice-block', noticeByDisposition[disp] || noticeByDisposition.conditional);
-            ptSetText('pt-body-action', actionByDisposition[disp] || actionByDisposition.conditional);
-
-            var branchItems = [];
-            if (GIR.nameMismatch) {
-                branchItems.push('Name continuity branch (NM): legal name entries conflict across submission layers. Confirm your current legal name exactly as it should appear in the administrative record.');
-            }
-            if (GIR.addressContinuityGap) {
-                branchItems.push('Address continuity branch (AD): prior residence history and current address trail are not aligned. Reconfirm your jurisdictional presence details.');
-            }
-            if (GIR.priorSubmissionConflict) {
-                branchItems.push('Prior submission branch (PS): historical identifiers or prior-name records could not be fully reconciled. Review prior name declarations before submission.');
-            }
-            if (GIR.consentPartial || !GIR.p3DataUseAccepted) {
-                branchItems.push('Data-use branch (CONSENT): prior acknowledgment state is incomplete in archived records. Updated consent confirmation is required for standard routing.');
-            }
-            if ((GIR.inconsistencyCount || 0) >= 2 || (GIR.correctionCycleCount || 0) >= 1) {
-                branchItems.push('Signature/attestation branch (SIG): attestation reliability controls are elevated for this cycle. Signature consistency checks will run during recertification.');
-            }
-
-            var branchList = document.getElementById('pt-branch-list');
-            if (branchList) {
-                if (branchItems.length) {
-                    branchList.classList.remove('hidden');
-                    branchList.innerHTML = branchItems.map(function(item) { return '<li>' + item + '</li>'; }).join('');
-                } else {
-                    branchList.classList.add('hidden');
-                    branchList.innerHTML = '';
-                }
-            }
-
-            var migrationDetail = 'Our records indicate that your General Information Record (GIR) was originally submitted through an in-office intake process. Between March 15, 2004 and January 1, 2024, successive portal revisions standardized legacy files into the GIR-2024 schema to support cross-record validation, audit trace, and downstream processing.';
-            if (disp === 'flagged') {
-                migrationDetail += ' Your file was migrated with review indicators due to unresolved continuity events detected during archival normalization.';
-            } else if (disp === 'returned') {
-                migrationDetail += ' Your file was migrated in reference state only; actionable processing now requires full recertification under current rules.';
-            } else if (disp === 'conditional') {
-                migrationDetail += ' Your file was migrated with conditional reliability markers that must be resolved during this cycle.';
-            }
-            ptSetText('pt-body-migration', migrationDetail);
-
-            var closeLine = 'Please review each section carefully before submitting. Entries that do not align with current schema requirements may be routed for manual review or returned for correction.';
-            if (disp === 'approved') {
-                closeLine = 'Please review each section carefully before submitting. Most values were migrated from prior records, but you remain responsible for confirming administrative accuracy.';
-            } else if (disp === 'returned') {
-                closeLine = 'Please review each section carefully before submitting. Because this path requires corrective resubmission, incomplete sections will halt routing until corrected.';
-            }
-            ptSetText('pt-body-close', closeLine);
-        }
-
         function showPhaseTransition() {
-            p2CloseMinesweeper(true);
-            girLoad();
-            girComputeOutcome();
-            ptPopulateNarrative();
             // Populate recipient name and ref from GIR state
             var nameEl = document.getElementById('pt-recipient');
             var refEl  = document.getElementById('pt-ref-num');
@@ -8747,7 +8062,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
         function startPhaseThree() {
-            p2CloseMinesweeper(true);
             // Hide all prior overlays
             var p2Update   = document.getElementById('p2UpdateOverlay');
             var phaseTwo   = document.getElementById('phaseTwoOverlay');
@@ -8761,425 +8075,56 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             p3StartEntry();
         }
 
-        function p3GetPage(pageNum) {
-            return document.getElementById('p3Page' + pageNum);
-        }
-
-        function p3ReadValue(id) {
-            var el = document.getElementById(id);
-            return el ? el.value.trim() : '';
-        }
-
-        function p3Digits(value) {
-            return (value || '').replace(/\D/g, '');
-        }
-
-        function p3IsChecked(id) {
-            var el = document.getElementById(id);
-            return !!(el && el.checked);
-        }
-
-        function p3CheckedSelector(selector) {
-            return document.querySelector(selector);
-        }
-
-        function p3EnsurePageErrorSummary(pageNum) {
-            var page = p3GetPage(pageNum);
-            if (!page) return null;
-            var card = page.querySelector('.p3-card');
-            if (!card) return null;
-
-            var summary = card.querySelector('.p3-page-error-summary');
-            if (summary) return summary;
-
-            summary = document.createElement('div');
-            summary.className = 'p3-page-error-summary';
-            summary.setAttribute('aria-live', 'polite');
-
-            var title = document.createElement('div');
-            title.className = 'p3-page-error-title';
-            title.textContent = 'This page cannot be routed yet.';
-
-            var list = document.createElement('ul');
-            list.className = 'p3-page-error-list';
-
-            summary.appendChild(title);
-            summary.appendChild(list);
-
-            var anchor = card.querySelector('.p3-page-desc') || card.querySelector('.p3-page-title');
-            if (anchor) anchor.insertAdjacentElement('afterend', summary);
-            else card.insertBefore(summary, card.firstChild);
-
-            return summary;
-        }
-
-        function p3ClearPageErrors(pageNum) {
-            var page = p3GetPage(pageNum);
-            if (!page) return;
-            page.querySelectorAll('.p3-field.has-error').forEach(function(el) { el.classList.remove('has-error'); });
-            page.querySelectorAll('.p3-check-group.has-error, .p3-radio-group.has-error').forEach(function(el) { el.classList.remove('has-error'); });
-            page.querySelectorAll('.p3-field-error').forEach(function(el) { el.remove(); });
-
-            var summary = page.querySelector('.p3-page-error-summary');
-            if (summary) {
-                summary.classList.remove('visible');
-                var list = summary.querySelector('.p3-page-error-list');
-                if (list) list.innerHTML = '';
-            }
-        }
-
-        function p3CreateError(fieldEl, message, focusEl, groupEl) {
-            if (!fieldEl) return null;
-            return {
-                fieldEl: fieldEl,
-                message: message,
-                focusEl: focusEl || null,
-                groupEl: groupEl || null
-            };
-        }
-
-        function p3InputError(inputId, message) {
-            var input = document.getElementById(inputId);
-            if (!input) return null;
-            return p3CreateError(input.closest('.p3-field'), message, input);
-        }
-
-        function p3GroupError(pageEl, selector, message) {
-            if (!pageEl) return null;
-            var group = pageEl.querySelector(selector);
-            if (!group) return null;
-            return p3CreateError(group.closest('.p3-field'), message, group.querySelector('input, select, textarea'), group);
-        }
-
-        function p3IndexedGroupError(pageEl, selector, index, message) {
-            if (!pageEl) return null;
-            var groups = pageEl.querySelectorAll(selector);
-            var group = groups[index];
-            if (!group) return null;
-            return p3CreateError(group.closest('.p3-field'), message, group.querySelector('input, select, textarea'), group);
-        }
-
-        function p3PushError(errors, error) {
-            if (error) errors.push(error);
-        }
-
-        function p3RenderPageErrors(pageNum, errors, options) {
-            options = options || {};
-            p3ClearPageErrors(pageNum);
-            if (!errors.length) return true;
-
-            var summary = p3EnsurePageErrorSummary(pageNum);
-            if (summary) {
-                var list = summary.querySelector('.p3-page-error-list');
-                if (list) {
-                    errors.forEach(function(error) {
-                        var item = document.createElement('li');
-                        item.textContent = error.message;
-                        list.appendChild(item);
-                    });
-                }
-                summary.classList.add('visible');
-            }
-
-            errors.forEach(function(error) {
-                if (error.fieldEl) error.fieldEl.classList.add('has-error');
-                if (error.groupEl) error.groupEl.classList.add('has-error');
-                var errorNode = document.createElement('div');
-                errorNode.className = 'p3-field-error';
-                errorNode.textContent = error.message;
-                var anchor = error.groupEl || error.fieldEl;
-                if (anchor) anchor.insertAdjacentElement('afterend', errorNode);
-            });
-
-            if (options.focusFirst !== false) {
-                var first = errors[0] && errors[0].focusEl;
-                if (first && typeof first.focus === 'function' && first.offsetParent !== null) first.focus();
-            }
-
-            return false;
-        }
-
-        function p3ValidatePage(pageNum, options) {
-            options = options || {};
-            var page = p3GetPage(pageNum);
-            if (!page) return true;
-
-            var errors = [];
-            var fullNameRow = page.querySelector('.p3-row');
-            var nameChecked = p3CheckedSelector('input[name="p3_onBehalf"]:checked');
-            var orientationChecked = p3CheckedSelector('input[name="p3_orientation"]:checked');
-            var disabilityChecked = p3CheckedSelector('input[name="p3_disab"]:checked');
-
-            switch (pageNum) {
-                case 1:
-                    if (!(p3IsChecked('p3_ack1') && p3IsChecked('p3_ack2') && p3IsChecked('p3_ack3'))) {
-                        p3PushError(errors, p3GroupError(page, '.p3-check-group', 'All acknowledgments must be confirmed before this record can be opened.'));
-                    }
-                    girSet('p3AcknowledgmentAccepted', p3IsChecked('p3_ack1') && p3IsChecked('p3_ack2') && p3IsChecked('p3_ack3'));
-                    break;
-                case 2:
-                    if (!p3IsChecked('p3_dataUseAck')) {
-                        p3PushError(errors, p3GroupError(page, '.p3-check-group', 'Data use acknowledgment is required before portal entry can continue.'));
-                    }
-                    girSet('p3DataUseAccepted', p3IsChecked('p3_dataUseAck'));
-                    break;
-                case 3:
-                    if (!p3ReadValue('p3_firstName') || !p3ReadValue('p3_lastName')) {
-                        p3PushError(errors, p3CreateError(fullNameRow ? fullNameRow.closest('.p3-field') : null, 'Enter your first and last legal name exactly as it should appear on the record.', document.getElementById('p3_firstName'), fullNameRow));
-                    }
-                    if (!p3ReadValue('p3_dob')) {
-                        p3PushError(errors, p3InputError('p3_dob', 'A date of birth is required for record matching.'));
-                    }
-                    break;
-                case 4:
-                    if (!p3ReadValue('p3_street')) p3PushError(errors, p3InputError('p3_street', 'Enter the street address associated with this submission.'));
-                    if (!p3ReadValue('p3_city') || !p3ReadValue('p3_state') || !p3ReadValue('p3_zip')) {
-                        p3PushError(errors, p3CreateError(document.getElementById('p3_city') ? document.getElementById('p3_city').closest('.p3-field') : null, 'Complete the city, state, and ZIP fields before this address can be validated.', document.getElementById('p3_city'), document.getElementById('p3_city') ? document.getElementById('p3_city').closest('.p3-row') : null));
-                    } else if (p3Digits(p3ReadValue('p3_zip')).length < 5) {
-                        p3PushError(errors, p3InputError('p3_zip', 'Enter a valid ZIP code before continuing.'));
-                    }
-                    if (!p3ReadValue('p3_email')) p3PushError(errors, p3InputError('p3_email', 'An email address is required for automated correspondence.'));
-                    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p3ReadValue('p3_email'))) p3PushError(errors, p3InputError('p3_email', 'Enter an email address in a valid format.'));
-                    if (!p3ReadValue('p3_phone')) p3PushError(errors, p3InputError('p3_phone', 'A phone number is required for contact verification.'));
-                    else if (p3Digits(p3ReadValue('p3_phone')).length < 10) p3PushError(errors, p3InputError('p3_phone', 'Enter a phone number with enough digits to be processed.'));
-                    break;
-                case 5:
-                    if (!p3ReadValue('p3_ssn')) p3PushError(errors, p3InputError('p3_ssn', 'A Social Security Number is required for identity matching.'));
-                    else if (p3Digits(p3ReadValue('p3_ssn')).length !== 9) p3PushError(errors, p3InputError('p3_ssn', 'Enter the Social Security Number in a complete nine-digit format.'));
-                    if (p3ReadValue('p3_dlNum') && !p3ReadValue('p3_dlState')) p3PushError(errors, p3InputError('p3_dlState', 'Provide the issuing state for the identification number entered.'));
-                    if (!p3ReadValue('p3_dlNum') && p3ReadValue('p3_dlState')) p3PushError(errors, p3InputError('p3_dlNum', 'Provide the identification number associated with the issuing state entered.'));
-                    break;
-                case 6:
-                    if (!p3CheckedSelector('input[name="p3_employ"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Select an employment status before this section can be filed.'));
-                    break;
-                case 7:
-                    if (!p3CheckedSelector('input[name="p3_edu"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Select the highest level of education completed before continuing.'));
-                    break;
-                case 8:
-                    if (!p3CheckedSelector('input[name="p3_income"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Select an annual household income range to complete this page.'));
-                    break;
-                case 9:
-                    if (!p3CheckedSelector('input[name="p3_housing"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Select a housing status before this section can be routed.'));
-                    if (!p3ReadValue('p3_residenceLength')) p3PushError(errors, p3InputError('p3_residenceLength', 'Select the length of time at your current address.'));
-                    break;
-                case 10:
-                    if (!p3CheckedSelector('input[name="p3_marital"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Select a marital status before continuing.'));
-                    if (p3ReadValue('p3_dependents') === '') p3PushError(errors, p3InputError('p3_dependents', 'Enter the number of dependents associated with this record.'));
-                    break;
-                case 11:
-                    if (!p3ReadValue('p3_ecFirst') || !p3ReadValue('p3_ecLast')) {
-                        p3PushError(errors, p3CreateError(document.getElementById('p3_ecFirst') ? document.getElementById('p3_ecFirst').closest('.p3-field') : null, 'Provide both first and last name for the emergency contact.', document.getElementById('p3_ecFirst'), document.getElementById('p3_ecFirst') ? document.getElementById('p3_ecFirst').closest('.p3-row') : null));
-                    }
-                    if (!p3ReadValue('p3_ecRelationship')) p3PushError(errors, p3InputError('p3_ecRelationship', 'Enter the relationship of the emergency contact to the applicant.'));
-                    if (!p3ReadValue('p3_ecPhone')) p3PushError(errors, p3InputError('p3_ecPhone', 'An emergency contact phone number is required.'));
-                    else if (p3Digits(p3ReadValue('p3_ecPhone')).length < 10) p3PushError(errors, p3InputError('p3_ecPhone', 'Enter an emergency contact phone number in a valid format.'));
-                    break;
-                case 12:
-                    if (!p3ReadValue('p3_ref1Name')) p3PushError(errors, p3InputError('p3_ref1Name', 'Reference 1 name is required before the record can continue.'));
-                    if (!p3ReadValue('p3_ref1Contact')) p3PushError(errors, p3InputError('p3_ref1Contact', 'Reference 1 contact information is required.'));
-                    if (p3ReadValue('p3_ref2Name') && !p3ReadValue('p3_ref2Contact')) p3PushError(errors, p3InputError('p3_ref2Contact', 'Complete the second reference entry by adding contact information.'));
-                    if (!p3ReadValue('p3_ref2Name') && p3ReadValue('p3_ref2Contact')) p3PushError(errors, p3InputError('p3_ref2Name', 'Complete the second reference entry by adding a name.'));
-                    break;
-                case 13:
-                    if (!p3CheckedSelector('input[name="p3_intlRes"]:checked')) p3PushError(errors, p3GroupError(page, '.p3-radio-group', 'Indicate whether you resided outside the United States for more than 90 consecutive days.'));
-                    break;
-                case 14:
-                    if (!p3CheckedSelector('input[name="p3_healthQ"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 0, 'Indicate whether health conditions may affect participation in government programs.'));
-                    if (!p3CheckedSelector('input[name="p3_adaQ"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 1, 'Indicate whether you have a registered disability under the ADA or equivalent.'));
-                    if (!p3CheckedSelector('input[name="p3_mhConsult"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 2, 'Answer the mental health consultation question before continuing.'));
-                    if (!p3CheckedSelector('input[name="p3_alcoholUse"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 3, 'Select a response describing current alcohol use.'));
-                    if (!p3CheckedSelector('input[name="p3_ctrlSubst"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 4, 'Answer the controlled substance question before this section can be filed.'));
-                    break;
-                case 15:
-                    if (p3ReadValue('p3_priorName1') && !p3ReadValue('p3_priorName1Type')) p3PushError(errors, p3InputError('p3_priorName1Type', 'Select a reason for the first prior name entry.'));
-                    if (!p3ReadValue('p3_priorName1') && p3ReadValue('p3_priorName1Type')) p3PushError(errors, p3InputError('p3_priorName1', 'Enter the prior name associated with the selected change reason.'));
-                    if (p3ReadValue('p3_priorName2') && !p3ReadValue('p3_priorName2Type')) p3PushError(errors, p3InputError('p3_priorName2Type', 'Select a reason for the second prior name entry.'));
-                    if (!p3ReadValue('p3_priorName2') && p3ReadValue('p3_priorName2Type')) p3PushError(errors, p3InputError('p3_priorName2', 'Enter the prior name associated with the selected change reason.'));
-                    break;
-                case 16:
-                    if (!p3CheckedSelector('input[name="p3_felony"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 0, 'Answer the criminal, civil, or administrative offense declaration.'));
-                    if (!p3CheckedSelector('input[name="p3_courtOrder"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 1, 'Answer the court order or administrative hold declaration.'));
-                    if (!p3CheckedSelector('input[name="p3_bgInvestigation"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 3, 'Answer the background investigation declaration.'));
-                    if (!p3CheckedSelector('input[name="p3_orgAffil"]:checked')) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 4, 'Answer the organizational affiliation declaration.'));
-                    break;
-                case 17:
-                    if (!p3ReadValue('p3_signature')) p3PushError(errors, p3InputError('p3_signature', 'A signature is required before this submission can proceed.'));
-                    if (!p3ReadValue('p3_sigDate')) p3PushError(errors, p3InputError('p3_sigDate', 'Enter the signature date for this submission.'));
-                    if (!nameChecked) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 0, 'Indicate whether you are completing this form for yourself or as an authorized representative.'));
-                    girSet('p3Signed', !!(p3ReadValue('p3_signature') && p3ReadValue('p3_sigDate')));
-                    break;
-                case 18:
-                    break;
-                case 19:
-                    if (!(p3IsChecked('p3_confirmAcc') && p3IsChecked('p3_confirmConsent'))) {
-                        p3PushError(errors, p3GroupError(page, '.p3-check-group', 'Both review confirmations must be checked before the identity section can open.'));
-                    }
-                    break;
-                case 20:
-                    if (!(p3IsChecked('p3_gWoman') || p3IsChecked('p3_gMan') || p3IsChecked('p3_gNonbinary') || p3IsChecked('p3_gGenderfluid') || p3IsChecked('p3_gAgender') || p3IsChecked('p3_gTrans') || p3IsChecked('p3_gOther'))) {
-                        p3PushError(errors, p3IndexedGroupError(page, '.p3-check-group', 0, 'Select at least one gender identity option or choose to self-describe.'));
-                    }
-                    if (p3IsChecked('p3_gOther') && !p3ReadValue('p3_genderSelfDescribe')) p3PushError(errors, p3InputError('p3_genderSelfDescribe', 'Provide the self-described gender identity referenced above.'));
-                    if (!(p3IsChecked('p3_pSheHer') || p3IsChecked('p3_pHeHim') || p3IsChecked('p3_pTheyThem') || p3IsChecked('p3_pZeZir') || p3IsChecked('p3_pOther'))) {
-                        p3PushError(errors, p3IndexedGroupError(page, '.p3-check-group', 1, 'Select at least one pronoun set or choose the write-in option.'));
-                    }
-                    if (p3IsChecked('p3_pOther') && !p3ReadValue('p3_pronounsOther')) p3PushError(errors, p3InputError('p3_pronounsOther', 'Provide the pronouns referenced in the write-in option.'));
-                    if (!orientationChecked) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 0, 'Select a sexual orientation response before continuing.'));
-                    if (p3IsChecked('p3_oSelf') && !p3ReadValue('p3_orientationSelf')) p3PushError(errors, p3InputError('p3_orientationSelf', 'Provide the self-described orientation referenced above.'));
-                    break;
-                case 21:
-                    if (!(p3IsChecked('p3_rW') || p3IsChecked('p3_rB') || p3IsChecked('p3_rL') || p3IsChecked('p3_rA') || p3IsChecked('p3_rI') || p3IsChecked('p3_rP') || p3IsChecked('p3_rME') || p3IsChecked('p3_rSelf'))) {
-                        p3PushError(errors, p3IndexedGroupError(page, '.p3-check-group', 0, 'Select at least one race or ethnicity option or choose to self-describe.'));
-                    }
-                    if (p3IsChecked('p3_rSelf') && !p3ReadValue('p3_raceSelfDescribe')) p3PushError(errors, p3InputError('p3_raceSelfDescribe', 'Provide the self-described race or ethnicity referenced above.'));
-                    if (!disabilityChecked) p3PushError(errors, p3IndexedGroupError(page, '.p3-radio-group', 0, 'Select a disability status before submitting the record.'));
-                    if (!p3ReadValue('p3_citizenship')) p3PushError(errors, p3InputError('p3_citizenship', 'Select a citizenship or immigration status before submitting the record.'));
-                    break;
-            }
-
-            return p3RenderPageErrors(pageNum, errors, options);
-        }
-
-        function p3RevalidateIfNeeded() {
-            var page = p3GetPage(p3CurrentPage);
-            if (!page) return;
-            var summary = page.querySelector('.p3-page-error-summary');
-            if (summary && summary.classList.contains('visible')) {
-                p3ValidatePage(p3CurrentPage, { focusFirst: false });
-            }
-        }
-
-        document.addEventListener('input', function(event) {
-            if (!event.target.closest('.p3-page')) return;
-            p3RevalidateIfNeeded();
-        });
-
-        document.addEventListener('change', function(event) {
-            if (!event.target.closest('.p3-page')) return;
-            p3RevalidateIfNeeded();
-        });
-
-        function p3DisplayValue(v, fallback) {
-            var s = (v == null ? '' : String(v)).replace(/\s+/g, ' ').trim();
-            return s || (fallback || '(not recorded)');
-        }
-
-        function p3BuildFullName(first, last) {
-            return ((first || '') + ' ' + (last || '')).replace(/\s+/g, ' ').trim();
-        }
-
-        function p3BuildAddress(street, city, state, zip) {
-            var line1 = (street || '').trim();
-            var line2 = [city, state].map(function(part) { return (part || '').trim(); }).filter(Boolean).join(', ');
-            if (zip && String(zip).trim()) line2 = line2 ? (line2 + ' ' + String(zip).trim()) : String(zip).trim();
-            return [line1, line2].filter(Boolean).join(' | ');
-        }
-
-        function p3GetBranchFallback(branchId, which) {
-            var fullP1 = (document.getElementById('fullLegalName') || {}).value || '';
-            var fullP2 = (document.getElementById('p2LegalName') || {}).value || '';
-            var p3First = (document.getElementById('p3_firstName') || {}).value || '';
-            var p3Last = (document.getElementById('p3_lastName') || {}).value || '';
-            var fullP3 = p3BuildFullName(p3First, p3Last);
-            if (branchId === 'nm') {
-                return which === 'A' ? (fullP1 || fullP2 || fullP3) : (fullP3 || fullP1 || fullP2);
-            }
-            if (branchId === 'ad') {
-                var p1Addr = p3BuildAddress(
-                    (document.getElementById('address') || {}).value || '',
-                    (document.getElementById('city') || {}).value || '',
-                    (document.getElementById('state') || {}).value || '',
-                    (document.getElementById('zip') || {}).value || ''
-                );
-                var p3Addr = p3BuildAddress(
-                    (document.getElementById('p3_street') || {}).value || '',
-                    (document.getElementById('p3_city') || {}).value || '',
-                    (document.getElementById('p3_state') || {}).value || '',
-                    (document.getElementById('p3_zip') || {}).value || ''
-                );
-                return which === 'A' ? (p1Addr || p3Addr) : (p3Addr || p1Addr);
-            }
-            if (branchId === 'ps') {
-                var priorP1A = (document.getElementById('p1_altName1') || {}).value || '';
-                var priorP1B = (document.getElementById('p1_altName2') || {}).value || '';
-                var priorP3A = (document.getElementById('p3_priorName1') || {}).value || '';
-                var priorP3B = (document.getElementById('p3_priorName2') || {}).value || '';
-                return which === 'A' ? (priorP1A || priorP1B || fullP1 || fullP3) : (priorP3A || priorP3B || priorP1A || fullP3);
-            }
-            if (branchId === 'sig') {
-                var sig = (document.getElementById('p3_signature') || {}).value || '';
-                return which === 'A' ? (fullP3 || fullP1 || fullP2) : (sig || fullP3 || fullP1);
-            }
-            if (branchId === 'consent') {
-                var dataUse = document.getElementById('p3_dataUseAck');
-                var ack = document.getElementById('p3_ack1');
-                return which === 'A'
-                    ? ((ack && ack.checked) ? 'Confirmed' : 'Not confirmed')
-                    : ((dataUse && dataUse.checked) ? 'Confirmed' : 'Not confirmed');
-            }
-            return '';
-        }
-
         function p3GoPage(n) {
-            p3SetBranchMode(false);
             // ── Branch gate: name mismatch (page 3 → 4) ──────────────────
             if (p3CurrentPage === 3 && n === 4 && !p3BranchFlags.nmChecked) {
                 p3BranchFlags.nmChecked = true;
                 var p3FN = (document.getElementById('p3_firstName') ? document.getElementById('p3_firstName').value.trim() : '');
                 var p3LN = (document.getElementById('p3_lastName')  ? document.getElementById('p3_lastName').value.trim()  : '');
-                var p3FullDisplay = p3BuildFullName(p3FN, p3LN);
-                var p3Full = p3FullDisplay.toLowerCase();
-                var p1FullDisplay = (document.getElementById('fullLegalName') ? document.getElementById('fullLegalName').value.trim() : '');
-                var p1Full = p1FullDisplay.toLowerCase();
+                var p3Full = (p3FN + ' ' + p3LN).replace(/\s+/g,' ').toLowerCase();
+                var p1Full = (document.getElementById('fullLegalName') ? document.getElementById('fullLegalName').value.trim().toLowerCase() : '');
                 if (p1Full && p3Full && p3Full.length > 1 && p1Full !== p3Full) {
                     girSet('nameMismatch', true);
                     girIncrement('inconsistencyCount');
-                    p3ShowBranch('nm', n, p1FullDisplay, p3FullDisplay);
+                    p3ShowBranch('nm', n, p1Full, p3Full);
                     return;
                 }
             }
             // ── Branch gate: address continuity (page 4 → 5) ─────────────
             if (p3CurrentPage === 4 && n === 5 && !p3BranchFlags.adChecked) {
                 p3BranchFlags.adChecked = true;
-                var p3AddrDisplay = (document.getElementById('p3_street') ? document.getElementById('p3_street').value.trim() : '');
-                var p1AddrDisplay = (document.getElementById('address')   ? document.getElementById('address').value.trim()   : '');
-                var p3Addr = p3AddrDisplay.toLowerCase();
-                var p1Addr = p1AddrDisplay.toLowerCase();
+                var p3Addr = (document.getElementById('p3_street') ? document.getElementById('p3_street').value.trim().toLowerCase() : '');
+                var p1Addr = (document.getElementById('address')   ? document.getElementById('address').value.trim().toLowerCase()   : '');
                 if (p1Addr && p3Addr && p1Addr.length > 3 && p3Addr.length > 3 && p1Addr !== p3Addr) {
                     girSet('addressContinuityGap', true);
                     girIncrement('inconsistencyCount');
-                    p3ShowBranch('ad', n, p1AddrDisplay, p3AddrDisplay);
+                    p3ShowBranch('ad', n, p1Addr, p3Addr);
                     return;
                 }
             }
             // ── Branch gate: prior names conflict (page 15 → 16) ─────────
             if (p3CurrentPage === 15 && n === 16 && !p3BranchFlags.psChecked) {
                 p3BranchFlags.psChecked = true;
-                var p3PriorDisplay = (document.getElementById('p3_priorName1') ? document.getElementById('p3_priorName1').value.trim() : '');
-                var p1Alt1Display  = (document.getElementById('p1_altName1')   ? document.getElementById('p1_altName1').value.trim()   : '');
-                var p1Alt2Display  = (document.getElementById('p1_altName2')   ? document.getElementById('p1_altName2').value.trim()   : '');
-                var p3Prior = p3PriorDisplay.toLowerCase();
-                var p1Alt1  = p1Alt1Display.toLowerCase();
-                var p1Alt2  = p1Alt2Display.toLowerCase();
+                var p3Prior = (document.getElementById('p3_priorName1') ? document.getElementById('p3_priorName1').value.trim().toLowerCase() : '');
+                var p1Alt1  = (document.getElementById('p1_altName1')   ? document.getElementById('p1_altName1').value.trim().toLowerCase()   : '');
+                var p1Alt2  = (document.getElementById('p1_altName2')   ? document.getElementById('p1_altName2').value.trim().toLowerCase()   : '');
                 if (p3Prior && p3Prior.length > 1 && p1Alt1 && p1Alt1.length > 1 && p3Prior !== p1Alt1 && p3Prior !== p1Alt2) {
                     girSet('priorSubmissionConflict', true);
                     girIncrement('inconsistencyCount');
-                    p3ShowBranch('ps', n, p1Alt1Display || p1Alt2Display, p3PriorDisplay);
+                    p3ShowBranch('ps', n, p1Alt1, p3Prior);
                     return;
                 }
             }
             // ── Branch gate: signature mismatch (page 17 → 18) ───────────
             if (p3CurrentPage === 17 && n === 18 && !p3BranchFlags.sigChecked) {
                 p3BranchFlags.sigChecked = true;
-                var sigValDisplay = (document.getElementById('p3_signature') ? document.getElementById('p3_signature').value.trim() : '');
-                var sigVal = sigValDisplay.toLowerCase();
-                var p3FN2  = (document.getElementById('p3_firstName') ? document.getElementById('p3_firstName').value.trim() : '');
-                var p3LN2  = (document.getElementById('p3_lastName')  ? document.getElementById('p3_lastName').value.trim()  : '');
-                var p3Full2Display = p3BuildFullName(p3FN2, p3LN2);
-                var p3Full2 = p3Full2Display.toLowerCase();
+                var sigVal = (document.getElementById('p3_signature') ? document.getElementById('p3_signature').value.trim().toLowerCase() : '');
+                var p3FN2  = (document.getElementById('p3_firstName') ? document.getElementById('p3_firstName').value.trim().toLowerCase() : '');
+                var p3LN2  = (document.getElementById('p3_lastName')  ? document.getElementById('p3_lastName').value.trim().toLowerCase()  : '');
+                var p3Full2 = (p3FN2 + ' ' + p3LN2).replace(/\s+/g,' ');
                 if (sigVal && p3Full2 && sigVal.length > 1 && sigVal !== p3Full2) {
                     girIncrement('inconsistencyCount');
-                    p3ShowBranch('sig', n, p3Full2Display, sigValDisplay);
+                    p3ShowBranch('sig', n, p3Full2, sigVal);
                     return;
                 }
             }
@@ -9196,7 +8141,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             }
             // ── Standard navigation ───────────────────────────────────────
             if (n < 1 || n > p3TotalPages) return;
-            document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
+            document.querySelectorAll('.p3-page').forEach(function(p) { p.classList.remove('active'); });
             var target = document.getElementById('p3Page' + n);
             if (target) target.classList.add('active');
             p3CurrentPage = n;
@@ -9211,26 +8156,12 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             if (nextBtn) nextBtn.textContent = n === p3TotalPages ? 'Submit Record' : 'Continue';
         }
 
-        function p3SetBranchMode(active) {
-            var body = document.querySelector('#phaseThreeOverlay .p3-body');
-            var footer = document.querySelector('#phaseThreeOverlay .p3-footer');
-            if (body) body.style.display = active ? 'none' : 'flex';
-            if (footer) footer.style.display = active ? 'none' : 'flex';
-        }
-
         function p3ShowBranch(branchId, resumePage, valA, valB) {
-            p3SetBranchMode(true);
             p3BranchResumePage = resumePage;
             var elA = document.getElementById('p3Branch_' + branchId + '_valA');
             var elB = document.getElementById('p3Branch_' + branchId + '_valB');
-            var a = p3DisplayValue(valA, p3GetBranchFallback(branchId, 'A'));
-            var b = p3DisplayValue(valB, p3GetBranchFallback(branchId, 'B'));
-            if (elA) elA.textContent = a;
-            if (elB) elB.textContent = b;
-            if (branchId === 'consent') {
-                var status = document.getElementById('p3Branch_consent_status');
-                if (status) status.textContent = (a === 'Confirmed' && b === 'Confirmed') ? 'Complete' : 'Partial';
-            }
+            if (elA) elA.textContent = valA || '(not recorded)';
+            if (elB) elB.textContent = valB || '(not recorded)';
             var refEl = document.getElementById('p3Branch_' + branchId + '_ref');
             if (refEl) refEl.textContent = 'GIR-' + branchId.toUpperCase() + '-' + Date.now().toString().slice(-6);
             document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
@@ -9239,12 +8170,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
         function p3ResumeBranch() {
-            var activeBranch = document.querySelector('.p3-branch-page.active');
-            if (activeBranch && activeBranch.id === 'p3PageBranch_ad' && !p3CheckedSelector('input[name="p3_adReason"]:checked')) {
-                showNotice('Select a basis for the address change before continuing.');
-                return;
-            }
-            p3SetBranchMode(false);
             var n = p3BranchResumePage || (p3CurrentPage + 1);
             p3BranchResumePage = null;
             document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
@@ -9265,9 +8190,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
         function p3Next() {
-            if (!p3ValidatePage(p3CurrentPage)) {
-                return;
-            }
             if (p3CurrentPage >= p3TotalPages) {
                 launchPhase4();
                 return;
@@ -9451,12 +8373,12 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                       '<div class="dm-footer">Posted for participant transparency &nbsp;&middot;&nbsp; Updated March 2026</div>'
             },
             statement: {
-                paper: 'academic',
+                paper: 'official',
                 html: '<div class="dm-agency">DEPARTMENT OF CIVIC STANDARDIZATION</div>' +
                       '<div class="dm-sub-agency">OFFICE OF ADMINISTRATIVE PROCESSING</div>' +
                       '<div class="dm-rule"></div>' +
-                      '<div class="dm-title">REGULATORY DISCLOSURE<br>AND COMPLIANCE NOTICE</div>' +
-                      '<div class="dm-sub-title">Re: General Information Record (GIR-03)  ·  Framework 7.4(c)</div>' +
+                      '<div class="dm-title">REQUIRED DISCLOSURE<br>PROGRAM STATEMENT</div>' +
+                      '<div class="dm-sub-title">Re: General Information Record (GIR-03)</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-body">' +
                       '<p>Pursuant to Regulatory Framework 7.4(c), applicants are advised that the General Information Record (GIR-03) constitutes a procedural mechanism within the administrative processing system maintained by this Department. The form and its associated intake process are designed to collect, standardize, and record applicant information in compliance with applicable data governance protocols.</p>' +
@@ -9464,9 +8386,10 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                       '<p>This office does not collect information beyond what is necessary for administrative purposes. All data is retained in accordance with departmental retention schedules. Records may be subject to review by authorized personnel.</p>' +
                       '<p>Questions regarding the purpose or scope of the GIR-03 should be directed in writing to the Office of Administrative Processing.</p>' +
                       '<div class="dm-compliance-block">COMPLIANCE NOTICE: Applicants are reminded that the act of engaging with administrative procedures may produce certain affective experiences, including but not limited to: frustration, confusion, self-doubt, and procedural fatigue. These experiences are within normal parameters and do not constitute grounds for appeal.</div>' +
+                      '<p class="dm-footnote"><sup>*</sup> This statement was prepared in accordance with Form OAP-RD-11 and reviewed by the Office of Regulatory Compliance. Theoretical frameworks informing administrative design include: Foucault (1977); Butler (1990); Graeber (2015); Spade (2015); Eubanks (2018); Bowker &amp; Star (1999); Scott (1998); Ahmed (2012); Hartman (1997).</p>' +
                       '</div>' +
                       '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; Posted for applicant transparency</div>'
+                      '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; NOT FOR DISTRIBUTION</div>'
             },
             memo: {
                 paper: 'memo',
@@ -9506,8 +8429,13 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">Form OAP-SN-2 (Rev. 03/2023) &nbsp;&middot;&nbsp; [POSTED: March 15, 2023]</div>'
             },
+            sticky: {
+                paper: 'sticky-lg',
+                html: '<p>Out at 2:15</p><p>Back by 2:45 (maybe)</p><p style="margin-top:12px;"> -  M</p>'
+            },
+
             abstract: {
-                paper: 'academic',
+                paper: 'memo',
                 html: '<div class="dm-agency" style="font-size:9px;letter-spacing:0.8px;">GIR-03: GENERAL INFORMATION RECORD</div>' +
                       '<div class="dm-sub-agency">Project Narrative  -  Submitted for Administrative Documentation</div>' +
                       '<div class="dm-sub-agency" style="font-style:italic;opacity:0.55;">OAP Internal Reference No. 2024-AR-007</div>' +
@@ -9536,27 +8464,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                       '</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">EOE/ADA · Form OAP-JD-2 (Rev. 2022) · Post until filled</div>'
-            },
-
-            events: {
-                paper: 'memo',
-                html: '<div class="dm-agency" style="font-size:8px;letter-spacing:0.8px;">DEPARTMENT OF PARKS AND RECREATION</div>' +
-                      '<div class="dm-sub-agency">Community Events Bulletin · Seasonal Programming</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-title" style="font-size:12px;">UPCOMING CITY EVENTS</div>' +
-                      '<div class="dm-body">' +
-                      '<p><strong>Tue 7:00 PM — Save JJ&#39;s / City Hall Listening Session</strong><br>Public comment period regarding the future of Lot 48 and any structure previously housing waffles of local significance.</p>' +
-                      '<p><strong>Wed 6:30 PM — The Pit Historical Overlook Walk</strong><br>Guided commemorative stroll tracing the excavation site, neighborhood memories, and the municipal paperwork that briefly transformed a hole into a destiny.</p>' +
-                      '<p><strong>Thu 8:00 PM — Mouserat at The Bulge</strong><br>One-night performance by Andy Dwyer&#39;s current band incarnation. Doors at 7:00 PM. Names of opening acts subject to change without notice.</p>' +
-                      '<p><strong>Fri 5:30 PM — Perd Hapley Moderates the Pawnee / Eagleton Civility Forum</strong><br>A discussion about local unity, followed by a brief statement clarifying that the discussion was, in fact, a discussion.</p>' +
-                      '<p><strong>Sat 9:00 AM — Cones of Dunshire Regional Qualifier</strong><br>Hosted at the Pawnee Commons rec annex. Farmers, mavericks, ledgermen, and arbiters welcome. Bring your own cones if possible.</p>' +
-                      '<p><strong>Sat 1:00 PM — Burt Macklin Jr. Crime Prevention Demonstration</strong><br>Hands-on family workshop covering perimeter checks, suspicious package awareness, and basic FBI-adjacent vigilance.</p>' +
-                      '<p><strong>Sat 7:30 PM — Johnny Karate Super Awesome Civic Spectacular</strong><br>Featuring games, life lessons, and at least one segment whose risk profile has not been fully reviewed by Legal.</p>' +
-                      '<p><strong>Sun 11:00 AM — Li&#39;l Sebastian Remembrance Ride</strong><br>Annual tribute loop through Ramsett Park, concluding with a moment of silence and a very small commemorative cone.</p>' +
-                      '<p><strong>Sun 4:00 PM — Sweetums Community Wellness Expo</strong><br>Free samples, preventive screenings, and literature affirming the company&#39;s ongoing commitment to public health.</p>' +
-                      '</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">Posted in cooperation with the Parks Department, the Chamber of Commerce, and whichever band Andy is in this month.</div>'
             },
 
             feedback: {
@@ -9599,116 +8506,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             if (event.target === document.getElementById('docModal')) {
                 closeBulletinDoc();
             }
-        }
-
-        function randomizeBulletinCards() {
-            var board = document.querySelector('#bulletinOverlay .corkboard');
-            if (!board) return;
-            var cards = Array.from(board.querySelectorAll('.pinned-doc')).filter(function(card) {
-                return !card.classList.contains('board-static');
-            });
-            if (!cards.length) return;
-
-            var boardW = board.clientWidth;
-            var boardH = board.clientHeight;
-            var margin = 12;
-            var reservedZones = [
-                // Ticket dispenser area (bottom-right)
-                { x: boardW - 138, y: boardH - 124, w: 128, h: 114 },
-                // Fixed red reminder card area (upper-left)
-                { x: 8, y: 8, w: 244, h: 126 }
-            ];
-
-            var slotCenters = [
-                { x: Math.round(boardW * 0.39), y: Math.round(boardH * 0.16) },
-                { x: Math.round(boardW * 0.58), y: Math.round(boardH * 0.17) },
-                { x: Math.round(boardW * 0.79), y: Math.round(boardH * 0.18) },
-                { x: Math.round(boardW * 0.17), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.39), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.60), y: Math.round(boardH * 0.46) },
-                { x: Math.round(boardW * 0.82), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.21), y: Math.round(boardH * 0.73) },
-                { x: Math.round(boardW * 0.45), y: Math.round(boardH * 0.73) },
-                { x: Math.round(boardW * 0.70), y: Math.round(boardH * 0.74) }
-            ];
-
-            function shuffle(list) {
-                for (var i = list.length - 1; i > 0; i -= 1) {
-                    var j = Math.floor(Math.random() * (i + 1));
-                    var t = list[i];
-                    list[i] = list[j];
-                    list[j] = t;
-                }
-                return list;
-            }
-
-            function clamp(v, min, max) {
-                return Math.max(min, Math.min(max, v));
-            }
-
-            function overlapArea(a, b) {
-                var xOverlap = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x));
-                var yOverlap = Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
-                return xOverlap * yOverlap;
-            }
-
-            function intersects(a, b, pad) {
-                pad = pad || 0;
-                return !(
-                    a.x + a.w + pad <= b.x ||
-                    b.x + b.w + pad <= a.x ||
-                    a.y + a.h + pad <= b.y ||
-                    b.y + b.h + pad <= a.y
-                );
-            }
-
-            var placedRects = [];
-            var centers = shuffle(slotCenters.slice());
-            var orderedCards = shuffle(cards.slice());
-
-            orderedCards.forEach(function(card, idx) {
-                var w = Math.max(110, card.offsetWidth || 160);
-                var h = Math.max(70, card.offsetHeight || 100);
-                var slot = centers[idx % centers.length];
-                var maxLeft = Math.max(margin, boardW - w - margin);
-                var maxTop = Math.max(margin, boardH - h - margin);
-
-                var best = null;
-                for (var t = 0; t < 40; t += 1) {
-                    var jitterX = Math.round((Math.random() * 20) - 10);
-                    var jitterY = Math.round((Math.random() * 14) - 7);
-                    var left = clamp(slot.x - Math.round(w / 2) + jitterX, margin, maxLeft);
-                    var top = clamp(slot.y - Math.round(h / 2) + jitterY, margin, maxTop);
-                    var rect = { x: left, y: top, w: w, h: h };
-
-                    var blocked = false;
-                    var score = 0;
-                    reservedZones.forEach(function(zone) {
-                        if (intersects(rect, zone, 10)) blocked = true;
-                        score += overlapArea(rect, zone) * 8;
-                    });
-                    placedRects.forEach(function(prev) {
-                        if (intersects(rect, prev, 18)) blocked = true;
-                        score += overlapArea(rect, prev) * 5;
-                    });
-
-                    if (blocked) {
-                        score += 100000;
-                    }
-
-                    if (!best || score < best.score) {
-                        best = { rect: rect, score: score };
-                    }
-                    if (score === 0) break;
-                }
-
-                var chosen = best ? best.rect : { x: margin, y: margin, w: w, h: h };
-                var rotation = (Math.random() * 8 - 4).toFixed(1);
-                card.style.left = chosen.x + 'px';
-                card.style.top = chosen.y + 'px';
-                card.style.transform = 'rotate(' + rotation + 'deg)';
-                placedRects.push(chosen);
-            });
         }
 
         function takeTicket() {
@@ -9774,25 +8571,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
     <!-- ── PHASE II: Year 2000 Web Interface ────────────────────────────── -->
     <div class="preform-overlay" id="phaseTwoOverlay">
-        <div class="p2-desktop-shortcut" onclick="p2OpenMinesweeper()">
-            <div class="p2-ms-icon-art" aria-hidden="true"></div>
-            <div class="p2-desktop-label">Minesweeper</div>
-        </div>
-        <div id="p2MinesweeperWindow" aria-hidden="true">
-            <div class="p2-ms-titlebar">
-                <span>Minesweeper</span>
-                <button class="p2-ms-close" onclick="p2CloseMinesweeper()" aria-label="Close Minesweeper">&#10005;</button>
-            </div>
-            <div class="p2-ms-inner">
-                <div class="p2-ms-hud">
-                    <span>Mines: <span class="p2-ms-counter" id="p2MsMinesLeft">10</span></span>
-                    <span>Time: <span class="p2-ms-counter" id="p2MsTimer">0</span></span>
-                    <button class="p2-ms-new-btn" onclick="p2NewMinesweeperGame()">New</button>
-                </div>
-                <div class="p2-ms-status" id="p2MsStatus">Click a square to begin.</div>
-                <div class="p2-ms-board" id="p2MsBoard"></div>
-            </div>
-        </div>
         <div class="ie-window">
             <!-- Title Bar -->
             <div class="ie-titlebar">
@@ -10427,18 +9205,17 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 <div class="pt-oap-sub">Office of Administrative Processing</div>
             </div>
             <div class="pt-email-meta">
-                <div class="pt-email-subject" id="pt-subject">ACTION REQUIRED &mdash; Periodic Recertification of General Information Record</div>
+                <div class="pt-email-subject">ACTION REQUIRED &mdash; Periodic Recertification of General Information Record</div>
                 <div class="pt-email-from">From: <span>no-reply@oap.gov</span> &nbsp;&middot;&nbsp; To: <span id="pt-recipient">Record Holder</span> &nbsp;&middot;&nbsp; <span style="font-style:italic;" id="pt-ref-num">Ref: GIR-——</span></div>
             </div>
             <div class="pt-email-body">
-                <p id="pt-body-intro">This is an automated notice from the Office of Administrative Processing.</p>
-                <p id="pt-body-migration">Our records indicate that your General Information Record (GIR) was submitted through our in-office intake process. As part of the Department&rsquo;s ongoing commitment to modernizing administrative services, all legacy records have been migrated to the OAP Online Portal.</p>
-                <div class="pt-notice-block" id="pt-notice-block">
+                <p>This is an automated notice from the Office of Administrative Processing.</p>
+                <p>Our records indicate that your General Information Record (GIR) was submitted through our in-office intake process. As part of the Department&rsquo;s ongoing commitment to modernizing administrative services, all legacy records have been migrated to the OAP Online Portal.</p>
+                <div class="pt-notice-block">
                     Periodic recertification of your General Information Record is now required. Records not recertified within the applicable review window may be placed in inactive status pending further action.
                 </div>
-                <p id="pt-body-action">You may complete this process from any internet-connected device at your convenience. There is no need to visit our offices in person. The OAP Online Portal is available 24 hours a day, 7 days a week.</p>
-                <ul class="pt-branch-list hidden" id="pt-branch-list"></ul>
-                <p id="pt-body-close">Your record has been pre-populated where prior data is available. Some fields may require re-entry due to format changes introduced during system migration. Please review all sections carefully before submitting.</p>
+                <p>You may complete this process from any internet-connected device at your convenience. There is no need to visit our offices in person. The OAP Online Portal is available 24 hours a day, 7 days a week.</p>
+                <p>Your record has been pre-populated where prior data is available. Some fields may require re-entry due to format changes introduced during system migration. Please review all sections carefully before submitting.</p>
             </div>
             <div class="pt-email-footer">
                 <button class="pt-cta-btn" onclick="startPhaseThree()">Access Your Record &rarr;</button>
@@ -10695,9 +9472,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         <div class="p3-header-title">General Information Record  -  GIR-2024</div>
         <div class="p3-header-sep"></div>
         <div class="p3-header-tag">BETA</div>
-        <div id="devPanel">
-            <button id="devToggle" onclick="devToggleMenu(event)" aria-expanded="false" aria-controls="devMenu">DEV</button>
-        </div>
     </div>
     <div class="p3-progress-bar-wrap">
         <div class="p3-progress-bar-fill" id="p3ProgressBar" style="width:5%;"></div>
@@ -11442,14 +10216,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 <div class="p3-branch-body">
                     <p>You have not confirmed the data use acknowledgment required to proceed with this submission. This has been recorded in your submission record.</p>
                     <p>Proceeding without acknowledgment does not exempt your submission from the data collection and processing practices described. All submissions are subject to the Office of Administrative Processing data governance policy regardless of applicant acknowledgment status.</p>
-                </div>
-                <table class="p3-branch-table">
-                    <tr><th>Field</th><th>Value</th></tr>
-                    <tr><td>Section A acknowledgment</td><td id="p3Branch_consent_valA">&mdash;</td></tr>
-                    <tr><td>Data use acknowledgment</td><td id="p3Branch_consent_valB">&mdash;</td></tr>
-                    <tr><td>Recorded consent state</td><td><strong id="p3Branch_consent_status">Partial</strong></td></tr>
-                </table>
-                <div class="p3-branch-body">
                     <p>Your submission record has been flagged as: <strong>Consent &mdash; Partial</strong>.</p>
                 </div>
             </div>
@@ -11489,13 +10255,6 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             <div id="p4FlagsContainer">
                 <div class="p4-flag-row"><div class="p4-flag-dot p4-flag-green"></div><span>No flags loaded</span></div>
             </div>
-        </div>
-
-        <div class="p4-section">
-            <div class="p4-section-title">Journey Narrative</div>
-            <p class="p4-journey-lead" id="p4JourneyLead">—</p>
-            <div class="p4-journey-list" id="p4JourneyList"></div>
-            <div class="p4-journey-outcome" id="p4JourneyOutcome">—</div>
         </div>
 
         <!-- Record Actions -->
@@ -11560,33 +10319,37 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
     </div>
 </div>
 
-<div id="devMenu">
-    <div id="devDynamicSections"></div>
+<!-- DEV PANEL -->
+<div id="devPanel">
+    <button id="devToggle" onclick="document.getElementById('devMenu').classList.toggle('open')">⚙ DEV NAV ▲</button>
+    <div id="devMenu">
+        <div id="devDynamicSections"></div>
 
-    <div class="dev-section">Branch Scenarios</div>
-    <button class="dev-btn" onclick="devPresetBranch('nm')">Branch: Name Mismatch</button>
-    <button class="dev-btn" onclick="devPresetBranch('ad')">Branch: Address Continuity</button>
-    <button class="dev-btn" onclick="devPresetBranch('ps')">Branch: Prior Names Conflict</button>
-    <button class="dev-btn" onclick="devPresetBranch('sig')">Branch: Signature Mismatch</button>
-    <button class="dev-btn" onclick="devPresetBranch('consent')">Branch: Data Use Incomplete</button>
+        <div class="dev-section">Branch Scenarios</div>
+        <button class="dev-btn" onclick="devPresetBranch('nm')">Branch: Name Mismatch</button>
+        <button class="dev-btn" onclick="devPresetBranch('ad')">Branch: Address Continuity</button>
+        <button class="dev-btn" onclick="devPresetBranch('ps')">Branch: Prior Names Conflict</button>
+        <button class="dev-btn" onclick="devPresetBranch('sig')">Branch: Signature Mismatch</button>
+        <button class="dev-btn" onclick="devPresetBranch('consent')">Branch: Data Use Incomplete</button>
 
-    <div class="dev-section">Outcome Previews</div>
-    <button class="dev-btn" onclick="devPreviewOutcome('approved')">Outcome: Approved</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('conditional')">Outcome: Conditional</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('flagged')">Outcome: Flagged</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('returned')">Outcome: Returned</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('exodus')">Outcome: Exodus Glitch</button>
+        <div class="dev-section">Outcome Previews</div>
+        <button class="dev-btn" onclick="devPreviewOutcome('approved')">Outcome: Approved</button>
+        <button class="dev-btn" onclick="devPreviewOutcome('conditional')">Outcome: Conditional</button>
+        <button class="dev-btn" onclick="devPreviewOutcome('flagged')">Outcome: Flagged</button>
+        <button class="dev-btn" onclick="devPreviewOutcome('returned')">Outcome: Returned</button>
+        <button class="dev-btn" onclick="devPreviewOutcome('exodus')">Outcome: Exodus Glitch</button>
 
-    <div class="dev-section">Actions</div>
-    <button class="dev-btn" onclick="devBuildPageMenu()">Refresh Page Lists</button>
-    <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
-    <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
-    <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
-    <button class="dev-btn" onclick="devResetSignals()">Reset GIR Signals Only</button>
-    <button class="dev-btn" onclick="devResetLoopback()">Reset Loopback Gate</button>
-    <button class="dev-btn" onclick="devCopyGIRSnapshot()">Copy GIR Snapshot</button>
-    <button class="dev-btn dev-btn-danger" onclick="localStorage.clear();location.reload()">⟳ Clear + Reload</button>
-    <button class="dev-btn" onclick="location.reload()">⟳ Reload Only</button>
+        <div class="dev-section">Actions</div>
+        <button class="dev-btn" onclick="devBuildPageMenu()">Refresh Page Lists</button>
+        <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
+        <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
+        <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
+        <button class="dev-btn" onclick="devResetSignals()">Reset GIR Signals Only</button>
+        <button class="dev-btn" onclick="devResetLoopback()">Reset Loopback Gate</button>
+        <button class="dev-btn" onclick="devCopyGIRSnapshot()">Copy GIR Snapshot</button>
+        <button class="dev-btn dev-btn-danger" onclick="localStorage.clear();location.reload()">⟳ Clear + Reload</button>
+        <button class="dev-btn" onclick="location.reload()">⟳ Reload Only</button>
+    </div>
 </div>
 
 
@@ -11612,63 +10375,28 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
 <script>
 (function() {
-    function syncDevMenuState() {
-        var menu = document.getElementById('devMenu');
-        var toggle = document.getElementById('devToggle');
-        var isOpen = !!(menu && menu.classList.contains('open'));
-        if (toggle) {
-            toggle.classList.toggle('is-open', isOpen);
-            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        }
-    }
-
-    window.devToggleMenu = function(event) {
-        if (event) event.stopPropagation();
-        var menu = document.getElementById('devMenu');
-        if (!menu) return;
-        menu.classList.toggle('open');
-        syncDevMenuState();
-    };
-
-    window.devCloseMenu = function() {
-        var menu = document.getElementById('devMenu');
-        if (!menu) return;
-        menu.classList.remove('open');
-        syncDevMenuState();
-    };
-
-    function initDevMenu() {
-        var menu = document.getElementById('devMenu');
-        if (!menu) return;
-        syncDevMenuState();
+    function mountDevPanel() {
+        var panel = document.getElementById('devPanel');
+        if (!panel) return;
+        // Move to <html> element so body overflow/stacking cannot affect it
+        document.documentElement.appendChild(panel);
+        // Force style directly  -  bypasses all CSS cascade
+        panel.style.cssText = [
+            'position:fixed',
+            'bottom:16px',
+            'right:16px',
+            'z-index:2147483647',
+            'display:block',
+            'min-width:120px',
+            'font-family:monospace',
+            'font-size:11px'
+        ].join(';');
         if (typeof devBuildPageMenu === 'function') devBuildPageMenu();
-
-        var observer = new MutationObserver(function() {
-            syncDevMenuState();
-        });
-        observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
-
-        document.addEventListener('click', function(event) {
-            var toggle = document.getElementById('devToggle');
-            if (!menu.classList.contains('open')) return;
-            if (menu.contains(event.target)) return;
-            if (toggle && toggle.contains(event.target)) return;
-            menu.classList.remove('open');
-            syncDevMenuState();
-        });
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && menu.classList.contains('open')) {
-                menu.classList.remove('open');
-                syncDevMenuState();
-            }
-        });
     }
-
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initDevMenu);
+        document.addEventListener('DOMContentLoaded', mountDevPanel);
     } else {
-        initDevMenu();
+        mountDevPanel();
     }
 })();
 
@@ -11773,57 +10501,6 @@ function p4Populate() {
     document.getElementById('p4FlagsContainer').innerHTML = flags.map(function(f) {
         return '<div class="p4-flag-row"><div class="p4-flag-dot p4-flag-' + f.c + '"></div><span>' + f.t + '</span></div>';
     }).join('');
-
-    var journeyLeadMap = {
-        approved: 'Your record moved through the full administrative lifecycle with no blocking interruptions.',
-        conditional: 'Your record progressed through intake and migration, but conditional markers shaped the downstream path.',
-        flagged: 'Your record progressed, then entered an elevated-review trajectory due to continuity and reliability indicators.',
-        returned: 'Your record entered the system but was redirected into corrective workflow before final acceptance.'
-    };
-    var journeyOutcomeMap = {
-        approved: 'Final journey state: accepted for standard processing. Record remains active under routine review intervals.',
-        conditional: 'Final journey state: accepted with conditions. Follow-up review may request clarifications or supplemental documentation.',
-        flagged: 'Final journey state: flagged for administrative review. Processing continues in a manual adjudication lane.',
-        returned: 'Final journey state: returned for corrective action. A new compliant submission is required to resume routing.'
-    };
-    var journeySteps = [];
-    journeySteps.push('Form 1 (paper intake): submission entered through in-person processing with manual review and initial attestation.');
-    if ((GIR.missingDataCount || 0) > 0) {
-        journeySteps.push('Form 1 carried forward with ' + GIR.missingDataCount + ' documented missing-data indicator(s).');
-    }
-    journeySteps.push('Form 2 (legacy portal): record digitized, standardized, and routed through compatibility and validation checks.');
-    if ((GIR.correctionCycleCount || 0) > 0) {
-        journeySteps.push('Legacy processing required ' + GIR.correctionCycleCount + ' correction-cycle iteration(s) before downstream routing.');
-    }
-    if (GIR.nameMismatch) {
-        journeySteps.push('Branch NM: identity continuity review was triggered by conflicting legal-name entries across submission layers.');
-    }
-    if (GIR.addressContinuityGap) {
-        journeySteps.push('Branch AD: jurisdictional address continuity review was triggered by divergence in residence records.');
-    }
-    if (GIR.priorSubmissionConflict) {
-        journeySteps.push('Branch PS: prior-name / prior-identifier reconciliation branch was triggered for manual review.');
-    }
-    if (GIR.consentPartial || !GIR.p3DataUseAccepted) {
-        journeySteps.push('Branch CONSENT: data-use acknowledgment state did not fully carry forward and required renewed confirmation.');
-    }
-    if ((GIR.inconsistencyCount || 0) >= 2) {
-        journeySteps.push('Branch SIG: elevated signature/attestation reliability checks were applied due to cumulative cross-record inconsistencies.');
-    }
-    if (!GIR.nameMismatch && !GIR.addressContinuityGap && !GIR.priorSubmissionConflict && !(GIR.consentPartial || !GIR.p3DataUseAccepted) && (GIR.inconsistencyCount || 0) < 2) {
-        journeySteps.push('No branch disruptions were recorded during this submission cycle; routing remained in the standard lane.');
-    }
-
-    var journeyLead = document.getElementById('p4JourneyLead');
-    if (journeyLead) journeyLead.textContent = journeyLeadMap[d] || journeyLeadMap.conditional;
-    var journeyList = document.getElementById('p4JourneyList');
-    if (journeyList) {
-        journeyList.innerHTML = journeySteps.map(function(step, idx) {
-            return '<div class="p4-journey-item"><strong>Stage ' + (idx + 1) + '.</strong> ' + step + '</div>';
-        }).join('');
-    }
-    var journeyOutcome = document.getElementById('p4JourneyOutcome');
-    if (journeyOutcome) journeyOutcome.textContent = journeyOutcomeMap[d] || journeyOutcomeMap.conditional;
 
     // Show appeal section for flagged/returned
     if (d === 'flagged' || d === 'returned') {
