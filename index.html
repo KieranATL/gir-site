@@ -1171,6 +1171,35 @@
             border-color: #dbeafe;
             color: #fff;
         }
+        #devQuickToggle {
+            position: fixed;
+            top: 10px;
+            right: 12px;
+            z-index: 9302;
+            background: rgba(8,16,30,0.94);
+            color: #9ef89e;
+            border: 1px solid rgba(74,222,128,0.75);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+            transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+        }
+        #devQuickToggle:hover {
+            background: rgba(22,32,56,0.98);
+            color: #fff;
+            border-color: #bbf7d0;
+        }
+        #devQuickToggle.is-open {
+            background: rgba(21,95,63,0.95);
+            color: #f0fdf4;
+            border-color: #86efac;
+        }
         #devMenu {
             position: fixed;
             top: 60px;
@@ -1236,6 +1265,11 @@
                 gap: 10px;
             }
             #devToggle {
+                padding: 4px 10px;
+            }
+            #devQuickToggle {
+                top: 8px;
+                right: 8px;
                 padding: 4px 10px;
             }
         }
@@ -6022,7 +6056,7 @@ const GIR = {
     missingDataCount: 0, inconsistencyCount: 0, correctionCycleCount: 0,
     blankRequiredPages: [], p1Signed: false, p1NameValue: '', p1AddressValue: '', p1DobValue: '',
     p2Completed: false, p2LegalHistory: null, p2ForeignContacts: null, p2MentalHealth: null, p2Attested: false,
-    nameMismatch: false, addressContinuityGap: false, priorSubmissionConflict: false,
+    nameMismatch: false, addressContinuityGap: false, priorSubmissionConflict: false, signatureMismatch: false,
     classificationConflict: false, documentationInsufficient: false, highFrictionPath: false,
     consentPartial: false, p3AcknowledgmentAccepted: false, p3DataUseAccepted: false, p3Signed: false,
     adminScore: null, finalDisposition: null, finalPath: 'bureaucratic', exodusUnlocked: false, exodusTrace: [],
@@ -6044,6 +6078,7 @@ function girComputeOutcome() {
     if (GIR.nameMismatch) score -= 15;
     if (GIR.addressContinuityGap) score -= 8;
     if (GIR.priorSubmissionConflict) score -= 10;
+    if (GIR.signatureMismatch) score -= 7;
     if (GIR.documentationInsufficient) score -= 10;
     if (!GIR.p1Signed) score -= 20;
     if (!GIR.p2Attested) score -= 10;
@@ -6060,6 +6095,7 @@ function girComputeOutcome() {
     if (GIR.nameMismatch) conflictSignals += 1;
     if (GIR.addressContinuityGap) conflictSignals += 1;
     if (GIR.priorSubmissionConflict) conflictSignals += 1;
+    if (GIR.signatureMismatch) conflictSignals += 1;
     if (GIR.consentPartial || !GIR.p3DataUseAccepted) conflictSignals += 1;
     if (GIR.p2LegalHistory && GIR.p2LegalHistory !== 'none') conflictSignals += 1;
 
@@ -6077,6 +6113,7 @@ function girComputeOutcome() {
     if (GIR.nameMismatch) trace.push('name continuity failure across submission layers');
     if (GIR.addressContinuityGap) trace.push('address continuity unresolved across records');
     if (GIR.priorSubmissionConflict) trace.push('prior-identifier reconciliation failed');
+    if (GIR.signatureMismatch) trace.push('signature continuity mismatch in attestation layer');
     if (GIR.inconsistencyCount >= 2) trace.push('repeated cross-record contradiction events');
     if (GIR.consentPartial || !GIR.p3DataUseAccepted) trace.push('consent state contested by applicant input');
     if (GIR.correctionCycleCount >= 1) trace.push('manual correction loop exceeded stable threshold');
@@ -8262,6 +8299,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 if (p3fn) devSetFieldValue(p3fn, 'Jordan');
                 if (p3ln) devSetFieldValue(p3ln, 'Riley');
                 if (sig) devSetFieldValue(sig, c.b);
+                girSet('signatureMismatch', true);
                 girIncrement('inconsistencyCount');
             }
             if (branchId === 'consent') {
@@ -8299,6 +8337,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 nameMismatch: false,
                 addressContinuityGap: false,
                 priorSubmissionConflict: false,
+                signatureMismatch: false,
                 consentPartial: false,
                 p3DataUseAccepted: true,
                 p3Signed: true,
@@ -8317,6 +8356,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 GIR.nameMismatch = true;
                 GIR.addressContinuityGap = true;
                 GIR.priorSubmissionConflict = true;
+                GIR.signatureMismatch = true;
                 GIR.consentPartial = true;
                 GIR.p3DataUseAccepted = false;
                 GIR.adminScore = 31;
@@ -8425,7 +8465,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 missingDataCount: 0, inconsistencyCount: 0, correctionCycleCount: 0,
                 blankRequiredPages: [], p1Signed: false, p1NameValue: '', p1AddressValue: '', p1DobValue: '',
                 p2Completed: false, p2LegalHistory: null, p2ForeignContacts: null, p2MentalHealth: null, p2Attested: false,
-                nameMismatch: false, addressContinuityGap: false, priorSubmissionConflict: false,
+                nameMismatch: false, addressContinuityGap: false, priorSubmissionConflict: false, signatureMismatch: false,
                 classificationConflict: false, documentationInsufficient: false, highFrictionPath: false,
                 consentPartial: false, p3AcknowledgmentAccepted: false, p3DataUseAccepted: false, p3Signed: false,
                 adminScore: null, finalDisposition: null, finalPath: 'bureaucratic', exodusUnlocked: false, exodusTrace: []
@@ -8683,10 +8723,10 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             if (GIR.priorSubmissionConflict) {
                 branchItems.push('Prior submission branch (PS): historical identifiers or prior-name records could not be fully reconciled. Review prior name declarations before submission.');
             }
-            if (GIR.consentPartial || !GIR.p3DataUseAccepted) {
+            if (GIR.consentPartial) {
                 branchItems.push('Data-use branch (CONSENT): prior acknowledgment state is incomplete in archived records. Updated consent confirmation is required for standard routing.');
             }
-            if ((GIR.inconsistencyCount || 0) >= 2 || (GIR.correctionCycleCount || 0) >= 1) {
+            if (GIR.signatureMismatch || (GIR.inconsistencyCount || 0) >= 2 || (GIR.correctionCycleCount || 0) >= 1) {
                 branchItems.push('Signature/attestation branch (SIG): attestation reliability controls are elevated for this cycle. Signature consistency checks will run during recertification.');
             }
 
@@ -9178,6 +9218,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 var p3Full2Display = p3BuildFullName(p3FN2, p3LN2);
                 var p3Full2 = p3Full2Display.toLowerCase();
                 if (sigVal && p3Full2 && sigVal.length > 1 && sigVal !== p3Full2) {
+                    girSet('signatureMismatch', true);
                     girIncrement('inconsistencyCount');
                     p3ShowBranch('sig', n, p3Full2Display, sigValDisplay);
                     return;
@@ -11560,6 +11601,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
     </div>
 </div>
 
+<button id="devQuickToggle" onclick="devToggleMenu(event)" aria-expanded="false" aria-controls="devMenu">DEV NAV</button>
 <div id="devMenu">
     <div id="devDynamicSections"></div>
 
@@ -11612,14 +11654,17 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
 <script>
 (function() {
+    function getDevToggles() {
+        return [document.getElementById('devToggle'), document.getElementById('devQuickToggle')].filter(Boolean);
+    }
+
     function syncDevMenuState() {
         var menu = document.getElementById('devMenu');
-        var toggle = document.getElementById('devToggle');
         var isOpen = !!(menu && menu.classList.contains('open'));
-        if (toggle) {
+        getDevToggles().forEach(function(toggle) {
             toggle.classList.toggle('is-open', isOpen);
             toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        }
+        });
     }
 
     window.devToggleMenu = function(event) {
@@ -11649,10 +11694,10 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
 
         document.addEventListener('click', function(event) {
-            var toggle = document.getElementById('devToggle');
+            var toggles = getDevToggles();
             if (!menu.classList.contains('open')) return;
             if (menu.contains(event.target)) return;
-            if (toggle && toggle.contains(event.target)) return;
+            if (toggles.some(function(toggle) { return toggle.contains(event.target); })) return;
             menu.classList.remove('open');
             syncDevMenuState();
         });
@@ -11761,6 +11806,7 @@ function p4Populate() {
     if (GIR.nameMismatch)                   flags.push({c:'red',    t:'Name discrepancy detected between Form 1 and Form 2 entries'});
     if (GIR.addressContinuityGap)           flags.push({c:'yellow', t:'Address continuity gap identified'});
     if (GIR.priorSubmissionConflict)        flags.push({c:'red',    t:'Prior submission conflict requires reconciliation'});
+    if (GIR.signatureMismatch)             flags.push({c:'yellow', t:'Signature mismatch detected during attestation verification'});
     if (GIR.inconsistencyCount >= 2)        flags.push({c:'red',    t:'Multiple cross-reference inconsistencies flagged'});
     if (GIR.correctionCycleCount >= 2)      flags.push({c:'yellow', t:'Elevated correction cycle count — record reliability indicator'});
     if (!GIR.p1Signed)                      flags.push({c:'yellow', t:'Form 1 attestation not confirmed'});
@@ -11804,13 +11850,13 @@ function p4Populate() {
     if (GIR.priorSubmissionConflict) {
         journeySteps.push('Branch PS: prior-name / prior-identifier reconciliation branch was triggered for manual review.');
     }
-    if (GIR.consentPartial || !GIR.p3DataUseAccepted) {
+    if (GIR.consentPartial) {
         journeySteps.push('Branch CONSENT: data-use acknowledgment state did not fully carry forward and required renewed confirmation.');
     }
-    if ((GIR.inconsistencyCount || 0) >= 2) {
+    if (GIR.signatureMismatch || (GIR.inconsistencyCount || 0) >= 2) {
         journeySteps.push('Branch SIG: elevated signature/attestation reliability checks were applied due to cumulative cross-record inconsistencies.');
     }
-    if (!GIR.nameMismatch && !GIR.addressContinuityGap && !GIR.priorSubmissionConflict && !(GIR.consentPartial || !GIR.p3DataUseAccepted) && (GIR.inconsistencyCount || 0) < 2) {
+    if (!GIR.nameMismatch && !GIR.addressContinuityGap && !GIR.priorSubmissionConflict && !GIR.signatureMismatch && !GIR.consentPartial && (GIR.inconsistencyCount || 0) < 2) {
         journeySteps.push('No branch disruptions were recorded during this submission cycle; routing remained in the standard lane.');
     }
 
