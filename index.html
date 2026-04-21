@@ -4560,7 +4560,7 @@
         <div class="corkboard">
 
             <!-- Doc 1: Applicant Notice (large, center-left) -->
-            <div class="pinned-doc" style="top:26px;left:26px;transform:rotate(-1.5deg);" onclick="openBulletinDoc('notice')">
+            <div class="pinned-doc" style="top:28px;left:246px;transform:rotate(-1.5deg);" onclick="openBulletinDoc('notice')">
                 <div class="bpin bpin-red"></div>
                 <div class="doc-face official" style="width:198px;">
                     <div class="doc-dhead">DEPT. OF CIVIC STANDARDIZATION</div>
@@ -4570,7 +4570,7 @@
             </div>
 
             <!-- Doc 2: Program Statement (easter egg) -->
-            <div class="pinned-doc" style="top:20px;left:262px;transform:rotate(1.8deg);" onclick="openBulletinDoc('statement')">
+            <div class="pinned-doc" style="top:44px;left:454px;transform:rotate(1.8deg);" onclick="openBulletinDoc('statement')">
                 <div class="bpin bpin-blue"></div>
                 <div class="doc-face official academic" style="width:192px;">
                     <div class="doc-dhead">ADMINISTRATIVE RECORD STANDARDS DIV.</div>
@@ -4580,7 +4580,7 @@
             </div>
 
             <!-- Doc 3: Staff Memo (accidentally public) -->
-            <div class="pinned-doc" style="top:244px;left:42px;transform:rotate(0.9deg);" onclick="openBulletinDoc('memo')">
+            <div class="pinned-doc" style="top:212px;left:36px;transform:rotate(0.9deg);" onclick="openBulletinDoc('memo')">
                 <div class="bpin bpin-ivory"></div>
                 <div class="doc-face memo" style="width:184px;">
                     <div class="doc-dhead">INTERNAL MEMORANDUM  -  STAFF ONLY</div>
@@ -4590,7 +4590,7 @@
             </div>
 
             <!-- Doc 4: Superseded notice (yellowed) -->
-            <div class="pinned-doc" style="top:234px;left:352px;transform:rotate(-2.1deg);" onclick="openBulletinDoc('superseded')">
+            <div class="pinned-doc" style="top:222px;left:248px;transform:rotate(-2.1deg);" onclick="openBulletinDoc('superseded')">
                 <div class="bpin bpin-green"></div>
                 <div class="doc-face aged" style="width:176px;">
                     <div class="doc-dhead">NOTICE [SUPERSEDED  -  FOR REFERENCE ONLY]</div>
@@ -4600,7 +4600,7 @@
             </div>
 
             <!-- Doc 6: Project Narrative (actual abstract) -->
-            <div class="pinned-doc" style="top:296px;left:218px;transform:rotate(-0.7deg);" onclick="openBulletinDoc('abstract')">
+            <div class="pinned-doc" style="top:218px;left:466px;transform:rotate(-0.7deg);" onclick="openBulletinDoc('abstract')">
                 <div class="bpin bpin-ivory"></div>
                 <div class="doc-face memo academic" style="width:195px;">
                     <div class="doc-dhead" style="font-size:6px;letter-spacing:0.6px;">GIR-03: GENERAL INFORMATION RECORD</div>
@@ -4610,7 +4610,7 @@
             </div>
 
             <!-- Doc 7: Help Wanted -->
-            <div class="pinned-doc" style="top:308px;left:492px;transform:rotate(1.9deg);" onclick="openBulletinDoc('helpwanted')">
+            <div class="pinned-doc" style="top:286px;left:612px;transform:rotate(1.9deg);" onclick="openBulletinDoc('helpwanted')">
                 <div class="bpin bpin-red"></div>
                 <div class="doc-face official" style="width:148px;">
                     <div class="doc-dhead">POSITION ANNOUNCEMENT</div>
@@ -4620,7 +4620,7 @@
             </div>
 
             <!-- Doc 8: Applicant Feedback (easter egg) -->
-            <div class="pinned-doc" style="top:152px;left:656px;transform:rotate(-2.3deg);" onclick="openBulletinDoc('feedback')">
+            <div class="pinned-doc" style="top:176px;left:668px;transform:rotate(-2.3deg);" onclick="openBulletinDoc('feedback')">
                 <div class="bpin bpin-green"></div>
                 <div class="doc-face aged" style="width:130px;">
                     <div class="doc-dhead">APPLICANT FEEDBACK FORM</div>
@@ -4630,7 +4630,7 @@
             </div>
 
             <!-- Doc 9: Experience Privacy Notice (read first) -->
-            <div class="pinned-doc" style="top:72px;left:470px;transform:rotate(-4.2deg);" onclick="openBulletinDoc('privacy')">
+            <div class="pinned-doc" style="top:30px;left:620px;transform:rotate(-4.2deg);" onclick="openBulletinDoc('privacy')">
                 <div class="bpin bpin-red"></div>
                 <div class="doc-face privacy" style="width:188px;">
                     <div class="doc-dhead" style="font-size:7.1px;letter-spacing:1px;">READ FIRST</div>
@@ -4649,7 +4649,7 @@
             </div>
 
             <!-- Sign: Upcoming city events (Parks and Rec easter egg, back layer) -->
-            <div class="pinned-doc" data-randomize="1" style="top:364px;left:286px;transform:rotate(1deg);" onclick="openBulletinDoc('events')">
+            <div class="pinned-doc" data-randomize="1" style="top:344px;left:286px;transform:rotate(1deg);" onclick="openBulletinDoc('events')">
                 <div class="bpin bpin-green"></div>
                 <div class="doc-face memo" style="width:252px;padding:10px 12px;">
                     <div class="doc-dhead">UPCOMING CITY EVENTS</div>
@@ -9078,7 +9078,10 @@ function p3ToggleHelp(id) {
             addSection('Phase II - IE Portal (' + p2Pages.length + ' pp)');
             addPageGrid('P2', p2Pages, 'devGoP2');
 
-            addSection('Phase III - Modern Portal (' + p3Pages.length + ' pp)');
+            var p3Label = (typeof p3CompactFlowEnabled !== 'undefined' && p3CompactFlowEnabled)
+                ? (p3TotalPages + ' step flow / ' + p3Pages.length + ' pages')
+                : (p3Pages.length + ' pp');
+            addSection('Phase III - Modern Portal (' + p3Label + ')');
             addPageGrid('P3', p3Pages, 'devGoP3');
 
             if (branchIds.length) {
@@ -9112,9 +9115,9 @@ function p3ToggleHelp(id) {
             devEnsurePhaseThree();
             var cfg = {
                 nm:      { resume: 4, a: 'Jordan Riley', b: 'Jamie Riley', note: 'Branch scenario loaded: name mismatch' },
-                ad:      { resume: 5, a: '123 Main St, Clemson, SC', b: '914 Cedar Ave, Asheville, NC', note: 'Branch scenario loaded: address continuity' },
+                ad:      { resume: 15, a: '123 Main St, Clemson, SC', b: '914 Cedar Ave, Asheville, NC', note: 'Branch scenario loaded: address continuity' },
                 ps:      { resume: 16, a: 'Jordan Lynn Riley', b: 'J. R. Quinn', note: 'Branch scenario loaded: prior names conflict' },
-                sig:     { resume: 18, a: 'Jordan Riley', b: 'J. Riley', note: 'Branch scenario loaded: signature mismatch' },
+                sig:     { resume: 21, a: 'Jordan Riley', b: 'J. Riley', note: 'Branch scenario loaded: signature mismatch' },
                 consent: { resume: 3, a: 'Confirmed', b: 'Not confirmed', note: 'Branch scenario loaded: consent incomplete' }
             };
             var c = cfg[branchId];
@@ -9336,7 +9339,57 @@ function p3ToggleHelp(id) {
         var p3CurrentPage = 1;
         var p3BranchResumePage = null;
         var p3BranchFlags = { nmChecked: false, adChecked: false, psChecked: false, sigChecked: false, consentChecked: false };
-        var p3TotalPages = 21;
+        var p3CompactFlowEnabled = true;
+        var p3CompactFlow = [1, 2, 3, 4, 15, 16, 17, 21];
+        var p3TotalPages = p3CompactFlowEnabled ? p3CompactFlow.length : 21;
+
+        function p3FlowIndex(pageNum) {
+            if (!p3CompactFlowEnabled) return pageNum - 1;
+            return p3CompactFlow.indexOf(pageNum);
+        }
+
+        function p3GetNextPage(pageNum) {
+            if (!p3CompactFlowEnabled) return pageNum + 1;
+            var idx = p3FlowIndex(pageNum);
+            if (idx === -1) return pageNum + 1;
+            return p3CompactFlow[idx + 1] || null;
+        }
+
+        function p3GetPrevPage(pageNum) {
+            if (!p3CompactFlowEnabled) return pageNum - 1;
+            var idx = p3FlowIndex(pageNum);
+            if (idx === -1) return pageNum - 1;
+            return p3CompactFlow[idx - 1] || null;
+        }
+
+        function p3GetDisplayPosition(pageNum) {
+            if (!p3CompactFlowEnabled) return pageNum;
+            var idx = p3FlowIndex(pageNum);
+            return idx === -1 ? pageNum : (idx + 1);
+        }
+
+        function p3IsLastFlowPage(pageNum) {
+            if (!p3CompactFlowEnabled) return pageNum >= p3TotalPages;
+            return pageNum === p3CompactFlow[p3CompactFlow.length - 1];
+        }
+
+        function p3UpdatePagerUI(pageNum) {
+            var inCompactFlow = !p3CompactFlowEnabled || p3FlowIndex(pageNum) !== -1;
+            var total = inCompactFlow ? p3TotalPages : 21;
+            var pos = inCompactFlow ? p3GetDisplayPosition(pageNum) : pageNum;
+            var counter = document.getElementById('p3Counter');
+            if (counter) counter.textContent = 'Page ' + pos + ' of ' + total;
+            var bar = document.getElementById('p3ProgressBar');
+            if (bar) bar.style.width = Math.round((pos / total) * 100) + '%';
+            var backBtn = document.getElementById('p3BtnBack');
+            if (backBtn) {
+                backBtn.style.opacity = pos === 1 ? '0.3' : '1';
+                backBtn.style.pointerEvents = pos === 1 ? 'none' : 'auto';
+            }
+            var nextBtn = document.getElementById('p3BtnNext');
+            var isLast = inCompactFlow ? p3IsLastFlowPage(pageNum) : pageNum >= 21;
+            if (nextBtn) nextBtn.textContent = isLast ? 'Submit Record' : 'Continue';
+        }
 
         
         // ── Form 3 entry: retrieval + pre-fill + lock ─────────────────────
@@ -10070,7 +10123,7 @@ function p3ToggleHelp(id) {
         function p3GoPage(n) {
             p3SetBranchMode(false);
             // ── Branch gate: name mismatch (page 3 → 4) ──────────────────
-            if (p3CurrentPage === 3 && n === 4 && !p3BranchFlags.nmChecked) {
+            if (p3CurrentPage === 3 && n === p3GetNextPage(3) && !p3BranchFlags.nmChecked) {
                 p3BranchFlags.nmChecked = true;
                 var p3FN = (document.getElementById('p3_firstName') ? document.getElementById('p3_firstName').value.trim() : '');
                 var p3LN = (document.getElementById('p3_lastName')  ? document.getElementById('p3_lastName').value.trim()  : '');
@@ -10086,7 +10139,7 @@ function p3ToggleHelp(id) {
                 }
             }
             // ── Branch gate: address continuity (page 4 → 5) ─────────────
-            if (p3CurrentPage === 4 && n === 5 && !p3BranchFlags.adChecked) {
+            if (p3CurrentPage === 4 && n === p3GetNextPage(4) && !p3BranchFlags.adChecked) {
                 p3BranchFlags.adChecked = true;
                 var p3AddrDisplay = (document.getElementById('p3_street') ? document.getElementById('p3_street').value.trim() : '');
                 var p1AddrDisplay = (document.getElementById('address')   ? document.getElementById('address').value.trim()   : '');
@@ -10116,7 +10169,7 @@ function p3ToggleHelp(id) {
                 }
             }
             // ── Branch gate: signature mismatch (page 17 → 18) ───────────
-            if (p3CurrentPage === 17 && n === 18 && !p3BranchFlags.sigChecked) {
+            if (p3CurrentPage === 17 && n === p3GetNextPage(17) && !p3BranchFlags.sigChecked) {
                 p3BranchFlags.sigChecked = true;
                 var sigValDisplay = (document.getElementById('p3_signature') ? document.getElementById('p3_signature').value.trim() : '');
                 var sigVal = sigValDisplay.toLowerCase();
@@ -10132,7 +10185,7 @@ function p3ToggleHelp(id) {
                 }
             }
             // ── Branch gate: consent partial (page 2 → 3) ────────────────
-            if (p3CurrentPage === 2 && n === 3 && !p3BranchFlags.consentChecked) {
+            if (p3CurrentPage === 2 && n === p3GetNextPage(2) && !p3BranchFlags.consentChecked) {
                 p3BranchFlags.consentChecked = true;
                 var consentBox = document.querySelector('#p3Page2 input[type="checkbox"]');
                 if (consentBox && !consentBox.checked) {
@@ -10143,20 +10196,15 @@ function p3ToggleHelp(id) {
                 }
             }
             // ── Standard navigation ───────────────────────────────────────
-            if (n < 1 || n > p3TotalPages) return;
-            document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
             var target = document.getElementById('p3Page' + n);
+            if (!target) return;
+            if (!p3CompactFlowEnabled && (n < 1 || n > p3TotalPages)) {
+                return;
+            }
+            document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
             if (target) target.classList.add('active');
             p3CurrentPage = n;
-            document.getElementById('p3Counter').textContent = 'Page ' + n + ' of ' + p3TotalPages;
-            document.getElementById('p3ProgressBar').style.width = Math.round((n / p3TotalPages) * 100) + '%';
-            var backBtn = document.getElementById('p3BtnBack');
-            if (backBtn) {
-                backBtn.style.opacity = n === 1 ? '0.3' : '1';
-                backBtn.style.pointerEvents = n === 1 ? 'none' : 'auto';
-            }
-            var nextBtn = document.getElementById('p3BtnNext');
-            if (nextBtn) nextBtn.textContent = n === p3TotalPages ? 'Submit Record' : 'Continue';
+            p3UpdatePagerUI(n);
         }
 
         function p3SetBranchMode(active) {
@@ -10204,37 +10252,31 @@ function p3ToggleHelp(id) {
                 showNotice('Select a basis for the address change before continuing.');
                 return;
             }
-            p3SetBranchMode(false);
-            var n = p3BranchResumePage || (p3CurrentPage + 1);
+            var n = p3BranchResumePage || p3GetNextPage(p3CurrentPage) || p3CurrentPage;
             p3BranchResumePage = null;
-            document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
-            var target = document.getElementById('p3Page' + n);
-            if (target) target.classList.add('active');
-            p3CurrentPage = n;
-            var counter = document.getElementById('p3Counter');
-            if (counter) counter.textContent = 'Page ' + n + ' of ' + p3TotalPages;
-            var bar = document.getElementById('p3ProgressBar');
-            if (bar) bar.style.width = Math.round((n / p3TotalPages) * 100) + '%';
-            var backBtn = document.getElementById('p3BtnBack');
-            if (backBtn) {
-                backBtn.style.opacity = n === 1 ? '0.3' : '1';
-                backBtn.style.pointerEvents = n === 1 ? 'none' : 'auto';
-            }
-            var nextBtn = document.getElementById('p3BtnNext');
-            if (nextBtn) nextBtn.textContent = n === p3TotalPages ? 'Submit Record' : 'Continue';
+            p3GoPage(n);
         }
 
         function p3Next() {
             if (!p3ValidatePage(p3CurrentPage)) {
                 return;
             }
-            if (p3CurrentPage >= p3TotalPages) {
+            if (p3IsLastFlowPage(p3CurrentPage)) {
                 launchPhase4();
                 return;
             }
-            p3GoPage(p3CurrentPage + 1);
+            var nextPage = p3GetNextPage(p3CurrentPage);
+            if (nextPage == null) {
+                launchPhase4();
+                return;
+            }
+            p3GoPage(nextPage);
         }
-        function p3Prev() { p3GoPage(p3CurrentPage - 1); }
+        function p3Prev() {
+            var prevPage = p3GetPrevPage(p3CurrentPage);
+            if (prevPage == null) return;
+            p3GoPage(prevPage);
+        }
 
         function p3Submit() {
             alert('GIR-2024 submitted successfully!');
@@ -10564,110 +10606,56 @@ function p3ToggleHelp(id) {
         function randomizeBulletinCards() {
             var board = document.querySelector('#bulletinOverlay .corkboard');
             if (!board) return;
-            var cards = Array.from(board.querySelectorAll('.pinned-doc')).filter(function(card) {
-                return !card.classList.contains('board-static');
-            });
-            if (!cards.length) return;
 
             var boardW = board.clientWidth;
             var boardH = board.clientHeight;
-            var margin = 12;
-            var reservedZones = [
-                // Ticket dispenser area (bottom-right)
-                { x: boardW - 138, y: boardH - 124, w: 128, h: 114 },
-                // Fixed red reminder card area (upper-left)
-                { x: 8, y: 8, w: 244, h: 126 }
-            ];
-
-            var slotCenters = [
-                { x: Math.round(boardW * 0.39), y: Math.round(boardH * 0.16) },
-                { x: Math.round(boardW * 0.58), y: Math.round(boardH * 0.17) },
-                { x: Math.round(boardW * 0.79), y: Math.round(boardH * 0.18) },
-                { x: Math.round(boardW * 0.17), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.39), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.60), y: Math.round(boardH * 0.46) },
-                { x: Math.round(boardW * 0.82), y: Math.round(boardH * 0.45) },
-                { x: Math.round(boardW * 0.21), y: Math.round(boardH * 0.73) },
-                { x: Math.round(boardW * 0.45), y: Math.round(boardH * 0.73) },
-                { x: Math.round(boardW * 0.70), y: Math.round(boardH * 0.74) }
-            ];
-
-            function shuffle(list) {
-                for (var i = list.length - 1; i > 0; i -= 1) {
-                    var j = Math.floor(Math.random() * (i + 1));
-                    var t = list[i];
-                    list[i] = list[j];
-                    list[j] = t;
-                }
-                return list;
+            if (boardW < 500 || boardH < 260) {
+                setTimeout(randomizeBulletinCards, 120);
+                return;
             }
+
+            var margin = 10;
+            var layout = {
+                notice:     { x: 246, y: 28,  r: -1.5 },
+                statement:  { x: 454, y: 44,  r: 1.8 },
+                privacy:    { x: 620, y: 30,  r: -4.2 },
+                feedback:   { x: 668, y: 176, r: -2.3 },
+                memo:       { x: 36,  y: 212, r: 0.9 },
+                superseded: { x: 248, y: 222, r: -2.1 },
+                abstract:   { x: 466, y: 218, r: -0.7 },
+                helpwanted: { x: 612, y: 286, r: 1.9 },
+                events:     { x: 286, y: 344, r: 1.0 }
+            };
 
             function clamp(v, min, max) {
                 return Math.max(min, Math.min(max, v));
             }
 
-            function overlapArea(a, b) {
-                var xOverlap = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x));
-                var yOverlap = Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
-                return xOverlap * yOverlap;
-            }
+            Array.from(board.querySelectorAll('.pinned-doc')).forEach(function(card) {
+                if (card.classList.contains('board-static')) return;
 
-            function intersects(a, b, pad) {
-                pad = pad || 0;
-                return !(
-                    a.x + a.w + pad <= b.x ||
-                    b.x + b.w + pad <= a.x ||
-                    a.y + a.h + pad <= b.y ||
-                    b.y + b.h + pad <= a.y
-                );
-            }
+                var onclick = card.getAttribute('onclick') || '';
+                var match = onclick.match(/openBulletinDoc\('([^']+)'\)/);
+                var docId = match ? match[1] : '';
+                var base = layout[docId] || { x: 320, y: 220, r: 0 };
+                var randomizable = card.getAttribute('data-randomize') === '1';
+                var jitter = randomizable ? 22 : 6;
+                var jitterY = randomizable ? 14 : 4;
+                var rotJitter = randomizable ? 2.6 : 0.8;
 
-            var placedRects = [];
-            var centers = shuffle(slotCenters.slice());
-            var orderedCards = shuffle(cards.slice());
-
-            orderedCards.forEach(function(card, idx) {
-                var w = Math.max(110, card.offsetWidth || 160);
-                var h = Math.max(70, card.offsetHeight || 100);
-                var slot = centers[idx % centers.length];
+                var face = card.querySelector('.doc-face');
+                var w = Math.max(110, card.offsetWidth || (face ? face.offsetWidth + 26 : 160));
+                var h = Math.max(70, card.offsetHeight || (face ? face.offsetHeight + 18 : 100));
                 var maxLeft = Math.max(margin, boardW - w - margin);
                 var maxTop = Math.max(margin, boardH - h - margin);
 
-                var best = null;
-                for (var t = 0; t < 40; t += 1) {
-                    var jitterX = Math.round((Math.random() * 20) - 10);
-                    var jitterY = Math.round((Math.random() * 14) - 7);
-                    var left = clamp(slot.x - Math.round(w / 2) + jitterX, margin, maxLeft);
-                    var top = clamp(slot.y - Math.round(h / 2) + jitterY, margin, maxTop);
-                    var rect = { x: left, y: top, w: w, h: h };
+                var x = clamp(base.x + Math.round((Math.random() * jitter) - (jitter / 2)), margin, maxLeft);
+                var y = clamp(base.y + Math.round((Math.random() * jitterY) - (jitterY / 2)), margin, maxTop);
+                var r = (base.r + ((Math.random() * 2 - 1) * rotJitter)).toFixed(1);
 
-                    var blocked = false;
-                    var score = 0;
-                    reservedZones.forEach(function(zone) {
-                        if (intersects(rect, zone, 10)) blocked = true;
-                        score += overlapArea(rect, zone) * 8;
-                    });
-                    placedRects.forEach(function(prev) {
-                        if (intersects(rect, prev, 18)) blocked = true;
-                        score += overlapArea(rect, prev) * 5;
-                    });
-
-                    if (blocked) {
-                        score += 100000;
-                    }
-
-                    if (!best || score < best.score) {
-                        best = { rect: rect, score: score };
-                    }
-                    if (score === 0) break;
-                }
-
-                var chosen = best ? best.rect : { x: margin, y: margin, w: w, h: h };
-                var rotation = (Math.random() * 8 - 4).toFixed(1);
-                card.style.left = chosen.x + 'px';
-                card.style.top = chosen.y + 'px';
-                card.style.transform = 'rotate(' + rotation + 'deg)';
-                placedRects.push(chosen);
+                card.style.left = x + 'px';
+                card.style.top = y + 'px';
+                card.style.transform = 'rotate(' + r + 'deg)';
             });
         }
 
