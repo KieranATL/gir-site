@@ -2060,15 +2060,19 @@
         /* ── Form 3 branch / interstitial pages ──────────────────────────── */
         .p3-branch-page {
             display: none;
-            padding: 40px 44px 36px;
+            width: min(780px, calc(100vw - 48px));
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+            margin: 28px auto 16px;
+            padding: 28px 32px 28px;
             background: #fff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            min-height: 420px;
+            min-height: 320px;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         }
         .p3-branch-page.active {
             display: block;
-            flex: 1;
-            overflow-y: auto;
         }
         .p3-branch-notice {
             border-left: 3px solid #b91c1c;
@@ -2139,6 +2143,26 @@
             letter-spacing: .02em;
         }
         .p3-branch-continue:hover { background: #1e40af; }
+
+        #postUpdateClerkOverlay .preform-copy {
+            padding-bottom: 76px;
+        }
+        #postUpdateClerkOverlay .preform-actions {
+            position: sticky;
+            bottom: -1px;
+            margin-top: 18px;
+            padding-top: 12px;
+            background: linear-gradient(180deg, rgba(33,37,43,0) 0%, rgba(33,37,43,0.9) 46%, rgba(33,37,43,0.98) 100%);
+        }
+
+        @media (max-width: 900px) {
+            .p3-branch-page {
+                width: calc(100vw - 20px);
+                max-height: calc(100vh - 250px);
+                margin: 18px auto 12px;
+                padding: 22px 18px 22px;
+            }
+        }
 
         .p3-page {
             display: none;
@@ -7885,6 +7909,14 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 el.classList.remove('active', 'complete', 'fade-out', 'released');
                 el.style.display = '';
             });
+
+            // Clear any lingering Form 3 branch/page states so previews don't stack.
+            document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            var p3First = document.getElementById('p3Page1');
+            if (p3First) p3First.classList.add('active');
+            if (typeof p3SetBranchMode === 'function') p3SetBranchMode(false);
         }
         function devDispatchFieldEvents(el) {
 	            el.dispatchEvent(new Event('input', { bubbles: true }));
@@ -7920,6 +7952,8 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	            var usDate = String(now.getMonth() + 1).padStart(2, '0') + '/' +
 	                         String(now.getDate()).padStart(2, '0') + '/' +
 	                         now.getFullYear();
+                var sampleDobIso = '1992-03-15';
+                var sampleDobUs = '03/15/1992';
 	            var longText = 'Testing autofill flow for validation and submission transitions in this form.';
 	            var skipIds = { p2AddressBar: true, p1DataShareObjection: true };
 
@@ -7944,8 +7978,10 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
 	                var token = ((el.id || '') + ' ' + (el.name || '') + ' ' + (el.placeholder || '')).toLowerCase();
 	                var value = 'Test Value';
-	                if (type === 'date') value = isoDate;
-	                else if (/dob|date/.test(token)) value = usDate;
+                    var isDobField = /dob|birth/.test(token);
+	                if (isDobField) value = (type === 'date') ? sampleDobIso : sampleDobUs;
+	                else if (type === 'date') value = isoDate;
+	                else if (/date/.test(token)) value = usDate;
 	                else if (type === 'email' || /email/.test(token)) value = 'test@example.com';
 	                else if (type === 'tel' || /phone|tel/.test(token)) value = '555-0101';
 	                else if (type === 'number') value = '1';
@@ -7984,7 +8020,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 	            var p2AttestDate = document.getElementById('p2AttestDate');
 	            if (p2AttestDate) devSetFieldValue(p2AttestDate, usDate);
 	            var p2Dob = document.getElementById('p2Dob');
-	            if (p2Dob) devSetFieldValue(p2Dob, usDate);
+	            if (p2Dob) devSetFieldValue(p2Dob, sampleDobUs);
 
 	            // Checkbox strategy: set only required workflow checks and a coherent sample profile.
 	            [
@@ -8397,6 +8433,8 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             var usDate = String(now.getMonth() + 1).padStart(2, '0') + '/' +
                          String(now.getDate()).padStart(2, '0') + '/' +
                          now.getFullYear();
+            var sampleDobIso = '1992-03-15';
+            var sampleDobUs = '03/15/1992';
             var longText = 'Testing autofill flow for validation and submission transitions in this form.';
 
             root.querySelectorAll('input, textarea, select').forEach(function(el) {
@@ -8421,8 +8459,10 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
                 var token = ((el.id || '') + ' ' + (el.name || '') + ' ' + (el.placeholder || '')).toLowerCase();
                 var value = 'Test Value';
-                if (type === 'date') value = isoDate;
-                else if (/dob|date/.test(token)) value = usDate;
+                var isDobField = /dob|birth/.test(token);
+                if (isDobField) value = (type === 'date') ? sampleDobIso : sampleDobUs;
+                else if (type === 'date') value = isoDate;
+                else if (/date/.test(token)) value = usDate;
                 else if (type === 'email' || /email/.test(token)) value = 'test@example.com';
                 else if (type === 'tel' || /phone|tel/.test(token)) value = '555-0101';
                 else if (type === 'number') value = '1';
@@ -8543,6 +8583,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
         function p3PopulateFromPrior() {
+            p3ResetSystemFields();
             // Name: Form 1 fullLegalName or Form 2 p2LegalName
             var p1Full = ((document.getElementById('fullLegalName') || {}).value || '').trim();
             var p2Full = ((document.getElementById('p2LegalName')   || {}).value || '').trim();
@@ -8575,8 +8616,28 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
         function p3SetSystemField(fieldId, value, sourceLabel) {
             var input = document.getElementById(fieldId);
-            if (!input || !value) return;
-            input.value = value;
+            if (!input || !value) return false;
+            var rawValue = String(value).trim();
+            if (!rawValue) return false;
+
+            var existingDisplay = document.querySelector('.p3-system-display[data-for="' + fieldId + '"]');
+            if (existingDisplay) existingDisplay.remove();
+            input.classList.remove('p3-system-locked');
+            input.removeAttribute('data-system-locked');
+            input.removeAttribute('data-source-label');
+
+            var storedValue = rawValue;
+            var displayValue = rawValue;
+            if ((input.type || '').toLowerCase() === 'date') {
+                var normalized = p3NormalizeDateValue(rawValue);
+                if (!normalized) {
+                    input.value = '';
+                    return false;
+                }
+                storedValue = normalized;
+                displayValue = p3FormatDateDisplay(normalized);
+            }
+            input.value = storedValue;
 
             // Mark input as locked
             input.classList.add('p3-system-locked');
@@ -8590,7 +8651,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
             var valDiv = document.createElement('div');
             valDiv.className = 'p3-system-display-value';
-            valDiv.textContent = value;
+            valDiv.textContent = displayValue;
 
             var srcDiv = document.createElement('div');
             srcDiv.className = 'p3-system-display-source';
@@ -8603,6 +8664,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             if (input.parentNode) {
                 input.parentNode.insertBefore(display, input.nextSibling);
             }
+            return true;
         }
 
         function p3ShowEntryBanner() {
@@ -9115,6 +9177,36 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             return [line1, line2].filter(Boolean).join(' | ');
         }
 
+        function p3NormalizeDateValue(value) {
+            var s = (value == null ? '' : String(value)).trim();
+            if (!s) return '';
+            if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+
+            var slash = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+            if (!slash) return '';
+
+            var mm = Number(slash[1]);
+            var dd = Number(slash[2]);
+            var yy = Number(slash[3]);
+            var dt = new Date(Date.UTC(yy, mm - 1, dd));
+            if (dt.getUTCFullYear() !== yy || (dt.getUTCMonth() + 1) !== mm || dt.getUTCDate() !== dd) return '';
+            return String(yy).padStart(4, '0') + '-' + String(mm).padStart(2, '0') + '-' + String(dd).padStart(2, '0');
+        }
+
+        function p3FormatDateDisplay(isoDate) {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate || '')) return isoDate || '';
+            return isoDate.slice(5, 7) + '/' + isoDate.slice(8, 10) + '/' + isoDate.slice(0, 4);
+        }
+
+        function p3ResetSystemFields() {
+            document.querySelectorAll('.p3-system-display').forEach(function(display) { display.remove(); });
+            document.querySelectorAll('[data-system-locked="1"], .p3-system-locked').forEach(function(input) {
+                input.classList.remove('p3-system-locked');
+                input.removeAttribute('data-system-locked');
+                input.removeAttribute('data-source-label');
+            });
+        }
+
         function p3GetBranchFallback(branchId, which) {
             var fullP1 = (document.getElementById('fullLegalName') || {}).value || '';
             var fullP2 = (document.getElementById('p2LegalName') || {}).value || '';
@@ -9260,8 +9352,21 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         }
 
         function p3ShowBranch(branchId, resumePage, valA, valB) {
-            p3SetBranchMode(true);
             p3BranchResumePage = resumePage;
+            var branch = document.getElementById('p3PageBranch_' + branchId);
+            if (!branch) {
+                p3SetBranchMode(false);
+                showNotice('Branch page content unavailable for this scenario.');
+                return;
+            }
+
+            // Ensure branch content is attached to the visible Phase III overlay.
+            var phaseThree = document.getElementById('phaseThreeOverlay');
+            if (phaseThree && branch.parentNode !== phaseThree) {
+                phaseThree.appendChild(branch);
+            }
+
+            p3SetBranchMode(true);
             var elA = document.getElementById('p3Branch_' + branchId + '_valA');
             var elB = document.getElementById('p3Branch_' + branchId + '_valB');
             var a = p3DisplayValue(valA, p3GetBranchFallback(branchId, 'A'));
@@ -9275,8 +9380,7 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             var refEl = document.getElementById('p3Branch_' + branchId + '_ref');
             if (refEl) refEl.textContent = 'GIR-' + branchId.toUpperCase() + '-' + Date.now().toString().slice(-6);
             document.querySelectorAll('.p3-page, .p3-branch-page').forEach(function(p) { p.classList.remove('active'); });
-            var branch = document.getElementById('p3PageBranch_' + branchId);
-            if (branch) branch.classList.add('active');
+            branch.classList.add('active');
         }
 
         function p3ResumeBranch() {
