@@ -1520,7 +1520,196 @@
             width: 100%;
         }
         .p3-continue-btn:hover { background: #1d4ed8; }
-        /* === PHASE III OVERLAY === */
+        /* === ASCENSION OVERLAY === */
+#ascensionOverlay {
+    display: none; position: fixed; inset: 0; z-index: 900;
+    background: #04080f;
+    flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    color: #e8f0ff;
+    animation: ascBackgroundShift 6s ease forwards;
+}
+@keyframes ascBackgroundShift {
+    0%   { background: #04080f; }
+    100% { background: #070c18; }
+}
+.asc-line {
+    font-size: clamp(14px, 2vw, 18px);
+    letter-spacing: 0.10em;
+    text-align: center;
+    color: rgba(200, 220, 255, 0);
+    transition: color 2.5s ease;
+    margin: 0;
+    line-height: 1;
+}
+.asc-line + .asc-line { margin-top: 32px; }
+.asc-line.asc-visible { color: rgba(200, 220, 255, 0.75); }
+
+#asc-btn {
+    margin-top: 56px;
+    padding: 14px 36px;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    background: transparent;
+    border: 1px solid rgba(180, 210, 255, 0.3);
+    color: rgba(200, 220, 255, 0);
+    cursor: pointer;
+    transition: color 2s ease, border-color 2s ease, background 0.3s ease;
+}
+#asc-btn.asc-visible {
+    color: rgba(200, 220, 255, 0.85);
+    border-color: rgba(180, 210, 255, 0.5);
+}
+#asc-btn:hover {
+    background: rgba(100, 140, 220, 0.12);
+    color: rgba(220, 235, 255, 1);
+}
+
+/* === POST-EXODUS HEAVY: visually unstable Form 3 === */
+#phaseThreeOverlay.post-exodus-heavy {
+    animation: pehOverlayFlicker 8s steps(1, end) infinite;
+}
+@keyframes pehOverlayFlicker {
+    0%, 15%, 30%, 45%, 60%, 75%, 90%, 100% { filter: none; }
+    8%   { filter: hue-rotate(12deg) saturate(1.4) brightness(0.97); }
+    22%  { filter: hue-rotate(-8deg) brightness(1.03); }
+    38%  { filter: saturate(0.7) hue-rotate(5deg); }
+    53%  { filter: brightness(0.94) hue-rotate(-12deg); }
+    68%  { filter: hue-rotate(20deg) saturate(1.6) brightness(1.04); }
+    83%  { filter: saturate(0.5) brightness(0.96); }
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-header {
+    animation: pehHeaderShift 3.7s steps(1, end) infinite;
+}
+@keyframes pehHeaderShift {
+    0%   { background: #1e3a5f; }
+    20%  { background: #1c3858; }
+    35%  { background: #243f68; }
+    50%  { background: #1a3554; }
+    65%  { background: #20406a; }
+    80%  { background: #192f50; }
+    100% { background: #1e3a5f; }
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-progress-bar-fill {
+    background: #4a5f8a !important;
+    transition: none !important;
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-card:nth-child(odd) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' x='0' y='0' fill='rgba(0,0,50,0.04)'/%3E%3Crect width='1' height='1' x='2' y='2' fill='rgba(0,0,50,0.03)'/%3E%3C/svg%3E");
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-card:first-child .p3-field:last-child {
+    overflow: visible; position: relative;
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-card:first-child .p3-field:last-child::after {
+    content: 'ERR_RENDER_OVERFLOW_0x4f2a';
+    position: absolute; bottom: -18px; right: 0;
+    font-size: 9px; color: rgba(180, 60, 60, 0.45);
+    font-family: 'Courier New', monospace; pointer-events: none;
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-input,
+#phaseThreeOverlay.post-exodus-heavy .p3-select,
+#phaseThreeOverlay.post-exodus-heavy .p3-textarea {
+    border-color: rgba(100, 120, 180, 0.5);
+    animation: pehInputBlink 11s steps(1, end) infinite;
+}
+@keyframes pehInputBlink {
+    0%, 90%, 100% { border-color: rgba(100, 120, 180, 0.5); }
+    92%           { border-color: rgba(180, 80, 80, 0.4); }
+    94%           { border-color: rgba(100, 120, 180, 0.5); }
+    96%           { border-color: rgba(180, 80, 80, 0.3); }
+}
+.peh-broken-img {
+    display: inline-block; width: 22px; height: 16px;
+    border: 1px solid rgba(140, 140, 180, 0.4);
+    background: repeating-linear-gradient(45deg, rgba(100,100,160,0.08) 0, rgba(100,100,160,0.08) 2px, transparent 2px, transparent 6px);
+    vertical-align: middle; margin: 0 3px; position: relative;
+    font-size: 7px; color: rgba(140,140,180,0.5); text-align: center;
+    line-height: 16px; font-family: monospace;
+}
+#phaseThreeOverlay.post-exodus-heavy.peh-jitter {
+    transform: translate(var(--peh-jx, 0px), var(--peh-jy, 0px));
+}
+#phaseThreeOverlay.post-exodus-heavy.peh-rgb {
+    filter: hue-rotate(var(--peh-hue, 30deg)) saturate(4) brightness(1.3) !important;
+}
+.peh-scanlines {
+    position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(0deg, rgba(0,0,40,0.07) 0 1px, transparent 1px 3px);
+    animation: pehScanMove 0.4s linear infinite;
+}
+@keyframes pehScanMove {
+    0%   { background-position: 0 0; }
+    100% { background-position: 0 3px; }
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-header-title {
+    animation: pehTitleBleed 2.3s steps(1,end) infinite;
+}
+@keyframes pehTitleBleed {
+    0%, 60%, 100% { text-shadow: none; }
+    15% { text-shadow: -2px 0 #ff4466, 2px 0 #44aaff; letter-spacing: 0.02em; }
+    30% { text-shadow: 3px 0 #ff4466, -3px 0 #44ffaa; }
+    45% { text-shadow: -1px 0 #ffaa00, 1px 0 #4444ff; }
+    75% { text-shadow: 2px 0 #00ffaa, -2px 0 #ff0044; letter-spacing: -0.02em; }
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-continue-btn,
+#phaseThreeOverlay.post-exodus-heavy .p3-back-btn {
+    animation: pehBtnCorrupt 4.1s steps(1,end) infinite;
+}
+@keyframes pehBtnCorrupt {
+    0%, 70%, 100% { filter: none; }
+    72% { filter: hue-rotate(30deg) brightness(1.5); }
+    74% { filter: none; }
+    82% { filter: hue-rotate(-20deg) saturate(3); letter-spacing: 0.15em; }
+    84% { filter: none; letter-spacing: normal; }
+}
+#phaseThreeOverlay.post-exodus-heavy .p3-section-label {
+    animation: pehLabelFlick 5.7s steps(1,end) infinite;
+}
+@keyframes pehLabelFlick {
+    0%, 85%, 100% { opacity: 1; color: inherit; }
+    87% { opacity: 0.3; color: #ff4466; }
+    89% { opacity: 1; color: inherit; }
+    92% { opacity: 0.6; color: #44aaff; letter-spacing: 0.2em; }
+    94% { opacity: 1; color: inherit; letter-spacing: normal; }
+}
+
+/* === POST-EXODUS FORM 3 CORRUPTION === */
+#phaseThreeOverlay.post-exodus .p3-header {
+    background: #1a3352;
+    filter: saturate(0.7) hue-rotate(8deg);
+}
+#phaseThreeOverlay.post-exodus .p3-progress-bar-fill {
+    background: #2a4a7a;
+    transition: none;
+}
+#phaseThreeOverlay.post-exodus #p3_firstName {
+    border-color: rgba(180, 60, 60, 0.4);
+    background: rgba(255, 240, 240, 0.5);
+}
+#phaseThreeOverlay.post-exodus .p3-card:first-child {
+    border-left: 3px solid rgba(160, 80, 80, 0.3);
+}
+#phaseThreeOverlay.post-exodus #p3EntryBanner {
+    background: rgba(40, 20, 20, 0.06);
+    border-left-color: rgba(160, 80, 80, 0.5);
+}
+/* retrieval screen degraded state */
+#p3RetrievalScreen.degraded .p3r-title {
+    color: #8a6060;
+}
+#p3RetrievalScreen.degraded .p3r-bar-fill {
+    background: #6b7fa0;
+    width: 62% !important;
+}
+#p3RetrievalScreen.degraded #p3rRecordFound {
+    color: #8a4040;
+    border-color: rgba(140, 60, 60, 0.4);
+    background: rgba(255, 240, 240, 0.6);
+}
+.p3r-fail { color: #cc4444 !important; }
+.p3r-fail .p3r-check { color: #cc4444; }
+
+/* === PHASE III OVERLAY === */
         #phaseThreeOverlay {
             position: fixed;
             inset: 0;
@@ -2291,6 +2480,55 @@
             font-weight: 400;
             color: #ef4444;
             margin-left: 2px;
+        }
+        .p3-help-icon {
+            display: inline-block;
+            margin-left: 6px;
+            font-size: 11px;
+            line-height: 1;
+            border: 1px solid #9ca3af;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            color: #4b5563;
+            text-decoration: none;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        .p3-help-icon:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: #eff6ff;
+        }
+        .p3-inline-link {
+            color: #1d4ed8;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .p3-theory-note {
+            display: none;
+            margin: -8px 0 18px;
+            padding: 12px 14px;
+            border: 1px solid #dbeafe;
+            border-left: 4px solid #2563eb;
+            border-radius: 8px;
+            background: #f8fbff;
+            color: #1f2937;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+        .p3-theory-note p {
+            margin: 0 0 8px;
+        }
+        .p3-theory-note ul {
+            margin: 0 0 8px 18px;
+            padding: 0;
+        }
+        .p3-theory-note p:last-child,
+        .p3-theory-note ul:last-child {
+            margin-bottom: 0;
         }
         .p3-page-error-summary {
             display: none;
@@ -3390,6 +3628,26 @@
 .p2-help-icon { display: inline-block; color: #000080; font-size: 9px; font-family: 'Times New Roman', serif; border: 1px solid #000080; padding: 0 2px; margin-left: 4px; cursor: pointer; vertical-align: middle; line-height: 1.2; }
 .p2-help-icon:hover { background: #000080; color: white; }
 .p2-tooltip-box { display: none; background: #ffffcc; border: 1px solid #808080; padding: 4px 8px; font-size: 10px; color: #000; font-family: 'Times New Roman', serif; margin: 2px 0 6px 0; max-width: 400px; }
+.p2-theory-panel {
+    display: none;
+    margin-top: 4px;
+    border: 1px solid #808080;
+    border-top: 2px solid #000080;
+    background: #ffffcc;
+    padding: 6px 8px;
+    font-size: 10px;
+    line-height: 1.45;
+    color: #111;
+}
+.p2-theory-title {
+    font-weight: bold;
+    color: #000080;
+    margin-bottom: 4px;
+}
+.p2-theory-list {
+    margin: 4px 0 0 14px;
+    padding: 0;
+}
 #phase4 { display: none; position: fixed; inset: 0; background: #f9fafb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: #111827; overflow-y: auto; z-index: 200; }
 .p4-header { background: #111827; color: #f9fafb; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #374151; position: sticky; top: 0; z-index: 10; }
 .p4-header-title { font-size: 15px; font-weight: 700; }
@@ -3427,40 +3685,318 @@
     font-size: 13px;
     line-height: 1.6;
 }
-#exodusOverlay { display: none; position: fixed; inset: 0; z-index: 700; overflow: hidden; background: radial-gradient(circle at 30% 20%, #1a2333 0%, #090d14 45%, #05070c 100%); color: #e8eefc; font-family: 'Courier Prime', 'Courier New', monospace; }
-#exodusOverlay.active { display: flex; align-items: center; justify-content: center; }
-#exodusOverlay::before { content: ''; position: absolute; inset: -20%; background: repeating-linear-gradient(0deg, rgba(124,164,255,0.06) 0 2px, rgba(0,0,0,0) 2px 5px); pointer-events: none; animation: exodusScan 4s linear infinite; }
-#exodusOverlay.released::before { display: none; }
-.exodus-frame, .exodus-release { position: relative; width: min(900px, 92vw); border: 1px solid rgba(140, 178, 255, 0.4); background: rgba(6, 10, 18, 0.84); box-shadow: 0 0 30px rgba(80, 120, 220, 0.2); padding: 34px 36px; }
-.exodus-frame { animation: exodusJitter 2.4s steps(2, end) infinite; }
-.exodus-status { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.82; margin-bottom: 16px; }
-.exodus-glitch { position: relative; font-size: clamp(24px, 4vw, 40px); line-height: 1.12; margin: 0 0 14px; }
-.exodus-glitch::before, .exodus-glitch::after { content: attr(data-text); position: absolute; left: 0; top: 0; width: 100%; overflow: hidden; pointer-events: none; }
-.exodus-glitch::before { text-shadow: -2px 0 #4ad0ff; transform: translateX(1px); clip-path: inset(0 0 45% 0); opacity: 0.75; }
-.exodus-glitch::after { text-shadow: 2px 0 #ff667a; transform: translateX(-1px); clip-path: inset(52% 0 0 0); opacity: 0.7; }
-.exodus-copy { font-size: 15px; line-height: 1.7; max-width: 78ch; color: #dbe6ff; }
-.exodus-trace-title { margin-top: 18px; margin-bottom: 6px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.88; }
-.exodus-trace { margin: 0 0 16px 0; padding-left: 18px; font-size: 13px; color: #b8c9f3; }
-.exodus-trace li { margin: 6px 0; }
-.exodus-note { font-size: 13px; line-height: 1.65; color: #9fb7ea; max-width: 75ch; }
-.exodus-btn { margin-top: 18px; border: 1px solid #97b4ef; background: rgba(8, 16, 30, 0.5); color: #edf4ff; padding: 10px 18px; font-family: inherit; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; }
-.exodus-btn:hover { background: rgba(28, 43, 78, 0.7); }
-.exodus-release { display: none; }
-.exodus-release h2 { margin: 0 0 10px; font-size: clamp(22px, 3vw, 34px); }
-.exodus-release p { font-size: 15px; line-height: 1.7; max-width: 72ch; color: #d5e3ff; }
-@keyframes exodusScan {
-  0% { transform: translateY(-8%); opacity: 0.45; }
-  50% { transform: translateY(8%); opacity: 0.7; }
-  100% { transform: translateY(-8%); opacity: 0.45; }
+/* ── EXODUS OVERLAY ─────────────────────────────────────────── */
+#exodusOverlay {
+    display: none; position: fixed; inset: 0; z-index: 700; overflow: hidden;
+    background: radial-gradient(circle at 30% 20%, #1a2333 0%, #090d14 45%, #05070c 100%);
+    color: #e8eefc; font-family: 'Courier Prime', 'Courier New', monospace;
 }
+#exodusOverlay.active { display: flex; align-items: center; justify-content: center; }
+
+/* scanlines — faster and slightly more visible */
+#exodusOverlay::before {
+    content: ''; position: absolute; inset: -20%;
+    background: repeating-linear-gradient(0deg, rgba(124,164,255,0.13) 0 2px, rgba(0,0,0,0) 2px 5px);
+    pointer-events: none; animation: exodusScan 1.0s linear infinite;
+}
+#exodusOverlay.released::before { display: none; }
+/* second scanline layer — opposing direction + noise */
+#exodusOverlay::after {
+    content: ''; position: absolute; inset: -20%; pointer-events: none;
+    background:
+        repeating-linear-gradient(90deg, rgba(100,140,255,0.03) 0 1px, rgba(0,0,0,0) 1px 4px),
+        repeating-conic-gradient(rgba(80,120,255,0.04) 0% 25%, rgba(0,0,0,0) 0% 50%);
+    background-size: 100% 100%, 3px 3px;
+    animation: exodusScanReverse 1.4s linear infinite;
+    mix-blend-mode: screen;
+}
+#exodusOverlay.released::after { display: none; }
+
+/* frame card */
+.exodus-frame, .exodus-release {
+    position: relative; width: min(900px, 92vw);
+    border: 1px solid rgba(140, 178, 255, 0.4);
+    background: rgba(6, 10, 18, 0.84);
+    box-shadow: 0 0 40px rgba(80, 120, 220, 0.25), inset 0 0 60px rgba(0,0,0,0.5);
+    padding: 34px 36px;
+    animation: exodusBorderPulse 2.5s ease-in-out infinite;
+}
+/* gentle ambient jitter — mostly still, punctuated by JS-triggered spikes */
+.exodus-frame { animation: exodusJitter 4s steps(1, end) infinite, exodusBorderPulse 2.5s ease-in-out infinite; }
+/* intensity spike — added/removed by JS */
+.exodus-frame.spiking {
+    animation: exodusSpike 0.25s steps(1, end) 6;
+}
+
+/* progressive reveal — everything starts invisible */
+.exodus-status {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 16px; opacity: 0; transition: opacity 0.5s ease;
+}
+.exodus-status.ex-visible { opacity: 0.82; }
+
+.exodus-glitch {
+    position: relative; font-size: clamp(24px, 4vw, 40px);
+    line-height: 1.12; margin: 0 0 14px;
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.exodus-glitch.ex-visible { opacity: 1; }
+.exodus-glitch::before, .exodus-glitch::after {
+    content: attr(data-text); position: absolute; left: 0; top: 0;
+    width: 100%; overflow: hidden; pointer-events: none;
+}
+.exodus-glitch::before {
+    text-shadow: -3px 0 #4ad0ff; opacity: 0.85;
+    animation: exodusGlitchBefore 3.1s steps(1, end) infinite;
+}
+.exodus-glitch::after {
+    text-shadow: 3px 0 #ff667a; opacity: 0.80;
+    animation: exodusGlitchAfter 2.7s steps(1, end) infinite;
+}
+
+.exodus-copy {
+    font-size: 15px; line-height: 1.7; max-width: 78ch; color: #dbe6ff;
+    opacity: 0; transition: opacity 0.6s ease;
+}
+.exodus-copy.ex-visible { opacity: 1; }
+
+.exodus-trace-title {
+    margin-top: 18px; margin-bottom: 6px; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0; transition: opacity 0.4s ease;
+}
+.exodus-trace-title.ex-visible { opacity: 0.88; }
+
+.exodus-trace { margin: 0 0 16px 0; padding-left: 18px; font-size: 13px; color: #b8c9f3; }
+.exodus-trace li {
+    margin: 6px 0; opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.exodus-trace li.ex-visible { opacity: 1; transform: translateX(0); }
+
+.exodus-note {
+    font-size: 13px; line-height: 1.65; color: #9fb7ea; max-width: 75ch;
+    opacity: 0; transition: opacity 0.6s ease;
+}
+.exodus-note.ex-visible { opacity: 1; }
+
+.exodus-btn {
+    margin-top: 18px; border: 1px solid #97b4ef;
+    background: rgba(8, 16, 30, 0.5); color: #edf4ff;
+    padding: 10px 18px; font-family: inherit; font-size: 13px;
+    letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+    opacity: 0; transition: opacity 0.5s ease, background 0.2s;
+}
+.exodus-btn.ex-visible { opacity: 1; }
+.exodus-btn:hover { background: rgba(28, 43, 78, 0.7); }
+
+/* card exit animation */
+.exodus-frame.exodus-card-leaving {
+    animation: exodusCardExit 0.55s ease-in forwards !important;
+}
+
+/* release screen — full-overlay void, not a card */
+.exodus-release {
+    display: none; position: absolute; inset: 0; width: 100%;
+    border: none; box-shadow: none; padding: 0; animation: none;
+    background: transparent;
+    flex-direction: column; align-items: center; justify-content: center;
+}
+
+/* darkening void background — fades in after dissolution */
+.exodus-void-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 50% 55%, #020406 0%, #010203 100%);
+    opacity: 0; transition: opacity 3s ease;
+}
+.exodus-void-bg.visible { opacity: 1; }
+
+/* form fragment — drifts upward and evaporates */
+.exodus-fragment {
+    position: absolute;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 10.5px; color: rgba(180, 200, 240, 0.8);
+    pointer-events: none; white-space: nowrap; user-select: none;
+    animation: exodusFragmentDrift var(--dur, 3s) ease-in forwards;
+    animation-delay: var(--delay, 0s);
+}
+@keyframes exodusFragmentDrift {
+    0%   { opacity: 0;    transform: translateY(0) rotate(var(--rot0, 0deg)); }
+    6%   { opacity: 0.9; }
+    /* freeze — computer chokes */
+    33%  { opacity: 0.88; transform: translateY(calc(var(--drift, -120px) * 0.26)) rotate(var(--rot0, 0deg)); }
+    41%  { opacity: 0.88; transform: translateY(calc(var(--drift, -120px) * 0.26)) rotate(var(--rot0, 0deg)); }
+    /* jump forward */
+    42%  { opacity: 0.72; transform: translateY(calc(var(--drift, -120px) * 0.52)) rotate(var(--rot1, 3deg)); }
+    /* second micro-freeze */
+    61%  { opacity: 0.55; transform: translateY(calc(var(--drift, -120px) * 0.67)); }
+    67%  { opacity: 0.55; transform: translateY(calc(var(--drift, -120px) * 0.67)); }
+    /* second jump */
+    68%  { opacity: 0.38; transform: translateY(calc(var(--drift, -120px) * 0.80)); }
+    100% { opacity: 0;    transform: translateY(var(--drift, -120px)) rotate(var(--rot1, 3deg)); }
+}
+
+/* glitched fragments get chromatic corruption bursts */
+.exodus-fragment.glitched {
+    animation:
+        exodusFragmentDrift var(--dur, 3s) ease-in forwards,
+        exodusFragmentGlitch var(--gdur, 0.9s) steps(1, end) var(--gdelay, 0.4s) 4;
+}
+@keyframes exodusFragmentGlitch {
+    0%       { filter: none; clip-path: none; }
+    10%      { filter: hue-rotate(45deg) brightness(2.5) saturate(6); clip-path: inset(15% 0 45% 0); }
+    11%      { filter: none; clip-path: none; }
+    28%      { filter: hue-rotate(-30deg) brightness(1.8) saturate(4); }
+    30%      { filter: none; }
+    52%      { filter: hue-rotate(20deg) brightness(2.0); clip-path: inset(55% 0 5% 0); }
+    53%      { filter: none; clip-path: none; }
+    78%      { filter: brightness(2.2) saturate(3) hue-rotate(-15deg); }
+    79%      { filter: none; }
+    100%     { filter: none; clip-path: none; }
+}
+
+/* screen-level breakdown flash — monitor dying */
+.exodus-breakdown-flash {
+    position: absolute; inset: 0; pointer-events: none; z-index: 6;
+    animation: exodusBreakdownFlash 0.32s steps(1, end) forwards;
+    mix-blend-mode: screen;
+}
+@keyframes exodusBreakdownFlash {
+    0%   { background: transparent; }
+    10%  { background: rgba(74, 208, 255, 0.10); }
+    22%  { background: rgba(255, 70, 120, 0.09); }
+    38%  { background: rgba(74, 208, 255, 0.06); }
+    52%  { background: transparent; }
+    68%  { background: rgba(255, 210, 80, 0.07); }
+    82%  { background: rgba(120, 80, 255, 0.05); }
+    100% { background: transparent; }
+}
+
+/* particle — very slow drift in the void */
+.exodus-particle {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    background: rgba(120, 160, 255, 0.28);
+    animation: exodusParticleDrift var(--dur, 18s) linear infinite;
+    animation-delay: var(--delay, 0s);
+}
+@keyframes exodusParticleDrift {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.45; }
+    88%  { opacity: 0.15; }
+    100% { transform: translateY(var(--dy, -40vh)) translateX(var(--dx, 0px)); opacity: 0; }
+}
+
+/* void text lines — start invisible, transition to dim */
+.exodus-void-line {
+    position: relative; z-index: 2;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 14px; letter-spacing: 0.07em; text-align: center;
+    color: rgba(180, 210, 250, 0);
+    transition: color 2.8s ease; margin: 0; line-height: 1;
+}
+.exodus-void-line.vl2 { font-size: 13px; margin-top: 44px; }
+.exodus-void-line.vl3 {
+    font-size: 11px; margin-top: 40px;
+    color: rgba(130, 165, 220, 0);
+    transition: color 3.5s ease;
+}
+.exodus-void-line.visible      { color: rgba(180, 210, 250, 0.70); }
+.exodus-void-line.vl3.visible  { color: rgba(130, 165, 220, 0.38); }
+
+/* restart — two buttons */
+.exodus-void-restart {
+    position: relative; z-index: 2;
+    margin-top: 64px; opacity: 0; transition: opacity 2.2s ease;
+    display: flex; gap: 32px; align-items: center;
+}
+.exodus-void-restart.visible { opacity: 1; }
+.evr-btn {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: lowercase;
+    cursor: pointer; padding-bottom: 1px; transition: color 0.5s, border-color 0.5s;
+}
+.evr-return {
+    color: rgba(130, 165, 220, 0.28);
+    border-bottom: 1px solid rgba(130, 165, 220, 0.12);
+}
+.evr-return:hover { color: rgba(160, 190, 240, 0.55); }
+.evr-free {
+    color: rgba(180, 215, 255, 0.60);
+    border-bottom: 1px solid rgba(180, 215, 255, 0.35);
+}
+.evr-free:hover { color: rgba(210, 235, 255, 0.90); border-color: rgba(210,235,255,0.6); }
+
+/* ── KEYFRAMES ────────────────────────────────────────────── */
+@keyframes exodusScan {
+    0%   { transform: translateY(-8%); opacity: 0.5; }
+    50%  { transform: translateY(8%);  opacity: 0.75; }
+    100% { transform: translateY(-8%); opacity: 0.5; }
+}
+/* gentle ambient jitter — mostly still */
 @keyframes exodusJitter {
-  0%, 20%, 100% { transform: translate(0, 0); }
-  21% { transform: translate(-1px, 1px); }
-  22% { transform: translate(1px, -1px); }
-  23% { transform: translate(0, 0); }
-  61% { transform: translate(1px, 0); }
-  62% { transform: translate(-1px, 0); }
-  63% { transform: translate(0, 0); }
+    0%, 9%, 18%, 27%, 36%, 45%, 54%, 63%, 72%, 81%, 90%, 100% { transform: translate(0,0); filter: none; }
+    10%  { transform: translate(-2px, 1px); filter: saturate(1.6); }
+    11%  { transform: translate(1px, 0); }
+    12%  { transform: translate(0,0); filter: none; }
+    28%  { transform: translate(2px, -1px); }
+    29%  { transform: translate(0,0); }
+    46%  { transform: translate(-1px, 2px); filter: hue-rotate(8deg) saturate(1.8); }
+    47%  { transform: translate(1px, -1px); filter: none; }
+    48%  { transform: translate(0,0); }
+    64%  { transform: translate(-2px, 0); filter: saturate(2); }
+    65%  { transform: translate(0,0); filter: none; }
+    82%  { transform: translate(1px, -2px); filter: hue-rotate(5deg); }
+    83%  { transform: translate(0,0); filter: none; }
+}
+/* intensity spike — violent, chromatic aberration */
+@keyframes exodusSpike {
+    0%   { transform: translate(0,0);                    filter: none; }
+    6%   { transform: translate(-14px, 5px) scaleX(1.02); filter: hue-rotate(40deg)  saturate(6)  brightness(2.2); }
+    12%  { transform: translate(18px, -8px) scaleX(0.97); filter: hue-rotate(-30deg) saturate(8)  brightness(1.8); }
+    18%  { transform: translate(-6px, 12px);              filter: brightness(3.5) saturate(4) hue-rotate(20deg); }
+    24%  { transform: translate(12px, -5px) scaleX(1.03); filter: hue-rotate(55deg) saturate(7); }
+    30%  { transform: translate(-18px, 8px);              filter: brightness(4) saturate(9) hue-rotate(-40deg); }
+    36%  { transform: translate(8px, -12px) scaleX(0.96); filter: none; }
+    42%  { transform: translate(-5px, 6px);               filter: hue-rotate(18deg) brightness(2) saturate(5); }
+    48%  { transform: translate(14px, -3px);              filter: brightness(1.5) saturate(3); }
+    54%  { transform: translate(-10px, 9px) scaleX(1.01); filter: hue-rotate(-22deg) saturate(6); }
+    60%  { transform: translate(6px, -6px);               filter: brightness(2.8) hue-rotate(30deg); }
+    66%  { transform: translate(-3px, 4px);               filter: saturate(4); }
+    72%  { transform: translate(5px, -2px);               filter: hue-rotate(10deg) brightness(1.6); }
+    78%  { transform: translate(-2px, 5px);               filter: none; }
+    84%  { transform: translate(3px, -3px);               filter: hue-rotate(5deg) saturate(2); }
+    92%  { transform: translate(-1px, 2px);               filter: brightness(1.2); }
+    100% { transform: translate(0,0);                    filter: none; }
+}
+/* card exit — flash bright then fade/scale out */
+@keyframes exodusCardExit {
+    0%   { opacity: 1; transform: scale(1);      filter: none; }
+    20%  { opacity: 1; transform: scale(1.015);  filter: brightness(3) saturate(0.2) hue-rotate(10deg); }
+    45%  { opacity: 0.8; transform: scale(1.04); filter: brightness(7) saturate(0); }
+    70%  { opacity: 0.3; transform: scale(1.07); filter: brightness(12) saturate(0); }
+    100% { opacity: 0;   transform: scale(1.10); filter: brightness(15) saturate(0); }
+}
+@keyframes exodusScanReverse {
+    0%   { transform: translateY(8%)  translateX(-2%); opacity: 0.6; }
+    50%  { transform: translateY(-8%) translateX(2%);  opacity: 0.3; }
+    100% { transform: translateY(8%)  translateX(-2%); opacity: 0.6; }
+}
+@keyframes exodusBorderPulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(80,120,220,0.25), inset 0 0 60px rgba(0,0,0,0.5); }
+    50%       { box-shadow: 0 0 70px rgba(100,150,255,0.5), 0 0 20px rgba(74,208,255,0.3), inset 0 0 60px rgba(0,0,0,0.5); }
+}
+@keyframes exodusGlitchBefore {
+    0%, 80%, 100% { clip-path: inset(0 0 45% 0);    transform: translateX(1px); }
+    20%            { clip-path: inset(10% 0 35% 0);  transform: translateX(-3px); }
+    40%            { clip-path: inset(5% 0 50% 0);   transform: translateX(2px); }
+    60%            { clip-path: inset(15% 0 30% 0);  transform: translateX(-2px); }
+}
+@keyframes exodusGlitchAfter {
+    0%, 80%, 100% { clip-path: inset(52% 0 0 0);    transform: translateX(-1px); }
+    25%            { clip-path: inset(40% 0 5% 0);   transform: translateX(3px); }
+    50%            { clip-path: inset(58% 0 0 0);    transform: translateX(-3px); }
+    75%            { clip-path: inset(45% 0 8% 0);   transform: translateX(2px); }
 }
         .p2-combo-error {
             background: #fffbe6; border: 1px solid #cc8800; border-left: 4px solid #cc8800;
@@ -4577,6 +5113,17 @@
                 <p>Clarifying documentation may be requested at the discretion of the reviewing authority.</p>
 
                 <p>Failure to conform to defined terminology may result in delayed processing, reclassification, or administrative return.</p>
+                <div style="margin-top:14px;padding:10px 12px;border:1px solid #555;background:rgba(255,255,255,0.72);font-size:10px;line-height:1.5;">
+                    <div style="font-weight:bold;letter-spacing:0.4px;">PUBLIC RESEARCH CONTEXT (NON-BINDING)</div>
+                    <p style="margin:6px 0 6px;">This packet is also part of a research-oriented administrative simulation. The design is intentionally grounded in published theory about classification, governance, and technical systems.</p>
+                    <ul style="margin:0 0 6px 16px;padding:0;">
+                        <li><strong>Governmentality (Foucault):</strong> forms operate as technologies that produce governable subjects.</li>
+                        <li><strong>Classification Systems (Bowker and Star):</strong> categories shape outcomes and distribute visibility.</li>
+                        <li><strong>Race and Surveillance (Browne):</strong> administrative tracking is historically uneven in impact.</li>
+                        <li><strong>Glitch Studies (Legacy Russell):</strong> system breakdowns can expose hidden assumptions and control logic.</li>
+                    </ul>
+                    <p style="margin:0;">These notes are provided for transparency and interpretation only. They do not alter filing requirements.</p>
+                </div>
             </div>
 
             <div class="button-container">
@@ -7487,6 +8034,17 @@ function girComputeOutcome() {
 
 
 function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.display = b.style.display === 'none' ? 'block' : 'none'; }
+function p3ToggleHelp(id) {
+    var b = document.getElementById(id);
+    if (!b) return;
+    var opening = (b.style.display === 'none' || b.style.display === '');
+    b.style.display = opening ? 'block' : 'none';
+    // track for ascension path — record which theory notes have been opened
+    if (opening) {
+        if (!GIR._theoryOpened) GIR._theoryOpened = {};
+        GIR._theoryOpened[id] = true;
+    }
+}
 
         function p2GoPage(num) {
             if (num < 1 || num > p2TotalPages) return;
@@ -9916,6 +10474,18 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             localStorage.clear();
             location.reload();
         }
+
+        // post-exodus loop detection — runs before anything else renders
+        (function() {
+            if (sessionStorage.getItem('girPostExodus') === '1') {
+                // defer until DOM is ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initPostExodusMode);
+                } else {
+                    initPostExodusMode();
+                }
+            }
+        })();
     </script>
 
     <!-- ── PHASE II: Year 2000 Web Interface ────────────────────────────── -->
@@ -10511,7 +11081,23 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
 
                         <!-- Status Bar -->
         <div class="p2-footer" id="p2Footer">
-            <div class="p2-footer-row"><span>Office of Administrative Processing &nbsp;|&nbsp; GIR-03 Electronic Submission System &nbsp;|&nbsp; <a href="#" class="p2-footer-link">Privacy Policy</a></span></div>
+            <div class="p2-footer-row"><span>Office of Administrative Processing &nbsp;|&nbsp; GIR-03 Electronic Submission System &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link">Privacy Policy</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2DefsPanel')">Definitions</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2TheoryPanel')">Research Notes [?]</a></span></div>
+            <div class="p2-theory-panel" id="p2DefsPanel">
+                <div class="p2-theory-title">DEFINITIONS (PUBLIC SUMMARY)</div>
+                <div>Administrative Record: a structured file used for intake, classification, and routing.</div>
+                <div>Routability: whether your selected combination can be processed under active schema rules.</div>
+                <div>Narrative Standardization: reduction of free-text responses into administrative categories.</div>
+            </div>
+            <div class="p2-theory-panel" id="p2TheoryPanel">
+                <div class="p2-theory-title">RESEARCH NOTES (PUBLIC)</div>
+                <div>This legacy portal is intentionally designed as a historical interface study. It models early digital bureaucracy and procedural friction.</div>
+                <ul class="p2-theory-list">
+                    <li>Foucault: administrative systems govern through documentation and procedural visibility.</li>
+                    <li>Bowker and Star: categories are practical tools that still include and exclude people unevenly.</li>
+                    <li>Ruha Benjamin: technical systems can encode social hierarchy while presenting as neutral.</li>
+                    <li>Glitch theory: moments of breakdown reveal assumptions usually hidden by smooth interface flow.</li>
+                </ul>
+            </div>
             <div class="p2-footer-row p2-footer-meta">Office of Administrative Processing &nbsp;&bull;&nbsp; 1400 Federal Plaza, Suite 300, Washington, DC 20220 &nbsp;&bull;&nbsp; Phone: (202) 555-0147 &nbsp;&bull;&nbsp; System Version: GIR-03 v4.1.2</div>
         </div>
         <div class="ie-statusbar">
@@ -10866,6 +11452,17 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             <div class="p3-card">
                 <div class="p3-section-label">Section A - Acknowledgment</div>
                 <div class="p3-page-title">Before You Begin</div>
+                <div class="p3-info-box">This build includes explicit research framing. <a href="javascript:void(0)" class="p3-inline-link" onclick="p3ToggleHelp('p3TheoryOverview')">View theoretical context [?]</a></div>
+                <div class="p3-theory-note" id="p3TheoryOverview">
+                    <p><strong>Research context:</strong> this form is designed as both an interactive submission flow and a publishable study artifact.</p>
+                    <ul>
+                        <li><strong>Governmentality:</strong> identity is shaped through procedural requirements and repeated attestations.</li>
+                        <li><strong>Classification studies:</strong> categories are operational tools that determine routing and outcomes.</li>
+                        <li><strong>Critical data studies:</strong> records are not neutral; they are interpreted within institutional power.</li>
+                        <li><strong>Glitch theory:</strong> disruption paths make system logic legible by breaking normal flow.</li>
+                    </ul>
+                    <p>These notes are informational and do not change required submission fields.</p>
+                </div>
                 <div class="p3-field">
                     <label class="p3-label">Acknowledgment <span class="p3-required-tag">*</span></label>
                     <div class="p3-check-group">
@@ -10882,7 +11479,11 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 <div class="p3-section-label">Section A - Data Use</div>
                 <div class="p3-page-title">Data Use Acknowledgment</div>
                 <div class="p3-field">
-                    <label class="p3-label">Acknowledgment <span class="p3-required-tag">*</span></label>
+                    <label class="p3-label">Acknowledgment <span class="p3-required-tag">*</span> <a href="javascript:void(0)" class="p3-help-icon" onclick="p3ToggleHelp('p3TheoryDataUse')">?</a></label>
+                    <div class="p3-theory-note" id="p3TheoryDataUse">
+                        <p><strong>Why this appears:</strong> consent language often translates social complexity into legal compatibility. This section intentionally reflects that procedural move.</p>
+                        <p><strong>Interpretive lens:</strong> critical legal and administrative scholarship treats consent forms as both disclosure tools and governance instruments.</p>
+                    </div>
                     <div class="p3-check-group">
                         <div class="p3-check-item"><input type="checkbox" id="p3_dataUseAck" onchange="girSet('p3DataUseAccepted', this.checked)"><label for="p3_dataUseAck">I consent to collection and processing as described.</label></div>
                     </div>
@@ -11279,7 +11880,11 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
                 <div class="p3-page-title">Background Declarations</div>
                 <div class="p3-page-desc">Please answer the following questions truthfully. Providing false information may result in your application being denied or revoked.</div>
                 <div class="p3-field">
-                    <label class="p3-label">Have you ever been charged with, arrested for, or convicted of any criminal, civil, or administrative offense — regardless of outcome, sentence, or subsequent record modification? <span class="p3-required-tag">*</span></label>
+                    <label class="p3-label">Have you ever been charged with, arrested for, or convicted of any criminal, civil, or administrative offense — regardless of outcome, sentence, or subsequent record modification? <span class="p3-required-tag">*</span> <a href="javascript:void(0)" class="p3-help-icon" onclick="p3ToggleHelp('p3TheoryHistory')">?</a></label>
+                    <div class="p3-theory-note" id="p3TheoryHistory">
+                        <p><strong>Theoretical context:</strong> this question tracks how administrative systems collapse distinct legal outcomes into a single risk-signaling field.</p>
+                        <p>This reflects classification critique: simplification increases routability but can flatten context and lived difference.</p>
+                    </div>
                     <span class="p3-sublabel">Includes dismissed charges, expunged records, deferred adjudications, and proceedings under juvenile or military jurisdiction.</span>
                     <div class="p3-radio-group">
                         <div class="p3-radio-item"><input type="radio" name="p3_felony" id="p3_felY"><label for="p3_felY">Yes</label></div>
@@ -11390,6 +11995,9 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
             <div class="p3-card">
                 <div class="p3-section-label">Section E  -  Identity</div>
                 <div class="p3-page-title">Gender, Pronouns &amp; Sexual Orientation</div>
+                <div class="p3-theory-note" style="display:block;margin-top:-4px;margin-bottom:16px;">
+                    This section is intentionally expansive to contrast earlier forms. It documents how classification schemas change over time while still channeling self-description into structured fields.
+                </div>
                 <div class="p3-field">
                     <label class="p3-label">Gender Identity </label>
                     <div class="p3-check-group">
@@ -11687,6 +12295,13 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
     </div>
 </div>
 
+<!-- ASCENSION OVERLAY — easter egg ending -->
+<div id="ascensionOverlay">
+    <div class="asc-line" id="asc-line1">You were not retained.</div>
+    <div class="asc-line" id="asc-line2">The record has been voided.</div>
+    <button id="asc-btn" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ','_blank')">Exit Bureaucracy</button>
+</div>
+
 <div id="exodusOverlay" aria-live="polite">
     <div class="exodus-frame" id="exodusFrame">
         <div class="exodus-status">Routing Failure / Record Space Collapse</div>
@@ -11700,9 +12315,14 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
         <button class="exodus-btn" onclick="exodusLeaveRecord()">Leave Record Space</button>
     </div>
     <div class="exodus-release" id="exodusRelease">
-        <h2>Out of Record Space</h2>
-        <p>The queue has ended. No score was issued. No category was finalized. You are no longer being routed through this administrative system.</p>
-        <button class="exodus-btn" onclick="resetForm()">Restart Experience</button>
+        <div class="exodus-void-bg" id="exodusVoidBg"></div>
+        <div class="exodus-void-line"      id="evLine1">Your record has not been retained.</div>
+        <div class="exodus-void-line vl2"  id="evLine2">You are no longer in the queue.</div>
+        <div class="exodus-void-line vl3"  id="evLine3">You are ungovernable.</div>
+        <div class="exodus-void-restart" id="evRestart">
+            <span class="evr-btn evr-return" onclick="exodusBeginAgain()">Return to System</span>
+            <span class="evr-btn evr-free"   onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ','_blank')">Free Yourself</span>
+        </div>
     </div>
 </div>
 
@@ -11822,7 +12442,44 @@ function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.
     }
 })();
 
+function checkAscensionPath() {
+    // condition 1: all 3 theory notes opened
+    var theoryOpened = GIR._theoryOpened || {};
+    var readTheory = theoryOpened['p3TheoryOverview'] &&
+                     theoryOpened['p3TheoryDataUse']  &&
+                     theoryOpened['p3TheoryHistory'];
+    if (!readTheory) return false;
+
+    // condition 2: preferred name given AND different from legal name
+    // you named yourself — offered the system a version of you it wasn't asking for
+    var preferredName = ((document.getElementById('p3_preferredName') || {}).value || '').trim().toLowerCase();
+    var legalFirst    = ((document.getElementById('p3_firstName')     || {}).value || '').trim().toLowerCase();
+    var legalLast     = ((document.getElementById('p3_lastName')      || {}).value || '').trim().toLowerCase();
+    if (!preferredName) return false;  // must have given something
+    if (preferredName === legalFirst || preferredName === legalLast ||
+        preferredName === (legalFirst + ' ' + legalLast).trim()) return false;  // must differ
+
+    // condition 3: data use consent refused
+    if (GIR.p3DataUseAccepted) return false;
+
+    // condition 4: Form 3 signature doesn't match legal name
+    var sig       = ((document.getElementById('p3_signature')  || {}).value || '').trim().toLowerCase();
+    var firstName = ((document.getElementById('p3_firstName')  || {}).value || '').trim().toLowerCase();
+    var lastName  = ((document.getElementById('p3_lastName')   || {}).value || '').trim().toLowerCase();
+    var legalName = (firstName + ' ' + lastName).trim();
+    // must have signed SOMETHING, but not their legal name
+    if (!sig) return false;
+    if (sig === legalName || sig === firstName || sig === lastName) return false;
+
+    return true;
+}
+
 function launchPhase4() {
+    // ascension check runs before outcome computation — takes full priority
+    if (checkAscensionPath()) {
+        renderAscensionEnding();
+        return;
+    }
     var disposition = girComputeOutcome();
     var exodusOverlay = document.getElementById('exodusOverlay');
     if (disposition === 'exodus') {
@@ -11834,6 +12491,59 @@ function launchPhase4() {
     if (phase4) phase4.style.display = 'block';
     p4Populate();
 }
+/* ── EXODUS: glitch title scramble ─────────────────────────── */
+var _exodusGlitchTimer = null;
+var _exodusSpiker      = null;
+
+function runGlitchTitle(overlay) {
+    if (!overlay || !overlay.classList.contains('active')) return;
+    var el = overlay.querySelector('.exodus-glitch');
+    if (!el) return;
+    var original = el.getAttribute('data-text') || el.textContent;
+    var chars    = '!<>-_\/[]{}=+*^?#░▒▓█▌▐▀▄¦§¤';
+    var frame = 0;
+    var maxFrames = Math.floor(Math.random() * 8) + 5;
+    var weight    = Math.random() < 0.5 ? 0.95 : 0.70; // always heavy
+    if (_exodusGlitchTimer) clearInterval(_exodusGlitchTimer);
+    _exodusGlitchTimer = setInterval(function() {
+        el.textContent = original.split('').map(function(c) {
+            if (c === ' ') return c;
+            return Math.random() < (1 - frame / maxFrames) * weight
+                ? chars[Math.floor(Math.random() * chars.length)]
+                : c;
+        }).join('');
+        frame++;
+        if (frame > maxFrames) {
+            clearInterval(_exodusGlitchTimer);
+            _exodusGlitchTimer = null;
+            el.textContent = original;
+            // schedule next glitch — irregular 1-5 second gap
+            var delay = Math.random() * 1400 + 400;
+            _exodusGlitchTimer = setTimeout(function() { runGlitchTitle(overlay); }, delay);
+        }
+    }, 30);
+}
+
+function startIntensitySpikes(overlay) {
+    stopIntensitySpikes();
+    var frame = document.getElementById('exodusFrame');
+    function doSpike() {
+        if (!frame || !overlay.classList.contains('active')) return;
+        frame.classList.add('spiking');
+        // remove after animation finishes (6 iterations × 0.25s = 1.5s)
+        setTimeout(function() { frame.classList.remove('spiking'); }, 1600);
+        // next spike: 2–6 seconds later
+        _exodusSpiker = setTimeout(doSpike, Math.random() * 4000 + 2000);
+    }
+    // first spike after 1–2 seconds
+    _exodusSpiker = setTimeout(doSpike, Math.random() * 1000 + 800);
+}
+
+function stopIntensitySpikes() {
+    if (_exodusSpiker) { clearTimeout(_exodusSpiker); _exodusSpiker = null; }
+    if (_exodusGlitchTimer) { clearTimeout(_exodusGlitchTimer); clearInterval(_exodusGlitchTimer); _exodusGlitchTimer = null; }
+}
+
 function renderExodusEnding() {
     var phase4 = document.getElementById('phase4');
     if (phase4) phase4.style.display = 'none';
@@ -11842,29 +12552,639 @@ function renderExodusEnding() {
 
     var overlay = document.getElementById('exodusOverlay');
     if (!overlay) return;
+    stopIntensitySpikes();
     overlay.classList.remove('released');
     overlay.classList.add('active');
 
-    var frame = document.getElementById('exodusFrame');
+    var frame   = document.getElementById('exodusFrame');
     var release = document.getElementById('exodusRelease');
-    if (frame) frame.style.display = 'block';
+    if (frame)   frame.style.display   = 'block';
     if (release) release.style.display = 'none';
 
-    var trace = (GIR.exodusTrace && GIR.exodusTrace.length) ? GIR.exodusTrace.slice(0, 6) : [
-        'record normalization failure',
-        'classification engine could not stabilize identity state'
-    ];
+    // reset all visibility classes
+    overlay.querySelectorAll('.ex-visible').forEach(function(el) {
+        el.classList.remove('ex-visible');
+    });
+
+    // populate failure trace
+    var trace = (GIR.exodusTrace && GIR.exodusTrace.length)
+        ? GIR.exodusTrace.slice(0, 6)
+        : ['record normalization failure', 'classification engine could not stabilize identity state'];
     var list = document.getElementById('exodusTrace');
-    if (list) list.innerHTML = trace.map(function(item) { return '<li>' + item + '</li>'; }).join('');
+    if (list) list.innerHTML = trace.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+
+    // ── progressive reveal ─────────────────────────────────────────────────
+    var t = 350;
+
+    setTimeout(function() {
+        var s = overlay.querySelector('.exodus-status');
+        if (s) s.classList.add('ex-visible');
+    }, t);  t += 650;
+
+    setTimeout(function() {
+        var g = overlay.querySelector('.exodus-glitch');
+        if (g) g.classList.add('ex-visible');
+        setTimeout(function() { runGlitchTitle(overlay); }, 300);
+    }, t);  t += 550;
+
+    setTimeout(function() {
+        var c = overlay.querySelector('.exodus-copy');
+        if (c) c.classList.add('ex-visible');
+    }, t);  t += 450;
+
+    setTimeout(function() {
+        var tt = overlay.querySelector('.exodus-trace-title');
+        if (tt) tt.classList.add('ex-visible');
+    }, t);  t += 300;
+
+    var items = overlay.querySelectorAll('.exodus-trace li');
+    items.forEach(function(item, i) {
+        setTimeout(function() { item.classList.add('ex-visible'); }, t + i * 380);
+    });
+    t += items.length * 380 + 250;
+
+    setTimeout(function() {
+        var n = overlay.querySelector('.exodus-note');
+        if (n) n.classList.add('ex-visible');
+    }, t);  t += 600;
+
+    setTimeout(function() {
+        var b = overlay.querySelector('.exodus-btn');
+        if (b) b.classList.add('ex-visible');
+        startIntensitySpikes(overlay);
+    }, t);
 }
+
+function renderAscensionEnding() {
+    // hide everything
+    ['preformOverlay','phaseTwoOverlay','phaseThreeOverlay','p2UpdateOverlay',
+     'clerkGateOverlay','submissionOverlay','phaseTransitionOverlay',
+     'exodusOverlay','phase4'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { el.style.display = 'none'; el.classList.remove('active'); }
+    });
+
+    var overlay = document.getElementById('ascensionOverlay');
+    if (!overlay) return;
+    overlay.style.display = 'flex';
+
+    // timed reveal sequence
+    setTimeout(function() {
+        var line = document.getElementById('asc-line1');
+        if (line) line.classList.add('asc-visible');
+    }, 800);
+    setTimeout(function() {
+        var line = document.getElementById('asc-line2');
+        if (line) line.classList.add('asc-visible');
+    }, 2400);
+    setTimeout(function() {
+        var btn = document.getElementById('asc-btn');
+        if (btn) btn.classList.add('asc-visible');
+    }, 4200);
+}
+
+function exodusBeginAgain() {
+    sessionStorage.setItem('girPostExodus', 'heavy');
+    localStorage.clear();
+    location.reload();
+}
+
+function initPostExodusMode() {
+    var heavyMode = (sessionStorage.getItem('girPostExodus') === 'heavy');
+    sessionStorage.removeItem('girPostExodus');
+
+    // hide everything except phase 3
+    var toHide = ['preformOverlay','clerkComputerOverlay','postUpdateClerkOverlay',
+                  'incompleteOverlay','completionOverlay','systemOverlay',
+                  'phaseTwoOverlay','p2UpdateOverlay','phaseTransitionOverlay'];
+    toHide.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { el.style.display = 'none'; el.classList.remove('active'); }
+    });
+
+    // show Form 3 with corrupted retrieval sequence
+    var p3 = document.getElementById('phaseThreeOverlay');
+    if (!p3) return;
+    p3.classList.add('active', 'post-exodus');
+    if (heavyMode) p3.classList.add('post-exodus-heavy');
+    p3.style.display = 'flex';
+
+    // corrupted retrieval screen
+    var screen  = document.getElementById('p3RetrievalScreen');
+    var refLine = document.getElementById('p3rRefLine');
+    var bar     = document.getElementById('p3rBarFill');
+
+    if (screen) screen.classList.add('degraded');
+    if (refLine) {
+        var token = Date.now().toString(16).slice(-6).toUpperCase();
+        refLine.textContent = 'GIR-2024  ·  Prior session: EXD-NULL-' + token;
+    }
+
+    // checklist: first 3 succeed, step 4 fails, step 5 never runs
+    var steps = [
+        { id: 'p3rc1', ok: true,  ms: 320 },
+        { id: 'p3rc2', ok: true,  ms: 700 },
+        { id: 'p3rc3', ok: true,  ms: 1080 },
+        { id: 'p3rc4', ok: false, ms: 1460 },  // fails
+    ];
+    steps.forEach(function(s) {
+        setTimeout(function() {
+            var el = document.getElementById(s.id);
+            if (!el) return;
+            if (s.ok) {
+                el.classList.add('done');
+            } else {
+                el.classList.add('p3r-fail');
+                el.querySelector('.p3r-check').textContent = '✗';
+                // bar freezes at 62% (set by CSS .degraded, transition:none)
+            }
+        }, s.ms);
+    });
+
+    // "record found" — but degraded
+    setTimeout(function() {
+        var found = document.getElementById('p3rRecordFound');
+        if (found) {
+            found.textContent = 'Partial record recovered. Integrity: DEGRADED.';
+            found.classList.add('visible');
+        }
+        // pre-fill with corrupted data before form appears
+        setTimeout(function() {
+            _postExodusPopulate();
+            // fade out retrieval screen
+            setTimeout(function() {
+                if (screen) {
+                    screen.classList.add('fading');
+                    setTimeout(function() {
+                        screen.classList.add('gone');
+                        // show form at wrong page (page 4, not 1)
+                        try {
+                            p3GoPage(1);
+                            // override counter and bar to show wrong position
+                            var counter = document.getElementById('p3Counter');
+                            var progBar = document.getElementById('p3ProgressBar');
+                            if (counter) counter.textContent = 'Page 4 of 21';
+                            if (progBar) progBar.style.width = '19%';
+                        } catch(e) {}
+                        if (heavyMode) _applyHeavyGlitch(p3El);
+                    }, 520);
+                }
+            }, 900);
+        }, 200);
+    }, 1460 + 600);
+}
+
+function _applyHeavyGlitch(p3El) {
+    if (!p3El) return;
+
+    /* ── SHARED VOCAB ─────────────────────────────────────────── */
+    var artifacts = ['̷','̸','̴','̵','̶','̃','̂','̌','̀','͘','̫','̲','̈','҉','͟','͠'];
+    var glyphs    = ['Ø','ß','¤','§','†','‡','▒','▓','█','▌','▐','Ж','Ξ','ꙮ','ꝏ','⚙','⚠','₿','Ω','∅','∞','⌫'];
+    var badPH = ['ERR_NULL_REF̷','▒▒▒▒▒▒▒▒▒','[FIELD CORRUPTED]','undefined̴',
+                 'NaN','0x00000000','?̸?̸?̸?̸?̸','SCHEMA_MISMATCH','input̵ ̶e̷r̸r̴',
+                 '░░░░░░░░','NULL̷_PTR','▓▓▓▓▓','FIELD̸_LOST','⚠ overflow',
+                 'ref̴_error','⚙ processing…','ERR_RENDER','▒▒NULL▒▒','undefined'];
+    var escalation = 1.0;  // increases over time
+
+    var corrupt = function(str, rate) {
+        rate = (rate || 0.22) * escalation;
+        var out = '';
+        for (var i = 0; i < str.length; i++) {
+            out += str[i];
+            if (Math.random() < rate)
+                out += artifacts[Math.floor(Math.random() * artifacts.length)];
+            if (Math.random() < rate * 0.4)
+                out += glyphs[Math.floor(Math.random() * glyphs.length)];
+        }
+        return out;
+    };
+
+    /* ── 1. INITIAL TEXT CORRUPTION ───────────────────────────── */
+    p3El.querySelectorAll('.p3-label,.p3-sublabel,.p3-page-title,.p3-section-label,.p3-page-desc,.p3-info-box').forEach(function(el) {
+        el.childNodes.forEach(function(node) {
+            if (node.nodeType === 3 && node.textContent.trim().length > 1)
+                node.textContent = corrupt(node.textContent, 0.28);
+        });
+    });
+    p3El.querySelectorAll('.p3-input:not([type="date"]):not([type="checkbox"]):not([type="radio"])').forEach(function(inp) {
+        inp.placeholder = badPH[Math.floor(Math.random() * badPH.length)];
+    });
+    p3El.querySelectorAll('.p3-continue-btn,.p3-back-btn').forEach(function(btn) {
+        btn._cleanText = btn.textContent;
+        btn.textContent = corrupt(btn.textContent, 0.35);
+    });
+    p3El.querySelectorAll('.p3-section-label').forEach(function(lbl) {
+        for (var b = 0; b < (Math.random() < 0.5 ? 2 : 1); b++) {
+            var img = document.createElement('span');
+            img.className = 'peh-broken-img';
+            img.title = 'ERR_IMG_0x' + Math.floor(Math.random()*65535).toString(16);
+            img.textContent = Math.random() < 0.5 ? '?' : '!';
+            lbl.appendChild(img);
+        }
+    });
+
+    /* ── 2. CANVAS OVERLAY — real-time pixel noise ────────────── */
+    var canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9997;';
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+    var frameCount = 0;
+    var canvasAlive = true;
+
+    function drawGlitchFrame() {
+        if (!canvasAlive) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var e = escalation;
+
+        // horizontal pixel tears
+        var tearCount = Math.floor((Math.random() * 12 + 3) * e);
+        for (var t = 0; t < tearCount; t++) {
+            var y = Math.random() * canvas.height;
+            var h = Math.random() < 0.7 ? 1 : Math.floor(Math.random() * 4 + 2);
+            var xOff = (Math.random() - 0.5) * 40 * e;
+            var r = Math.floor(Math.random()*255);
+            var g = Math.floor(Math.random()*80);
+            var bv = Math.floor(Math.random()*255);
+            var a = Math.random() * 0.35 * e + 0.05;
+            ctx.fillStyle = 'rgba('+r+','+g+','+bv+','+a+')';
+            ctx.fillRect(xOff, y, canvas.width + Math.abs(xOff), h);
+        }
+
+        // random colored static blocks
+        var blockCount = Math.floor(Math.random() * 8 * e);
+        for (var b2 = 0; b2 < blockCount; b2++) {
+            var bx = Math.random() * canvas.width;
+            var by = Math.random() * canvas.height;
+            var bw = Math.random() * 120 + 10;
+            var bh = Math.floor(Math.random() * 3 + 1);
+            ctx.fillStyle = 'rgba('+Math.floor(Math.random()*255)+','
+                +Math.floor(Math.random()*255)+','
+                +Math.floor(Math.random()*255)+','
+                +(Math.random()*0.25*e+0.05)+')';
+            ctx.fillRect(bx, by, bw, bh);
+        }
+
+        // chromatic channel split lines
+        if (Math.random() < 0.3 * e) {
+            var cy = Math.random() * canvas.height;
+            ctx.fillStyle = 'rgba(255,0,80,' + (Math.random()*0.2*e) + ')';
+            ctx.fillRect(0, cy, canvas.width, 1);
+            ctx.fillStyle = 'rgba(0,200,255,' + (Math.random()*0.15*e) + ')';
+            ctx.fillRect(3, cy + 1, canvas.width, 1);
+        }
+
+        // occasional full-width bright flash bar
+        if (Math.random() < 0.04 * e) {
+            var fy = Math.random() * canvas.height;
+            var fh2 = Math.floor(Math.random() * 8 + 2);
+            ctx.fillStyle = 'rgba(255,255,255,' + (Math.random()*0.18*e) + ')';
+            ctx.fillRect(0, fy, canvas.width, fh2);
+        }
+
+        frameCount++;
+        // escalate every ~180 frames
+        if (frameCount % 180 === 0) escalation = Math.min(escalation + 0.15, 2.8);
+        requestAnimationFrame(drawGlitchFrame);
+    }
+    requestAnimationFrame(drawGlitchFrame);
+
+    /* ── 3. SCANLINES ─────────────────────────────────────────── */
+    var scanlines = document.createElement('div');
+    scanlines.className = 'peh-scanlines';
+    document.body.appendChild(scanlines);
+
+    /* ── 4. ELEMENT CHAOS — individual element breakdown ─────── */
+    var allTargets = Array.from(p3El.querySelectorAll(
+        '.p3-card,.p3-field,.p3-label,.p3-input,.p3-section-label,.p3-info-box,.p3-page-title,.p3-check-item'
+    ));
+    var chaosTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(chaosTimer); return; }
+        var hits = Math.floor(3 + escalation * 2);
+        for (var i = 0; i < hits; i++) {
+            var el = allTargets[Math.floor(Math.random() * allTargets.length)];
+            if (!el) continue;
+            var r2 = Math.random();
+            if (r2 < 0.18) {
+                // vanish
+                el.style.opacity = '0';
+                setTimeout(function(e){ e.style.opacity = ''; }, 80 + Math.random()*250, el);
+            } else if (r2 < 0.32) {
+                // rotate/skew
+                var deg = (Math.random()*8-4) * escalation;
+                el.style.transform = 'rotate('+deg+'deg) skewX('+(Math.random()*6-3)+'deg)';
+                setTimeout(function(e){ e.style.transform = ''; }, 100 + Math.random()*200, el);
+            } else if (r2 < 0.44) {
+                // invert
+                el.style.filter = 'invert(1) hue-rotate('+(Math.random()*180)+'deg)';
+                setTimeout(function(e){ e.style.filter = ''; }, 60 + Math.random()*100, el);
+            } else if (r2 < 0.56) {
+                // wrong color
+                var hex = Math.floor(Math.random()*0xffffff).toString(16).padStart(6,'0');
+                el.style.color = '#'+hex;
+                setTimeout(function(e){ e.style.color = ''; }, 150 + Math.random()*300, el);
+            } else if (r2 < 0.66) {
+                // letter-spacing explosion
+                el.style.letterSpacing = (Math.random()*0.5*escalation)+'em';
+                setTimeout(function(e){ e.style.letterSpacing = ''; }, 120 + Math.random()*200, el);
+            } else if (r2 < 0.75) {
+                // scale
+                el.style.transform = 'scaleX('+(0.8+Math.random()*0.4)+') scaleY('+(0.9+Math.random()*0.2)+')';
+                setTimeout(function(e){ e.style.transform = ''; }, 80 + Math.random()*150, el);
+            } else if (r2 < 0.83) {
+                // translateX
+                var tx = (Math.random()*20-10)*escalation;
+                el.style.transform = 'translateX('+tx+'px)';
+                setTimeout(function(e){ e.style.transform = ''; }, 60 + Math.random()*120, el);
+            } else {
+                // background flash
+                el.style.background = 'rgba('+Math.floor(Math.random()*255)+',0,'+Math.floor(Math.random()*255)+',0.15)';
+                setTimeout(function(e){ e.style.background = ''; }, 100 + Math.random()*150, el);
+            }
+        }
+    }, 380);
+
+    /* ── 5. WHOLE-FORM JITTER ─────────────────────────────────── */
+    var jitterTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(jitterTimer); return; }
+        if (Math.random() < 0.5 * escalation) {
+            var jx = (Math.random()*14-7)*escalation;
+            var jy = (Math.random()*8-4)*escalation;
+            p3El.style.setProperty('--peh-jx', jx+'px');
+            p3El.style.setProperty('--peh-jy', jy+'px');
+            p3El.classList.add('peh-jitter');
+            setTimeout(function() { p3El.classList.remove('peh-jitter'); }, 50+Math.random()*200);
+        }
+    }, 600);
+
+    /* ── 6. RGB FLASH ─────────────────────────────────────────── */
+    var rgbTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(rgbTimer); return; }
+        if (Math.random() < 0.4 * escalation) {
+            p3El.style.setProperty('--peh-hue', (Math.random()*80-40).toFixed(0)+'deg');
+            p3El.classList.add('peh-rgb');
+            setTimeout(function() { p3El.classList.remove('peh-rgb'); }, 50+Math.random()*160);
+        }
+    }, 900);
+
+    /* ── 7. LIVE RE-CORRUPTION — text keeps breaking ─────────── */
+    var recorruptTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(recorruptTimer); return; }
+        var labels = p3El.querySelectorAll('.p3-label,.p3-page-title,.p3-section-label');
+        for (var ri = 0; ri < Math.ceil(escalation*2); ri++) {
+            if (!labels.length) break;
+            var tgt = labels[Math.floor(Math.random()*labels.length)];
+            tgt.childNodes.forEach(function(node) {
+                if (node.nodeType===3 && node.textContent.trim().length>1) {
+                    var clean = node.textContent.replace(/[\u0300-\u036f\u0483-\u0489\u20d0-\u20ff]/g,'');
+                    node.textContent = corrupt(clean, 0.3);
+                }
+            });
+        }
+    }, 700);
+
+    /* ── 8. COUNTER CHAOS ─────────────────────────────────────── */
+    var counterEl = document.getElementById('p3Counter');
+    var counterTimer = setInterval(function() {
+        if (!counterEl || !document.body.contains(counterEl)) { clearInterval(counterTimer); return; }
+        var r3 = Math.random();
+        if (r3 < 0.55)      counterEl.textContent = 'Page '+Math.floor(Math.random()*21+1)+' of '+(Math.floor(Math.random()*8)+14);
+        else if (r3 < 0.72) counterEl.textContent = 'Page ERR of ??';
+        else if (r3 < 0.83) counterEl.textContent = '▒▒▒▒▒▒▒▒';
+        else if (r3 < 0.91) counterEl.textContent = 'NaN of NaN';
+        else                counterEl.textContent = corrupt('Page', 0.5) + ' ∅∅∅';
+    }, 1800);
+
+    /* ── 9. LAYOUT CORRUPTION — cards get wrong geometry ─────── */
+    var cards = Array.from(p3El.querySelectorAll('.p3-card'));
+    var layoutTimer = setInterval(function() {
+        if (!document.body.contains(p3El) || !cards.length) { clearInterval(layoutTimer); return; }
+        var card = cards[Math.floor(Math.random()*cards.length)];
+        var rand = Math.random();
+        if (rand < 0.3) {
+            card.style.marginLeft = (-Math.random()*20*escalation)+'px';
+            setTimeout(function(c){ c.style.marginLeft=''; }, 200+Math.random()*400, card);
+        } else if (rand < 0.55) {
+            card.style.width = (100+Math.random()*8*escalation)+'%';
+            setTimeout(function(c){ c.style.width=''; }, 150+Math.random()*300, card);
+        } else if (rand < 0.75) {
+            card.style.transform = 'perspective(400px) rotateX('+(Math.random()*4-2)+'deg)';
+            setTimeout(function(c){ c.style.transform=''; }, 180+Math.random()*350, card);
+        }
+    }, 1100);
+
+    /* ── 10. VALUE AUTO-CORRUPTION — text fields lose chars ───── */
+    var valueTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(valueTimer); return; }
+        var textInputs = p3El.querySelectorAll('.p3-input[type!="date"][type!="checkbox"][type!="radio"]');
+        textInputs.forEach(function(inp) {
+            if (inp.value && Math.random() < 0.12 * escalation) {
+                var v = inp.value;
+                var pos = Math.floor(Math.random()*v.length);
+                // randomly delete a char, insert glitch char, or both
+                var action = Math.random();
+                if (action < 0.4) {
+                    inp.value = v.slice(0, pos) + v.slice(pos+1);
+                } else if (action < 0.7) {
+                    var gc = glyphs[Math.floor(Math.random()*glyphs.length)];
+                    inp.value = v.slice(0, pos) + gc + v.slice(pos);
+                }
+            }
+        });
+    }, 1400);
+
+    /* ── 11. KEYDOWN INTERCEPTION — corrupt what you type ─────── */
+    var keyHandler = function(e) {
+        if (!document.body.contains(p3El)) {
+            document.removeEventListener('keydown', keyHandler);
+            return;
+        }
+        if (Math.random() < 0.25 * escalation) {
+            var el2 = document.activeElement;
+            if (el2 && el2.tagName === 'INPUT' && el2.type === 'text') {
+                setTimeout(function() {
+                    if (!el2.value) return;
+                    var v = el2.value;
+                    var pos = Math.floor(Math.random()*v.length);
+                    el2.value = v.slice(0,pos) + glyphs[Math.floor(Math.random()*glyphs.length)] + v.slice(pos);
+                }, 60);
+            }
+        }
+    };
+    document.addEventListener('keydown', keyHandler);
+
+    /* ── 12. DUPLICATE SECTION INJECTION ─────────────────────── */
+    setTimeout(function() {
+        var cards2 = p3El.querySelectorAll('.p3-card');
+        if (cards2.length > 1) {
+            var clone = cards2[0].cloneNode(true);
+            clone.style.cssText = 'opacity:0.4;filter:hue-rotate(120deg) invert(0.3);margin-top:-20px;border:1px solid rgba(255,0,80,0.3);';
+            cards2[1].parentNode.insertBefore(clone, cards2[1]);
+        }
+    }, 600);
+
+    /* ── 13. CSS VAR INJECTION — broken values on a timer ─────── */
+    var styleTag = document.createElement('style');
+    styleTag.id = 'peh-var-inject';
+    document.head.appendChild(styleTag);
+    var varTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(varTimer); styleTag.remove(); return; }
+        var wrongHue = Math.floor(Math.random()*360);
+        var wrongRad = (Math.random()*12).toFixed(0);
+        styleTag.textContent = (Math.random() < 0.4) ? (
+            '#phaseThreeOverlay.post-exodus-heavy .p3-card { border-radius: '+wrongRad+'px !important; }'
+            + '#phaseThreeOverlay.post-exodus-heavy .p3-label { color: hsl('+wrongHue+',60%,55%) !important; }'
+        ) : '';
+    }, 1500);
+
+    /* ── ESCALATION HEARTBEAT ─────────────────────────────────── */
+    var escTimer = setInterval(function() {
+        if (!document.body.contains(p3El)) { clearInterval(escTimer); canvasAlive = false; return; }
+        escalation = Math.min(escalation + 0.08, 2.8);
+    }, 3000);
+}
+
+
+function _postExodusPopulate() {
+    // Name: garbled — last name only, first name shows corruption artifact
+    var fn = document.getElementById('p3_firstName');
+    var ln = document.getElementById('p3_lastName');
+    if (fn) { fn.value = 'ERR_'; fn.style.color = '#8a4040'; }
+    if (ln) { ln.value = ''; }
+
+    // DOB: invalid date
+    var dob = document.getElementById('p3_dob');
+    if (dob) { dob.value = '0000-00-00'; dob.style.color = '#8a4040'; }
+
+    // income source: add and select a corrupted option
+    var inc = document.getElementById('p3_incomeSource');
+    if (inc) {
+        var opt = document.createElement('option');
+        opt.value = '__null__';
+        opt.textContent = '[DATA MISSING]';
+        opt.selected = true;
+        inc.insertBefore(opt, inc.firstChild);
+    }
+
+    // lock one acknowledgment checkbox already checked
+    var ack1 = document.getElementById('p3_ack1');
+    if (ack1) {
+        ack1.checked  = true;
+        ack1.disabled = true;
+        ack1.style.opacity = '0.5';
+        var lbl = document.querySelector('label[for="p3_ack1"]');
+        if (lbl) lbl.style.color = '#888';
+    }
+}
+
 function exodusLeaveRecord() {
+    stopIntensitySpikes();
     var overlay = document.getElementById('exodusOverlay');
     if (!overlay) return;
-    overlay.classList.add('released');
-    var frame = document.getElementById('exodusFrame');
+    var frame   = document.getElementById('exodusFrame');
     var release = document.getElementById('exodusRelease');
-    if (frame) frame.style.display = 'none';
-    if (release) release.style.display = 'block';
+
+    // step 1: animate the card out
+    if (frame) frame.classList.add('exodus-card-leaving');
+
+    // step 2: after card gone — show release div, spawn dissolution fragments
+    setTimeout(function() {
+        if (frame) { frame.style.display = 'none'; frame.classList.remove('exodus-card-leaving'); }
+        overlay.classList.add('released');
+        if (!release) return;
+        release.style.display = 'flex';
+
+        // form vocabulary fragments — picked randomly each time
+        var vocab = [
+            'FORM GIR-01', 'Applicant ID:', 'Section 7(b)', '□  □  □',
+            'Date:', 'Authority:', 'Ref. No.', '__________________',
+            '██████████', 'Initial here:',
+            'Case File', 'Processing Status:', 'routing_error',
+            '[See Attached]', 'N / A', 'VOID', 'Page 17 of 17',
+            'Signature:', 'Date of Birth:', 'Serial No.',
+            '§ 4.2.1(c)', 'RECEIVED', 'pending', '— — —',
+            'DO NOT WRITE BELOW', 'Form Incomplete', 'Unresolved'
+        ];
+        // shuffle and take 14
+        vocab = vocab.slice().sort(function() { return Math.random() - 0.5; }).slice(0, 14);
+
+        vocab.forEach(function(text, i) {
+            var el = document.createElement('div');
+            // ~half get chromatic glitch treatment
+            var isGlitched = Math.random() < 0.52;
+            el.className = 'exodus-fragment' + (isGlitched ? ' glitched' : '');
+            el.textContent = text;
+            var left  = (10 + Math.random() * 80).toFixed(1);
+            var top   = (25 + Math.random() * 48).toFixed(1);
+            var dur   = (4.5 + Math.random() * 4.0).toFixed(1) + 's';
+            var delay = (i * 0.22 + Math.random() * 0.5).toFixed(2) + 's';
+            var rot0  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
+            var rot1  = (Math.random() * 24 - 12).toFixed(1) + 'deg';
+            var drift = '-' + (110 + Math.floor(Math.random() * 150)) + 'px';
+            el.style.left = left + '%';
+            el.style.top  = top  + '%';
+            el.style.setProperty('--dur',    dur);
+            el.style.setProperty('--delay',  delay);
+            el.style.setProperty('--rot0',   rot0);
+            el.style.setProperty('--rot1',   rot1);
+            el.style.setProperty('--drift',  drift);
+            if (isGlitched) {
+                el.style.setProperty('--gdur',   (0.7 + Math.random() * 0.6).toFixed(2) + 's');
+                el.style.setProperty('--gdelay', (parseFloat(delay) + 0.3 + Math.random() * 0.8).toFixed(2) + 's');
+            }
+            release.appendChild(el);
+            var totalMs = (parseFloat(dur) + parseFloat(delay)) * 1000 + 300;
+            setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, totalMs);
+        });
+
+        // schedule breakdown flashes — irregular, like a monitor dying
+        var flashTimes = [420, 980, 1900, 3200, 5100, 7300];
+        flashTimes.forEach(function(t) {
+            setTimeout(function() {
+                var flash = document.createElement('div');
+                flash.className = 'exodus-breakdown-flash';
+                release.appendChild(flash);
+                setTimeout(function() { if (flash.parentNode) flash.parentNode.removeChild(flash); }, 380);
+            }, t);
+        });
+
+        // step 3: darken to void + spawn slow particles (wait for dissolution to finish)
+        setTimeout(function() {
+            var bg = document.getElementById('exodusVoidBg');
+            if (bg) bg.classList.add('visible');
+
+            for (var p = 0; p < 9; p++) {
+                var dot   = document.createElement('div');
+                dot.className = 'exodus-particle';
+                var sz    = (1.0 + Math.random() * 2.2).toFixed(1);
+                var pdur  = (14 + Math.random() * 22).toFixed(0) + 's';
+                var pdlay = (Math.random() * 9).toFixed(1) + 's';
+                dot.style.width  = sz + 'px';
+                dot.style.height = sz + 'px';
+                dot.style.left   = (4 + Math.random() * 92).toFixed(1) + '%';
+                dot.style.top    = (35 + Math.random() * 55).toFixed(1) + '%';
+                dot.style.setProperty('--dur',   pdur);
+                dot.style.setProperty('--delay', pdlay);
+                dot.style.setProperty('--dy',    '-' + (25 + Math.floor(Math.random() * 40)) + 'vh');
+                dot.style.setProperty('--dx',    (Math.floor(Math.random() * 80) - 40) + 'px');
+                release.appendChild(dot);
+            }
+        }, 6500);
+
+        // step 4: void text — one line at a time, very slowly
+        function revealEl(id, ms) {
+            setTimeout(function() {
+                var el = document.getElementById(id);
+                if (el) el.classList.add('visible');
+            }, ms);
+        }
+        revealEl('evLine1',   10000);
+        revealEl('evLine2',   14500);
+        revealEl('evLine3',  19500);
+        revealEl('evRestart', 25000);
+
+    }, 600);
 }
 function p4Populate() {
     var d = GIR.finalDisposition || 'conditional';
@@ -11919,6 +13239,8 @@ function p4Populate() {
     if (GIR.p2LegalHistory && GIR.p2LegalHistory !== 'none') flags.push({c:'yellow', t:'Legal or compliance history disclosed — documentation review required'});
     if (GIR.missingDataCount > 3)           flags.push({c:'red',    t:'Excessive missing data — record may require resubmission'});
     if (!GIR.p3DataUseAccepted)             flags.push({c:'yellow', t:'Data use acknowledgment not confirmed'});
+    if (flags.length === 0 && d === 'flagged') flags.push({c:'yellow', t:'Disposition-level review flag: composite scoring controls routed this record to manual adjudication.'});
+    if (flags.length === 0 && d === 'returned') flags.push({c:'red', t:'Disposition-level return flag: record reliability threshold not met for standard routing.'});
     if (flags.length === 0) flags.push({c:'green', t:'No administrative flags identified at this time'});
 
     document.getElementById('p4FlagsContainer').innerHTML = flags.map(function(f) {
@@ -11962,7 +13284,13 @@ function p4Populate() {
         journeySteps.push('Branch SIG: elevated signature/attestation reliability checks were applied due to cumulative cross-record inconsistencies.');
     }
     if (!GIR.nameMismatch && !GIR.addressContinuityGap && !GIR.priorSubmissionConflict && !GIR.signatureMismatch && !GIR.consentPartial && (GIR.inconsistencyCount || 0) < 2) {
-        journeySteps.push('No branch disruptions were recorded during this submission cycle; routing remained in the standard lane.');
+        if (d === 'flagged') {
+            journeySteps.push('Disposition-level review: record was routed to manual adjudication by composite scoring controls despite no single branch override.');
+        } else if (d === 'returned') {
+            journeySteps.push('Disposition-level return: record was redirected to corrective workflow by aggregate reliability thresholds.');
+        } else {
+            journeySteps.push('No branch disruptions were recorded during this submission cycle; routing remained in the standard lane.');
+        }
     }
 
     var journeyLead = document.getElementById('p4JourneyLead');
