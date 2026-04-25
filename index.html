@@ -1930,47 +1930,90 @@
             position: fixed;
             inset: 0;
             z-index: 9000;
-            background: #f0f2f5;
+            background:
+                radial-gradient(1100px 480px at 18% 8%, rgba(30,58,95,0.34), transparent 62%),
+                radial-gradient(920px 460px at 82% 90%, rgba(29,78,216,0.18), transparent 64%),
+                linear-gradient(160deg, #0a0f1a 0%, #111827 46%, #0b1220 100%);
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            overflow: auto;
         }
         #phaseTransitionOverlay.active { display: flex; }
         .pt-shell {
             width: 100%;
-            max-width: 560px;
-            padding: 24px 16px;
+            max-width: 980px;
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+            gap: 16px;
+            align-items: start;
+        }
+        .pt-narrative-panel {
+            background: rgba(7, 14, 28, 0.82);
+            border: 1px solid rgba(148,163,184,0.35);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+            padding: 18px 18px 16px;
+            color: #d1d5db;
+        }
+        .pt-era {
+            font-size: 11px;
+            color: #93c5fd;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .pt-story-title {
+            font-family: 'Special Elite', 'Courier Prime', monospace;
+            font-size: 28px;
+            line-height: 1.1;
+            color: #f3f4f6;
+            margin: 0 0 12px;
+        }
+        .pt-story-line {
+            margin: 0 0 10px;
+            font-size: 14px;
+            line-height: 1.62;
+            color: #cbd5e1;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 240ms ease, transform 240ms ease;
+        }
+        .pt-story-line.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .pt-device-bar {
-            background: #e2e4e8;
+            background: #1f2937;
             border-radius: 8px 8px 0 0;
             padding: 8px 14px;
             display: flex;
             align-items: center;
             gap: 6px;
-            border-bottom: 1px solid #c8cace;
+            border-bottom: 1px solid #334155;
         }
         .pt-device-dot {
             width: 10px; height: 10px;
             border-radius: 50%;
-            background: #c0c2c6;
+            background: #4b5563;
         }
         .pt-address-bar {
             flex: 1;
-            background: #fff;
+            background: #0b1220;
             border-radius: 4px;
             padding: 3px 10px;
             font-size: 11px;
-            color: #6b7280;
-            border: 1px solid #d1d5db;
+            color: #93c5fd;
+            border: 1px solid #334155;
             letter-spacing: .01em;
         }
         .pt-email-card {
             background: #fff;
-            border: 1px solid #d1d5db;
+            border: 1px solid #b6beca;
             border-top: none;
             border-radius: 0 0 8px 8px;
             overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.42);
         }
         .pt-email-header {
             background: #1e3a5f;
@@ -2044,6 +2087,52 @@
         .pt-branch-list li { margin: 0 0 6px; }
         .pt-branch-list li:last-child { margin-bottom: 0; }
         .pt-branch-list.hidden { display: none; }
+        .pt-timeline {
+            margin: 14px 0 12px;
+            padding: 10px 12px 8px;
+            border: 1px solid #d6dbe5;
+            border-radius: 6px;
+            background: #f8fafc;
+        }
+        .pt-timeline-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            color: #475569;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .pt-timeline-row {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+        }
+        .pt-time-item {
+            border-left: 3px solid #94a3b8;
+            background: #fff;
+            padding: 6px 7px;
+            border-radius: 3px;
+            opacity: 0.55;
+            transform: translateY(4px);
+            transition: opacity 220ms ease, transform 220ms ease, border-color 220ms ease;
+        }
+        .pt-time-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            border-left-color: #1d4ed8;
+        }
+        .pt-time-year {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 2px;
+            letter-spacing: .04em;
+        }
+        .pt-time-note {
+            font-size: 11px;
+            color: #334155;
+            line-height: 1.35;
+        }
         .pt-email-footer {
             padding: 12px 24px 20px;
             border-top: 1px solid #e5e7eb;
@@ -2069,6 +2158,13 @@
             line-height: 1.5;
         }
         .pt-fine-print a { color: #6b7280; text-decoration: underline; }
+        @media (max-width: 900px) {
+            .pt-shell {
+                max-width: 640px;
+                grid-template-columns: 1fr;
+            }
+            .pt-story-title { font-size: 24px; }
+        }
 
         /* ── Form 3 entry: retrieval screen ──────────────────────────────── */
         #p3RetrievalScreen {
@@ -3628,6 +3724,52 @@
 .p2-help-icon { display: inline-block; color: #000080; font-size: 9px; font-family: 'Times New Roman', serif; border: 1px solid #000080; padding: 0 2px; margin-left: 4px; cursor: pointer; vertical-align: middle; line-height: 1.2; }
 .p2-help-icon:hover { background: #000080; color: white; }
 .p2-tooltip-box { display: none; background: #ffffcc; border: 1px solid #808080; padding: 4px 8px; font-size: 10px; color: #000; font-family: 'Times New Roman', serif; margin: 2px 0 6px 0; max-width: 400px; }
+.theory-popup-link {
+    color: #000080;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.theory-popup-link:hover { color: #9f1d1d; }
+#theoryPlaceholderModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3600;
+    background: rgba(0,0,0,0.55);
+    align-items: center;
+    justify-content: center;
+}
+#theoryPlaceholderModal.open { display: flex; }
+.theory-modal-card {
+    width: min(560px, 92vw);
+    background: #f7f3e8;
+    border: 2px solid #2a3f66;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+    padding: 16px 18px 14px;
+    font-family: 'Times New Roman', serif;
+    color: #1f2937;
+}
+.theory-modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 8px 0;
+}
+.theory-modal-text {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 14px 0;
+}
+.theory-modal-close {
+    border: 1px solid #1f2937;
+    background: #efe7d2;
+    color: #1f2937;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.theory-modal-close:hover { background: #e7dcc2; }
 .p2-theory-panel {
     display: none;
     margin-top: 4px;
@@ -4794,6 +4936,9 @@
 
                 <p style="margin-top: 45px;">This record collects foundational information necessary for administrative review and classification.</p>
                 <p>All submissions are evaluated by authorized personnel in accordance with current departmental standards.</p>
+                <p style="margin-top:12px;font-size:12px;">
+                    <a href="javascript:void(0)" class="theory-popup-link" onclick="openTheoryPlaceholder('p1_cover')">Theory Notes [?]</a>
+                </p>
 
                 <div class="contact-box" style="margin-top: 55px; text-align: left;">
                     <p><strong>If you require assistance completing this form, please contact:</strong></p>
@@ -5306,6 +5451,9 @@
 
             <div class="page-content">
                 <h1>Definitions and Interpretive Standards</h1>
+                <p style="margin:2px 0 12px;font-size:11px;">
+                    <a href="javascript:void(0)" class="theory-popup-link" onclick="openTheoryPlaceholder('p1_definitions')">Theory Notes [?]</a>
+                </p>
                 <p>The following definitions govern all entries made within this record. Terms not expressly defined herein shall be construed in accordance with prevailing administrative standards.</p>
 
                 <div class="definition-term">Resident</div>
@@ -6299,6 +6447,9 @@
             </div>
             <div class="page-content">
                 <div class="form-section-title">IDENTITY AND SOCIAL INDICATORS  -  DO NOT LEAVE BLANK</div>
+                <p style="margin:0 0 10px;font-size:10px;">
+                    <a href="javascript:void(0)" class="theory-popup-link" onclick="openTheoryPlaceholder('p1_classification')">Theory Notes [?]</a>
+                </p>
 
                 <div class="form-group">
                     <label class="form-label">E-1. SEX OF RECORD <span class="required-mark">*</span></label>
@@ -7683,6 +7834,7 @@ function girComputeOutcome() {
         let p2NavHistory = [];
         let p2NavIndex = -1;
         let p2IsLoading = false;
+        let p2SubmitInProgress = false;
 
         const p2AddressMap = {
             1: 'http://www.oap-dcs.gov/forms/gir-03/portal-entry.asp',
@@ -7711,6 +7863,22 @@ function girComputeOutcome() {
         function p2ClearValidationTimers() {
             p2ValidationTimers.forEach(function(tid) { clearTimeout(tid); });
             p2ValidationTimers = [];
+        }
+
+        function p2ResetUpdateDialog() {
+            var overlay = document.getElementById('p2UpdateOverlay');
+            if (overlay) overlay.classList.remove('active');
+            var bar = document.getElementById('p2DialogProgressFill');
+            if (bar) bar.style.width = '0%';
+            var status = document.getElementById('p2DialogStatus');
+            if (status) status.textContent = 'Initializing...';
+            var log = document.getElementById('p2DialogLog');
+            if (log) log.innerHTML = '';
+            var hg = document.getElementById('p2DialogHourglass');
+            if (hg) hg.style.animation = '';
+            var btn = document.getElementById('p2UpdateContinueBtn');
+            if (btn) btn.style.display = 'none';
+            p2SubmitInProgress = false;
         }
 
         // Field validation definitions per page
@@ -8255,6 +8423,7 @@ function girComputeOutcome() {
 	            const phaseTwo = document.getElementById('phaseTwoOverlay');
 	            p2CloseMinesweeper(true);
 	            if (postOverlay) postOverlay.classList.remove('active');
+                p2ResetUpdateDialog();
 	            setFormVisibility(false);
 	            p2CurrentPage = 1;
 	            p2NavHistory = [{ type: 'page', num: 1 }];
@@ -8270,6 +8439,7 @@ function girComputeOutcome() {
 
         function p2ShowPage(num) {
             if (num !== 7) p2ClearValidationTimers();
+            p2ResetUpdateDialog();
             // Remove any ephemeral pages (404, confirmation)
             var ep = document.getElementById('p2EphemeralPage');
             if (ep) ep.remove();
@@ -8300,6 +8470,62 @@ function p3ToggleHelp(id) {
     }
 }
 
+var theoryPlaceholderNotes = {
+    p1_cover: {
+        title: 'Form 1 - Cover Context',
+        body: '(Notes about paper-form governance and document ritual here (Author)).'
+    },
+    p1_definitions: {
+        title: 'Form 1 - Definitions',
+        body: '(Notes about definitional power, interpretation, and institutional authority here (Author)).'
+    },
+    p1_classification: {
+        title: 'Form 1 - Demographic Classification',
+        body: '(Notes about classification systems, legibility, and administrative sorting here (Author)).'
+    },
+    p2_portal: {
+        title: 'Form 2 - Legacy Portal Entry',
+        body: '(Notes about early web bureaucracy, protocol, and procedural friction here (Author)).'
+    },
+    p2_validation: {
+        title: 'Form 2 - Validation Gate',
+        body: '(Notes about validation logic as governance and routability control here (Author)).'
+    },
+    p2_footer: {
+        title: 'Form 2 - Research Placeholder',
+        body: '(Notes about interface neutrality, historical UX, and state legibility here (Author)).'
+    },
+    p3_overview: {
+        title: 'Form 3 - Modern Portal Overview',
+        body: '(Notes about contemporary UX, neutrality aesthetics, and hidden administrative power here (Author)).'
+    },
+    p3_data_use: {
+        title: 'Form 3 - Data Use and Consent',
+        body: '(Notes about consent language, disclosure regimes, and legal framing here (Author)).'
+    }
+};
+
+function openTheoryPlaceholder(noteKey) {
+    var modal = document.getElementById('theoryPlaceholderModal');
+    if (!modal) return;
+    var note = theoryPlaceholderNotes[noteKey] || {
+        title: 'Theory Placeholder',
+        body: '(Notes about this section here (Author)).'
+    };
+    var title = document.getElementById('theoryModalTitle');
+    var body = document.getElementById('theoryModalBody');
+    if (title) title.textContent = note.title;
+    if (body) body.textContent = note.body;
+    modal.classList.add('open');
+}
+
+function closeTheoryPlaceholder(event) {
+    var modal = document.getElementById('theoryPlaceholderModal');
+    if (!modal) return;
+    if (event && event.target && event.target !== modal) return;
+    modal.classList.remove('open');
+}
+
         function p2GoPage(num) {
             if (num < 1 || num > p2TotalPages) return;
             // Trim forward history and push
@@ -8322,6 +8548,7 @@ function p3ToggleHelp(id) {
             if (status) status.textContent = 'Going back...';
             setTimeout(function() {
                 if (entry.type === 'page') { p2ShowPage(entry.num); }
+                else if (entry.type === 'staff') { p2ShowStaffAccess(false); }
                 else if (entry.type === 'url') { p2Show404(entry.url, false); }
             }, 180);
         }
@@ -8335,6 +8562,7 @@ function p3ToggleHelp(id) {
             if (status) status.textContent = 'Opening page...';
             setTimeout(function() {
                 if (entry.type === 'page') { p2ShowPage(entry.num); }
+                else if (entry.type === 'staff') { p2ShowStaffAccess(false); }
                 else if (entry.type === 'url') { p2Show404(entry.url, false); }
             }, 180);
         }
@@ -8378,6 +8606,10 @@ function p3ToggleHelp(id) {
             if (!url) return;
             // Add http:// if missing
             if (url && !url.match(/^https?:\/\//i)) url = 'http://' + url;
+            if (url.match(/(intranet\.)?oap(-dcs)?\.gov\/staff-access/i)) {
+                p2ShowStaffAccess(true);
+                return;
+            }
             // Check if it matches a known GIR-03 page
             for (var num in p2AddressMap) {
                 if (p2AddressMap[num] === url || url.indexOf(p2AddressMap[num]) >= 0 || p2AddressMap[num].indexOf(url.replace(/^https?:\/\//i,'')) >= 0) {
@@ -8444,7 +8676,54 @@ function p3ToggleHelp(id) {
             p2UpdateNavButtons();
         }
 
+        function p2ShowStaffAccess(addHistory) {
+            var ep = document.getElementById('p2EphemeralPage');
+            if (ep) ep.remove();
+            document.querySelectorAll('.p2-page').forEach(function(p) { p.classList.remove('active'); });
+
+            var page = document.createElement('div');
+            page.id = 'p2EphemeralPage';
+            page.style.cssText = 'position:absolute;inset:0;overflow-y:auto;background:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:12px;';
+            page.innerHTML =
+                '<div style="padding:20px 24px 28px;">' +
+                '<h2 style="margin:0 0 8px;font-size:17px;color:#000080;">OAP Internal Staff Gateway</h2>' +
+                '<div style="font-size:11px;color:#374151;margin-bottom:10px;">Restricted access portal for authorized personnel only.</div>' +
+                '<div style="border:1px solid #8aa0be;background:#f5f8ff;padding:10px 12px;margin-bottom:12px;font-size:11px;line-height:1.6;">' +
+                '<strong>Security Notice:</strong> Access attempts are logged and monitored. Unauthorized use is prohibited and may be referred for administrative action.' +
+                '</div>' +
+                '<table style="border-collapse:collapse;width:100%;max-width:560px;margin-bottom:12px;font-size:11px;">' +
+                '<tr><td style="border:1px solid #cbd5e1;padding:6px 8px;background:#eef2ff;width:190px;"><strong>System</strong></td><td style="border:1px solid #cbd5e1;padding:6px 8px;">GIR-03 Processing System</td></tr>' +
+                '<tr><td style="border:1px solid #cbd5e1;padding:6px 8px;background:#eef2ff;"><strong>Environment</strong></td><td style="border:1px solid #cbd5e1;padding:6px 8px;">Production (Internal Network)</td></tr>' +
+                '<tr><td style="border:1px solid #cbd5e1;padding:6px 8px;background:#eef2ff;"><strong>Status</strong></td><td style="border:1px solid #cbd5e1;padding:6px 8px;">Operational</td></tr>' +
+                '<tr><td style="border:1px solid #cbd5e1;padding:6px 8px;background:#eef2ff;"><strong>Updated</strong></td><td style="border:1px solid #cbd5e1;padding:6px 8px;">January 2009</td></tr>' +
+                '</table>' +
+                '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button onclick="p2OpenStaffLogin()" style="border:1px solid #6b7280;background:#e5e7eb;padding:4px 10px;font-size:11px;cursor:pointer;">Open Staff Login</button>' +
+                '<button onclick="p2Home()" style="border:1px solid #6b7280;background:#f3f4f6;padding:4px 10px;font-size:11px;cursor:pointer;">Return to GIR-03 Home</button>' +
+                '</div>' +
+                '<div style="margin-top:12px;font-size:10px;color:#6b7280;">Intranet URL: http://intranet.oap.gov/staff-access/login.asp</div>' +
+                '</div>';
+
+            var ieContent = document.querySelector('.ie-content');
+            if (ieContent) ieContent.appendChild(page);
+
+            var addr = document.getElementById('p2AddressBar');
+            if (addr) addr.value = 'http://intranet.oap.gov/staff-access/login.asp';
+            var status = document.getElementById('p2StatusBar');
+            if (status) status.textContent = 'Done';
+            p2IsLoading = false;
+
+            if (addHistory !== false) {
+                p2NavHistory = p2NavHistory.slice(0, p2NavIndex + 1);
+                p2NavHistory.push({ type: 'staff' });
+                p2NavIndex = p2NavHistory.length - 1;
+            }
+            p2UpdateNavButtons();
+        }
+
         function p2Submit() {
+            if (p2CurrentPage !== 9 || p2SubmitInProgress) return;
+            p2SubmitInProgress = true;
             // ── Capture Form 2 GIR signals ───────────────────────────────
             (function() {
                 var lh = document.getElementById('p2LegalHistory');
@@ -9610,9 +9889,85 @@ function p3ToggleHelp(id) {
             if (el) el.textContent = text || '';
         }
 
+        function ptPopulateTimeline(disp) {
+            var timelineByDisposition = {
+                approved: [
+                    { y: '2004', note: 'Paper packet submitted' },
+                    { y: '2009', note: 'Legacy portal indexing completed' },
+                    { y: '2014', note: 'Record schema normalized' },
+                    { y: '2020', note: 'Record held in archive tier' },
+                    { y: '2024', note: 'Routine recertification cycle opened' }
+                ],
+                conditional: [
+                    { y: '2004', note: 'Paper packet submitted' },
+                    { y: '2009', note: 'Legacy portal indexing completed' },
+                    { y: '2014', note: 'Conditional migration marker applied' },
+                    { y: '2020', note: 'Dormant record continuity watch' },
+                    { y: '2024', note: 'Conditional recertification required' }
+                ],
+                flagged: [
+                    { y: '2004', note: 'Paper packet submitted' },
+                    { y: '2009', note: 'Legacy portal indexing completed' },
+                    { y: '2014', note: 'Conflict indicators persisted' },
+                    { y: '2020', note: 'Manual review queue carry-forward' },
+                    { y: '2024', note: 'Enhanced recertification required' }
+                ],
+                returned: [
+                    { y: '2004', note: 'Paper packet submitted' },
+                    { y: '2009', note: 'Legacy portal indexing completed' },
+                    { y: '2014', note: 'Reliability threshold not met' },
+                    { y: '2020', note: 'Archive retained for reference only' },
+                    { y: '2024', note: 'Full resubmission required' }
+                ]
+            };
+            var items = timelineByDisposition[disp] || timelineByDisposition.conditional;
+            for (var i = 0; i < 5; i += 1) {
+                var item = items[i];
+                ptSetText('pt-time-year-' + (i + 1), item ? item.y : '');
+                ptSetText('pt-time-note-' + (i + 1), item ? item.note : '');
+            }
+        }
+
+        function ptAnimateTimeline() {
+            var items = [1,2,3,4,5].map(function(n) { return document.getElementById('ptTime' + n); });
+            var story = [1,2,3].map(function(n) { return document.getElementById('pt-story-' + n); });
+            story.forEach(function(el) { if (el) el.classList.remove('visible'); });
+            story.forEach(function(el, idx) {
+                if (!el) return;
+                setTimeout(function() { el.classList.add('visible'); }, 80 + (idx * 180));
+            });
+            items.forEach(function(el) { if (el) el.classList.remove('visible'); });
+            items.forEach(function(el, idx) {
+                if (!el) return;
+                setTimeout(function() { el.classList.add('visible'); }, 720 + (idx * 170));
+            });
+        }
+
         function ptPopulateNarrative() {
             girLoad();
             var disp = girComputeOutcome() || 'conditional';
+            var storyByDisposition = {
+                approved: [
+                    'You leave the building with a stamped packet and the sense that this should be done.',
+                    'Years pass quietly while your file is carried through revisions, migrations, and archival cleanup.',
+                    'Now the system asks you to confirm who you are again so the record can continue forward.'
+                ],
+                conditional: [
+                    'You leave the building with a stamped packet, expecting closure.',
+                    'Over the years, your file is migrated repeatedly and marked for periodic continuity checks.',
+                    'A recertification notice arrives: enough changed in the system that your record must be reviewed again.'
+                ],
+                flagged: [
+                    'You leave the building with a stamped packet, but your file does not settle.',
+                    'As years pass, each migration keeps fragments that do not fully reconcile.',
+                    'Now the notice is explicit: return to the portal and resolve continuity indicators before routing can proceed.'
+                ],
+                returned: [
+                    'You leave the building with a stamped packet and no final determination.',
+                    'Over the next decade, policy and schema updates preserve your file only as a legacy reference.',
+                    'The notice arrives with no ambiguity: a full resubmission is required under the current system.'
+                ]
+            };
             var noticeByDisposition = {
                 approved: 'Periodic recertification is now required under the current GIR-2024 schema. Your record remains active, but confirmation of migrated fields is required to preserve uninterrupted status.',
                 conditional: 'Recertification is required with conditional review markers. Your record remains provisionally active pending confirmation of migrated fields and any flagged continuity elements.',
@@ -9642,6 +9997,10 @@ function p3ToggleHelp(id) {
             ptSetText('pt-body-intro', introByDisposition[disp] || introByDisposition.conditional);
             ptSetText('pt-notice-block', noticeByDisposition[disp] || noticeByDisposition.conditional);
             ptSetText('pt-body-action', actionByDisposition[disp] || actionByDisposition.conditional);
+            var story = storyByDisposition[disp] || storyByDisposition.conditional;
+            ptSetText('pt-story-1', story[0]);
+            ptSetText('pt-story-2', story[1]);
+            ptSetText('pt-story-3', story[2]);
 
             var branchItems = [];
             if (GIR.nameMismatch) {
@@ -9688,10 +10047,12 @@ function p3ToggleHelp(id) {
                 closeLine = 'Please review each section carefully before submitting. Because this path requires corrective resubmission, incomplete sections will halt routing until corrected.';
             }
             ptSetText('pt-body-close', closeLine);
+            ptPopulateTimeline(disp);
         }
 
         function showPhaseTransition() {
             p2CloseMinesweeper(true);
+            p2SubmitInProgress = false;
             girLoad();
             girComputeOutcome();
             ptPopulateNarrative();
@@ -9708,16 +10069,28 @@ function p3ToggleHelp(id) {
                 var ticket = localStorage.getItem('ticketNumber') || '';
                 refEl.textContent = 'Ref: GIR-' + (ticket || Date.now().toString().slice(-6));
             }
+            var sentEl = document.getElementById('pt-date-sent');
+            if (sentEl) {
+                var now = new Date();
+                var mm = String(now.getMonth() + 1).padStart(2, '0');
+                var dd = String(now.getDate()).padStart(2, '0');
+                var yyyy = String(now.getFullYear());
+                sentEl.textContent = 'Date: ' + mm + '/' + dd + '/' + yyyy;
+            }
             var overlay = document.getElementById('p2UpdateOverlay');
             if (overlay) overlay.classList.remove('active');
             var p2Overlay = document.getElementById('phaseTwoOverlay');
             if (p2Overlay) p2Overlay.classList.remove('active');
             var trans = document.getElementById('phaseTransitionOverlay');
-            if (trans) trans.classList.add('active');
+            if (trans) {
+                trans.classList.add('active');
+                ptAnimateTimeline();
+            }
         }
 
         function startPhaseThree() {
             p2CloseMinesweeper(true);
+            p2SubmitInProgress = false;
             // Hide all prior overlays
             var p2Update   = document.getElementById('p2UpdateOverlay');
             var phaseTwo   = document.getElementById('phaseTwoOverlay');
@@ -10976,7 +11349,7 @@ function p3ToggleHelp(id) {
             </div>
             <div class="p2-section-title">Portal Entry and Consent</div>
             <div class="p2-error-summary" id="p2ErrSummary1" style="display:none;"><span class="p2-err-icon">&#9888;</span> Resolve required items before continuing.</div>
-            <div class="p2-helper-text">Submissions are processed through standardized validation and routing.</div>
+            <div class="p2-helper-text">Submissions are processed through standardized validation and routing. <a href="javascript:void(0)" class="theory-popup-link" onclick="openTheoryPlaceholder('p2_portal')">Theory Notes [?]</a></div>
             <div class="p2-form-group">
                 <label class="p2-label" for="p2SubmissionNum">Submission Reference Number <span class="p2-req">*</span></label>
                 <input type="text" class="p2-input" id="p2SubmissionNum" placeholder="e.g. GIR-2024-XXXXX" oninput="p2FieldChanged(1)" autocomplete="off">
@@ -11264,7 +11637,7 @@ function p3ToggleHelp(id) {
                 <span class="p2-banner-right">OMB Control No. 1978-0101</span>
             </div>
             <div class="p2-section-title">Pre-Submission Validation</div>
-            <div class="p2-helper-text">Review each item below. All items must show passing status before you may continue.</div>
+            <div class="p2-helper-text">Review each item below. All items must show passing status before you may continue. <a href="javascript:void(0)" class="theory-popup-link" onclick="openTheoryPlaceholder('p2_validation')">Theory Notes [?]</a></div>
             <div class="p2-validation-list" id="p2ValidationList">
                 <!-- populated by JS -->
             </div>
@@ -11325,7 +11698,7 @@ function p3ToggleHelp(id) {
 
                         <!-- Status Bar -->
         <div class="p2-footer" id="p2Footer">
-            <div class="p2-footer-row"><span>Office of Administrative Processing &nbsp;|&nbsp; GIR-03 Electronic Submission System &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link">Privacy Policy</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2DefsPanel')">Definitions</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2TheoryPanel')">Research Notes [?]</a></span></div>
+            <div class="p2-footer-row"><span>Office of Administrative Processing &nbsp;|&nbsp; GIR-03 Electronic Submission System &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link">Privacy Policy</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2DefsPanel')">Definitions</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="p2ToggleHelp('p2TheoryPanel')">Research Notes [?]</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p2-footer-link" onclick="openTheoryPlaceholder('p2_footer')">Theory Placeholder Popup [?]</a></span></div>
             <div class="p2-theory-panel" id="p2DefsPanel">
                 <div class="p2-theory-title">DEFINITIONS (PUBLIC SUMMARY)</div>
                 <div>Administrative Record: a structured file used for intake, classification, and routing.</div>
@@ -11348,7 +11721,7 @@ function p3ToggleHelp(id) {
                 <span id="p2StatusBar">Done</span>
                 <div class="ie-statusbar-panels">
                     <span class="ie-status-panel" style="border-left:none;">
-                        <a class="staff-link" onclick="p2OpenStaffLogin()" href="javascript:void(0)">Staff Access</a>
+                        <a class="staff-link" onclick="p2ShowStaffAccess(true)" href="javascript:void(0)">Staff Access</a>
                     </span>
                     <span class="ie-status-panel">&#127760; Internet</span>
                 </div>
@@ -11390,6 +11763,14 @@ function p3ToggleHelp(id) {
 <!-- PHASE 2→3 TRANSITION: Time-gap narrative screen -->
 <div id="phaseTransitionOverlay">
     <div class="pt-shell">
+        <div class="pt-narrative-panel">
+            <div class="pt-era" id="pt-era">Administrative Record Timeline · March 15, 2004 → January 1, 2024</div>
+            <h2 class="pt-story-title">Years pass.</h2>
+            <p class="pt-story-line" id="pt-story-1">You leave the building with a stamped packet and the sense that this should be done.</p>
+            <p class="pt-story-line" id="pt-story-2">Weeks become years. The record stays in motion even when you are not.</p>
+            <p class="pt-story-line" id="pt-story-3">Then, long after the first submission, a notice arrives: your file must be updated to remain valid.</p>
+        </div>
+        <div>
         <div class="pt-device-bar">
             <div class="pt-device-dot"></div>
             <div class="pt-device-dot"></div>
@@ -11404,13 +11785,23 @@ function p3ToggleHelp(id) {
             </div>
             <div class="pt-email-meta">
                 <div class="pt-email-subject" id="pt-subject">ACTION REQUIRED &mdash; Periodic Recertification of General Information Record</div>
-                <div class="pt-email-from">From: <span>no-reply@oap.gov</span> &nbsp;&middot;&nbsp; To: <span id="pt-recipient">Record Holder</span> &nbsp;&middot;&nbsp; <span style="font-style:italic;" id="pt-ref-num">Ref: GIR-——</span></div>
+                <div class="pt-email-from">From: <span>no-reply@oap.gov</span> &nbsp;&middot;&nbsp; To: <span id="pt-recipient">Record Holder</span> &nbsp;&middot;&nbsp; <span style="font-style:italic;" id="pt-ref-num">Ref: GIR-——</span> &nbsp;&middot;&nbsp; <span id="pt-date-sent">Date: --/--/----</span></div>
             </div>
             <div class="pt-email-body">
                 <p id="pt-body-intro">This is an automated notice from the Office of Administrative Processing.</p>
                 <p id="pt-body-migration">Our records indicate that your General Information Record (GIR) was submitted through our in-office intake process. As part of the Department&rsquo;s ongoing commitment to modernizing administrative services, all legacy records have been migrated to the OAP Online Portal.</p>
                 <div class="pt-notice-block" id="pt-notice-block">
                     Periodic recertification of your General Information Record is now required. Records not recertified within the applicable review window may be placed in inactive status pending further action.
+                </div>
+                <div class="pt-timeline">
+                    <div class="pt-timeline-title">Administrative Record Timeline</div>
+                    <div class="pt-timeline-row">
+                        <div class="pt-time-item" id="ptTime1"><div class="pt-time-year" id="pt-time-year-1">2004</div><div class="pt-time-note" id="pt-time-note-1">Filed in person</div></div>
+                        <div class="pt-time-item" id="ptTime2"><div class="pt-time-year" id="pt-time-year-2">2009</div><div class="pt-time-note" id="pt-time-note-2">Legacy portal transfer</div></div>
+                        <div class="pt-time-item" id="ptTime3"><div class="pt-time-year" id="pt-time-year-3">2014</div><div class="pt-time-note" id="pt-time-note-3">Schema revision</div></div>
+                        <div class="pt-time-item" id="ptTime4"><div class="pt-time-year" id="pt-time-year-4">2020</div><div class="pt-time-note" id="pt-time-note-4">Dormant archive status</div></div>
+                        <div class="pt-time-item" id="ptTime5"><div class="pt-time-year" id="pt-time-year-5">2024</div><div class="pt-time-note" id="pt-time-note-5">Recertification required</div></div>
+                    </div>
                 </div>
                 <p id="pt-body-action">You may complete this process from any internet-connected device at your convenience. There is no need to visit our offices in person. The OAP Online Portal is available 24 hours a day, 7 days a week.</p>
                 <ul class="pt-branch-list hidden" id="pt-branch-list"></ul>
@@ -11426,6 +11817,7 @@ function p3ToggleHelp(id) {
                     <a href="javascript:void(0)" onclick="oapPageOpen('oapPrivacyPage')">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="javascript:void(0)" onclick="oapPageOpen('oapAccessibilityPage')">Accessibility</a> &nbsp;&middot;&nbsp; <a href="javascript:void(0)" onclick="oapPageOpen('oapContactPage')">Contact</a>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -11696,7 +12088,7 @@ function p3ToggleHelp(id) {
             <div class="p3-card">
                 <div class="p3-section-label">Section A - Acknowledgment</div>
                 <div class="p3-page-title">Before You Begin</div>
-                <div class="p3-info-box">This build includes explicit research framing. <a href="javascript:void(0)" class="p3-inline-link" onclick="p3ToggleHelp('p3TheoryOverview')">View theoretical context [?]</a></div>
+                <div class="p3-info-box">This build includes explicit research framing. <a href="javascript:void(0)" class="p3-inline-link" onclick="p3ToggleHelp('p3TheoryOverview')">View theoretical context [?]</a> &nbsp;|&nbsp; <a href="javascript:void(0)" class="p3-inline-link" onclick="openTheoryPlaceholder('p3_overview')">Theory Placeholder Popup [?]</a></div>
                 <div class="p3-theory-note" id="p3TheoryOverview">
                     <p><strong>Research context:</strong> this form is designed as both an interactive submission flow and a publishable study artifact.</p>
                     <ul>
@@ -11724,6 +12116,9 @@ function p3ToggleHelp(id) {
                 <div class="p3-page-title">Data Use Acknowledgment</div>
                 <div class="p3-field">
                     <label class="p3-label">Acknowledgment <span class="p3-required-tag">*</span> <a href="javascript:void(0)" class="p3-help-icon" onclick="p3ToggleHelp('p3TheoryDataUse')">?</a></label>
+                    <div style="margin:0 0 6px;">
+                        <a href="javascript:void(0)" class="p3-inline-link" onclick="openTheoryPlaceholder('p3_data_use')">Theory Notes Popup [?]</a>
+                    </div>
                     <div class="p3-theory-note" id="p3TheoryDataUse">
                         <p><strong>Why this appears:</strong> consent language often translates social complexity into legal compatibility. This section intentionally reflects that procedural move.</p>
                         <p><strong>Interpretive lens:</strong> critical legal and administrative scholarship treats consent forms as both disclosure tools and governance instruments.</p>
@@ -12674,6 +13069,14 @@ function p3ToggleHelp(id) {
     <button class="dev-btn" onclick="devCopyGIRSnapshot()">Copy GIR Snapshot</button>
     <button class="dev-btn dev-btn-danger" onclick="localStorage.clear();location.reload()">⟳ Clear + Reload</button>
     <button class="dev-btn" onclick="location.reload()">⟳ Reload Only</button>
+</div>
+
+<div id="theoryPlaceholderModal" onclick="closeTheoryPlaceholder(event)">
+    <div class="theory-modal-card">
+        <div class="theory-modal-title" id="theoryModalTitle">Theory Placeholder</div>
+        <p class="theory-modal-text" id="theoryModalBody">(Notes about this section here (Author)).</p>
+        <button class="theory-modal-close" onclick="closeTheoryPlaceholder()">Close</button>
+    </div>
 </div>
 
 
