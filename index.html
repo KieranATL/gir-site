@@ -1297,6 +1297,10 @@
             border-color: #94a3b8;
             box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
         }
+        /* Form 3 uses an embedded dev trigger; hide the floating duplicate there. */
+        body[data-active-form="3"] #devQuickToggle {
+            display: none !important;
+        }
 
         /* ── DEV BUTTON: Form 4 — glitch/exodus ─────────────────────── */
         body[data-active-form="4"] #devToggle,
@@ -5569,6 +5573,54 @@
         .page[data-page="33"],
         .page[data-page="34"] { font-size: 14px; line-height: 1.7; }
 
+        /* ── Form 1 adaptive fit calibration (visual pass hotfix) ── */
+        .page.form1-fit-tight .page-content {
+            transform: scale(1.04) !important;
+            transform-origin: top left !important;
+            width: calc(676px / 1.04) !important;
+            height: calc(840px / 1.04) !important;
+            font-size: 11.4px !important;
+            line-height: 1.28 !important;
+        }
+        .page.form1-fit-tight p,
+        .page.form1-fit-tight li,
+        .page.form1-fit-tight label,
+        .page.form1-fit-tight .instruction-text,
+        .page.form1-fit-tight .note,
+        .page.form1-fit-tight .small-text {
+            margin-bottom: 4px !important;
+            line-height: 1.24 !important;
+        }
+        .page.form1-fit-tight textarea {
+            min-height: 46px !important;
+            height: 46px !important;
+        }
+        .page.form1-fit-tight .proceed-button,
+        .page.form1-fit-tight .prev-button {
+            padding: 5px 12px !important;
+            font-size: 8.8px !important;
+        }
+
+        .page.form1-fit-roomy .page-content {
+            transform: scale(1.18) !important;
+            transform-origin: top left !important;
+            width: calc(676px / 1.18) !important;
+            height: calc(840px / 1.18) !important;
+            font-size: 14.8px !important;
+            line-height: 1.68 !important;
+        }
+        .page.form1-fit-roomy p,
+        .page.form1-fit-roomy li,
+        .page.form1-fit-roomy label {
+            font-size: 1em !important;
+            line-height: 1.64 !important;
+        }
+        .page.form1-fit-roomy .definition-term,
+        .page.form1-fit-roomy .small-text,
+        .page.form1-fit-roomy .note {
+            font-size: 13.8px !important;
+            line-height: 1.56 !important;
+        }
 
         /* ── Glitch System CSS ───────────────────────────────────── */
         /* Form 2 Win98-style */
@@ -8276,6 +8328,69 @@ function girComputeOutcome() {
             }
         }
 
+        function detectForm1Overflow(pageEl) {
+            if (!pageEl) return false;
+            var contentEl = pageEl.querySelector('.page-content');
+            if (!contentEl) return false;
+
+            var overshoot = (contentEl.scrollHeight - contentEl.clientHeight);
+            if (overshoot > 4) return true;
+
+            var pageRect = pageEl.getBoundingClientRect();
+            var limitBottom = pageRect.bottom - 8;
+            var nodes = contentEl.querySelectorAll('*');
+            for (var i = 0; i < nodes.length; i += 1) {
+                var el = nodes[i];
+                if (!el.offsetParent) continue;
+                var st = window.getComputedStyle(el);
+                if (st.display === 'none' || st.visibility === 'hidden' || st.position === 'fixed') continue;
+                var r = el.getBoundingClientRect();
+                if (r.width <= 0 || r.height <= 0) continue;
+                if (r.bottom > limitBottom + 1) return true;
+            }
+            return false;
+        }
+
+        function isForm1TextHeavyPage(pageEl) {
+            if (!pageEl) return false;
+            var contentEl = pageEl.querySelector('.page-content') || pageEl;
+            var words = (contentEl.innerText || '').trim().split(/\s+/).filter(Boolean).length;
+            var controls = contentEl.querySelectorAll('input, textarea, select').length;
+            var paragraphs = contentEl.querySelectorAll('p, li').length;
+            return words >= 150 && controls <= 5 && paragraphs >= 6;
+        }
+
+        function hasRoomToGrow(pageEl) {
+            if (!pageEl) return false;
+            var contentEl = pageEl.querySelector('.page-content');
+            if (!contentEl) return false;
+            var slack = contentEl.clientHeight - contentEl.scrollHeight;
+            return slack >= 110;
+        }
+
+        function calibrateForm1PageVisualFit(pageEl) {
+            if (!pageEl) return;
+            pageEl.classList.remove('form1-fit-tight', 'form1-fit-roomy');
+
+            // Reset top-level scroll so page transitions do not leave content half-hidden.
+            try {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+                var shell = document.querySelector('.paper-container') || document.querySelector('.form-pages-wrapper') || document.querySelector('.phase1-wrapper');
+                if (shell && typeof shell.scrollTop === 'number') shell.scrollTop = 0;
+            } catch (e) {}
+
+            if (detectForm1Overflow(pageEl)) {
+                pageEl.classList.add('form1-fit-tight');
+                return;
+            }
+
+            if (isForm1TextHeavyPage(pageEl) && hasRoomToGrow(pageEl)) {
+                pageEl.classList.add('form1-fit-roomy');
+            }
+        }
+
         function updatePageDisplay() {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -8283,6 +8398,7 @@ function girComputeOutcome() {
             const activePage = document.querySelector(`[data-page="${currentPage}"]`);
             if (activePage) {
                 activePage.classList.add('active');
+                calibrateForm1PageVisualFit(activePage);
             }
             refreshPageControls(activePage);
         }
@@ -15700,7 +15816,9 @@ function renderAscensionEnding() {
 
 function exodusBeginAgain() {
     sessionStorage.setItem('girPostExodus', 'heavy');
-    localStorage.clear();
+    localStorage.setItem('bulletinComplete', '1');
+    localStorage.setItem('preformComplete', '1');
+    localStorage.setItem('phaseTwoComplete', '1');
     location.reload();
 }
 
@@ -15710,7 +15828,7 @@ function initPostExodusMode() {
     sessionStorage.removeItem('girPostExodus');
 
     // hide everything except phase 3
-    var toHide = ['preformOverlay','clerkComputerOverlay','postUpdateClerkOverlay',
+    var toHide = ['bulletinOverlay','waitingScreen','preformOverlay','clerkComputerOverlay','postUpdateClerkOverlay',
                   'incompleteOverlay','completionOverlay','systemOverlay',
                   'phaseTwoOverlay','p2UpdateOverlay','phaseTransitionOverlay','phase4','phase4Exodus'];
     toHide.forEach(function(id) {
