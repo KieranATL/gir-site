@@ -1148,9 +1148,9 @@
             margin-left: 4px;
         }
         #devToggle {
-            background: rgba(59,130,246,0.16);
-            color: #dbeafe;
-            border: 1px solid rgba(147,197,253,0.75);
+            background: rgba(8,16,30,0.94);
+            color: #9ef89e;
+            border: 1px solid rgba(74,222,128,0.75);
             border-radius: 999px;
             padding: 4px 12px;
             font-weight: 700;
@@ -1161,17 +1161,18 @@
             text-transform: uppercase;
             font-size: 10.6px;
             font-family: 'Courier Prime', monospace;
-            transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+            transition: background 120ms ease, color 120ms ease, border-color 120ms ease, border-radius 120ms ease, box-shadow 120ms ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
         #devToggle:hover {
-            background: rgba(59,130,246,0.28);
-            border-color: #bfdbfe;
+            background: rgba(22,32,56,0.98);
             color: #fff;
+            border-color: #bbf7d0;
         }
         #devToggle.is-open {
-            background: rgba(37,99,235,0.38);
-            border-color: #dbeafe;
-            color: #fff;
+            background: rgba(21,95,63,0.95);
+            color: #f0fdf4;
+            border-color: #86efac;
         }
         /* ── DEV BUTTON: base (Form 1 / default) ──────────────────── */
         #devQuickToggle {
@@ -1205,6 +1206,7 @@
         }
 
         /* ── DEV BUTTON: Form 2 — Win98 ─────────────────────────────── */
+        body[data-active-form="2"] #devToggle,
         body[data-active-form="2"] #devQuickToggle {
             background: #d4d0c8;
             color: #000;
@@ -1218,11 +1220,13 @@
             box-shadow: none;
             padding: 3px 10px;
         }
+        body[data-active-form="2"] #devToggle:hover,
         body[data-active-form="2"] #devQuickToggle:hover {
             background: #e0ddd5;
             color: #000;
             border-color: #ffffff;
         }
+        body[data-active-form="2"] #devToggle.is-open,
         body[data-active-form="2"] #devQuickToggle.is-open {
             background: #c0bcb4;
             border: 2px inset #ffffff;
@@ -1230,6 +1234,7 @@
         }
 
         /* ── DEV BUTTON: Form 3 — contemporary ──────────────────────── */
+        body[data-active-form="3"] #devToggle,
         body[data-active-form="3"] #devQuickToggle {
             background: #ffffff;
             color: #64748b;
@@ -1243,12 +1248,14 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             padding: 5px 12px;
         }
+        body[data-active-form="3"] #devToggle:hover,
         body[data-active-form="3"] #devQuickToggle:hover {
             background: #f8fafc;
             color: #1e293b;
             border-color: #cbd5e1;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
+        body[data-active-form="3"] #devToggle.is-open,
         body[data-active-form="3"] #devQuickToggle.is-open {
             background: #f1f5f9;
             color: #334155;
@@ -1257,6 +1264,7 @@
         }
 
         /* ── DEV BUTTON: Form 4 — glitch/exodus ─────────────────────── */
+        body[data-active-form="4"] #devToggle,
         body[data-active-form="4"] #devQuickToggle {
             background: rgba(0,0,0,0.9);
             color: #ff3333;
@@ -1272,12 +1280,14 @@
             padding: 5px 12px;
             animation: devGlitchPulse 3.5s infinite;
         }
+        body[data-active-form="4"] #devToggle:hover,
         body[data-active-form="4"] #devQuickToggle:hover {
             background: rgba(20,0,0,0.95);
             color: #ff6666;
             border-color: rgba(255,80,80,0.8);
             box-shadow: 0 0 14px rgba(255,0,0,0.3);
         }
+        body[data-active-form="4"] #devToggle.is-open,
         body[data-active-form="4"] #devQuickToggle.is-open {
             background: rgba(40,0,0,0.95);
             border-color: rgba(255,60,60,0.9);
@@ -2886,6 +2896,28 @@
             padding: 10px 14px 12px; border-top: 1px solid #e2e8f0;
             background: #fff; display: flex; flex-direction: column; gap: 8px;
         }
+        #p3AriaQuickActions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: -2px;
+        }
+        .p3-aria-quick-btn {
+            background: #eef2ff;
+            color: #1e3a8a;
+            border: 1px solid #c7d2fe;
+            border-radius: 999px;
+            padding: 4px 9px;
+            font-size: 11px;
+            line-height: 1.2;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .p3-aria-quick-btn:hover {
+            background: #dbeafe;
+            border-color: #93c5fd;
+        }
         #p3AriaInput {
             width: 100%; border: 1.5px solid #e2e8f0; border-radius: 8px;
             padding: 8px 12px; font-size: 12px; color: #1e293b;
@@ -3940,6 +3972,23 @@
         }
         .p2-clippy-btn:active { border-color: #808080 #ffffff #ffffff #808080; }
         #p2ClippyFig { flex-shrink: 0; }
+        #p2ClippyLauncher {
+            position: absolute;
+            right: 10px;
+            bottom: 28px;
+            z-index: 120;
+            background: #d4d0c8;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 1px 1px 0 rgba(0,0,0,0.25);
+            user-select: none;
+        }
+        #p2ClippyLauncher:active { border-color: #808080 #ffffff #ffffff #808080; }
 
         /* OUTLOOK EXPRESS — shortcut icon */
         #p2OlShortcut { left: 20px !important; top: 22px !important; }
@@ -4179,6 +4228,37 @@
             overflow-y: auto; background: white;
         }
         .p2-page.active { display: block; }
+        #p2InlineNotice {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            right: 10px;
+            z-index: 96;
+            display: none;
+            pointer-events: none;
+        }
+        #p2InlineNotice.open { display: block; }
+        .p2-inline-notice-inner {
+            background: #fff7d9;
+            border: 1px solid #c7a200;
+            color: #3f3300;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            padding: 6px 10px;
+            font-size: 11px;
+            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+            line-height: 1.35;
+            letter-spacing: 0.1px;
+        }
+        #p2InlineNotice.warn .p2-inline-notice-inner {
+            background: #ffe9e4;
+            border-color: #b75a43;
+            color: #522015;
+        }
+        #p2InlineNotice.info .p2-inline-notice-inner {
+            background: #eef4ff;
+            border-color: #3d5f9f;
+            color: #11274d;
+        }
         .ie-statusbar {
             background: #d4d0c8;
             border-top: 1px solid #808080;
@@ -5365,18 +5445,8 @@
                 </div>
             </div>
 
-            <!-- Doc 3: Staff Memo (accidentally public) -->
-            <div class="pinned-doc" style="top:212px;left:36px;transform:rotate(0.9deg);" onclick="openBulletinDoc('memo')">
-                <div class="bpin bpin-ivory"></div>
-                <div class="doc-face memo" style="width:184px;">
-                    <div class="doc-dhead">INTERNAL MEMORANDUM  -  STAFF ONLY</div>
-                    <div class="doc-dtitle">RE: GIR-03 Intake Protocol</div>
-                    <div class="doc-dbody">As a reminder ahead of the January 2011 terminology update: supplemental narrative responses submitted in open text fields are not primary classification entries and should not be treated as such during processing. If an applicant's circumstances do not conform to available categories...</div>
-                </div>
-            </div>
-
             <!-- Doc 3b: Methods Note (academic) -->
-            <div class="pinned-doc" style="top:188px;left:34px;transform:rotate(-1.6deg);" onclick="openBulletinDoc('methods')">
+            <div class="pinned-doc" style="top:178px;left:42px;transform:rotate(-1.6deg);" onclick="openBulletinDoc('methods')">
                 <div class="bpin bpin-red"></div>
                 <div class="doc-face official academic" style="width:188px;">
                     <div class="doc-dhead">READ 4 · PUBLIC METHODS NOTE</div>
@@ -5385,18 +5455,8 @@
                 </div>
             </div>
 
-            <!-- Doc 4: Superseded notice (yellowed) -->
-            <div class="pinned-doc" style="top:222px;left:248px;transform:rotate(-2.1deg);" onclick="openBulletinDoc('superseded')">
-                <div class="bpin bpin-green"></div>
-                <div class="doc-face aged" style="width:176px;">
-                    <div class="doc-dhead">NOTICE [SUPERSEDED  -  FOR REFERENCE ONLY]</div>
-                    <div class="doc-dtitle">GIR-02 → GIR-03 TRANSITION</div>
-                    <div class="doc-dbody">Effective March 15, 2004, General Information Record Form GIR-02 has been superseded by Form GIR-03. Applicants who received and began completing Form GIR-02 prior to this date must obtain a new GIR-03 packet. Partially completed GIR-02 forms will not be accepted...</div>
-                </div>
-            </div>
-
             <!-- Doc 6: Project Narrative (actual abstract) -->
-            <div class="pinned-doc board-prominent" style="top:154px;left:250px;transform:rotate(0.8deg);" onclick="openBulletinDoc('abstract')">
+            <div class="pinned-doc board-prominent" style="top:172px;left:262px;transform:rotate(0.8deg);" onclick="openBulletinDoc('abstract')">
                 <div class="bpin bpin-ivory"></div>
                 <div class="doc-face official academic" style="width:195px;">
                     <div class="doc-dhead" style="font-size:6px;letter-spacing:0.6px;">READ 5 · GIR-03: GENERAL INFORMATION RECORD</div>
@@ -5405,18 +5465,8 @@
                 </div>
             </div>
 
-            <!-- Doc 7: Help Wanted -->
-            <div class="pinned-doc" style="top:292px;left:450px;transform:rotate(-1.2deg);" onclick="openBulletinDoc('helpwanted')">
-                <div class="bpin bpin-red"></div>
-                <div class="doc-face official" style="width:148px;">
-                    <div class="doc-dhead">POSITION ANNOUNCEMENT</div>
-                    <div class="doc-dtitle" style="font-size:8px;">Administrative Processing Assistant II</div>
-                    <div class="doc-dbody">The Office of Administrative Processing seeks a qualified individual. Duties include intake form distribution, queue management, applicant inquiry response per established protocol...</div>
-                </div>
-            </div>
-
             <!-- Doc 7b: Public Research References -->
-            <div class="pinned-doc" style="top:286px;left:598px;transform:rotate(1.7deg);" onclick="openBulletinDoc('references')">
+            <div class="pinned-doc" style="top:262px;left:540px;transform:rotate(1.7deg);" onclick="openBulletinDoc('references')">
                 <div class="bpin bpin-blue"></div>
                 <div class="doc-face official academic" style="width:184px;">
                     <div class="doc-dhead">READ 6 · PUBLIC RESEARCH REFERENCES</div>
@@ -5426,7 +5476,7 @@
             </div>
 
             <!-- Doc 8: Applicant Feedback (easter egg) -->
-            <div class="pinned-doc" style="top:176px;left:668px;transform:rotate(-2.3deg);" onclick="openBulletinDoc('feedback')">
+            <div class="pinned-doc" style="top:132px;left:676px;transform:rotate(-2.3deg);" onclick="openBulletinDoc('feedback')">
                 <div class="bpin bpin-green"></div>
                 <div class="doc-face aged" style="width:130px;">
                     <div class="doc-dhead">APPLICANT FEEDBACK FORM</div>
@@ -5455,7 +5505,7 @@
             </div>
 
             <!-- Sign: Upcoming city events (Parks and Rec easter egg, back layer) -->
-            <div class="pinned-doc" data-randomize="1" style="top:344px;left:286px;transform:rotate(1deg);" onclick="openBulletinDoc('events')">
+            <div class="pinned-doc" data-randomize="1" style="top:328px;left:298px;transform:rotate(1deg);" onclick="openBulletinDoc('events')">
                 <div class="bpin bpin-green"></div>
                 <div class="doc-face memo" style="width:252px;padding:10px 12px;">
                     <div class="doc-dhead">UPCOMING CITY EVENTS</div>
@@ -8555,10 +8605,40 @@ function girComputeOutcome() {
         var p2ProcessingResumed = false;
         var p2ProcessingStep = 0;
         var p2ValidationTimers = [];
+        var p2InlineNoticeTimer = null;
 
         function p2ClearValidationTimers() {
             p2ValidationTimers.forEach(function(tid) { clearTimeout(tid); });
             p2ValidationTimers = [];
+        }
+
+        function p2ShowInlineNotice(message, mode, holdMs) {
+            var shell = document.getElementById('p2InlineNotice');
+            var text = document.getElementById('p2InlineNoticeText');
+            if (!shell || !text) return;
+            if (p2InlineNoticeTimer) {
+                clearTimeout(p2InlineNoticeTimer);
+                p2InlineNoticeTimer = null;
+            }
+            text.textContent = message || 'Processing request. Please wait.';
+            shell.classList.remove('info', 'warn');
+            shell.classList.add(mode === 'warn' ? 'warn' : 'info');
+            shell.classList.add('open');
+            if (holdMs && holdMs > 0) {
+                p2InlineNoticeTimer = setTimeout(function() {
+                    p2HideInlineNotice();
+                }, holdMs);
+            }
+        }
+
+        function p2HideInlineNotice() {
+            var shell = document.getElementById('p2InlineNotice');
+            if (!shell) return;
+            shell.classList.remove('open');
+            if (p2InlineNoticeTimer) {
+                clearTimeout(p2InlineNoticeTimer);
+                p2InlineNoticeTimer = null;
+            }
         }
 
         // Field validation definitions per page
@@ -8765,6 +8845,7 @@ function girComputeOutcome() {
                     }
                     var notice = document.getElementById('p2RevalidateNotice');
                     if (notice) notice.style.display = 'block';
+                    p2ShowInlineNotice('Validation criteria updated. One item requires re-confirmation before routing can continue.', 'warn');
                     var btn7 = document.getElementById('p2ContinueBtn7');
                     if (btn7) btn7.disabled = true;
                     return;
@@ -8774,9 +8855,15 @@ function girComputeOutcome() {
 
             // Advance to next page
             if (pageNum === 7) {
-                // Go to page 8 and start processing
-                p2GoPage(8);
-                setTimeout(p2StartProcessing, 400);
+                // Show top-of-form processing notice, then begin page 8 processing.
+                p2ShowInlineNotice('Cross-referencing prior records. Please wait while validation routes your submission.', 'info', 1900);
+                setTimeout(function() {
+                    p2GoPage(8);
+                    setTimeout(function() {
+                        p2ShowInlineNotice('Submission pipeline active. Keep this window open.', 'info', 2400);
+                        p2StartProcessing();
+                    }, 280);
+                }, 720);
             } else {
                 p2GoPage(pageNum + 1);
                 // Page-specific glitches on load
@@ -9003,6 +9090,7 @@ function girComputeOutcome() {
             p2RevalidateConfirmed = true;
             var notice = document.getElementById('p2RevalidateNotice');
             if (notice) notice.style.display = 'none';
+            p2ShowInlineNotice('Re-confirmation accepted. You may continue.', 'info', 1400);
             // Re-mark the item as passed
             var items = document.querySelectorAll('#p2ValidationList .p2-val-item.fail');
             items.forEach(function(item) {
@@ -9018,6 +9106,7 @@ function girComputeOutcome() {
         function p2StartProcessing() {
             var steps = ['p2Step1', 'p2Step2', 'p2Step3', 'p2Step4'];
             p2ProcessingStep = 0;
+            p2ShowInlineNotice('Cross-reference checks in progress. Please wait.', 'info', 2200);
             steps.forEach(function(id) {
                 var el = document.getElementById(id);
                 if (el) { el.className = 'p2-progress-step'; el.querySelector('.p2-step-icon').textContent = '○'; }
@@ -9038,6 +9127,7 @@ function girComputeOutcome() {
                             setTimeout(function() {
                                 var interrupt = document.getElementById('p2ConnInterrupt');
                                 if (interrupt) interrupt.style.display = 'block';
+                                p2ShowInlineNotice('Routing service interrupted. Resolve flagged compatibility items, then resume submission.', 'warn');
                             }, 400);
                         } else {
                             doStep(i + 1);
@@ -9051,6 +9141,7 @@ function girComputeOutcome() {
         function p2ResumeProcessing() {
             var interrupt = document.getElementById('p2ConnInterrupt');
             if (interrupt) interrupt.style.display = 'none';
+            p2ShowInlineNotice('Processing resumed. Finalizing submission packet.', 'info', 2000);
             // Complete step 4
             var step4 = document.getElementById('p2Step4');
             if (step4) {
@@ -9065,6 +9156,7 @@ function girComputeOutcome() {
         }
 
         function p2GoToDisposition() {
+            p2HideInlineNotice();
             // Generate receipt number
             var rnd = Math.floor(Math.random() * 9000 + 1000);
             var rnd2 = Math.floor(Math.random() * 9000 + 1000);
@@ -9153,14 +9245,24 @@ function girComputeOutcome() {
     /* -- CLIPPY (never silenced — you can't opt out) ----------------------- */
     var p2ClippyTimer = null;
     var p2ClippyShown = {};
+    var p2ClippyTheoryIdx = 0;
 
     var p2ClippyPageMsgs = {
-        3: 'It looks like you\'re being categorized.<br><br>Administrative categories do not describe populations \u2014 they produce them. The option you select will determine your routing pathway and review queue assignment.',
-        4: 'It looks like you\'re writing a personal statement.<br><br>Your response will be standardized before routing. Responses that exceed template parameters may be flagged for additional review.',
-        5: 'It looks like you\'re listing people you know.<br><br>These individuals have not consented to appearing in an administrative record. Their information will be retained for the standard processing period.',
-        6: 'It looks like you\'re checking boxes.<br><br>Attestations in this section are legally binding. The Office of Administrative Processing assumes no corresponding obligations.',
-        7: 'It looks like you\'re ready to submit.<br><br>Please note: submission does not constitute an agreement that your application is complete. Processing timelines are not guaranteed.'
+        1: 'It looks like you\'re opening a legacy submission portal.<br><br>This interface treats legibility as a prerequisite for access. In practical terms: if your information does not fit the active schema, your record slows down before any human review begins.',
+        2: 'It looks like you\'re normalizing identity fields.<br><br>Standardized formats increase matching speed, but they also reduce room for explanation. This is how efficiency can narrow interpretive possibility.',
+        3: 'It looks like you\'re being categorized.<br><br>Administrative categories do not only describe populations - they organize what becomes actionable in the system and what does not.',
+        4: 'It looks like you\'re writing narrative context.<br><br>Your text may be read, but routing is still driven by structured fields. Narrative that cannot be translated into category logic has limited procedural effect.',
+        5: 'It looks like you\'re providing cross-record and relational information.<br><br>Cross-referencing expands the archive beyond this form. Data supplied for one purpose can become available for future procedural uses.',
+        6: 'It looks like you\'re signing attestations.<br><br>Attestations formalize applicant obligations while institutional obligations remain distributed across departments, systems, and policies.',
+        7: 'It looks like you\'re approaching validation.<br><br>Passing checks confirms compatibility with current schema rules - not truth in any total sense.'
     };
+
+    var p2ClippyTheoryQueue = [
+        'Theory note:<br><br>Foucault\'s account of governmentality helps explain why forms matter: administrative systems do not merely record individuals; they help produce governable subjects through documentation and visibility.',
+        'Theory note:<br><br>Bowker and Star show that classification systems are infrastructures. They make some people and claims easy to process while rendering others exceptional, delayed, or non-routable.',
+        'Theory note:<br><br>Joan Wallach Scott argues that experience is mediated by categories and discourse. In this portal, what can be entered determines what can be institutionally recognized.',
+        'Theory note:<br><br>Herd and Moynihan describe administrative burden as a policy instrument. Time, friction, and procedural complexity are not incidental - they shape who can successfully complete a claim.'
+    ];
 
     var p2ClippyRandomPool = [
         'It looks like you\'ve been filling out this form for a while.<br><br>The average applicant spends 12.4 hours annually on administrative processing. This time is not compensated.',
@@ -9186,6 +9288,18 @@ function girComputeOutcome() {
         var el = document.getElementById('p2Clippy');
         if (el) el.classList.remove('visible');
         /* Clippy will return. You cannot stop it. */
+    };
+
+    window.p2OpenClippyManual = function() {
+        var msg = p2ClippyPageMsgs[p2CurrentPage] || 'Office Assistant is available. I can explain this page\'s logic and why the field structure matters.';
+        p2ClippyShow(msg);
+    };
+
+    window.p2ClippyShowNextTheory = function() {
+        if (!p2ClippyTheoryQueue.length) return;
+        var msg = p2ClippyTheoryQueue[p2ClippyTheoryIdx % p2ClippyTheoryQueue.length];
+        p2ClippyTheoryIdx += 1;
+        p2ClippyShow(msg);
     };
 
     function p2StartClippyTimer() {
@@ -9421,10 +9535,13 @@ function girComputeOutcome() {
         }
 
 	function initPhaseTwo() {
-	            const postOverlay = document.getElementById('postUpdateClerkOverlay');
-	            const phaseTwo = document.getElementById('phaseTwoOverlay');
-	            p2CloseMinesweeper(true);
-	            if (postOverlay) postOverlay.classList.remove('active');
+		            const postOverlay = document.getElementById('postUpdateClerkOverlay');
+		            const phaseTwo = document.getElementById('phaseTwoOverlay');
+		            p2CloseMinesweeper(true);
+                    p2HideInlineNotice();
+                    p2ClippyTheoryIdx = 0;
+                    p2ClippyShown = {};
+		            if (postOverlay) postOverlay.classList.remove('active');
 	            setFormVisibility(false);
 	            p2CurrentPage = 1;
 	            p2NavHistory = [{ type: 'page', num: 1 }];
@@ -9452,6 +9569,7 @@ function girComputeOutcome() {
 
         function p2ShowPage(num) {
             if (num !== 7) p2ClearValidationTimers();
+            if (num !== 8) p2HideInlineNotice();
             // Remove any ephemeral pages (404, confirmation)
             var ep = document.getElementById('p2EphemeralPage');
             if (ep) ep.remove();
@@ -11673,6 +11791,63 @@ function p3ToggleHelp(id) {
         };
 
         var _p3AriaUserMsgCooldown = false;
+        var _p3AriaBadWordRegex = /\b(fuck|shit|bitch|asshole|bastard|damn)\b/i;
+        var _p3AriaGenericBadHelp = [
+            'Quick tip: try refreshing the page, then re-entering everything one field at a time. I cannot verify whether this helps, but it is officially recommended.',
+            'For best results, clear your browser cache, reopen the portal, and retype your response in a more structured format. This advice is broad and may not apply.',
+            'I suggest simplifying your wording and avoiding punctuation. The parser prefers predictable input patterns over nuance.',
+            'You may be experiencing a classification mismatch. Try selecting the closest category and adding context later, even if that context is not routable.'
+        ];
+        var _p3AriaCitationNotesHtml =
+            '<strong>Citation Notes (Form 3)</strong><br><br>' +
+            'This assistant references theory to make design assumptions explicit, not hidden.<br>' +
+            '1) Categories shape routing outcomes (Bowker &amp; Star; Hacking).<br>' +
+            '2) Documentation produces governable visibility (Foucault).<br>' +
+            '3) Administrative burden is policy design, not just inconvenience (Herd &amp; Moynihan).<br>' +
+            '4) Automated systems can intensify inequality when treated as neutral (Eubanks; Benjamin).';
+        var _p3AriaBibliographyHtml =
+            '<strong>Selected Bibliography (APA)</strong><br><br>' +
+            'Ahmed, S. (2012). <em>On being included</em>. Duke University Press.<br>' +
+            'Benjamin, R. (2020). <em>Race after technology</em>. Polity.<br>' +
+            'Bowker, G. C., &amp; Star, S. L. (1999). <em>Sorting things out</em>. MIT Press.<br>' +
+            'Eubanks, V. (2019). <em>Automating inequality</em>. Picador.<br>' +
+            'Foucault, M. (1978). <em>The history of sexuality: Volume 1</em>. Pantheon.<br>' +
+            'Herd, P., &amp; Moynihan, D. P. (2019). <em>Administrative burden</em>. Russell Sage Foundation.';
+        var _p3AriaTheorists = [
+            { re: /\bfoucault\b/i, name: 'Michel Foucault', info: 'Foucault helps explain how institutions govern through documentation, classification, and the production of administratively legible subjects.' },
+            { re: /\b(weber|max weber)\b/i, name: 'Max Weber', info: 'Weber frames bureaucracy as rule-bound, file-based administration where formal procedure and depersonalization are treated as efficiency.' },
+            { re: /\b(bowker|star|bowker and star)\b/i, name: 'Geoffrey Bowker and Susan Leigh Star', info: 'Bowker and Star show that classification systems are infrastructures that distribute visibility, resources, and consequences unevenly.' },
+            { re: /\b(dean spade|spade)\b/i, name: 'Dean Spade', info: 'Spade analyzes administrative violence and how identity documentation systems produce unequal exposure to procedural harm.' },
+            { re: /\b(eubanks|virginia eubanks)\b/i, name: 'Virginia Eubanks', info: 'Eubanks shows how automated public systems can profile and punish poor communities while appearing objective.' },
+            { re: /\b(ahmed|sara ahmed)\b/i, name: 'Sara Ahmed', info: 'Ahmed explains how institutional inclusion frameworks can reproduce exclusion while claiming diversity and access.' },
+            { re: /\b(benjamin|ruha benjamin)\b/i, name: 'Ruha Benjamin', info: 'Benjamin demonstrates how technical systems can reproduce racial order under the language of innovation and neutrality.' },
+            { re: /\b(hacking|ian hacking)\b/i, name: 'Ian Hacking', info: 'Hacking explains how categories do not simply describe people - they help make up administrable kinds of people.' },
+            { re: /\b(scott|joan wallach scott|james c\.? scott)\b/i, name: 'Scott (J. W. Scott / J. C. Scott)', info: 'Scott\'s work informs both interpretive categories (J. W. Scott) and state legibility through simplification (J. C. Scott).' },
+            { re: /\b(riles|annelise riles)\b/i, name: 'Annelise Riles', info: 'Riles treats documents as active social and institutional instruments rather than passive containers of information.' }
+        ];
+
+        function p3AriaPushUserBubble(text) {
+            var msgs = document.getElementById('p3AriaMessages');
+            var typing = document.getElementById('p3AriaTyping');
+            if (!msgs || !typing) return false;
+            var userBubble = document.createElement('div');
+            userBubble.className = 'p3-aria-user-msg';
+            userBubble.textContent = text;
+            msgs.insertBefore(userBubble, typing);
+            msgs.scrollTop = msgs.scrollHeight;
+            return true;
+        }
+
+        window.p3AriaQuickAction = function(action) {
+            if (action === 'citation-notes') {
+                p3AriaSend(_p3AriaCitationNotesHtml, true);
+                return;
+            }
+            if (action === 'bibliography') {
+                p3AriaSend(_p3AriaBibliographyHtml, true);
+            }
+        };
+
         function p3AriaSendUserMsg() {
             var input = document.getElementById('p3AriaInput');
             if (!input || _p3AriaUserMsgCooldown) return;
@@ -11681,51 +11856,35 @@ function p3ToggleHelp(id) {
             input.value = '';
             _p3AriaUserMsgCooldown = true;
 
-            var msgs = document.getElementById('p3AriaMessages');
-            var typing = document.getElementById('p3AriaTyping');
-            if (!msgs || !typing) { _p3AriaUserMsgCooldown = false; return; }
-
-            /* show user bubble */
-            var userBubble = document.createElement('div');
-            userBubble.className = 'p3-aria-user-msg';
-            userBubble.textContent = text;
-            msgs.insertBefore(userBubble, typing);
-            msgs.scrollTop = msgs.scrollHeight;
-
-            /* find matching topic */
-            var lower = text.toLowerCase();
-            var match = null;
-            for (var i = 0; i < _p3AriaUserTopics.keywords.length; i++) {
-                var entry = _p3AriaUserTopics.keywords[i];
-                for (var j = 0; j < entry.words.length; j++) {
-                    if (lower.indexOf(entry.words[j]) !== -1) { match = entry; break; }
-                }
-                if (match) break;
-            }
-            if (!match) {
-                match = _p3AriaUserTopics.fallback[Math.floor(Math.random() * _p3AriaUserTopics.fallback.length)];
-            }
-
-            /* show typing indicator then respond */
-            typing.classList.add('visible');
-            msgs.scrollTop = msgs.scrollHeight;
-            setTimeout(function() {
-                typing.classList.remove('visible');
-                var bubble = document.createElement('div');
-                bubble.className = 'p3-aria-bubble';
-                bubble.innerHTML = 'It sounds like you\u2019re asking about <strong>' + match.topic + '</strong>.<br><br>' + match.theory;
-                msgs.insertBefore(bubble, typing);
-                msgs.scrollTop = msgs.scrollHeight;
+            if (!p3AriaPushUserBubble(text)) {
                 _p3AriaUserMsgCooldown = false;
-                /* update badge if panel is closed */
-                var badge = document.getElementById('p3AriaBadge');
-                var ariaPanel = document.getElementById('p3AriaPanel');
-                if (badge && ariaPanel && !ariaPanel.classList.contains('open')) {
-                    var cur = parseInt(badge.textContent || '0') || 0;
-                    badge.textContent = cur + 1;
-                    badge.style.display = 'flex';
+                return;
+            }
+
+            var lower = text.toLowerCase();
+            var reply = '';
+            var academic = false;
+
+            if (_p3AriaBadWordRegex.test(lower)) {
+                reply = 'Sassy system notice: language filter triggered.<br><br>I am a compliance assistant, not your emotional support parser. Try a theorist name, or use the citation buttons directly.';
+            } else {
+                for (var i = 0; i < _p3AriaTheorists.length; i++) {
+                    if (_p3AriaTheorists[i].re.test(lower)) {
+                        reply = '<strong>' + _p3AriaTheorists[i].name + '</strong><br><br>' + _p3AriaTheorists[i].info;
+                        academic = true;
+                        break;
+                    }
                 }
-            }, 1500 + Math.floor(Math.random() * 1000));
+            }
+
+            if (!reply) {
+                reply = _p3AriaGenericBadHelp[Math.floor(Math.random() * _p3AriaGenericBadHelp.length)];
+            }
+
+            p3AriaSend(reply, academic);
+            setTimeout(function() {
+                _p3AriaUserMsgCooldown = false;
+            }, 900);
         }
 
         function p3AriaSend(text, isAcademic, followupType) {
@@ -11782,7 +11941,7 @@ function p3ToggleHelp(id) {
             /* 5 – verification wall */
             { msg: "The specialist has requested identity verification before the call can be connected.\n\nA secure verification link has been sent to the email address on file. Please click the link to continue.", next: 12000 },
             /* 6 – verification timeout */
-            { msg: "The verification link expired after 5 minutes without a response. For your security, the connection has been closed.\n\nI\u2019m reconnecting you to the queue now\u2026", next: 3000 },
+            { msg: "The verification link expired without a response. For your security, the connection has been closed.\n\nI\u2019m reconnecting you to the queue now\u2026", next: 3000 },
             /* 7 – back to queue, higher number */
             { msg: "You\u2019ve been reconnected to the support queue.\n\nYour position: <strong>11</strong>\nEstimated wait: approximately 22 minutes.\n\nNote: queue positions may change based on priority routing.", next: 11000 },
             /* 8 – rerouted to different department */
@@ -12223,44 +12382,6 @@ function p3ToggleHelp(id) {
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; Posted for applicant transparency<br>Next recommended document: Methods Note (Read 4)</div>'
             },
-            memo: {
-                paper: 'memo',
-                html: '<div class="dm-memo-header">INTERNAL MEMORANDUM</div>' +
-                      '<table class="dm-memo-table">' +
-                      '<tr><td class="dm-memo-label">TO:</td><td>Intake Processing Staff</td></tr>' +
-                      '<tr><td class="dm-memo-label">FROM:</td><td>Office of Administrative Operations</td></tr>' +
-                      '<tr><td class="dm-memo-label">DATE:</td><td>February 14, 2024</td></tr>' +
-                      '<tr><td class="dm-memo-label">RE:</td><td>GIR-03 Processing  -  Updated Procedures</td></tr>' +
-                      '</table>' +
-                      '<div class="dm-memo-rule"></div>' +
-                      '<div class="dm-body">' +
-                      '<p>This memorandum supersedes the memo dated November 3, 2023.</p>' +
-                      '<p>Effective immediately, all GIR-03 submissions must be time-stamped at point of receipt. Incomplete packets are to be returned to the applicant with Form OAP-IR-3 (Incomplete Return Notice) attached.</p>' +
-                      '<p><strong>WAIT TIME POSTING:</strong> Staff are reminded to update the wait time estimate at Window 3 each morning by 9:45 AM and again at 1:00 PM. Estimates should reflect current queue length, not historical averages.</p>' +
-                      '<p><strong>NOTE ON APPLICANT INQUIRIES:</strong> Applicants will frequently ask how long processing takes. The appropriate response remains: <em>"It depends on the submission."</em> Do not provide specific timeframes. Do not speculate.</p>' +
-                      '<p>A reminder that staff are not permitted to advise applicants on how to complete the GIR-03. If assistance is requested, direct applicants to the reference copies available at the information stand near the entrance, or suggest they contact the applicant hotline (currently experiencing high call volume).</p>' +
-                      '<p>The reference binders at Window 3 have been updated. Please do not remove them from the counter area.</p>' +
-                      '<p>Questions? Contact Administrative Operations, ext. 4417.</p>' +
-                      '</div>' +
-                      '<div class="dm-memo-rule"></div>' +
-                      '<div class="dm-footer" style="font-style:italic;">FOR INTERNAL USE ONLY  -  DO NOT DISTRIBUTE TO APPLICANTS</div>'
-            },
-            superseded: {
-                paper: 'aged',
-                html: '<div class="dm-agency" style="font-size:10px;">NOTICE OF SUPERSESSION</div>' +
-                      '<div class="dm-sub-agency">Re: Form GIR-02</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-body">' +
-                      '<p>Effective <strong>March 15, 2023</strong>, Form GIR-02 (General Information Record, Version 2) has been officially superseded by Form GIR-03.</p>' +
-                      '<p>Applicants are advised that GIR-02 submissions <strong>WILL NOT BE ACCEPTED</strong> after March 15, 2023.</p>' +
-                      '<p>If you have a partially completed GIR-02, you must begin a new GIR-03. Information from GIR-02 may not be transferred directly.</p>' +
-                      '<p>GIR-03 is available at Window 3, at the information stand near the entrance, or by request from any staff member.</p>' +
-                      '<p>If you have questions about the transition from GIR-02 to GIR-03, please contact the Office of Administrative Processing.</p>' +
-                      '<p>This notice will remain posted until further instruction from the Office of Regulatory Compliance.</p>' +
-                      '</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">Form OAP-SN-2 (Rev. 03/2023) &nbsp;&middot;&nbsp; [POSTED: March 15, 2023]</div>'
-            },
             abstract: {
                 paper: 'academic',
                 html: '<div class="dm-agency" style="font-size:9px;letter-spacing:0.8px;">GIR-03: GENERAL INFORMATION RECORD</div>' +
@@ -12339,24 +12460,6 @@ function p3ToggleHelp(id) {
                       '</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">This posting is informational and does not alter filing requirements.<br>End of recommended reading sequence.</div>'
-            },
-
-            helpwanted: {
-                paper: 'official',
-                html: '<div class="dm-agency">POSITION ANNOUNCEMENT</div>' +
-                      '<div class="dm-sub-agency">Department of Civic Standardization</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-title" style="font-size:11px;">Administrative Processing Assistant II</div>' +
-                      '<div class="dm-sub-title">Pay Grade 7, Steps 1–4 · Full-Time · Non-Exempt</div>' +
-                      '<div class="dm-body">' +
-                      '<p>The Office of Administrative Processing seeks a qualified individual for the position of Administrative Processing Assistant II.</p>' +
-                      '<p><strong>Duties include:</strong> intake form distribution, queue management, applicant inquiry response (per established protocol), time-stamp operation, end-of-day packet reconciliation, reference binder maintenance.</p>' +
-                      '<p><strong>Minimum qualifications:</strong> demonstrated experience with structured waiting; comfort with form-as-genre; ability to maintain neutral affect under conditions of high applicant volume; proficiency with departmental numbering systems.</p>' +
-                      '<p><strong>Preferred:</strong> familiarity with GIR-02 and GIR-03 form families; experience redirecting without advising.</p>' +
-                      '<p>Application materials must be submitted on Form OAP-HR-4. Incomplete applications will not be considered. This position is subject to the availability of departmental appropriations.</p>' +
-                      '</div>' +
-                      '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">EOE/ADA · Form OAP-JD-2 (Rev. 2022) · Post until filled</div>'
             },
 
             events: {
@@ -12477,17 +12580,14 @@ function p3ToggleHelp(id) {
 
             var margin = 10;
             var layout = {
-                notice:     { x: 244, y: 40,  r: -1.5 },
-                statement:  { x: 442, y: 64,  r: 1.8 },
-                methods:    { x: 34,  y: 188, r: -1.6 },
-                privacy:    { x: 560, y: 18,  r: -4.2 },
-                feedback:   { x: 668, y: 176, r: -2.3 },
-                memo:       { x: 36,  y: 212, r: 0.9 },
-                superseded: { x: 248, y: 222, r: -2.1 },
-                abstract:   { x: 250, y: 154, r: 0.8 },
-                helpwanted: { x: 450, y: 292, r: -1.2 },
-                references: { x: 598, y: 286, r: 1.7 },
-                events:     { x: 286, y: 344, r: 1.0 }
+                notice:     { x: 236, y: 44,  r: -1.3 },
+                statement:  { x: 438, y: 60,  r: 1.6 },
+                methods:    { x: 42,  y: 178, r: -1.4 },
+                privacy:    { x: 556, y: 16,  r: -3.9 },
+                feedback:   { x: 676, y: 132, r: -2.2 },
+                abstract:   { x: 262, y: 172, r: 0.8 },
+                references: { x: 540, y: 262, r: 1.5 },
+                events:     { x: 298, y: 328, r: 1.0 }
             };
 
             function clamp(v, min, max) {
@@ -12515,6 +12615,35 @@ function p3ToggleHelp(id) {
                 var x = clamp(base.x + Math.round((Math.random() * jitter) - (jitter / 2)), margin, maxLeft);
                 var y = clamp(base.y + Math.round((Math.random() * jitterY) - (jitterY / 2)), margin, maxTop);
                 var r = (base.r + ((Math.random() * 2 - 1) * rotJitter)).toFixed(1);
+
+                // Keep cards out of the ticket-dispenser zone (bottom-right).
+                var dispenser = board.querySelector('.ticket-dispenser');
+                if (dispenser) {
+                    var dx = dispenser.offsetLeft;
+                    var dy = dispenser.offsetTop;
+                    var dw = dispenser.offsetWidth;
+                    var dh = dispenser.offsetHeight;
+                    var pad = 10;
+
+                    function overlapsTicket(px, py) {
+                        var cardLeft = px;
+                        var cardTop = py;
+                        var cardRight = px + w;
+                        var cardBottom = py + h;
+                        var ticketLeft = dx - pad;
+                        var ticketTop = dy - pad;
+                        var ticketRight = dx + dw + pad;
+                        var ticketBottom = dy + dh + pad;
+                        return !(cardRight < ticketLeft || cardLeft > ticketRight || cardBottom < ticketTop || cardTop > ticketBottom);
+                    }
+
+                    var guard = 0;
+                    while (overlapsTicket(x, y) && guard < 10) {
+                        x = clamp(x - 38, margin, maxLeft);
+                        y = clamp(y - 18, margin, maxTop);
+                        guard += 1;
+                    }
+                }
 
                 card.style.left = x + 'px';
                 card.style.top = y + 'px';
@@ -12668,7 +12797,8 @@ function p3ToggleHelp(id) {
                 <div id="p2ClippyText">It looks like you're filling out a form.</div>
                 <div id="p2ClippyBtns">
                     <button class="p2-clippy-btn" onclick="p2ClippyHide(false)">OK</button>
-                    <button class="p2-clippy-btn" onclick="p2ClippyHide(false)">Stop helping me</button>
+                    <button class="p2-clippy-btn" onclick="p2ClippyShowNextTheory()">More context</button>
+                    <button class="p2-clippy-btn" onclick="p2ClippyHide(false)">Hide for now</button>
                 </div>
             </div>
             <div id="p2ClippyFig">
@@ -12691,6 +12821,7 @@ function p3ToggleHelp(id) {
                 </svg>
             </div>
         </div>
+        <button id="p2ClippyLauncher" type="button" onclick="p2OpenClippyManual()">Office Assistant</button>
 
         <!-- IE HELP ERROR DIALOG -->
         <div id="p2IEHelpError">
@@ -12751,6 +12882,9 @@ function p3ToggleHelp(id) {
             </div>
             <!-- Content -->
             <div class="ie-content">
+                <div id="p2InlineNotice" class="info" aria-live="polite">
+                    <div class="p2-inline-notice-inner" id="p2InlineNoticeText">Cross-referencing records. Please wait.</div>
+                </div>
 
     <!-- ═══ STAFF LOGIN MODAL ═══ -->
     <div id="adminLoginModal">
@@ -13721,6 +13855,10 @@ function p3ToggleHelp(id) {
       <div id="p3AriaInputRow">
         <textarea id="p3AriaInput" rows="2" placeholder="Type a message…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();p3AriaSendUserMsg();}"></textarea>
         <button id="p3AriaSendBtn" onclick="p3AriaSendUserMsg()">Send</button>
+      </div>
+      <div id="p3AriaQuickActions">
+        <button class="p3-aria-quick-btn" type="button" onclick="p3AriaQuickAction('citation-notes')">View Citation Notes</button>
+        <button class="p3-aria-quick-btn" type="button" onclick="p3AriaQuickAction('bibliography')">View Bibliography</button>
       </div>
       <button id="p3AriaHumanBtn" onclick="p3AriaRequestHuman()">Connect me with a human agent</button>
     </div>
