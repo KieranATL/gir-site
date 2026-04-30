@@ -9459,30 +9459,30 @@ function girComputeOutcome() {
     var p2ClippyTimer = null;
     var p2ClippyShown = {};
     var p2ClippyTheoryIdx = 0;
-    var p2ClippyPageMsgs = {
-        1: 'It looks like you've opened a submission portal.<br><br>This interface treats legibility as a prerequisite for access. In practical terms, if your information does not fit the active schema, your record is slowed due to the requirement of human review. <em>(Scott, 1998)</em>',
-        2: 'It looks like you're normalizing identity fields.<br><br>Standardized formats increase processing speed, but they also reduce or eliminate room for explanation. This is how efficiency can narrow interpretive possibility. And if you are not legible to systems of governance, you are not legible to society. <em>(Foucault, 1978; Scott, 1998)</em>',
-        3: 'It looks like you're being categorized.<br><br>Administrative categories organize what becomes actionable in the system and what does not. <em>(Bowker &amp; Star, 1999)</em>',
-        4: 'It looks like you're writing narrative context.<br><br>Your text may be read, but routing is still driven by structured fields. Narrative that cannot be translated into category logic has limited procedural effect. <em>(Scott, 1991; Bowker &amp; Star, 1999)</em>',
-        5: 'It looks like you're providing cross-record and relational information.<br><br>Cross-referencing expands the archive. Data supplied for this purpose can become available for future procedural uses. Make sure to read the fine print. <em>(Riles, 2008; Hull, 2012)</em>',
-        6: 'It looks like you're signing attestations.<br><br>Attestations formalize applicant obligations while institutional obligations remain distributed across departments, systems, and policies. <em>(Weber, 1978; Lipsky, 2010)</em>',
-        7: 'It looks like you're approaching validation.<br><br>Passing checks confirms compatibility with current schema rules - these rules organize truth beyond the schema and into public life. <em>(Foucault, 1972; Scott, 1998)</em>'
+        var p2ClippyPageMsgs = {
+        1: 'It looks like you\'ve opened a submission portal.<br><br>This interface treats legibility as a prerequisite for access. In practical terms, if your information does not fit the active schema, your record is slowed due to the requirement of human review. <em>(Scott, 1998)</em>',
+        2: 'It looks like you\'re normalizing identity fields.<br><br>Standardized formats increase processing speed, but they also reduce or eliminate room for explanation. This is how efficiency can narrow interpretive possibility. And if you are not legible to systems of governance, you are not legible to society. <em>(Foucault, 1978; Scott, 1998)</em>',
+        3: 'It looks like you\'re being categorized.<br><br>Administrative categories organize what becomes actionable in the system and what does not. <em>(Bowker &amp; Star, 1999)</em>',
+        4: 'It looks like you\'re writing narrative context.<br><br>Your text may be read, but routing is still driven by structured fields. Narrative that cannot be translated into category logic has limited procedural effect. <em>(Scott, 1991; Bowker &amp; Star, 1999)</em>',
+        5: 'It looks like you\'re providing cross-record and relational information.<br><br>Cross-referencing expands the archive. Data supplied for this purpose can become available for future procedural uses. Make sure to read the fine print. <em>(Riles, 2008; Hull, 2012)</em>',
+        6: 'It looks like you\'re signing attestations.<br><br>Attestations formalize applicant obligations while institutional obligations remain distributed across departments, systems, and policies. <em>(Weber, 1978; Lipsky, 2010)</em>',
+        7: 'It looks like you\'re approaching validation.<br><br>Passing checks confirms compatibility with current schema rules - these rules organize truth beyond the schema and into public life. <em>(Foucault, 1972; Scott, 1998)</em>'
     };
     var p2ClippyTheoryQueue = [
-        'Theory note:<br><br>Foucault's account of governmentality helps explain why forms matter: administrative systems produce governable subjects through documentation and legibility. <em>(Foucault, 1978)</em>',
+        'Theory note:<br><br>Foucault\'s account of governmentality helps explain why forms matter: administrative systems produce governable subjects through documentation and legibility. <em>(Foucault, 1978)</em>',
         'Theory note:<br><br>Bowker and Star show that classification systems are infrastructures. They make some people and claims easy to process while rendering others exceptional, delayed, or non-routable. <em>(Bowker &amp; Star, 1999)</em>',
         'Theory note:<br><br>Joan Wallach Scott argues that experience is mediated by categories and discourse. In this portal, what can be entered determines what can be institutionally recognized. <em>(Scott, 1991)</em>',
         'Theory note:<br><br>Herd and Moynihan describe administrative burden as a policy instrument. Time, friction, and procedural complexity shape who can successfully complete a claim. <em>(Herd &amp; Moynihan, 2019)</em>'
     ];
     var p2ClippyRandomPool = [
-        'It looks like you've been filling out this form for a while.<br><br>The average applicant spends 12.4 hours annually on administrative processing through this interface. This time is not compensated.',
-        'Did you know?<br><br>Safiya Umoja Noble writes in <em>Algorithms of Oppression</em> that "Part of the challenge of understanding algorithmic oppression is to understand that mathematical formulations to drive automated decisions are made by human beings. While we often think of terms such as "big data" and "algorithms" as being benign, neutral, or objective, they are anything but." <em>(Noble, 2018)</em><br><br>This form is one of those systems. Proceed.',
+        'It looks like you\'ve been filling out this form for a while.<br><br>The average applicant spends 12.4 hours annually on administrative processing through this interface. This time is not compensated.',
+        'Did you know?<br><br>Safiya Umoja Noble writes in <em>Algorithms of Oppression</em> that "Part of the challenge of understanding algorithmic oppression is to understand that mathematical formulations to drive automated decisions are made by human beings. While we often think of terms such as \"big data\" and \"algorithms\" as being benign, neutral, or objective, they are anything but." <em>(Noble, 2018)</em><br><br>This form is one of those systems. Proceed.',
         'It looks like you exist.<br><br>This has been noted in your record.',
         'Forms do not describe subjects. They produce them.<br><br>The version of you that exists in this system is the version this form creates. <em>(Foucault, 1978; Hacking, 2002)</em>',
-        'It looks like you haven't made any changes recently.<br><br>Administrative inaction may be interpreted as withdrawal of application. Please continue.',
+        'It looks like you haven\'t made any changes recently.<br><br>Administrative inaction may be interpreted as withdrawal of application. Please continue.',
         'Langdon Winner asks in "Do Artifacts Have Politics?" whether the machines, structures, and systems of modern material culture can "embody specific forms of power and authority." This form is an answer to that question. <em>(Winner, 1980)</em>',
         'The Office of Administrative Processing cannot verify the accuracy of its own categories.<br><br>However, inaccurate selection may result in processing delays or denial.',
-        'It looks like you're providing sensitive information.<br><br>Disclosure is required. Non-disclosure is also noted.',
+        'It looks like you\'re providing sensitive information.<br><br>Disclosure is required. Non-disclosure is also noted.',
         'Administrative exhaustion is a political technology, not a design failure.<br><br>Would you like a tip to complete your form faster? <em>(Herd &amp; Moynihan, 2019; Spade, 2015)</em>'
     ];
 
@@ -12978,6 +12978,14 @@ function p3ToggleHelp(id) {
                         x = clamp(x - 38, margin, maxLeft);
                         y = clamp(y - 18, margin, maxTop);
                         guard += 1;
+                    }
+
+                    if (overlapsTicket(x, y)) {
+                        // Hard fallback: force card to a guaranteed safe region away from ticket controls.
+                        var fallbackX = clamp(Math.min(base.x, dx - w - 16), margin, maxLeft);
+                        var fallbackY = clamp(Math.min(base.y, dy - h - 16), margin, maxTop);
+                        x = fallbackX;
+                        y = fallbackY;
                     }
                 }
 
