@@ -3890,6 +3890,18 @@
             margin:10px 0; font-size:9.5px; line-height:1.6; background:rgba(0,0,0,0.04);
         }
         .dm-footer      { font-size:8px; opacity:0.58; margin-top:10px; text-align:center; }
+        .dm-link-btn {
+            appearance: none;
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+            color: #1d4a9f;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .dm-link-btn:hover { color: #0f2f6a; }
         .dm-memo-header { font-size:13px; font-weight:700; letter-spacing:0.3px;
                           border-bottom:1.5px solid #333; padding-bottom:6px; margin-bottom:10px; }
         .dm-memo-rule   { border:none; border-top:0.5px solid rgba(0,0,0,0.22); margin:8px 0; }
@@ -12821,10 +12833,11 @@ function p3ToggleHelp(id) {
                       '<p>Pursuant to Regulatory Framework 7.4(c), applicants are advised that the General Information Record (GIR-03) constitutes a procedural mechanism within the administrative processing system maintained by this Department. The form and its associated intake process are designed to collect, standardize, and record applicant information in compliance with applicable data governance protocols. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T1">1</button>][<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>]</span></p>' +
                       '<p>Applicants are further advised that the experience of completing this record  -  including but not limited to: waiting periods, repetitive information requests, verification requirements, and procedural delays  -  reflects standard departmental operations and does not constitute evidence of error, discrimination, or malfunction. Administrative burden functions as a sorting and attrition condition in many public systems. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T8">3</button>][<button type="button" class="theory-trigger theory-ref-tag" data-theory="T6">4</button>]</span></p>' +
                       '<p>This office does not collect information beyond what is necessary for administrative purposes. All data is retained in accordance with departmental retention schedules. Records may be subject to review by authorized personnel. Administrative records are treated as governing artifacts in downstream adjudication. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>]</span></p>' +
+                      '<p><strong>Bibliography link:</strong> Open <button type="button" class="dm-link-btn" onclick="openBulletinDoc(\'references\')">Public Research References (Read 6)</button> for the full citation list and Form 1 tag map (T1-T17).</p>' +
                       '<p>Questions regarding the purpose or scope of the GIR-03 should be directed in writing to the Office of Administrative Processing.</p>' +
                       '<div class="dm-compliance-block">COMPLIANCE NOTICE: Applicants are reminded that the act of engaging with administrative procedures may produce certain affective experiences, including but not limited to: frustration, confusion, self-doubt, and procedural fatigue. These experiences are within normal parameters and do not constitute grounds for appeal.</div>' +
                       '</div>' +
-                      '<div class="dm-footnote"><strong>Selected References and Citation Purpose</strong>' +
+                      '<div class="dm-footnote"><strong>Selected References and Citation Purpose (expanded in Read 6)</strong>' +
                       '<ol class="dm-ref-list">' +
                       '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T1">1</button>] Foucault, M. (1978). <em>The history of sexuality, volume 1: An introduction</em>. Pantheon. Clarifies how institutions produce governable subjects through administrative knowledge practices.</li>' +
                       '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>] Bowker, G. C., &amp; Star, S. L. (1999). <em>Sorting things out: Classification and its consequences</em>. MIT Press. Shows how classification infrastructures shape social outcomes and institutional action.</li>' +
@@ -12832,7 +12845,7 @@ function p3ToggleHelp(id) {
                       '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T6">4</button>] Spade, D. (2015). <em>Normal life: Administrative violence, critical trans politics, and the limits of law</em> (2nd ed.). Duke University Press. Frames documentation as a site where governance, stratification, and harm are produced.</li>' +
                       '</ol></div>' +
                       '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; Posted for applicant transparency<br>Next recommended document: Methods Note (Read 4)</div>'
+                      '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; Posted for applicant transparency<br>Next recommended document: Methods Note (Read 4) &nbsp;&middot;&nbsp; <button type="button" class="dm-link-btn" onclick="openBulletinDoc(\'references\')">Open Read 6 Bibliography</button></div>'
             },
             abstract: {
                 paper: 'academic',
@@ -12870,16 +12883,17 @@ function p3ToggleHelp(id) {
                       '<p><strong>Methods used:</strong> discourse analysis of form language; media archaeology of interface conventions; historiographic comparison of paper and digital processing logics; and interaction logging for branch condition analysis. [1][2][3]</p>' +
                       '<p>This project demonstrates how administrative efficiency can narrow interpretation, expand categorization, and reduce human discretion, limiting a person&#39;s ability to provide context and fully explain themselves. Marketed as user convenience, regimes of administrative efficiency delimit interpretive possibility by producing and reinforcing what constituents recognize as possible, legitimate, and real. [1][2]</p>' +
                       '<p><strong>Interpretive claim:</strong> Administrative forms actively produce the administrative archive by determining what can be entered, how it is classified, where it is stored, and what actions it can trigger. [1][2]</p>' +
+                      '<p><strong>Bibliography link:</strong> Open <button type="button" class="dm-link-btn" onclick="openBulletinDoc(\'references\')">Public Research References (Read 6)</button> for the full citation list and Form 1 tag map (T1-T17).</p>' +
                       '<p><strong>Operational dimensions:</strong><br>1. Entry - what can be recorded<br>2. Classification - how a person or claim is categorized<br>3. Storage - how records are organized and retrievable over time<br>4. Actionability - what decisions, flags, or consequences the record can produce</p>' +
                       '</div>' +
-                      '<div class="dm-footnote"><strong>Core Methods References and Citation Purpose</strong>' +
+                      '<div class="dm-footnote"><strong>Core Methods References and Citation Purpose (expanded in Read 6)</strong>' +
                       '<ol class="dm-ref-list">' +
                       '<li>[1] Foucault, M. (1972). <em>The archaeology of knowledge</em>. Pantheon. Frames discourse analysis by showing how statements set conditions for what becomes administratively knowable.</li>' +
                       '<li>[2] Bowker, G. C., &amp; Star, S. L. (1999). <em>Sorting things out: Classification and its consequences</em>. MIT Press. Guides analysis of categories, standards, and classificatory infrastructures in record systems.</li>' +
                       '<li>[3] D&#39;Ignazio, C., &amp; Klein, L. F. (2020). <em>Data feminism</em>. MIT Press. Supports methodological attention to power, exclusion, and situated knowledge in data design.</li>' +
                       '</ol></div>' +
                       '<div class="dm-rule"></div>' +
-                      '<div class="dm-footer">Posted for participant and reviewer transparency · Rev. 2026<br>Next recommended document: Project Narrative (Read 5)</div>'
+                      '<div class="dm-footer">Posted for participant and reviewer transparency · Rev. 2026<br>Next recommended document: Project Narrative (Read 5) &nbsp;&middot;&nbsp; <button type="button" class="dm-link-btn" onclick="openBulletinDoc(\'references\')">Open Read 6 Bibliography</button></div>'
             },
 
             references: {
