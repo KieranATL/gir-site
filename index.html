@@ -13173,13 +13173,18 @@ function p3ToggleHelp(id) {
 
         // post-exodus loop detection — runs before anything else renders
         (function() {
-            if (sessionStorage.getItem('girPostExodus')) {
-                // defer until DOM is ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initPostExodusMode);
-                } else {
-                    initPostExodusMode();
+            if (!sessionStorage.getItem('girPostExodus')) return;
+
+            function runPostExodusWhenReady() {
+                if (typeof window.initPostExodusMode === 'function') {
+                    window.initPostExodusMode();
                 }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', runPostExodusWhenReady);
+            } else {
+                runPostExodusWhenReady();
             }
         })();
     </script>
