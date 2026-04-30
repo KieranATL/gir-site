@@ -2773,6 +2773,65 @@
             color: #2563eb;
             background: #eff6ff;
         }
+        #p3NotesPopup {
+            position: fixed;
+            inset: 0;
+            z-index: 3550;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.42);
+            padding: 20px;
+        }
+        #p3NotesPopup.open { display: flex; }
+        .p3-notes-card {
+            width: min(540px, 96vw);
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            box-shadow: 0 16px 42px rgba(2, 6, 23, 0.35);
+            padding: 18px 18px 16px;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #0f172a;
+        }
+        .p3-notes-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+        .p3-notes-copy {
+            font-size: 13px;
+            line-height: 1.55;
+            color: #334155;
+            margin: 0 0 12px;
+        }
+        .p3-notes-cites {
+            font-size: 12px;
+            color: #1d4ed8;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .p3-notes-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .p3-notes-btn {
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            color: #0f172a;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .p3-notes-btn:hover,
+        .p3-notes-btn:focus-visible {
+            background: #eef2ff;
+            border-color: #93c5fd;
+            outline: none;
+        }
         .p3-inline-link {
             color: #1d4ed8;
             text-decoration: underline;
@@ -3744,6 +3803,121 @@
         .theory-key-tag {
             color: #173f93;
             font-weight: 700;
+        }
+        .theory-key-actions {
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+        }
+        .theory-key-biblio-btn {
+            border: 1px solid #2a406f;
+            background: #e8edf8;
+            color: #1a2f5c;
+            font: inherit;
+            font-size: 11px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        .theory-key-biblio-btn:hover,
+        .theory-key-biblio-btn:focus-visible {
+            background: #dbe5f8;
+            outline: none;
+        }
+        #notesBibliographyModal {
+            position: fixed;
+            inset: 0;
+            z-index: 3610;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(7, 10, 18, 0.82);
+            padding: 24px;
+        }
+        #notesBibliographyModal.open { display: flex; }
+        .notes-biblio-shell {
+            width: min(1040px, 97vw);
+            max-height: 92vh;
+            overflow-y: auto;
+            border: 1px solid rgba(34, 34, 34, 0.55);
+            box-shadow: 0 22px 64px rgba(0, 0, 0, 0.58);
+            position: relative;
+        }
+        .notes-biblio-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            margin: 10px 12px 0 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-size: 11px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .notes-biblio-content {
+            padding: 28px 24px 24px;
+        }
+        .notes-biblio-header {
+            font-size: 12px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        .notes-biblio-embed .dm-paper {
+            box-shadow: none;
+            max-width: none;
+            max-height: none;
+            overflow: visible;
+            width: 100%;
+            border: 0;
+            padding: 34px 38px 30px;
+        }
+        .notes-biblio-shell.theme-form-1 {
+            background: #f5f1e8;
+            color: #2d261b;
+            border-color: #7c6b52;
+        }
+        .notes-biblio-shell.theme-form-2 {
+            background: #c0c0c0;
+            color: #111;
+            border: 2px solid #000;
+            box-shadow: 0 0 0 2px #fff inset, 0 0 0 4px #808080 inset, 0 18px 48px rgba(0, 0, 0, 0.5);
+            font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
+        }
+        .notes-biblio-shell.theme-form-2 .notes-biblio-header {
+            background: #000080;
+            color: #fff;
+            margin: -28px -24px 14px;
+            padding: 8px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .notes-biblio-shell.theme-form-3 {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #cbd5e1;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+        .notes-biblio-shell.theme-form-3 .notes-biblio-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1d4ed8;
+        }
+        .notes-biblio-shell.theme-form-4 {
+            background: #090d17;
+            color: #b8cbff;
+            border: 1px solid #203768;
+            box-shadow: 0 0 0 1px rgba(72, 118, 255, 0.25), 0 22px 64px rgba(0, 0, 0, 0.74);
+            font-family: 'Courier New', monospace;
+        }
+        .notes-biblio-shell.theme-form-4 .notes-biblio-header {
+            color: #83adff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-size: 11px;
         }
         /* Document reader modal */
         #docModal {
@@ -5831,8 +6005,8 @@
     <div id="theoryKeyModal" onclick="closeTheoryKeyOutside(event)" aria-hidden="true">
         <div class="theory-key-paper" role="dialog" aria-modal="true" aria-labelledby="theoryKeyTitle">
             <button class="theory-key-close" type="button" onclick="closeTheoryKey()">[ close ]</button>
-            <div class="theory-key-kicker">FORM GIR-01 - INTERPRETIVE REFERENCE</div>
-            <h2 class="theory-key-title" id="theoryKeyTitle">Theory Reference Guide (T1-T17)</h2>
+            <div class="theory-key-kicker">FORM NOTES - INTERPRETIVE REFERENCE</div>
+            <h2 class="theory-key-title" id="theoryKeyTitle">Notes Reference Guide (T1-T17)</h2>
             <p class="theory-key-intro">This packet is part of a research-oriented administrative simulation. The design is intentionally grounded in published theory about classification, governance, and technical systems.</p>
             <ol class="theory-key-list" id="theoryKeyList">
                 <li id="theory-key-T1"><span class="theory-key-tag">T1:</span> Administrative documentation produces governable subjects (Foucault, 1978).</li>
@@ -5853,7 +6027,16 @@
                 <li id="theory-key-T16"><span class="theory-key-tag">T16:</span> Discourse defines what institutions can know and process (Foucault, 1972).</li>
                 <li id="theory-key-T17"><span class="theory-key-tag">T17:</span> State legibility simplifies complexity with material consequences (J. C. Scott, 1998).</li>
             </ol>
+            <div class="theory-key-actions">
+                <button class="theory-key-biblio-btn" type="button" onclick="openNotesBibliography()">View Full Bibliography</button>
+            </div>
             <p class="theory-key-note">These notes are provided for transparency and interpretation only. They do not alter filing requirements.</p>
+        </div>
+    </div>
+    <div id="notesBibliographyModal" onclick="closeNotesBibliographyOutside(event)" aria-hidden="true">
+        <div class="notes-biblio-shell theme-form-1" id="notesBiblioShell" role="dialog" aria-modal="true" aria-labelledby="notesBiblioTitle">
+            <button class="notes-biblio-close" type="button" onclick="closeNotesBibliography()">[ close ]</button>
+            <div class="notes-biblio-content" id="notesBiblioContent"></div>
         </div>
     </div>
     <!-- ══ WAITING SCREEN ═══════════════════════════════════════════════ -->
@@ -10049,6 +10232,13 @@ function girComputeOutcome() {
 
 function p2ToggleHelp(id) { var b = document.getElementById(id); if (b) b.style.display = b.style.display === 'none' ? 'block' : 'none'; }
 function p3ToggleHelp(id) {
+    if (id && id.indexOf('p3Theory') === 0 && typeof p3OpenNotesPopup === 'function') {
+        p3OpenNotesPopup(id);
+        // track for ascension path
+        if (!GIR._theoryOpened) GIR._theoryOpened = {};
+        GIR._theoryOpened[id] = true;
+        return;
+    }
     var b = document.getElementById(id);
     if (!b) return;
     var opening = (b.style.display === 'none' || b.style.display === '');
@@ -12304,11 +12494,11 @@ function p3ToggleHelp(id) {
 
         window.p3AriaQuickAction = function(action) {
             if (action === 'citation-notes') {
-                p3AriaSend(_p3AriaCitationNotesHtml, true);
+                openTheoryKey('T1');
                 return;
             }
             if (action === 'bibliography') {
-                p3AriaSend(_p3AriaBibliographyHtml, true);
+                openNotesBibliography();
             }
         };
 
@@ -13023,6 +13213,116 @@ function p3ToggleHelp(id) {
         function closeTheoryKeyOutside(event) {
             if (event.target === document.getElementById('theoryKeyModal')) {
                 closeTheoryKey();
+            }
+        }
+
+        function getActiveFormForNotes() {
+            var fromDataset = (document.body && document.body.dataset && document.body.dataset.activeForm) || '';
+            if (fromDataset) return fromDataset;
+            var ph4x = document.getElementById('phase4Exodus');
+            if (ph4x && ph4x.style.display && ph4x.style.display !== 'none') return '4';
+            var exodus = document.getElementById('exodusOverlay');
+            if (exodus && exodus.classList.contains('active')) return '4';
+            var ph3 = document.getElementById('phaseThreeOverlay');
+            if (ph3 && ph3.classList.contains('active')) return '3';
+            var ph2 = document.getElementById('phaseTwoOverlay');
+            if (ph2 && ph2.classList.contains('active')) return '2';
+            return '1';
+        }
+
+        function openNotesBibliography() {
+            var modal = document.getElementById('notesBibliographyModal');
+            var shell = document.getElementById('notesBiblioShell');
+            var content = document.getElementById('notesBiblioContent');
+            if (!modal || !shell || !content) return;
+
+            var activeForm = getActiveFormForNotes();
+            shell.classList.remove('theme-form-1', 'theme-form-2', 'theme-form-3', 'theme-form-4');
+            shell.classList.add('theme-form-' + activeForm);
+
+            var formLabel = {
+                '1': 'Form 1 Bibliography View',
+                '2': 'Form 2 Bibliography View',
+                '3': 'Form 3 Bibliography View',
+                '4': 'Exodus/Glitch Bibliography View'
+            }[activeForm] || 'Bibliography View';
+
+            var refsHtml = (bulletinDocs && bulletinDocs.references && bulletinDocs.references.html)
+                ? bulletinDocs.references.html
+                : '<p>Bibliography currently unavailable.</p>';
+
+            content.innerHTML = '<div class="notes-biblio-header" id="notesBiblioTitle">' + formLabel + '</div>'
+                + '<div class="notes-biblio-embed">' + refsHtml + '</div>';
+
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeNotesBibliography() {
+            var modal = document.getElementById('notesBibliographyModal');
+            if (!modal) return;
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function closeNotesBibliographyOutside(event) {
+            if (event.target === document.getElementById('notesBibliographyModal')) {
+                closeNotesBibliography();
+            }
+        }
+
+        window._p3ActiveNoteTag = '';
+        var p3NoteRegistry = {
+            p3TheoryOverview: {
+                title: 'Form 3 Research Framing',
+                copy: 'This section frames the form as an administrative interface and a research artifact. It clarifies that routing fields are not neutral - they shape what can be recognized and acted on.',
+                cites: 'Linked notes: T1, T2, T3, T9',
+                tag: 'T1'
+            },
+            p3TheoryDataUse: {
+                title: 'Data Use Interpretation',
+                copy: 'Consent fields convert social complexity into legally compatible record states. In practice, consent is both disclosure and governance: it defines what processing can proceed.',
+                cites: 'Linked notes: T2, T5, T14, T17',
+                tag: 'T5'
+            },
+            p3TheoryHistory: {
+                title: 'Background Declaration Interpretation',
+                copy: 'This question compresses distinct legal and lived contexts into routable risk categories. The mismatch itself reveals how classification standards prioritize compatibility over narrative fidelity.',
+                cites: 'Linked notes: T2, T6, T9, T13, T17',
+                tag: 'T9'
+            }
+        };
+
+        function p3OpenNotesPopup(id) {
+            var modal = document.getElementById('p3NotesPopup');
+            if (!modal) return;
+            var note = p3NoteRegistry[id] || {
+                title: 'Form 3 Notes',
+                copy: 'This helper explains why this field appears and how it affects routing.',
+                cites: 'Linked notes: T2, T5',
+                tag: 'T2'
+            };
+            var title = document.getElementById('p3NotesTitle');
+            var copy = document.getElementById('p3NotesCopy');
+            var cites = document.getElementById('p3NotesCites');
+            if (title) title.textContent = note.title;
+            if (copy) copy.textContent = note.copy;
+            if (cites) cites.textContent = note.cites;
+            window._p3ActiveNoteTag = note.tag || '';
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function p3CloseNotesPopup() {
+            var modal = document.getElementById('p3NotesPopup');
+            if (!modal) return;
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function p3CloseNotesPopupOutside(event) {
+            if (event.target === document.getElementById('p3NotesPopup')) {
+                p3CloseNotesPopup();
             }
         }
 
@@ -14359,6 +14659,19 @@ function p3ToggleHelp(id) {
   </div>
 </div>
 
+<div id="p3NotesPopup" onclick="p3CloseNotesPopupOutside(event)" aria-hidden="true">
+  <div class="p3-notes-card" role="dialog" aria-modal="true" aria-labelledby="p3NotesTitle">
+    <div class="p3-notes-title" id="p3NotesTitle">Form 3 Notes</div>
+    <div class="p3-notes-copy" id="p3NotesCopy">This helper explains why this field appears and how it affects routing.</div>
+    <div class="p3-notes-cites" id="p3NotesCites"></div>
+    <div class="p3-notes-actions">
+      <button class="p3-notes-btn" type="button" onclick="openTheoryKey(window._p3ActiveNoteTag || '')">Open Notes Reference</button>
+      <button class="p3-notes-btn" type="button" onclick="openNotesBibliography()">View Full Bibliography</button>
+      <button class="p3-notes-btn" type="button" onclick="p3CloseNotesPopup()">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- CAPTCHA MODAL -->
 <div id="p3CaptchaModal">
   <div id="p3CaptchaBox">
@@ -14447,7 +14760,7 @@ function p3ToggleHelp(id) {
             <div class="p3-card">
                 <div class="p3-section-label">Section A - Acknowledgment</div>
                 <div class="p3-page-title">Before You Begin</div>
-                <div class="p3-info-box">This build includes explicit research framing. <a href="javascript:void(0)" class="p3-inline-link" onclick="p3ToggleHelp('p3TheoryOverview')">View theoretical context [?]</a></div>
+                <div class="p3-info-box">This build includes explicit research framing. <a href="javascript:void(0)" class="p3-help-icon" onclick="p3ToggleHelp('p3TheoryOverview')" aria-label="Open notes for research framing">?</a></div>
                 <div class="p3-theory-note" id="p3TheoryOverview">
                     <p><strong>Research context:</strong> this form is designed as both an interactive submission flow and a publishable study artifact.</p>
                     <ul>
