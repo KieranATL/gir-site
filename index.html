@@ -1205,6 +1205,41 @@
             border-color: #86efac;
         }
 
+        /* ── DEV BUTTON: Form 1 — paper packet ──────────────────────── */
+        body:not([data-active-form]) #devToggle,
+        body:not([data-active-form]) #devQuickToggle,
+        body[data-active-form="1"] #devToggle,
+        body[data-active-form="1"] #devQuickToggle {
+            background: #ece7da;
+            color: #2f2a22;
+            border: 1px solid #7f7463;
+            border-radius: 2px;
+            font-family: 'Special Elite', 'Courier Prime', serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 2px 8px rgba(0,0,0,0.16);
+            padding: 5px 11px;
+        }
+        body:not([data-active-form]) #devToggle:hover,
+        body:not([data-active-form]) #devQuickToggle:hover,
+        body[data-active-form="1"] #devToggle:hover,
+        body[data-active-form="1"] #devQuickToggle:hover {
+            background: #f4efe4;
+            color: #1f1a14;
+            border-color: #635948;
+        }
+        body:not([data-active-form]) #devToggle.is-open,
+        body:not([data-active-form]) #devQuickToggle.is-open,
+        body[data-active-form="1"] #devToggle.is-open,
+        body[data-active-form="1"] #devQuickToggle.is-open {
+            background: #ded7c7;
+            color: #2b241a;
+            border-color: #5f5443;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+        }
+
         /* ── DEV BUTTON: Form 2 — Win98 ─────────────────────────────── */
         body[data-active-form="2"] #devToggle,
         body[data-active-form="2"] #devQuickToggle {
@@ -1300,26 +1335,102 @@
             96%          { opacity: 0.7; transform: translate(0, 1px); clip-path: inset(60% 0 0% 0); }
             98%          { opacity: 1; transform: translate(0, 0); clip-path: none; }
         }
+        :root {
+            --dev-menu-bg: rgba(28,24,18,0.97);
+            --dev-menu-text: #f0e7d1;
+            --dev-menu-border: rgba(159,138,101,0.68);
+            --dev-menu-shadow: -12px 0 30px rgba(0,0,0,0.35);
+            --dev-section-color: #d9bf7f;
+            --dev-btn-text: #efe4cc;
+            --dev-btn-border: rgba(171,146,103,0.38);
+            --dev-btn-hover-text: #1d1610;
+            --dev-btn-hover-bg: rgba(225,201,149,0.78);
+            --dev-btn-hover-border: rgba(203,177,128,0.92);
+            --dev-btn-danger: #ff9f8f;
+            --dev-btn-danger-hover: #ffd0c8;
+        }
+
+        body:not([data-active-form]),
+        body[data-active-form="1"] {
+            --dev-menu-bg: rgba(28,24,18,0.97);
+            --dev-menu-text: #f0e7d1;
+            --dev-menu-border: rgba(159,138,101,0.68);
+            --dev-menu-shadow: -12px 0 30px rgba(0,0,0,0.35);
+            --dev-section-color: #d9bf7f;
+            --dev-btn-text: #efe4cc;
+            --dev-btn-border: rgba(171,146,103,0.38);
+            --dev-btn-hover-text: #1d1610;
+            --dev-btn-hover-bg: rgba(225,201,149,0.78);
+            --dev-btn-hover-border: rgba(203,177,128,0.92);
+            --dev-btn-danger: #ff9f8f;
+            --dev-btn-danger-hover: #ffd0c8;
+        }
+
+        body[data-active-form="2"] {
+            --dev-menu-bg: #d4d0c8;
+            --dev-menu-text: #000000;
+            --dev-menu-border: #8f8f8f;
+            --dev-menu-shadow: -2px 0 0 #ffffff inset, 2px 0 0 #808080 inset, -10px 0 24px rgba(0,0,0,0.25);
+            --dev-section-color: #002c8f;
+            --dev-btn-text: #000000;
+            --dev-btn-border: #8f8f8f;
+            --dev-btn-hover-text: #000000;
+            --dev-btn-hover-bg: #c7d9ff;
+            --dev-btn-hover-border: #6d89c7;
+            --dev-btn-danger: #8a0000;
+            --dev-btn-danger-hover: #b00000;
+        }
+
+        body[data-active-form="3"] {
+            --dev-menu-bg: rgba(255,255,255,0.98);
+            --dev-menu-text: #334155;
+            --dev-menu-border: #dbe5ef;
+            --dev-menu-shadow: -10px 0 24px rgba(15,23,42,0.14);
+            --dev-section-color: #64748b;
+            --dev-btn-text: #334155;
+            --dev-btn-border: #d1dbe7;
+            --dev-btn-hover-text: #0f172a;
+            --dev-btn-hover-bg: #eef4fa;
+            --dev-btn-hover-border: #9fb2c9;
+            --dev-btn-danger: #b91c1c;
+            --dev-btn-danger-hover: #991b1b;
+        }
+
+        body[data-active-form="4"] {
+            --dev-menu-bg: rgba(8,0,0,0.97);
+            --dev-menu-text: #ff8080;
+            --dev-menu-border: rgba(255,60,60,0.75);
+            --dev-menu-shadow: -12px 0 34px rgba(255,0,0,0.2);
+            --dev-section-color: #ffbaba;
+            --dev-btn-text: #ff9f9f;
+            --dev-btn-border: rgba(255,80,80,0.4);
+            --dev-btn-hover-text: #ffffff;
+            --dev-btn-hover-bg: rgba(255,48,48,0.28);
+            --dev-btn-hover-border: rgba(255,110,110,0.9);
+            --dev-btn-danger: #ffd0d0;
+            --dev-btn-danger-hover: #ffffff;
+        }
+
         #devMenu {
             position: fixed;
             top: 60px;
             right: 0;
             bottom: 0;
             width: min(360px, 92vw);
-            background: rgba(8,16,30,0.98);
-            color: #9ef89e;
-            border-left: 1px solid rgba(74,222,128,0.6);
-            box-shadow: -12px 0 30px rgba(0,0,0,0.35);
+            background: var(--dev-menu-bg);
+            color: var(--dev-menu-text);
+            border-left: 1px solid var(--dev-menu-border);
+            box-shadow: var(--dev-menu-shadow);
             padding: 12px;
             transform: translateX(104%);
-            transition: transform 180ms ease;
+            transition: transform 180ms ease, background 120ms ease, color 120ms ease, border-color 120ms ease;
             overflow-y: auto;
             z-index: 9201;
             display: block;
         }
         #devMenu.open { transform: translateX(0); }
         .dev-section {
-            color: #fde68a;
+            color: var(--dev-section-color);
             margin: 10px 0 4px;
             font-size: 10.6px;
             letter-spacing: 1px;
@@ -1328,19 +1439,34 @@
         .dev-btn {
             display: block;
             width: 100%;
-            background: none;
-            color: #9ef89e;
-            border: 1px solid transparent;
+            background: transparent;
+            color: var(--dev-btn-text);
+            border: 1px solid var(--dev-btn-border);
             border-radius: 4px;
             padding: 4px 6px;
             text-align: left;
             cursor: pointer;
             font-size: 11.7px;
             font-family: 'Courier Prime', monospace;
+            transition: background 100ms ease, color 100ms ease, border-color 100ms ease;
         }
-        .dev-btn-danger { color: #f87171 !important; }
-        .dev-btn-danger:hover { color: #fca5a5 !important; }
-        .dev-btn:hover { color: #fff; background: rgba(34,197,94,0.35); border-color: rgba(74,222,128,0.65); }
+        body[data-active-form="2"] .dev-btn {
+            border-width: 1px;
+            border-style: solid;
+            box-shadow: 1px 1px 0 #ffffff inset, -1px -1px 0 #808080 inset;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+        }
+        body[data-active-form="1"] .dev-btn,
+        body:not([data-active-form]) .dev-btn {
+            font-family: 'Special Elite', 'Courier Prime', serif;
+        }
+        body[data-active-form="3"] .dev-btn {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 12px;
+        }
+        .dev-btn-danger { color: var(--dev-btn-danger) !important; }
+        .dev-btn-danger:hover { color: var(--dev-btn-danger-hover) !important; }
+        .dev-btn:hover { color: var(--dev-btn-hover-text); background: var(--dev-btn-hover-bg); border-color: var(--dev-btn-hover-border); }
         .dev-page-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1348,12 +1474,12 @@
             margin-bottom: 8px;
         }
         .dev-page-btn {
-            border: 1px solid rgba(74,222,128,0.35);
+            border: 1px solid var(--dev-btn-border);
             padding: 2px 3px;
             text-align: center;
         }
         .dev-page-btn:hover {
-            border-color: #fff;
+            border-color: var(--dev-btn-hover-border);
         }
         @media (max-width: 900px) {
             #devMenu {
@@ -2299,6 +2425,47 @@
         .p3eb-primary { font-weight: 700; margin-bottom: 2px; }
         .p3eb-secondary { font-weight: 400; opacity: 0.85; font-size: 11px; }
         .p3eb-flags { margin-top: 4px; font-size: 10.5px; opacity: 0.8; }
+
+        #p3TimeoutWarning {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 44px;
+            background: #fff7ed;
+            color: #9a3412;
+            border-bottom: 1px solid #fed7aa;
+            font-size: 11.5px;
+            line-height: 1.45;
+        }
+        #p3TimeoutWarning.open { display: flex; }
+        .p3-timeout-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #f97316;
+            box-shadow: 0 0 0 0 rgba(249,115,22,0.45);
+            animation: p3TimeoutPulse 1.6s infinite;
+            flex-shrink: 0;
+        }
+        @keyframes p3TimeoutPulse {
+            0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.45); }
+            70% { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+            100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+        }
+        .p3-timeout-copy { flex: 1; }
+        #p3TimeoutCountdown { font-weight: 700; }
+        .p3-timeout-btn {
+            border: 1px solid #fdba74;
+            border-radius: 6px;
+            background: #fff;
+            color: #9a3412;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 5px 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .p3-timeout-btn:hover { background: #fff1e6; }
 
         /* ── Form 3: system-locked fields ────────────────────────────────── */
         .p3-system-locked {
@@ -4259,6 +4426,52 @@
             border-color: #3d5f9f;
             color: #11274d;
         }
+        #p2TimeoutWarning {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            right: 10px;
+            z-index: 97;
+            display: none;
+        }
+        #p2TimeoutWarning.open { display: block; }
+        .p2-timeout-inner {
+            background: #fff9dc;
+            border: 2px solid #808080;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.22);
+            color: #1f1f1f;
+            padding: 7px 10px;
+            font-size: 11px;
+            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+            line-height: 1.35;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .p2-timeout-icon {
+            width: 16px;
+            height: 16px;
+            background: #000080;
+            color: #fff;
+            font-weight: 700;
+            text-align: center;
+            line-height: 16px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            flex-shrink: 0;
+        }
+        .p2-timeout-text { flex: 1; }
+        #p2TimeoutCountdown { font-weight: 700; color: #7a2e00; }
+        .p2-timeout-btn {
+            border: 2px outset #ffffff;
+            background: #d4d0c8;
+            color: #000;
+            font-size: 11px;
+            font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+            padding: 2px 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .p2-timeout-btn:active { border: 2px inset #ffffff; }
         .ie-statusbar {
             background: #d4d0c8;
             border-top: 1px solid #808080;
@@ -9246,34 +9459,31 @@ function girComputeOutcome() {
     var p2ClippyTimer = null;
     var p2ClippyShown = {};
     var p2ClippyTheoryIdx = 0;
-
     var p2ClippyPageMsgs = {
-        1: 'It looks like you\'re opening a legacy submission portal.<br><br>This interface treats legibility as a prerequisite for access. In practical terms: if your information does not fit the active schema, your record slows down before any human review begins.',
-        2: 'It looks like you\'re normalizing identity fields.<br><br>Standardized formats increase matching speed, but they also reduce room for explanation. This is how efficiency can narrow interpretive possibility.',
-        3: 'It looks like you\'re being categorized.<br><br>Administrative categories do not only describe populations - they organize what becomes actionable in the system and what does not.',
-        4: 'It looks like you\'re writing narrative context.<br><br>Your text may be read, but routing is still driven by structured fields. Narrative that cannot be translated into category logic has limited procedural effect.',
-        5: 'It looks like you\'re providing cross-record and relational information.<br><br>Cross-referencing expands the archive beyond this form. Data supplied for one purpose can become available for future procedural uses.',
-        6: 'It looks like you\'re signing attestations.<br><br>Attestations formalize applicant obligations while institutional obligations remain distributed across departments, systems, and policies.',
-        7: 'It looks like you\'re approaching validation.<br><br>Passing checks confirms compatibility with current schema rules - not truth in any total sense.'
+        1: 'It looks like you've opened a submission portal.<br><br>This interface treats legibility as a prerequisite for access. In practical terms, if your information does not fit the active schema, your record is slowed due to the requirement of human review. <em>(Scott, 1998)</em>',
+        2: 'It looks like you're normalizing identity fields.<br><br>Standardized formats increase processing speed, but they also reduce or eliminate room for explanation. This is how efficiency can narrow interpretive possibility. And if you are not legible to systems of governance, you are not legible to society. <em>(Foucault, 1978; Scott, 1998)</em>',
+        3: 'It looks like you're being categorized.<br><br>Administrative categories organize what becomes actionable in the system and what does not. <em>(Bowker &amp; Star, 1999)</em>',
+        4: 'It looks like you're writing narrative context.<br><br>Your text may be read, but routing is still driven by structured fields. Narrative that cannot be translated into category logic has limited procedural effect. <em>(Scott, 1991; Bowker &amp; Star, 1999)</em>',
+        5: 'It looks like you're providing cross-record and relational information.<br><br>Cross-referencing expands the archive. Data supplied for this purpose can become available for future procedural uses. Make sure to read the fine print. <em>(Riles, 2008; Hull, 2012)</em>',
+        6: 'It looks like you're signing attestations.<br><br>Attestations formalize applicant obligations while institutional obligations remain distributed across departments, systems, and policies. <em>(Weber, 1978; Lipsky, 2010)</em>',
+        7: 'It looks like you're approaching validation.<br><br>Passing checks confirms compatibility with current schema rules - these rules organize truth beyond the schema and into public life. <em>(Foucault, 1972; Scott, 1998)</em>'
     };
-
     var p2ClippyTheoryQueue = [
-        'Theory note:<br><br>Foucault\'s account of governmentality helps explain why forms matter: administrative systems do not merely record individuals; they help produce governable subjects through documentation and visibility.',
-        'Theory note:<br><br>Bowker and Star show that classification systems are infrastructures. They make some people and claims easy to process while rendering others exceptional, delayed, or non-routable.',
-        'Theory note:<br><br>Joan Wallach Scott argues that experience is mediated by categories and discourse. In this portal, what can be entered determines what can be institutionally recognized.',
-        'Theory note:<br><br>Herd and Moynihan describe administrative burden as a policy instrument. Time, friction, and procedural complexity are not incidental - they shape who can successfully complete a claim.'
+        'Theory note:<br><br>Foucault's account of governmentality helps explain why forms matter: administrative systems produce governable subjects through documentation and legibility. <em>(Foucault, 1978)</em>',
+        'Theory note:<br><br>Bowker and Star show that classification systems are infrastructures. They make some people and claims easy to process while rendering others exceptional, delayed, or non-routable. <em>(Bowker &amp; Star, 1999)</em>',
+        'Theory note:<br><br>Joan Wallach Scott argues that experience is mediated by categories and discourse. In this portal, what can be entered determines what can be institutionally recognized. <em>(Scott, 1991)</em>',
+        'Theory note:<br><br>Herd and Moynihan describe administrative burden as a policy instrument. Time, friction, and procedural complexity shape who can successfully complete a claim. <em>(Herd &amp; Moynihan, 2019)</em>'
     ];
-
     var p2ClippyRandomPool = [
-        'It looks like you\'ve been filling out this form for a while.<br><br>The average applicant spends 12.4 hours annually on administrative processing. This time is not compensated.',
-        'Did you know?<br><br>Safiya Umoja Noble writes in <em>Algorithms of Oppression</em> that \u201cwhile we often think of terms such as \u2018big data\u2019 and \u2018algorithms\u2019 as being benign, neutral, or objective, they are anything but.\u201d<br><br>This form is one of those systems. Proceed.',
+        'It looks like you've been filling out this form for a while.<br><br>The average applicant spends 12.4 hours annually on administrative processing through this interface. This time is not compensated.',
+        'Did you know?<br><br>Safiya Umoja Noble writes in <em>Algorithms of Oppression</em> that "Part of the challenge of understanding algorithmic oppression is to understand that mathematical formulations to drive automated decisions are made by human beings. While we often think of terms such as "big data" and "algorithms" as being benign, neutral, or objective, they are anything but." <em>(Noble, 2018)</em><br><br>This form is one of those systems. Proceed.',
         'It looks like you exist.<br><br>This has been noted in your record.',
-        'Forms do not describe subjects. They produce them.<br><br>The version of you that exists in this system is the version this form creates.',
-        'It looks like you haven\'t made any changes recently.<br><br>Administrative inaction may be interpreted as withdrawal of application. Please continue.',
-        'Langdon Winner asks in \u201cDo Artifacts Have Politics?\u201d whether the machines, structures, and systems of modern material culture can \u201cembody specific forms of power and authority.\u201d<br><br>This form is the answer to that question.',
+        'Forms do not describe subjects. They produce them.<br><br>The version of you that exists in this system is the version this form creates. <em>(Foucault, 1978; Hacking, 2002)</em>',
+        'It looks like you haven't made any changes recently.<br><br>Administrative inaction may be interpreted as withdrawal of application. Please continue.',
+        'Langdon Winner asks in "Do Artifacts Have Politics?" whether the machines, structures, and systems of modern material culture can "embody specific forms of power and authority." This form is an answer to that question. <em>(Winner, 1980)</em>',
         'The Office of Administrative Processing cannot verify the accuracy of its own categories.<br><br>However, inaccurate selection may result in processing delays or denial.',
-        'It looks like you\'re providing sensitive information.<br><br>Disclosure is required. Non-disclosure is also noted.',
-        'Administrative exhaustion is a political technology, not a design failure.<br><br>Would you like a tip to complete your form faster?'
+        'It looks like you're providing sensitive information.<br><br>Disclosure is required. Non-disclosure is also noted.',
+        'Administrative exhaustion is a political technology, not a design failure.<br><br>Would you like a tip to complete your form faster? <em>(Herd &amp; Moynihan, 2019; Spade, 2015)</em>'
     ];
 
     function p2ClippyShow(msg) {
@@ -9313,6 +9523,126 @@ function girComputeOutcome() {
             }
         }, 3 * 60 * 1000);
     }
+
+    /* -- Inactivity timeout warnings (Form 2 + Form 3) --------------------- */
+    var p2TimeoutWarnMs = 3 * 60 * 1000;
+    var p3TimeoutWarnMs = 3 * 60 * 1000;
+    var timeoutCountdownStart = 120;
+    var p2TimeoutTimer = null;
+    var p2TimeoutCountdownTimer = null;
+    var p2TimeoutCountdown = timeoutCountdownStart;
+    var p3TimeoutTimer = null;
+    var p3TimeoutCountdownTimer = null;
+    var p3TimeoutCountdown = timeoutCountdownStart;
+    var p2LastActivityTick = 0;
+    var p3LastActivityTick = 0;
+
+    function p2SessionActive() {
+        var overlay = document.getElementById('phaseTwoOverlay');
+        return !!(overlay && overlay.classList.contains('active') && overlay.style.display !== 'none');
+    }
+    function p3SessionActive() {
+        var overlay = document.getElementById('phaseThreeOverlay');
+        return !!(overlay && overlay.classList.contains('active') && overlay.style.display !== 'none');
+    }
+    function p2HideTimeoutWarning() {
+        var el = document.getElementById('p2TimeoutWarning');
+        if (el) el.classList.remove('open');
+        if (p2TimeoutCountdownTimer) {
+            clearInterval(p2TimeoutCountdownTimer);
+            p2TimeoutCountdownTimer = null;
+        }
+    }
+    function p3HideTimeoutWarning() {
+        var el = document.getElementById('p3TimeoutWarning');
+        if (el) el.classList.remove('open');
+        if (p3TimeoutCountdownTimer) {
+            clearInterval(p3TimeoutCountdownTimer);
+            p3TimeoutCountdownTimer = null;
+        }
+    }
+    function p2UpdateTimeoutCountdown() {
+        var el = document.getElementById('p2TimeoutCountdown');
+        if (el) el.textContent = String(p2TimeoutCountdown);
+    }
+    function p3UpdateTimeoutCountdown() {
+        var el = document.getElementById('p3TimeoutCountdown');
+        if (el) el.textContent = String(p3TimeoutCountdown);
+    }
+    function p2ShowTimeoutWarning() {
+        if (!p2SessionActive()) return;
+        p2TimeoutCountdown = timeoutCountdownStart;
+        p2UpdateTimeoutCountdown();
+        var el = document.getElementById('p2TimeoutWarning');
+        if (el) el.classList.add('open');
+        if (p2TimeoutCountdownTimer) clearInterval(p2TimeoutCountdownTimer);
+        p2TimeoutCountdownTimer = setInterval(function() {
+            if (!p2SessionActive()) { p2HideTimeoutWarning(); return; }
+            p2TimeoutCountdown -= 1;
+            p2UpdateTimeoutCountdown();
+            if (p2TimeoutCountdown <= 0) {
+                p2HideTimeoutWarning();
+                p2SessionTouch();
+                if (typeof p2ShowGlitchBar === 'function') {
+                    p2ShowGlitchBar('Session renewed. Continue entry to avoid interruption.', 2600);
+                }
+            }
+        }, 1000);
+    }
+    function p3ShowTimeoutWarning() {
+        if (!p3SessionActive()) return;
+        p3TimeoutCountdown = timeoutCountdownStart;
+        p3UpdateTimeoutCountdown();
+        var el = document.getElementById('p3TimeoutWarning');
+        if (el) el.classList.add('open');
+        if (p3TimeoutCountdownTimer) clearInterval(p3TimeoutCountdownTimer);
+        p3TimeoutCountdownTimer = setInterval(function() {
+            if (!p3SessionActive()) { p3HideTimeoutWarning(); return; }
+            p3TimeoutCountdown -= 1;
+            p3UpdateTimeoutCountdown();
+            if (p3TimeoutCountdown <= 0) {
+                p3HideTimeoutWarning();
+                p3SessionTouch();
+                if (typeof showNotice === 'function') showNotice('Session renewed. Continue to keep your record active.');
+            }
+        }, 1000);
+    }
+    function p2SessionTouch() {
+        if (!p2SessionActive()) return;
+        if (p2TimeoutTimer) clearTimeout(p2TimeoutTimer);
+        p2HideTimeoutWarning();
+        p2TimeoutTimer = setTimeout(p2ShowTimeoutWarning, p2TimeoutWarnMs);
+    }
+    function p3SessionTouch() {
+        if (!p3SessionActive()) return;
+        if (p3TimeoutTimer) clearTimeout(p3TimeoutTimer);
+        p3HideTimeoutWarning();
+        p3TimeoutTimer = setTimeout(p3ShowTimeoutWarning, p3TimeoutWarnMs);
+    }
+    function p2SessionStop() {
+        if (p2TimeoutTimer) clearTimeout(p2TimeoutTimer);
+        p2TimeoutTimer = null;
+        p2HideTimeoutWarning();
+    }
+    function p3SessionStop() {
+        if (p3TimeoutTimer) clearTimeout(p3TimeoutTimer);
+        p3TimeoutTimer = null;
+        p3HideTimeoutWarning();
+    }
+    window.p2ContinueSession = function() { p2SessionTouch(); };
+    window.p3ContinueSession = function() { p3SessionTouch(); };
+
+    document.addEventListener('mousemove', function() {
+        var now = Date.now();
+        if (p2SessionActive() && now - p2LastActivityTick > 1200) { p2LastActivityTick = now; p2SessionTouch(); }
+        if (p3SessionActive() && now - p3LastActivityTick > 1200) { p3LastActivityTick = now; p3SessionTouch(); }
+    });
+    ['keydown','mousedown','touchstart','input'].forEach(function(evt) {
+        document.addEventListener(evt, function() {
+            if (p2SessionActive()) p2SessionTouch();
+            if (p3SessionActive()) p3SessionTouch();
+        }, true);
+    });
 
     /* -- OUTLOOK EXPRESS (data-driven, multi-folder) ----------------------- */
     (function() {
@@ -9541,6 +9871,7 @@ function girComputeOutcome() {
                     p2HideInlineNotice();
                     p2ClippyTheoryIdx = 0;
                     p2ClippyShown = {};
+                    p2SessionStop();
 		            if (postOverlay) postOverlay.classList.remove('active');
 	            setFormVisibility(false);
 	            p2CurrentPage = 1;
@@ -9551,12 +9882,13 @@ function girComputeOutcome() {
 	                phaseTwo.classList.add('active');
 	                phaseTwo.style.display = 'flex';
 	            }
+                    p2SessionTouch();
             if (!sessionStorage.getItem('p2DialupDone') && !p2DialupDone) {
                 p2RunDialup(function() {
                     p2ShowPage(1);
                     p2UpdateNavButtons();
                     setTimeout(function() {
-                        p2ClippyShow('It looks like you\'re filling out a form.<br><br>I\'m here to help. I\'ll offer tips and context as you go. Did you know this form was developed using the same structural logic as actual administrative intake instruments?');
+                        p2ClippyShow('It looks like you\'re filling out a form.<br><br>I\'m here to help. I\'ll offer tips and context as you go. Did you know this form was developed using the same structural logic as traditional administrative intake instruments?');
                         p2StartClippyTimer();
                     }, 2000);
                 });
@@ -10734,12 +11066,14 @@ function p3ToggleHelp(id) {
             // Show cookie banner on phase 3 entry
             setTimeout(p3ShowCookieBanner, 800);
             setTimeout(p3AriaInit, 1200);
+            p3SessionStop();
             // Show phaseThreeOverlay but retrieval screen sits on top
             var phaseThree = document.getElementById('phaseThreeOverlay');
             if (phaseThree) {
                 phaseThree.classList.add('active');
                 phaseThree.style.display = 'flex';
             }
+            p3SessionTouch();
             girLoad();
             girComputeOutcome();
 
@@ -11050,6 +11384,7 @@ function p3ToggleHelp(id) {
             if (overlay) overlay.classList.remove('active');
             var p2Overlay = document.getElementById('phaseTwoOverlay');
             if (p2Overlay) p2Overlay.classList.remove('active');
+            p2SessionStop();
             var trans = document.getElementById('phaseTransitionOverlay');
             if (trans) trans.classList.add('active');
         }
@@ -11063,6 +11398,7 @@ function p3ToggleHelp(id) {
             var transScrn  = document.getElementById('phaseTransitionOverlay');
             if (p2Update)   p2Update.classList.remove('active');
             if (phaseTwo)   phaseTwo.classList.remove('active');
+            p2SessionStop();
             if (postUpdate) postUpdate.classList.remove('active');
             if (transScrn)  transScrn.classList.remove('active');
             // Hand off to entry sequence
@@ -12366,18 +12702,18 @@ function p3ToggleHelp(id) {
                       '<div class="dm-sub-title">Re: General Information Record (GIR-03)  ·  Framework 7.4(c)</div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-body">' +
-                      '<p>Pursuant to Regulatory Framework 7.4(c), applicants are advised that the General Information Record (GIR-03) constitutes a procedural mechanism within the administrative processing system maintained by this Department. The form and its associated intake process are designed to collect, standardize, and record applicant information in compliance with applicable data governance protocols. [1][2]</p>' +
-                      '<p>Applicants are further advised that the experience of completing this record  -  including but not limited to: waiting periods, repetitive information requests, verification requirements, and procedural delays  -  reflects standard departmental operations and does not constitute evidence of error, discrimination, or malfunction. Administrative burden functions as a sorting and attrition condition in many public systems. [3][4]</p>' +
-                      '<p>This office does not collect information beyond what is necessary for administrative purposes. All data is retained in accordance with departmental retention schedules. Records may be subject to review by authorized personnel. Administrative records are treated as governing artifacts in downstream adjudication. [2]</p>' +
+                      '<p>Pursuant to Regulatory Framework 7.4(c), applicants are advised that the General Information Record (GIR-03) constitutes a procedural mechanism within the administrative processing system maintained by this Department. The form and its associated intake process are designed to collect, standardize, and record applicant information in compliance with applicable data governance protocols. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T1">1</button>][<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>]</span></p>' +
+                      '<p>Applicants are further advised that the experience of completing this record  -  including but not limited to: waiting periods, repetitive information requests, verification requirements, and procedural delays  -  reflects standard departmental operations and does not constitute evidence of error, discrimination, or malfunction. Administrative burden functions as a sorting and attrition condition in many public systems. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T8">3</button>][<button type="button" class="theory-trigger theory-ref-tag" data-theory="T6">4</button>]</span></p>' +
+                      '<p>This office does not collect information beyond what is necessary for administrative purposes. All data is retained in accordance with departmental retention schedules. Records may be subject to review by authorized personnel. Administrative records are treated as governing artifacts in downstream adjudication. <span class="theory-inline-cite">[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>]</span></p>' +
                       '<p>Questions regarding the purpose or scope of the GIR-03 should be directed in writing to the Office of Administrative Processing.</p>' +
                       '<div class="dm-compliance-block">COMPLIANCE NOTICE: Applicants are reminded that the act of engaging with administrative procedures may produce certain affective experiences, including but not limited to: frustration, confusion, self-doubt, and procedural fatigue. These experiences are within normal parameters and do not constitute grounds for appeal.</div>' +
                       '</div>' +
                       '<div class="dm-footnote"><strong>Selected References and Citation Purpose</strong>' +
                       '<ol class="dm-ref-list">' +
-                      '<li>[1] Foucault, M. (1978). <em>The history of sexuality, volume 1: An introduction</em>. Pantheon. Clarifies how institutions produce governable subjects through administrative knowledge practices.</li>' +
-                      '<li>[2] Bowker, G. C., &amp; Star, S. L. (1999). <em>Sorting things out: Classification and its consequences</em>. MIT Press. Shows how classification infrastructures shape social outcomes and institutional action.</li>' +
-                      '<li>[3] Eubanks, V. (2018). <em>Automating inequality: How high-tech tools profile, police, and punish the poor</em>. St. Martin&#39;s Press. Documents how automated administration can intensify burden and unequal access.</li>' +
-                      '<li>[4] Spade, D. (2015). <em>Normal life: Administrative violence, critical trans politics, and the limits of law</em> (2nd ed.). Duke University Press. Frames documentation as a site where governance, stratification, and harm are produced.</li>' +
+                      '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T1">1</button>] Foucault, M. (1978). <em>The history of sexuality, volume 1: An introduction</em>. Pantheon. Clarifies how institutions produce governable subjects through administrative knowledge practices.</li>' +
+                      '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T2">2</button>] Bowker, G. C., &amp; Star, S. L. (1999). <em>Sorting things out: Classification and its consequences</em>. MIT Press. Shows how classification infrastructures shape social outcomes and institutional action.</li>' +
+                      '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T8">3</button>] Eubanks, V. (2018). <em>Automating inequality: How high-tech tools profile, police, and punish the poor</em>. St. Martin&#39;s Press. Documents how automated administration can intensify burden and unequal access.</li>' +
+                      '<li>[<button type="button" class="theory-trigger theory-ref-tag" data-theory="T6">4</button>] Spade, D. (2015). <em>Normal life: Administrative violence, critical trans politics, and the limits of law</em> (2nd ed.). Duke University Press. Frames documentation as a site where governance, stratification, and harm are produced.</li>' +
                       '</ol></div>' +
                       '<div class="dm-rule"></div>' +
                       '<div class="dm-footer">Form OAP-RD-11 (Rev. 01/2024) &nbsp;&middot;&nbsp; Posted for applicant transparency<br>Next recommended document: Methods Note (Read 4)</div>'
@@ -12884,6 +13220,14 @@ function p3ToggleHelp(id) {
             <div class="ie-content">
                 <div id="p2InlineNotice" class="info" aria-live="polite">
                     <div class="p2-inline-notice-inner" id="p2InlineNoticeText">Cross-referencing records. Please wait.</div>
+                </div>
+
+                <div id="p2TimeoutWarning" role="status" aria-live="polite">
+                    <div class="p2-timeout-inner">
+                        <div class="p2-timeout-icon">!</div>
+                        <div class="p2-timeout-text">Session timeout warning: this terminal session will expire due to inactivity. <span id="p2TimeoutCountdown">120</span>s remaining.</div>
+                        <button class="p2-timeout-btn" type="button" onclick="p2ContinueSession()">Continue Session</button>
+                    </div>
                 </div>
 
     <!-- ═══ STAFF LOGIN MODAL ═══ -->
@@ -13945,6 +14289,12 @@ function p3ToggleHelp(id) {
             <div class="p3eb-secondary" id="p3ebSecondary"></div>
             <div class="p3eb-flags" id="p3ebFlags"></div>
         </div>
+    </div>
+
+    <div id="p3TimeoutWarning" role="status" aria-live="polite">
+        <div class="p3-timeout-dot"></div>
+        <div class="p3-timeout-copy">Session timeout warning: your portal session will expire due to inactivity. <span id="p3TimeoutCountdown">120</span>s remaining.</div>
+        <button class="p3-timeout-btn" type="button" onclick="p3ContinueSession()">Continue Session</button>
     </div>
 
     <div class="p3-body">
