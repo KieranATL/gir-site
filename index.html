@@ -36,44 +36,6 @@
             transition: transform 120ms ease;
         }
 
-        .zoom-controls {
-            position: fixed;
-            top: 12px;
-            right: 12px;
-            z-index: 1200;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 8px;
-            border: 1px solid rgba(245,241,232,0.28);
-            background: rgba(0,0,0,0.52);
-            font-family: 'Courier Prime', monospace;
-            font-size: 10px;
-            color: #f5f1e8;
-        }
-
-        .zoom-btn {
-            min-width: 24px;
-            height: 24px;
-            border: 1px solid rgba(245,241,232,0.35);
-            background: transparent;
-            color: #f5f1e8;
-            cursor: pointer;
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            line-height: 1;
-        }
-
-        .zoom-btn:hover {
-            background: rgba(245,241,232,0.16);
-        }
-
-        .zoom-label {
-            min-width: 44px;
-            text-align: center;
-            letter-spacing: 0.4px;
-        }
-
         .turn-shadow {
             position: absolute;
             top: 0;
@@ -3039,6 +3001,288 @@
             flex-shrink: 0; line-height: 1; padding: 0 4px;
         }
         .p3-ad-close:hover { color: #475569; }
+        .p3-ad-link {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            text-align: left;
+            padding: 0;
+            color: inherit;
+            font: inherit;
+        }
+        .p3-ad-thumb {
+            width: 44px;
+            height: 28px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            border: 1px solid #cbd5e1;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            position: relative;
+            overflow: hidden;
+        }
+        .p3-ad-thumb::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 1px dashed rgba(255,255,255,0.8);
+            border-radius: 2px;
+        }
+        .p3-ad-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 18px 18px;
+            opacity: 0.9;
+        }
+        #p3AdBanner[data-ad-tone="queue"] .p3-ad-thumb { background: linear-gradient(135deg, #0891b2, #155e75); }
+        #p3AdBanner[data-ad-tone="queue"] .p3-ad-thumb::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='5' cy='4' r='2' fill='white'/%3E%3Ccircle cx='10' cy='4' r='2' fill='white'/%3E%3Ccircle cx='15' cy='4' r='2' fill='white'/%3E%3Crect x='3' y='8' width='14' height='1.8' fill='white'/%3E%3Crect x='3' y='12' width='14' height='1.8' fill='white'/%3E%3Crect x='3' y='16' width='10' height='1.8' fill='white'/%3E%3C/svg%3E"); }
+        #p3AdBanner[data-ad-tone="copy"] .p3-ad-thumb { background: linear-gradient(135deg, #16a34a, #166534); }
+        #p3AdBanner[data-ad-tone="copy"] .p3-ad-thumb::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='4' y='3' width='10' height='12' rx='1.2' fill='none' stroke='white' stroke-width='1.8'/%3E%3Crect x='7' y='6' width='10' height='11' rx='1.2' fill='none' stroke='white' stroke-width='1.8'/%3E%3C/svg%3E"); }
+        #p3AdBanner[data-ad-tone="notary"] .p3-ad-thumb { background: linear-gradient(135deg, #ca8a04, #854d0e); }
+        #p3AdBanner[data-ad-tone="notary"] .p3-ad-thumb::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='3.4' y='3' width='8.8' height='5.4' rx='1.2' fill='none' stroke='white' stroke-width='1.8'/%3E%3Crect x='5.2' y='8.4' width='5.2' height='5.6' fill='none' stroke='white' stroke-width='1.8'/%3E%3Ccircle cx='13.8' cy='13.8' r='3.1' fill='none' stroke='white' stroke-width='1.8'/%3E%3C/svg%3E"); }
+        #p3AdBanner[data-ad-key="queueplus"] .p3-ad-thumb::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='2.5' y='3' width='15' height='11.5' rx='2' fill='none' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M6.2 8.8h7.6' stroke='white' stroke-width='1.6'/%3E%3Ctext x='10' y='18' font-size='6.2' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EQP%3C/text%3E%3C/svg%3E"); }
+        #p3AdBanner[data-ad-key="copymountain"] .p3-ad-thumb::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='3.2' y='3' width='9.8' height='10.8' rx='1.4' fill='none' stroke='white' stroke-width='1.6'/%3E%3Crect x='6' y='5.3' width='10.2' height='10.8' rx='1.4' fill='none' stroke='white' stroke-width='1.6'/%3E%3Ctext x='10' y='18' font-size='5.7' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ECM%3C/text%3E%3C/svg%3E"); }
+        #p3AdBanner[data-ad-key="notarymeteor"] .p3-ad-thumb::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='9' r='4.2' fill='none' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M10 1.8l1.5 3.2 3.5.4-2.6 2.3.7 3.4L10 9.4 6.9 11l.7-3.4L5 5.4l3.5-.4z' fill='white'/%3E%3Ctext x='10' y='18' font-size='5.3' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ENM%3C/text%3E%3C/svg%3E\"); }
+        #p3AdBanner[data-ad-key="linecamp"] .p3-ad-thumb::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M4 15.5h12M4 11.5h12M4 7.5h12' stroke='white' stroke-width='1.6'/%3E%3Ccircle cx='5' cy='4' r='1.5' fill='white'/%3E%3Ccircle cx='10' cy='4' r='1.5' fill='white'/%3E%3Ccircle cx='15' cy='4' r='1.5' fill='white'/%3E%3Ctext x='10' y='19' font-size='5.4' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ELC%3C/text%3E%3C/svg%3E\"); }
+        #p3AdBanner[data-ad-key="binderbunker"] .p3-ad-thumb::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect x='3' y='3' width='12.5' height='14' rx='1.6' fill='none' stroke='white' stroke-width='1.6'/%3E%3Ccircle cx='6' cy='7' r='1.1' fill='white'/%3E%3Ccircle cx='6' cy='10' r='1.1' fill='white'/%3E%3Ccircle cx='6' cy='13' r='1.1' fill='white'/%3E%3Ctext x='11.3' y='18' font-size='5.1' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EBB%3C/text%3E%3C/svg%3E\"); }
+        #p3AdBanner[data-ad-key="sealsymphony"] .p3-ad-thumb::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='8.2' cy='9' r='3.5' fill='none' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M12 7.3v5.1c0 1.6-1 2.6-2.5 2.6' stroke='white' stroke-width='1.6' fill='none'/%3E%3Cpath d='M12 7.3l3-1v5.2' stroke='white' stroke-width='1.6' fill='none'/%3E%3Ctext x='10' y='18' font-size='5.2' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ESS%3C/text%3E%3C/svg%3E\"); }
+
+        #p2SponsoredRail {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+            margin: 8px 10px 4px;
+            padding: 6px 8px;
+            border: 1px solid #9ca3af;
+            background: #eef2f7;
+        }
+        .p2-sponsor-label {
+            font-size: 10px;
+            color: #475569;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-top: 3px;
+            flex-shrink: 0;
+            width: 66px;
+        }
+        .p2-ad-tile {
+            border: 1px solid #64748b;
+            background: #fff;
+            padding: 4px 6px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px;
+            min-width: 0;
+            flex: 1 1 0;
+            cursor: pointer;
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .p2-ad-tile:hover { background: #f8fafc; border-color: #334155; }
+        .p2-ad-art {
+            height: 28px;
+            border: 1px solid #94a3b8;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+        .p2-ad-art::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 1px dashed rgba(255,255,255,0.75);
+        }
+        .p2-ad-art::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            opacity: 0.92;
+        }
+        .p2-ad-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .p2-ad-sub {
+            font-size: 9px;
+            color: #334155;
+            line-height: 1.2;
+            min-height: 20px;
+        }
+        .p2-ad-tone-queue .p2-ad-art { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
+        .p2-ad-tone-queue .p2-ad-art::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='5' cy='4.5' r='2.1' fill='white'/%3E%3Ccircle cx='11' cy='4.5' r='2.1' fill='white'/%3E%3Ccircle cx='17' cy='4.5' r='2.1' fill='white'/%3E%3Crect x='3.2' y='9' width='15.6' height='1.9' fill='white'/%3E%3Crect x='3.2' y='13.1' width='15.6' height='1.9' fill='white'/%3E%3Crect x='3.2' y='17.2' width='11.2' height='1.9' fill='white'/%3E%3C/svg%3E"); }
+        .p2-ad-tone-copy .p2-ad-art { background: linear-gradient(135deg, #22c55e, #15803d); }
+        .p2-ad-tone-copy .p2-ad-art::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='4.2' y='3' width='11' height='13' rx='1.4' fill='none' stroke='white' stroke-width='1.9'/%3E%3Crect x='7.2' y='6' width='11' height='13' rx='1.4' fill='none' stroke='white' stroke-width='1.9'/%3E%3C/svg%3E"); }
+        .p2-ad-tone-notary .p2-ad-art { background: linear-gradient(135deg, #f59e0b, #b45309); }
+        .p2-ad-tone-notary .p2-ad-art::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='3.6' y='3' width='9.4' height='5.8' rx='1.2' fill='none' stroke='white' stroke-width='1.9'/%3E%3Crect x='5.5' y='8.8' width='5.8' height='6.1' fill='none' stroke='white' stroke-width='1.9'/%3E%3Ccircle cx='15.6' cy='15.2' r='3.4' fill='none' stroke='white' stroke-width='1.9'/%3E%3C/svg%3E"); }
+        .p2-ad-tile[data-ad-key="queueplus"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='3.2' y='3.2' width='15.6' height='11.8' rx='2' fill='none' stroke='white' stroke-width='1.9'/%3E%3Cpath d='M6.2 9.2h9.6' stroke='white' stroke-width='1.9'/%3E%3Ctext x='11' y='20' font-size='6.2' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EQP%3C/text%3E%3C/svg%3E\"); }
+        .p2-ad-tile[data-ad-key="copymountain"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='3.4' y='3' width='10.8' height='12.4' rx='1.4' fill='none' stroke='white' stroke-width='1.9'/%3E%3Crect x='6.8' y='5.6' width='11.2' height='12.4' rx='1.4' fill='none' stroke='white' stroke-width='1.9'/%3E%3Ctext x='11' y='20' font-size='5.6' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ECM%3C/text%3E%3C/svg%3E\"); }
+        .p2-ad-tile[data-ad-key="notarymeteor"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='10' r='4.2' fill='none' stroke='white' stroke-width='1.9'/%3E%3Cpath d='M11 2.2l1.7 3.4 3.8.5-2.8 2.5.8 3.6L11 10.3 7.5 12.2l.8-3.6-2.8-2.5 3.8-.5z' fill='white'/%3E%3Ctext x='11' y='20.2' font-size='5.4' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ENM%3C/text%3E%3C/svg%3E\"); }
+        .p2-ad-tile[data-ad-key="linecamp"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M4.2 16.5h13.6M4.2 12.5h13.6M4.2 8.5h13.6' stroke='white' stroke-width='1.9'/%3E%3Ccircle cx='5.3' cy='4.2' r='1.4' fill='white'/%3E%3Ccircle cx='11' cy='4.2' r='1.4' fill='white'/%3E%3Ccircle cx='16.7' cy='4.2' r='1.4' fill='white'/%3E%3Ctext x='11' y='20.2' font-size='5.4' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ELC%3C/text%3E%3C/svg%3E\"); }
+        .p2-ad-tile[data-ad-key="binderbunker"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='3.1' y='3' width='13.2' height='14.8' rx='1.6' fill='none' stroke='white' stroke-width='1.9'/%3E%3Ccircle cx='6.4' cy='7' r='1.1' fill='white'/%3E%3Ccircle cx='6.4' cy='10.4' r='1.1' fill='white'/%3E%3Ccircle cx='6.4' cy='13.8' r='1.1' fill='white'/%3E%3Ctext x='11.3' y='20.2' font-size='5.1' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EBB%3C/text%3E%3C/svg%3E\"); }
+        .p2-ad-tile[data-ad-key="sealsymphony"] .p2-ad-art::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='8.4' cy='10' r='3.7' fill='none' stroke='white' stroke-width='1.9'/%3E%3Cpath d='M12.2 8v5.5c0 1.7-1 2.8-2.7 2.8' stroke='white' stroke-width='1.9' fill='none'/%3E%3Cpath d='M12.2 8l3.3-1.1v5.7' stroke='white' stroke-width='1.9' fill='none'/%3E%3Ctext x='11' y='20.2' font-size='5.2' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ESS%3C/text%3E%3C/svg%3E\"); }
+        @media (max-width: 1120px) {
+            #p2SponsoredRail { flex-wrap: wrap; }
+            .p2-sponsor-label { width: 100%; padding-top: 0; }
+            .p2-ad-tile { min-width: 170px; }
+        }
+
+        #goofyAdOverlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 30000;
+            background: rgba(2, 6, 23, 0.72);
+            backdrop-filter: blur(1px);
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+        #goofyAdOverlay.open { display: flex; }
+        .goofy-ad-shell {
+            width: min(840px, 92vw);
+            max-height: 90vh;
+            overflow: auto;
+            background: #fff;
+            border: 2px solid #0f172a;
+            box-shadow: 0 16px 42px rgba(0,0,0,0.42);
+        }
+        .goofy-ad-top {
+            background: linear-gradient(90deg, #1e293b, #334155);
+            color: #e2e8f0;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .goofy-ad-close {
+            border: 1px solid #94a3b8;
+            background: #111827;
+            color: #f8fafc;
+            font-size: 11px;
+            cursor: pointer;
+            padding: 3px 9px;
+            font-family: inherit;
+        }
+        .goofy-ad-page {
+            padding: 14px 16px 18px;
+            background: linear-gradient(180deg, #f8fafc, #eef2ff);
+            color: #0f172a;
+        }
+        .goofy-ad-hero {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+        .goofy-ad-visual {
+            min-height: 160px;
+            border: 2px solid #334155;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            position: relative;
+            overflow: hidden;
+        }
+        .goofy-ad-visual::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 2px dashed rgba(255,255,255,0.72);
+        }
+        .goofy-ad-visual::after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 92px 92px;
+            opacity: 0.94;
+        }
+        .goofy-ad-copy h2 {
+            margin: 0 0 8px;
+            font-size: 24px;
+            line-height: 1.15;
+            color: #0f172a;
+        }
+        .goofy-ad-tagline {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: #334155;
+            font-weight: 600;
+        }
+        .goofy-ad-body {
+            margin: 0 0 12px;
+            font-size: 13px;
+            line-height: 1.45;
+            color: #1e293b;
+        }
+        .goofy-ad-offer {
+            border: 1px solid #93c5fd;
+            background: #eff6ff;
+            color: #1e3a8a;
+            font-size: 12px;
+            padding: 8px 9px;
+            margin-bottom: 12px;
+        }
+        .goofy-ad-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .goofy-ad-btn {
+            border: 1px solid #0f172a;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            background: #0f172a;
+            color: #f8fafc;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-family: inherit;
+        }
+        .goofy-ad-btn.alt {
+            background: #fff;
+            color: #0f172a;
+        }
+        .goofy-ad-footnote {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #475569;
+            line-height: 1.35;
+        }
+        #goofyAdOverlay[data-tone="queue"] .goofy-ad-visual { background: linear-gradient(135deg, #0891b2, #155e75); }
+        #goofyAdOverlay[data-tone="queue"] .goofy-ad-visual::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Ccircle cx='20' cy='16' r='7.2' fill='white'/%3E%3Ccircle cx='46' cy='16' r='7.2' fill='white'/%3E%3Ccircle cx='72' cy='16' r='7.2' fill='white'/%3E%3Crect x='12' y='34' width='68' height='7.2' fill='white'/%3E%3Crect x='12' y='50' width='68' height='7.2' fill='white'/%3E%3Crect x='12' y='66' width='48' height='7.2' fill='white'/%3E%3C/svg%3E"); }
+        #goofyAdOverlay[data-tone="copy"] .goofy-ad-visual { background: linear-gradient(135deg, #22c55e, #166534); }
+        #goofyAdOverlay[data-tone="copy"] .goofy-ad-visual::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Crect x='18' y='13' width='43' height='53' rx='4' fill='none' stroke='white' stroke-width='6'/%3E%3Crect x='31' y='25' width='43' height='53' rx='4' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E"); }
+        #goofyAdOverlay[data-tone="notary"] .goofy-ad-visual { background: linear-gradient(135deg, #f59e0b, #92400e); }
+        #goofyAdOverlay[data-tone="notary"] .goofy-ad-visual::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Crect x='13' y='14' width='39' height='24' rx='4' fill='none' stroke='white' stroke-width='6'/%3E%3Crect x='21' y='39' width='23' height='26' fill='none' stroke='white' stroke-width='6'/%3E%3Ccircle cx='66' cy='62' r='14' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E"); }
+        #goofyAdOverlay[data-ad-key="queueplus"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Crect x='11' y='14' width='70' height='45' rx='7' fill='none' stroke='white' stroke-width='7'/%3E%3Cpath d='M24 36h44' stroke='white' stroke-width='7'/%3E%3Ctext x='46' y='82' font-size='20' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EQUEUE%2B%3C/text%3E%3C/svg%3E\"); }
+        #goofyAdOverlay[data-ad-key="copymountain"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Crect x='16' y='12' width='34' height='43' rx='4' fill='none' stroke='white' stroke-width='6'/%3E%3Crect x='34' y='25' width='40' height='48' rx='4' fill='none' stroke='white' stroke-width='6'/%3E%3Ctext x='46' y='86' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ECOPY%3C/text%3E%3C/svg%3E\"); }
+        #goofyAdOverlay[data-ad-key="notarymeteor"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Ccircle cx='46' cy='43' r='18' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M46 13l6 13 14 2-11 10 3 14-12-7-12 7 3-14-11-10 14-2z' fill='white'/%3E%3Ctext x='46' y='86' font-size='16' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ENOTARY%3C/text%3E%3C/svg%3E\"); }
+        #goofyAdOverlay[data-ad-key="linecamp"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Cpath d='M14 62h64M14 47h64M14 32h64' stroke='white' stroke-width='6'/%3E%3Ccircle cx='18' cy='20' r='5' fill='white'/%3E%3Ccircle cx='46' cy='20' r='5' fill='white'/%3E%3Ccircle cx='74' cy='20' r='5' fill='white'/%3E%3Ctext x='46' y='86' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ELINE%3C/text%3E%3C/svg%3E\"); }
+        #goofyAdOverlay[data-ad-key="binderbunker"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Crect x='18' y='12' width='52' height='63' rx='6' fill='none' stroke='white' stroke-width='6'/%3E%3Ccircle cx='30' cy='30' r='3.2' fill='white'/%3E%3Ccircle cx='30' cy='44' r='3.2' fill='white'/%3E%3Ccircle cx='30' cy='58' r='3.2' fill='white'/%3E%3Ctext x='46' y='86' font-size='16' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EBINDER%3C/text%3E%3C/svg%3E\"); }
+        #goofyAdOverlay[data-ad-key="sealsymphony"] .goofy-ad-visual::after { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92' viewBox='0 0 92 92'%3E%3Ccircle cx='33' cy='43' r='16' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M50 34v24c0 7-4 12-11 12' stroke='white' stroke-width='6' fill='none'/%3E%3Cpath d='M50 34l14-4v25' stroke='white' stroke-width='6' fill='none'/%3E%3Ctext x='46' y='86' font-size='16' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ESEAL%3C/text%3E%3C/svg%3E\"); }
+        @media (max-width: 760px) {
+            .goofy-ad-hero { grid-template-columns: 1fr; }
+            .goofy-ad-visual { min-height: 132px; }
+        }
 
         /* ARIA CHATBOT */
         #p3Aria {
@@ -4524,6 +4768,25 @@
             user-select: none;
         }
         .ie-icon { font-size: 14px; margin-right: 4px; }
+        .ie-title-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ie-staff-link {
+            color: rgba(255,255,255,0.92);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            padding: 1px 6px;
+            border: 1px solid rgba(255,255,255,0.36);
+            background: rgba(0,0,0,0.14);
+        }
+        .ie-staff-link:hover {
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.6);
+        }
         .ie-controls { display: flex; gap: 2px; }
         .ie-ctrl-btn {
             width: 16px; height: 14px;
@@ -5529,11 +5792,6 @@
             transition: opacity 0.4s;
         }
         /* ─── Staff Portal ─── */
-        .staff-link {
-            font-size: 9px; color: #666; text-decoration: none;
-            padding: 0 4px; cursor: pointer; opacity: 0.6;
-        }
-        .staff-link:hover { opacity: 1; text-decoration: underline; }
         /* Login modal - Windows dialog style */
         #adminLoginModal {
             display: none; position: absolute; inset: 0;
@@ -5845,6 +6103,21 @@
             padding: 4px 10px; border-radius: 4px; margin-top: 6px;
             border: 1px solid #bfdbfe; font-style: italic;
         }
+        #p3InlineNotice {
+            display: none;
+            margin: 10px 30px 4px;
+            border: 1px solid #bfdbfe;
+            border-left: 4px solid #2563eb;
+            background: #eff6ff;
+            color: #1e3a8a;
+            border-radius: 4px;
+            padding: 9px 12px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+        #p3InlineNotice.visible {
+            display: block;
+        }
         .p3-glitch-extra-field {
             background: #fffbeb; border: 1px solid #fbbf24; border-radius: 6px;
             padding: 12px 14px; margin-top: 12px;
@@ -5862,12 +6135,6 @@
 </head>
 <body>
     <a class="reset-link" id="mainResetLink" onclick="resetForm()">reset experience</a>
-    <div class="zoom-controls" id="zoomControls">
-        <button class="zoom-btn" type="button" onclick="zoomOut()">-</button>
-        <span class="zoom-label" id="zoomLevelLabel">86%</span>
-        <button class="zoom-btn" type="button" onclick="zoomIn()">+</button>
-        <button class="zoom-btn" type="button" onclick="resetZoom()">reset</button>
-    </div>
     <div class="bureau-notice" id="bureauNotice"></div>
     <!-- ══ BULLETIN BOARD OVERLAY ══════════════════════════════════════ -->
     <div id="bulletinOverlay">
@@ -8123,10 +8390,6 @@
         const STORAGE_REVIEW_KEY = 'gir01_needsReview';
         const STORAGE_LOOPBACK_KEY = 'gir01_loopbackUsed';
         const STORAGE_REVIEW_PAGE_KEY = 'gir01_reviewPage';
-        const ZOOM_STORAGE_KEY = 'gir01_zoom';
-        const MIN_ZOOM = 0.7;
-        const MAX_ZOOM = 1.25;
-        const DEFAULT_ZOOM = 0.86;
 
         const REQUIRED_FIELDS = [
             'fullLegalName',
@@ -8309,8 +8572,6 @@ function girComputeOutcome() {
 }
         let preformStage = 1;
         let clerkGateMode = null;
-        let currentZoom = DEFAULT_ZOOM;
-
         // Bootstrapping: initialize dates and restore persisted state.
         
         // ── Narrative image map ─────────────────────────────────────────────
@@ -8350,7 +8611,6 @@ function girComputeOutcome() {
             mountGlobalOverlays();
             loadFormState();
             girLoad();
-            loadZoomState();
             initializeFieldPersistence();
             hydrateInitialInputs();
             applyClerkImages();
@@ -8460,40 +8720,6 @@ function girComputeOutcome() {
             // Bulletin done, preform not done → show preform
             if (bulletinEl) bulletinEl.style.display = 'none';
             showPreformOverlay();
-        }
-
-        function loadZoomState() {
-            const savedZoom = parseFloat(localStorage.getItem(ZOOM_STORAGE_KEY) || '');
-            if (!Number.isNaN(savedZoom)) {
-                currentZoom = clampZoom(savedZoom);
-            }
-            applyZoom(currentZoom);
-        }
-
-        function clampZoom(value) {
-            return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, value));
-        }
-
-        function applyZoom(value) {
-            currentZoom = clampZoom(value);
-            document.body.style.setProperty('--paper-scale', String(currentZoom));
-            localStorage.setItem(ZOOM_STORAGE_KEY, String(currentZoom));
-            const label = document.getElementById('zoomLevelLabel');
-            if (label) {
-                label.textContent = `${Math.round(currentZoom * 100)}%`;
-            }
-        }
-
-        function zoomIn() {
-            applyZoom(currentZoom + 0.06);
-        }
-
-        function zoomOut() {
-            applyZoom(currentZoom - 0.06);
-        }
-
-        function resetZoom() {
-            applyZoom(DEFAULT_ZOOM);
         }
 
         // Keep initials isolated per page (fresh entry each page).
@@ -12321,37 +12547,140 @@ function p3ToggleHelp(id) {
         }
 
         /* ── ADS ──────────────────────────────────────────────────────────── */
+        var p3CurrentAdKey = 'queueplus';
         var p3AdsByPage = {
-            1:  'GIR-03 Filing Assistance — get expert help navigating your application. Free consultation.',
-            2:  'Your data, handled with care. DataGuard Pro — applicant privacy solutions.',
-            3:  'Identity verification issues? TrustID helps resolve discrepancies fast.',
-            4:  'Address history gaps? Administrative Resolution Services can help.',
-            5:  'Secure document storage for sensitive government filings. DocVault Pro.',
-            6:  'Employment gaps in your record? WorkHistory AI — administrative-ready summaries.',
-            7:  'Education credential verification. FastTranscript — official records in 24 hours.',
-            8:  'Income documentation for government applications. FinClear — certified summaries.',
-            9:  'Rental history documentation for government filings. HousingRecord Pro.',
-            10: 'Family documentation support. AdminFamily — household record preparation.',
-            11: 'Emergency contact notification services. SafeAlert — automated compliance.',
-            12: 'Reference letter drafting for administrative applications. RefAssist AI.',
-            13: 'Travel history documentation. TravelRecord Pro — compliant summaries for federal filings.',
-            14: 'Health documentation for government applications. MedRecord — HIPAA-compliant summaries.',
-            15: 'Prior name documentation and legal record reconciliation. NameBridge Legal.',
-            16: 'Background check preparation. ClearRecord — know what they know before you file.',
-            17: 'Digital signature compliance for government forms. SignCert — legally binding, instantly.',
-            18: 'Notarization services. NotaryNow — remote notarization, 24/7.',
-            19: 'Application review services. FormReview Pro — catch errors before submission.',
-            20: 'Know your administrative rights. Civil Rights Legal Clinic — free consultations.',
-            21: 'Immigration documentation support. StatusDocs — expert guidance for complex filings.'
+            1:  { key: 'queueplus',   tone: 'queue',  text: 'GIR-03 Filing Assistance - premium queue choreography for your first submission.' },
+            2:  { key: 'copymountain',tone: 'copy',   text: 'CopyMountain Pro - print every required page, plus eleven for confidence.' },
+            3:  { key: 'linecamp',    tone: 'queue',  text: 'LineCamp Elite - stamina training for multi-window administrative journeys.' },
+            4:  { key: 'binderbunker',tone: 'copy',   text: 'BinderBunker - archival binders rated for policy changes and timeline drift.' },
+            5:  { key: 'notarymeteor',tone: 'notary', text: 'Notary Meteor - ceremonial seal deployment in under sixty seconds.' },
+            6:  { key: 'queueplus',   tone: 'queue',  text: 'QueuePlus Priority - reduce uncertainty with structured waiting lanes.' },
+            7:  { key: 'copymountain',tone: 'copy',   text: 'CopyMountain Night Shift - 24/7 photocopy support for urgent corrections.' },
+            8:  { key: 'sealsymphony',tone: 'notary', text: 'SealSymphony - embossed affirmation packs for high-stakes attestations.' },
+            9:  { key: 'linecamp',    tone: 'queue',  text: 'LineCamp Family Plan - coordinated waiting for multi-person submissions.' },
+            10: { key: 'binderbunker',tone: 'copy',   text: 'BinderBunker Plus - color-tab every subsection in one motion.' },
+            11: { key: 'queueplus',   tone: 'queue',  text: 'QueuePlus Forecast - estimate hold times with speculative precision.' },
+            12: { key: 'copymountain',tone: 'copy',   text: 'CopyMountain Legal - duplicate signatures without duplicating doubt.' },
+            13: { key: 'notarymeteor',tone: 'notary', text: 'Notary Meteor Field Kit - stamp, seal, and route from any counter.' },
+            14: { key: 'sealsymphony',tone: 'notary', text: 'SealSymphony Gold - choose from five certified symbolic wax profiles.' },
+            15: { key: 'binderbunker',tone: 'copy',   text: 'BinderBunker Vault - preserve prior identifiers through format transitions.' },
+            16: { key: 'queueplus',   tone: 'queue',  text: 'QueuePlus Meditative Hold - curated breathing prompts while records sync.' },
+            17: { key: 'notarymeteor',tone: 'notary', text: 'Notary Meteor Signature Escort - escort each signature to compliance.' },
+            18: { key: 'sealsymphony',tone: 'notary', text: 'SealSymphony Midnight - luminous seals for low-light document review.' },
+            19: { key: 'copymountain',tone: 'copy',   text: 'CopyMountain Audit Stack - auto-assemble your packet by retention year.' },
+            20: { key: 'linecamp',    tone: 'queue',  text: 'LineCamp Civic Edition - train for queue variance and policy pivots.' },
+            21: { key: 'queueplus',   tone: 'queue',  text: 'QueuePlus International - multilingual hold music for global paperwork.' }
         };
+
+        var goofyAdCatalog = {
+            queueplus: {
+                tone: 'queue',
+                topline: 'Sponsored - Queue Operations',
+                title: 'QueuePlus Priority Waiting',
+                tagline: 'Turn one line into a fully managed queue lifestyle.',
+                body: 'Subscribers get express access to slower hold music, laminated ticket stubs, and optional queue hydration counseling between windows 2 and 3.',
+                offer: 'Offer: Upgrade now and receive a complimentary "Please Continue To Hold" ringtone.',
+                fineprint: 'Queue speed not guaranteed. Priority waiting may increase total waiting for all involved parties.'
+            },
+            copymountain: {
+                tone: 'copy',
+                topline: 'Sponsored - Documentation Solutions',
+                title: 'CopyMountain Pro',
+                tagline: 'Bring originals. Bring copies. Bring many more copies.',
+                body: 'Our patented redundancy engine prints every required document plus seven ceremonial backups in case your paperwork experiences existential uncertainty.',
+                offer: 'Offer: Bundle includes one emergency stapler and two existentially neutral paper clips.',
+                fineprint: 'Copy count may exceed available desk surface area. Binders sold separately.'
+            },
+            notarymeteor: {
+                tone: 'notary',
+                topline: 'Sponsored - Seal & Signature Services',
+                title: 'Notary Meteor',
+                tagline: 'Stamp faster. Route farther. Certify everything.',
+                body: 'From affidavits to mood declarations, Notary Meteor attaches premium seals to documents that definitely required less ceremony than this.',
+                offer: 'Offer: First five signatures receive a free embossed "Trusted By No One In Particular" crest.',
+                fineprint: 'Meteor speed is metaphorical. Final acceptance remains subject to unknown downstream protocols.'
+            },
+            linecamp: {
+                tone: 'queue',
+                topline: 'Sponsored - Queue Fitness Division',
+                title: 'LineCamp Elite',
+                tagline: 'Build endurance for procedural waiting environments.',
+                body: 'LineCamp combines chair posture drills, ticket retention tactics, and strategic snack timing to help you endure long adjudication cycles.',
+                offer: 'Offer: Enroll now and receive a laminated waiting-cardio tracker.',
+                fineprint: 'Completion certificate does not improve queue ranking.'
+            },
+            binderbunker: {
+                tone: 'copy',
+                topline: 'Sponsored - Archival Preparedness',
+                title: 'BinderBunker',
+                tagline: 'Fortify your paperwork against institutional entropy.',
+                body: 'Deploy reinforced tab systems, index dividers, and policy-year separators so your documentation survives any migration event.',
+                offer: 'Offer: First order includes one emergency divider set labeled "Misc. Required."',
+                fineprint: 'Binder stability may exceed shelf load limits.'
+            },
+            sealsymphony: {
+                tone: 'notary',
+                topline: 'Sponsored - Seal Artistry Unit',
+                title: 'SealSymphony',
+                tagline: 'Elevate every attestation with dramatic visual authority.',
+                body: 'SealSymphony offers expressive embossing packages designed for declarations, affidavits, and emotionally significant bureaucratic moments.',
+                offer: 'Offer: Complimentary "mildly official" crest with any premium stamp bundle.',
+                fineprint: 'Decorative seals do not modify legal sufficiency.'
+            }
+        };
+
+        function openGoofyAd(adKey) {
+            var overlay = document.getElementById('goofyAdOverlay');
+            if (!overlay) return;
+            var ad = goofyAdCatalog[adKey] || goofyAdCatalog.queueplus;
+            overlay.setAttribute('data-tone', ad.tone || 'queue');
+            overlay.setAttribute('data-ad-key', adKey || 'queueplus');
+            overlay.setAttribute('aria-hidden', 'false');
+            var topline = document.getElementById('goofyAdTopline');
+            var title = document.getElementById('goofyAdTitle');
+            var tagline = document.getElementById('goofyAdTagline');
+            var body = document.getElementById('goofyAdBody');
+            var offer = document.getElementById('goofyAdOffer');
+            var fineprint = document.getElementById('goofyAdFinePrint');
+            if (topline) topline.textContent = ad.topline;
+            if (title) title.textContent = ad.title;
+            if (tagline) tagline.textContent = ad.tagline;
+            if (body) body.textContent = ad.body;
+            if (offer) offer.textContent = ad.offer;
+            if (fineprint) fineprint.textContent = ad.fineprint;
+            overlay.classList.add('open');
+        }
+
+        function closeGoofyAd() {
+            var overlay = document.getElementById('goofyAdOverlay');
+            if (!overlay) return;
+            overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
+        }
+
+        function closeGoofyAdOutside(event) {
+            if (event.target === document.getElementById('goofyAdOverlay')) {
+                closeGoofyAd();
+            }
+        }
+
+        function goofyAdFakeAction() {
+            showNotice('Offer saved. Returning you to required form workflow.');
+            closeGoofyAd();
+        }
 
         function p3UpdateAd(pageNum) {
             var el = document.getElementById('p3AdText');
             if (!el) return;
-            var text = p3AdsByPage[pageNum] || p3AdsByPage[1];
-            el.textContent = text;
+            var cfg = p3AdsByPage[pageNum] || p3AdsByPage[1];
+            el.textContent = cfg.text;
+            p3CurrentAdKey = cfg.key;
             var banner = document.getElementById('p3AdBanner');
-            if (banner) banner.classList.add('visible');
+            if (banner) {
+                banner.classList.add('visible');
+                banner.setAttribute('data-ad-tone', cfg.tone || 'queue');
+                banner.setAttribute('data-ad-key', cfg.key || 'queueplus');
+            }
         }
 
         /* ── ARIA CHATBOT ─────────────────────────────────────────────────── */
@@ -12936,7 +13265,29 @@ function p3ToggleHelp(id) {
             });
         }
 
+        function isPhaseThreeVisible() {
+            var overlay = document.getElementById('phaseThreeOverlay');
+            if (!overlay) return false;
+            var style = window.getComputedStyle(overlay);
+            return overlay.classList.contains('active') && style.display !== 'none' && style.visibility !== 'hidden';
+        }
+
+        function p3ShowInlineNotice(message, duration) {
+            var notice = document.getElementById('p3InlineNotice');
+            if (!notice) return false;
+            notice.textContent = message || '';
+            notice.classList.add('visible');
+            window.clearTimeout(p3ShowInlineNotice.noticeTimer);
+            p3ShowInlineNotice.noticeTimer = window.setTimeout(function() {
+                notice.classList.remove('visible');
+            }, duration || 2600);
+            return true;
+        }
+
         function showNotice(message, duration = 2600) {
+            if (isPhaseThreeVisible()) {
+                if (p3ShowInlineNotice(message, duration)) return;
+            }
             const notice = document.getElementById('bureauNotice');
             if (!notice) return;
             notice.textContent = message;
@@ -12959,16 +13310,12 @@ function p3ToggleHelp(id) {
         function setFormVisibility(visible) {
             const paper = document.querySelector('.paper-container');
             const resetLink = document.getElementById('mainResetLink');
-            const zoomControls = document.getElementById('zoomControls');
             if (paper) {
                 paper.style.visibility = visible ? 'visible' : 'hidden';
                 paper.style.pointerEvents = visible ? 'auto' : 'none';
             }
             if (resetLink) {
                 resetLink.style.display = visible ? 'block' : 'none';
-            }
-            if (zoomControls) {
-                zoomControls.style.display = visible ? 'flex' : 'none';
             }
             document.documentElement.style.overflow = visible ? '' : 'hidden';
             document.body.style.overflow = visible ? '' : 'hidden';
@@ -13638,10 +13985,13 @@ function p3ToggleHelp(id) {
             <!-- Title Bar -->
             <div class="ie-titlebar">
                 <span><span class="ie-icon">&#127760;</span> GIR-03 Electronic Submission Portal  -  Microsoft Internet Explorer</span>
-                <div class="ie-controls">
-                    <button class="ie-ctrl-btn">_</button>
-                    <button class="ie-ctrl-btn">&#9633;</button>
-                    <button class="ie-ctrl-btn">&#10005;</button>
+                <div class="ie-title-right">
+                    <a class="ie-staff-link" onclick="p2OpenStaffLogin()" href="javascript:void(0)">Staff Access</a>
+                    <div class="ie-controls">
+                        <button class="ie-ctrl-btn">_</button>
+                        <button class="ie-ctrl-btn">&#9633;</button>
+                        <button class="ie-ctrl-btn">&#10005;</button>
+                    </div>
                 </div>
             </div>
             <!-- Menu Bar -->
@@ -13675,6 +14025,39 @@ function p3ToggleHelp(id) {
                         <div class="p2-timeout-text">Session timeout warning: this terminal session will expire due to inactivity. <span id="p2TimeoutCountdown">120</span>s remaining.</div>
                         <button class="p2-timeout-btn" type="button" onclick="p2ContinueSession()">Continue Session</button>
                     </div>
+                </div>
+                <div id="p2SponsoredRail">
+                    <div class="p2-sponsor-label">Sponsored</div>
+                    <button class="p2-ad-tile p2-ad-tone-queue" type="button" data-ad-key="queueplus" onclick="openGoofyAd('queueplus')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">QueuePlus Priority</div>
+                        <div class="p2-ad-sub">Skip the line with premium waiting.</div>
+                    </button>
+                    <button class="p2-ad-tile p2-ad-tone-copy" type="button" data-ad-key="copymountain" onclick="openGoofyAd('copymountain')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">CopyMountain Pro</div>
+                        <div class="p2-ad-sub">Print six copies by printing twelve.</div>
+                    </button>
+                    <button class="p2-ad-tile p2-ad-tone-notary" type="button" data-ad-key="notarymeteor" onclick="openGoofyAd('notarymeteor')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">Notary Meteor</div>
+                        <div class="p2-ad-sub">Apostille your feelings in one click.</div>
+                    </button>
+                    <button class="p2-ad-tile p2-ad-tone-queue" type="button" data-ad-key="linecamp" onclick="openGoofyAd('linecamp')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">LineCamp Elite</div>
+                        <div class="p2-ad-sub">Train for long waits with posture drills.</div>
+                    </button>
+                    <button class="p2-ad-tile p2-ad-tone-copy" type="button" data-ad-key="binderbunker" onclick="openGoofyAd('binderbunker')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">BinderBunker</div>
+                        <div class="p2-ad-sub">Archival binders for unresolved decades.</div>
+                    </button>
+                    <button class="p2-ad-tile p2-ad-tone-notary" type="button" data-ad-key="sealsymphony" onclick="openGoofyAd('sealsymphony')">
+                        <div class="p2-ad-art" aria-hidden="true"></div>
+                        <div class="p2-ad-title">SealSymphony</div>
+                        <div class="p2-ad-sub">Ceremonial seals, now in five moods.</div>
+                    </button>
                 </div>
 
     <!-- ═══ STAFF LOGIN MODAL ═══ -->
@@ -14239,9 +14622,6 @@ function p3ToggleHelp(id) {
         <div class="ie-statusbar">
                 <span id="p2StatusBar">Done</span>
                 <div class="ie-statusbar-panels">
-                    <span class="ie-status-panel" style="border-left:none;">
-                        <a class="staff-link" onclick="p2OpenStaffLogin()" href="javascript:void(0)">Staff Access</a>
-                    </span>
                     <span class="ie-status-panel">&#127760; Internet</span>
                 </div>
             </div>
@@ -14676,6 +15056,31 @@ function p3ToggleHelp(id) {
   </div>
 </div>
 
+<div id="goofyAdOverlay" aria-hidden="true" onclick="closeGoofyAdOutside(event)">
+  <div class="goofy-ad-shell" role="dialog" aria-modal="true" aria-labelledby="goofyAdTitle">
+    <div class="goofy-ad-top">
+      <div id="goofyAdTopline">Sponsored Content</div>
+      <button class="goofy-ad-close" type="button" onclick="closeGoofyAd()">Exit Ad</button>
+    </div>
+    <div class="goofy-ad-page">
+      <div class="goofy-ad-hero">
+        <div class="goofy-ad-visual" aria-hidden="true"></div>
+        <div class="goofy-ad-copy">
+          <h2 id="goofyAdTitle">QueuePlus Priority Waiting</h2>
+          <p class="goofy-ad-tagline" id="goofyAdTagline">Because waiting in one line is no longer enough.</p>
+          <p class="goofy-ad-body" id="goofyAdBody">Upgrade your administrative journey with layered queue experiences, premium hold music, and verified sigh support.</p>
+          <div class="goofy-ad-offer" id="goofyAdOffer">Offer: Buy one procedural delay, get two unresolved tickets free.</div>
+          <div class="goofy-ad-actions">
+            <button class="goofy-ad-btn" type="button" onclick="closeGoofyAd()">Return To Form</button>
+            <button class="goofy-ad-btn alt" type="button" onclick="goofyAdFakeAction()">Claim Offer</button>
+          </div>
+          <div class="goofy-ad-footnote" id="goofyAdFinePrint">Sponsored page. Nothing here improves your filing outcome.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CAPTCHA MODAL -->
 <div id="p3CaptchaModal">
   <div id="p3CaptchaBox">
@@ -14701,10 +15106,13 @@ function p3ToggleHelp(id) {
 
     <!-- ── Form 3 Retrieval Screen ──────────────────────────────────────── -->
     <!-- Ad banner (shown after cookie consent) -->
-    <div id="p3AdBanner">
+    <div id="p3AdBanner" data-ad-tone="queue">
       <div class="p3-ad-label">Sponsored</div>
-      <div class="p3-ad-content" id="p3AdText">Struggling with GIR-03? FormComplete Pro helps applicants like you. 94% approval rate.</div>
-      <div class="p3-ad-cta">Learn more</div>
+      <button class="p3-ad-link" type="button" onclick="openGoofyAd(window.p3CurrentAdKey || 'queueplus')">
+        <div class="p3-ad-thumb" aria-hidden="true"></div>
+        <div class="p3-ad-content" id="p3AdText">Struggling with GIR-03? FormComplete Pro helps applicants like you. 94% approval rate.</div>
+        <div class="p3-ad-cta">Learn more</div>
+      </button>
       <div class="p3-ad-close" onclick="this.parentElement.classList.remove('visible')">&times;</div>
     </div>
 
@@ -14750,6 +15158,7 @@ function p3ToggleHelp(id) {
             <div class="p3eb-flags" id="p3ebFlags"></div>
         </div>
     </div>
+    <div id="p3InlineNotice" role="status" aria-live="polite"></div>
 
     <div id="p3TimeoutWarning" role="status" aria-live="polite">
         <div class="p3-timeout-dot"></div>
