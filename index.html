@@ -5846,7 +5846,7 @@
             display: flex; justify-content: space-between; align-items: center;
         }
         .adm-header-sub { font-size: 10px; font-weight: normal; opacity: 0.75; }
-        .adm-body { display: flex; flex: 1; overflow: hidden; }
+        .adm-body { display: flex; flex: 1; overflow: visible; }
         .adm-nav {
             width: 140px; background: #c8c4be; border-right: 1px solid #999;
             flex-shrink: 0; overflow-y: auto;
@@ -5863,7 +5863,7 @@
         .adm-nav-item.logout { color: #880000; margin-top: 8px; }
         .adm-content {
             flex: 1; overflow-y: auto; overflow-x: visible; padding: 14px 16px;
-            position: relative; z-index: 2;
+            position: relative; z-index: 5;
         }
         /* Dashboard section */
         .adm-section-title {
@@ -5901,7 +5901,8 @@
         .adm-status-badge.pending { background: #f0f0ff; border-color: #000080; color: #000060; }
         .adm-status-badge.manual { background: #fff0f0; border-color: #cc0000; color: #660000; }
         /* Tooltip */
-        .adm-tooltip-wrap { position: relative; display: inline-block; }
+        .adm-tooltip-wrap { position: relative; display: inline-block; z-index: 20; }
+        .adm-tooltip-wrap:hover { z-index: 10040; }
         .adm-tooltip-icon {
             display: inline-block; width: 13px; height: 13px; background: #4a5568; color: white;
             border-radius: 50%; font-size: 9px; text-align: center; line-height: 13px;
@@ -5911,8 +5912,9 @@
             display: none; position: absolute; left: calc(100% + 8px); top: 50%;
             transform: translateY(-50%);
             bottom: auto; background: #333; color: white; font-size: 10px;
-            padding: 6px 8px; white-space: nowrap; z-index: 300; border: 1px solid #555;
-            min-width: 200px; text-align: left; line-height: 1.5;
+            padding: 6px 8px; white-space: normal; z-index: 10050; border: 1px solid #555;
+            min-width: 200px; max-width: 280px; text-align: left; line-height: 1.5;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.35); pointer-events: none;
         }
         .adm-tooltip-wrap:hover .adm-tooltip-text { display: block; }
         /* Record detail */
