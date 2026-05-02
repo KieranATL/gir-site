@@ -3025,6 +3025,28 @@
             position: relative;
             overflow: hidden;
         }
+        .p3-ad-thumb.has-art::before,
+        .p3-ad-thumb.has-art::after {
+            display: none;
+        }
+        .p3-ad-thumb-art {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .p3-ad-thumb-art svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .p3-ad-thumb-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
         .p3-ad-thumb::before {
             content: '';
             position: absolute;
@@ -3199,6 +3221,28 @@
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
             position: relative;
             overflow: hidden;
+        }
+        .goofy-ad-visual.has-art::before,
+        .goofy-ad-visual.has-art::after {
+            display: none;
+        }
+        .goofy-ad-visual-art {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .goofy-ad-visual-art svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .goofy-ad-visual-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .goofy-ad-visual::before {
             content: '';
@@ -12649,6 +12693,59 @@ function p3ToggleHelp(id) {
             }
         };
 
+        var adLogoImageByKey = {
+            queueplus: 'images/ad-queueplus.png',
+            copymountain: 'images/ad-copymountain.png',
+            notarymeteor: 'images/ad-notarymeteor.png',
+            linecamp: 'images/ad-linecamp.png',
+            binderbunker: 'images/ad-binderbunker.png',
+            sealsymphony: 'images/ad-sealsymphony.png'
+        };
+
+        function renderP3AdThumb(adKey) {
+            var thumb = document.querySelector('#p3AdBanner .p3-ad-thumb');
+            if (!thumb) return;
+            var src = adLogoImageByKey[adKey] || adLogoImageByKey.queueplus;
+            thumb.classList.add('has-art');
+            thumb.innerHTML = '<div class="p3-ad-thumb-art"><img src="' + src + '" alt="" loading="lazy"></div>';
+        }
+
+        function renderGoofyAdVisual(adKey) {
+            var visual = document.querySelector('#goofyAdOverlay .goofy-ad-visual');
+            if (!visual) return;
+            var src = adLogoImageByKey[adKey] || adLogoImageByKey.queueplus;
+            visual.classList.add('has-art');
+            visual.innerHTML = '<div class="goofy-ad-visual-art"><img src="' + src + '" alt="" loading="lazy"></div>';
+        }
+
+        function openAdGallery() {
+            var modal = document.getElementById('notesBibliographyModal');
+            var shell = document.getElementById('notesBiblioShell');
+            var content = document.getElementById('notesBiblioContent');
+            if (!modal || !shell || !content) return;
+
+            var cards = Object.keys(goofyAdCatalog).map(function(key) {
+                var ad = goofyAdCatalog[key];
+                var src = adLogoImageByKey[key] || '';
+                return '<div style="border:1px solid #cbd5e1;border-radius:8px;background:#fff;overflow:hidden;">'
+                    + '<div style="height:122px;background:#0f172a;"><img src="' + src + '" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>'
+                    + '<div style="padding:8px 10px;">'
+                    + '<div style="font:700 13px/1.3 Arial,sans-serif;color:#0f172a;">' + ad.title + '</div>'
+                    + '<div style="font:12px/1.4 Arial,sans-serif;color:#475569;margin-top:4px;">' + ad.tagline + '</div>'
+                    + '</div></div>';
+            }).join('');
+
+            content.innerHTML =
+                '<div class="notes-biblio-header" id="notesBiblioTitle">Form 3 Ad Artwork Gallery</div>'
+                + '<p style="margin:0 0 12px;font:13px/1.45 Arial,sans-serif;color:#334155;">These are the ad-specific images currently wired to Form 3 banner + modal by ad key.</p>'
+                + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;">' + cards + '</div>';
+
+            shell.classList.remove('theme-form-1', 'theme-form-2', 'theme-form-3', 'theme-form-4');
+            shell.classList.add('theme-form-3');
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
         function openGoofyAd(adKey) {
             var overlay = document.getElementById('goofyAdOverlay');
             if (!overlay) return;
@@ -12668,6 +12765,7 @@ function p3ToggleHelp(id) {
             if (body) body.textContent = ad.body;
             if (offer) offer.textContent = ad.offer;
             if (fineprint) fineprint.textContent = ad.fineprint;
+            renderGoofyAdVisual(adKey);
             overlay.classList.add('open');
         }
 
@@ -12701,6 +12799,7 @@ function p3ToggleHelp(id) {
                 banner.setAttribute('data-ad-tone', cfg.tone || 'queue');
                 banner.setAttribute('data-ad-key', cfg.key || 'queueplus');
             }
+            renderP3AdThumb(cfg.key || 'queueplus');
         }
 
         /* ── ARIA CHATBOT ─────────────────────────────────────────────────── */
@@ -16183,6 +16282,7 @@ function p3ToggleHelp(id) {
     <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
     <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
     <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
+    <button class="dev-btn" onclick="openAdGallery()">Show Form 3 Ad Gallery</button>
     <button class="dev-btn" onclick="devResetSignals()">Reset GIR Signals Only</button>
     <button class="dev-btn" onclick="devResetLoopback()">Reset Loopback Gate</button>
     <button class="dev-btn" onclick="devCopyGIRSnapshot()">Copy GIR Snapshot</button>
