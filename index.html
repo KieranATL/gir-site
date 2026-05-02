@@ -10723,14 +10723,14 @@ function p3ToggleHelp(id) {
                     { k: 'Gender', v: 'Male' },
                     { k: 'Citizenship Status', v: 'Citizen' }
                 ],
-                score: 92, status: 'Ready for Processing', note: ''
+                score: 92, status: 'Processed in System', note: ''
             },
             '21474': {
                 id: '21474', name: 'Maria Alvarez',
                 fields: [
                     { k: 'Citizenship Status', v: 'Non-Citizen Resident' }
                 ],
-                score: 58, status: 'Ready for Processing', note: ''
+                score: 58, status: 'Processed in System', note: ''
             },
             '21475': {
                 id: '21475', name: 'Jordan Lee',
@@ -10819,7 +10819,7 @@ function p3ToggleHelp(id) {
             if (!card) return;
 
             function statusClass(s) {
-                if (s === 'Ready for Processing') return 'ready';
+                if (s === 'Processed in System') return 'ready';
                 if (s === 'Flagged for Review') return 'flagged';
                 if (s === 'Manual Verification Required') return 'manual';
                 return 'pending';
@@ -14170,13 +14170,13 @@ function p3ToggleHelp(id) {
                             <tr>
                                 <td><span class="adm-id-link" onclick="p2AdminRecord('21473')">21473</span></td>
                                 <td>92</td>
-                                <td><span class="adm-status-badge ready">Ready for Processing</span></td>
+                                <td><span class="adm-status-badge ready">Processed in System</span></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td><span class="adm-id-link" onclick="p2AdminRecord('21474')">21474</span></td>
                                 <td>88</td>
-                                <td><span class="adm-status-badge ready">Ready for Processing</span></td>
+                                <td><span class="adm-status-badge ready">Processed in System</span></td>
                                 <td></td>
                             </tr>
                             <tr class="flagged">
