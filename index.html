@@ -172,7 +172,7 @@
 
         /* Pages 23–28: Submission / continuation pages (neutral, modern feel) */
         .page[data-page="29"],
-        .page[data-page="30"],
+        .page[data-page="35"],
         .page[data-page="31"],
         .page[data-page="32"],
         .page[data-page="33"],
@@ -1264,9 +1264,40 @@
             display: none !important;
         }
 
-        /* ── DEV BUTTON: Form 4 — glitch/exodus ─────────────────────── */
+        /* ── DEV BUTTON: Form 4 — standard outcomes ───────────────────── */
         body[data-active-form="4"] #devToggle,
         body[data-active-form="4"] #devQuickToggle {
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 11.7px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            text-shadow: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+            padding: 5px 12px;
+            animation: none;
+        }
+        body[data-active-form="4"] #devToggle:hover,
+        body[data-active-form="4"] #devQuickToggle:hover {
+            background: #1f2937;
+            color: #ffffff;
+            border-color: #4b5563;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+        }
+        body[data-active-form="4"] #devToggle.is-open,
+        body[data-active-form="4"] #devQuickToggle.is-open {
+            background: #0b1220;
+            border-color: #475569;
+            color: #f8fafc;
+        }
+
+        /* ── DEV BUTTON: Form 4X — glitch/exodus ─────────────────────── */
+        body[data-active-form="4x"] #devToggle,
+        body[data-active-form="4x"] #devQuickToggle {
             background: rgba(0,0,0,0.9);
             color: #ff3333;
             border: 1px solid rgba(255,40,40,0.6);
@@ -1281,15 +1312,15 @@
             padding: 5px 12px;
             animation: devGlitchPulse 3.5s infinite;
         }
-        body[data-active-form="4"] #devToggle:hover,
-        body[data-active-form="4"] #devQuickToggle:hover {
+        body[data-active-form="4x"] #devToggle:hover,
+        body[data-active-form="4x"] #devQuickToggle:hover {
             background: rgba(20,0,0,0.95);
             color: #ff6666;
             border-color: rgba(255,80,80,0.8);
             box-shadow: 0 0 14px rgba(255,0,0,0.3);
         }
-        body[data-active-form="4"] #devToggle.is-open,
-        body[data-active-form="4"] #devQuickToggle.is-open {
+        body[data-active-form="4x"] #devToggle.is-open,
+        body[data-active-form="4x"] #devQuickToggle.is-open {
             background: rgba(40,0,0,0.95);
             border-color: rgba(255,60,60,0.9);
             color: #ffaaaa;
@@ -1363,6 +1394,21 @@
         }
 
         body[data-active-form="4"] {
+            --dev-menu-bg: rgba(15,23,42,0.97);
+            --dev-menu-text: #e5e7eb;
+            --dev-menu-border: rgba(71,85,105,0.9);
+            --dev-menu-shadow: -12px 0 30px rgba(2,6,23,0.4);
+            --dev-section-color: #cbd5e1;
+            --dev-btn-text: #f1f5f9;
+            --dev-btn-border: rgba(100,116,139,0.6);
+            --dev-btn-hover-text: #ffffff;
+            --dev-btn-hover-bg: rgba(59,130,246,0.24);
+            --dev-btn-hover-border: rgba(96,165,250,0.9);
+            --dev-btn-danger: #fecaca;
+            --dev-btn-danger-hover: #fee2e2;
+        }
+
+        body[data-active-form="4x"] {
             --dev-menu-bg: rgba(8,0,0,0.97);
             --dev-menu-text: #ff8080;
             --dev-menu-border: rgba(255,60,60,0.75);
@@ -1401,6 +1447,59 @@
             font-size: 10.6px;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+        .dev-group {
+            border: 1px solid color-mix(in srgb, var(--dev-btn-border) 75%, transparent);
+            border-radius: 6px;
+            margin: 8px 0;
+            padding: 0;
+            overflow: hidden;
+            background: color-mix(in srgb, var(--dev-menu-bg) 92%, transparent);
+        }
+        .dev-group > summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 6px 8px;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .dev-group > summary::-webkit-details-marker { display: none; }
+        .dev-group > summary::before {
+            content: '▾';
+            font-size: 11px;
+            color: var(--dev-section-color);
+            transition: transform 120ms ease;
+            transform-origin: center;
+        }
+        .dev-group:not([open]) > summary::before {
+            transform: rotate(-90deg);
+        }
+        .dev-section.dev-section-summary {
+            margin: 0;
+        }
+        .dev-group-body {
+            padding: 0 8px 8px;
+            display: grid;
+            gap: 5px;
+        }
+        .dev-group-body .dev-page-grid {
+            margin-bottom: 2px;
+        }
+        .dev-menu-tools {
+            display: flex;
+            gap: 6px;
+            margin: 2px 0 8px;
+        }
+        .dev-menu-tools .dev-btn {
+            width: auto;
+            flex: 1;
+            text-align: center;
+            font-size: 10.5px;
+            padding: 4px 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
         .dev-btn {
             display: block;
@@ -2640,14 +2739,14 @@
         /* ── Form 3 branch / interstitial pages ──────────────────────────── */
         .p3-branch-page {
             display: none;
-            width: min(780px, calc(100vw - 48px));
-            max-height: calc(100vh - 300px);
-            overflow-y: auto;
-            margin: 28px auto 16px;
-            padding: 28px 32px 28px;
+            width: min(760px, calc(100vw - 40px));
+            max-height: none;
+            overflow-y: visible;
+            margin: 20px auto 12px;
+            padding: 20px 24px 20px;
             background: #fff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            min-height: 320px;
+            min-height: 0;
             border-radius: 10px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         }
@@ -2657,8 +2756,8 @@
         .p3-branch-notice {
             border-left: 3px solid #b91c1c;
             background: #fef2f2;
-            padding: 18px 20px;
-            margin-bottom: 24px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
         }
         .p3-branch-notice-title {
             font-size: 11px;
@@ -2677,12 +2776,12 @@
         .p3-branch-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
-            margin-bottom: 20px;
+            font-size: 12px;
+            margin-bottom: 14px;
         }
         .p3-branch-table th {
             background: #f3f4f6;
-            padding: 7px 10px;
+            padding: 6px 8px;
             text-align: left;
             font-weight: 600;
             color: #374151;
@@ -2691,28 +2790,28 @@
             text-transform: uppercase;
         }
         .p3-branch-table td {
-            padding: 8px 10px;
+            padding: 6px 8px;
             border-bottom: 1px solid #e5e7eb;
             color: #111827;
         }
         .p3-branch-body {
-            font-size: 13px;
+            font-size: 12px;
             color: #374151;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.45;
+            margin-bottom: 12px;
         }
-        .p3-branch-body p { margin: 0 0 10px; }
+        .p3-branch-body p { margin: 0 0 8px; }
         .p3-branch-reason-group label {
             display: block;
-            margin-bottom: 8px;
-            font-size: 13px;
+            margin-bottom: 6px;
+            font-size: 12px;
             color: #374151;
         }
         .p3-branch-reason-group input[type="radio"] { margin-right: 8px; }
         .p3-branch-continue {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 28px;
+            margin-top: 12px;
+            padding: 9px 24px;
             background: #1d4ed8;
             color: #fff;
             font-size: 13px;
@@ -2738,9 +2837,9 @@
         @media (max-width: 900px) {
             .p3-branch-page {
                 width: calc(100vw - 20px);
-                max-height: calc(100vh - 250px);
-                margin: 18px auto 12px;
-                padding: 22px 18px 22px;
+                max-height: none;
+                margin: 12px auto 10px;
+                padding: 16px 14px 16px;
             }
         }
 
@@ -6233,9 +6332,17 @@
         .page[data-page="18"] { font-size: 16px; line-height: 1.8; }
 
         .page[data-page="29"],
-        .page[data-page="30"],
+        .page[data-page="35"],
         .page[data-page="33"],
         .page[data-page="34"] { font-size: 14px; line-height: 1.7; }
+
+        /* Page 25: slight reduction to prevent cutoff on dense checkbox/text layout */
+        .page[data-page="25"] .page-content {
+            transform: scale(1.09) !important;
+            transform-origin: top left !important;
+            width: calc(676px / 1.09) !important;
+            height: calc(840px / 1.09) !important;
+        }
 
         /* ── Form 1 adaptive fit calibration (visual pass hotfix) ── */
         .page.form1-fit-tight .page-content {
@@ -8089,7 +8196,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="30">
+        <div class="page" data-page="34">
             <div class="page-header">
                 OMB Control No. 1978-0101<br>
                 Expires: 03/31/2023<br>
@@ -8139,7 +8246,7 @@
                 </div>
             </div>
         </div>
-        <div class="page" data-page="31">
+        <div class="page" data-page="30">
             <div class="page-header">
                 <span class="page-title">SECTION E  -  DEMOGRAPHIC CLASSIFICATION</span>
                 <span class="page-number">Page 24 of 28</span>
@@ -8202,7 +8309,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="32">
+        <div class="page" data-page="31">
             <div class="page-header">
                 <span class="page-title">SECTION E  -  SUPPLEMENTAL CLASSIFICATION</span>
                 <span class="page-number">Page 25 of 28</span>
@@ -8282,7 +8389,7 @@
                 <button class="proceed-button" onclick="nextPage()">Proceed to Next Page</button>
             </div>
         </div>
-        <div class="page" data-page="33" style="font-family:'Courier New',Courier,monospace;background:#eeece6;filter:contrast(0.97);">
+        <div class="page" data-page="32" style="font-family:'Courier New',Courier,monospace;background:#eeece6;filter:contrast(0.97);">
             <div class="page-header" style="font-family:'Courier New',Courier,monospace;background:#d8d4c8;">
                 <span class="page-title" style="font-size:10px;letter-spacing:0.5px;">ADMINISTRATIVE AMENDMENT INSERT</span>
                 <span class="page-number">Page 26 of 28</span>
@@ -8323,7 +8430,7 @@
             </div>
         </div>
 
-        <div class="page" data-page="34" style="font-family:'Times New Roman',serif;">
+        <div class="page" data-page="33" style="font-family:'Times New Roman',serif;">
             <div class="page-header" style="font-family:'Times New Roman',serif;">
                 <span class="page-title">ADMINISTRATIVE ROUTING SHEET  -  OFFICE USE ONLY</span>
                 <span class="page-number">Page 27 of 28</span>
@@ -8654,10 +8761,10 @@
             signatureName: { label: 'Signature', page: 15 },
             signaturePrintedName: { label: 'Printed Name', page: 15 },
             signatureDate: { label: 'Signature Date', page: 15 },
-            submitConfirmSignature: { label: 'Submission Confirmation Signature', page: 30 },
-            submitConfirmPrintedName: { label: 'Submission Confirmation Printed Name', page: 30 },
-            submitConfirmDate: { label: 'Submission Confirmation Date', page: 30 },
-            submitConfirmAck: { label: 'Submission Confirmation Acknowledgment', page: 30 }
+            submitConfirmSignature: { label: 'Submission Confirmation Signature', page: 34 },
+            submitConfirmPrintedName: { label: 'Submission Confirmation Printed Name', page: 34 },
+            submitConfirmDate: { label: 'Submission Confirmation Date', page: 34 },
+            submitConfirmAck: { label: 'Submission Confirmation Acknowledgment', page: 34 }
         };
 
         const REQUIRED_GROUPS = [
@@ -9011,6 +9118,14 @@ function girComputeOutcome() {
             return slack >= 110;
         }
 
+        function isForcedRoomyPage(pageEl) {
+            if (!pageEl || !pageEl.dataset) return false;
+            var n = parseInt(pageEl.dataset.page || '', 10);
+            return [
+                2, 4, 5, 6, 8, 9, 12, 13, 14, 15, 16, 17, 23, 24, 26, 33
+            ].indexOf(n) >= 0;
+        }
+
         function calibrateForm1PageVisualFit(pageEl) {
             if (!pageEl) return;
             pageEl.classList.remove('form1-fit-tight', 'form1-fit-roomy');
@@ -9026,6 +9141,11 @@ function girComputeOutcome() {
 
             if (detectForm1Overflow(pageEl)) {
                 pageEl.classList.add('form1-fit-tight');
+                return;
+            }
+
+            if (isForcedRoomyPage(pageEl)) {
+                pageEl.classList.add('form1-fit-roomy');
                 return;
             }
 
@@ -11422,16 +11542,71 @@ function p3ToggleHelp(id) {
             window.prompt('Copy GIR snapshot:', payload);
             done();
         }
+        var DEV_MENU_GROUPS_KEY = 'girDevMenuGroupStateV1';
+        function devNormalizeGroupKey(label) {
+            return String(label || '')
+                .toLowerCase()
+                .replace(/&mdash;|&ndash;|—|–/g, '-')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+        function devGetGroupStateMap() {
+            try {
+                var raw = localStorage.getItem(DEV_MENU_GROUPS_KEY);
+                var parsed = raw ? JSON.parse(raw) : {};
+                return (parsed && typeof parsed === 'object') ? parsed : {};
+            } catch (e) {
+                return {};
+            }
+        }
+        function devSetGroupOpenState(groupKey, isOpen) {
+            if (!groupKey) return;
+            var map = devGetGroupStateMap();
+            map[groupKey] = !!isOpen;
+            try { localStorage.setItem(DEV_MENU_GROUPS_KEY, JSON.stringify(map)); } catch (e) {}
+        }
+        function devApplyGroupStates(root) {
+            var container = root || document;
+            var map = devGetGroupStateMap();
+            container.querySelectorAll('details.dev-group[data-dev-group]').forEach(function(group) {
+                var key = group.getAttribute('data-dev-group');
+                if (!key) return;
+                if (Object.prototype.hasOwnProperty.call(map, key)) {
+                    group.open = !!map[key];
+                }
+            });
+        }
+        function devToggleAllGroups(openState) {
+            var menu = document.getElementById('devMenu');
+            if (!menu) return;
+            menu.querySelectorAll('details.dev-group[data-dev-group]').forEach(function(group) {
+                group.open = !!openState;
+                devSetGroupOpenState(group.getAttribute('data-dev-group'), !!openState);
+            });
+        }
+        function devExpandAllGroups() { devToggleAllGroups(true); }
+        function devCollapseAllGroups() { devToggleAllGroups(false); }
         function devBuildPageMenu() {
             var host = document.getElementById('devDynamicSections');
             if (!host) return;
             host.innerHTML = '';
+            var currentGroupBody = host;
 
             function addSection(title) {
-                var sec = document.createElement('div');
-                sec.className = 'dev-section';
-                sec.textContent = title;
-                host.appendChild(sec);
+                var details = document.createElement('details');
+                details.className = 'dev-group';
+                var groupKey = 'dynamic:' + devNormalizeGroupKey(title);
+                details.setAttribute('data-dev-group', groupKey);
+                details.open = false;
+                var summary = document.createElement('summary');
+                summary.className = 'dev-section dev-section-summary';
+                summary.textContent = title;
+                var body = document.createElement('div');
+                body.className = 'dev-group-body';
+                details.appendChild(summary);
+                details.appendChild(body);
+                host.appendChild(details);
+                currentGroupBody = body;
             }
             function makeButton(label, onClick) {
                 var btn = document.createElement('button');
@@ -11447,7 +11622,7 @@ function p3ToggleHelp(id) {
                 entries.forEach(function(item) {
                     grid.appendChild(makeButton(item.label, item.onClick));
                 });
-                host.appendChild(grid);
+                currentGroupBody.appendChild(grid);
             }
             function addPageGrid(prefix, pages, fnName) {
                 if (!pages.length) return;
@@ -11460,7 +11635,7 @@ function p3ToggleHelp(id) {
                     btn.onclick = function() { window[fnName](p); };
                     grid.appendChild(btn);
                 });
-                host.appendChild(grid);
+                currentGroupBody.appendChild(grid);
             }
 
             var p1Pages = Array.from(document.querySelectorAll('.page[data-page]'))
@@ -11502,22 +11677,37 @@ function p3ToggleHelp(id) {
                     };
                 }), 3);
             }
-
-            addSection('Narrative / Transition Screens');
+            addSection('Phase III - Branch Scenarios');
             addButtonList([
-                { label: 'Bulletin',   onClick: function() { devGoNarrative('bulletin'); } },
-                { label: 'Ticket',     onClick: function() { devGoNarrative('ticket'); } },
-                { label: 'Waiting',    onClick: function() { devGoNarrative('waiting'); } },
-                { label: 'Preform 1',  onClick: function() { devGoNarrative('pre1'); } },
-                { label: 'Preform 2',  onClick: function() { devGoNarrative('pre2'); } },
-                { label: 'Preform 3',  onClick: function() { devGoNarrative('pre3'); } },
-                { label: 'Preform 4',  onClick: function() { devGoNarrative('pre4'); } },
-                { label: 'Incomplete', onClick: function() { devGoNarrative('incomplete'); } },
-                { label: 'Clerk Pass', onClick: function() { devGoNarrative('postupdate'); } },
-                { label: 'Completion', onClick: function() { devGoNarrative('completion'); } },
-                { label: 'Phase II',   onClick: function() { devGoNarrative('phase2'); } },
-                { label: 'Transition', onClick: function() { devGoNarrative('transition'); } },
-                { label: 'Phase III',  onClick: function() { devGoNarrative('phase3'); } }
+                { label: 'Name Mismatch', onClick: function() { devPresetBranch('nm'); } },
+                { label: 'Address Continuity', onClick: function() { devPresetBranch('ad'); } },
+                { label: 'Prior Names Conflict', onClick: function() { devPresetBranch('ps'); } },
+                { label: 'Signature Mismatch', onClick: function() { devPresetBranch('sig'); } },
+                { label: 'Data Use Incomplete', onClick: function() { devPresetBranch('consent'); } }
+            ], 2);
+
+            addSection('Narrative');
+            addButtonList([
+                { label: 'Bulletin Board', onClick: function() { devGoNarrative('bulletin'); } },
+                { label: 'Take a Ticket', onClick: function() { devGoNarrative('ticket'); } },
+                { label: 'Waiting Area', onClick: function() { devGoNarrative('waiting'); } },
+                { label: 'Clerk Greeting', onClick: function() { devGoNarrative('pre1'); } },
+                { label: 'Clerk Hands Packet', onClick: function() { devGoNarrative('pre2'); } },
+                { label: 'Take Packet', onClick: function() { devGoNarrative('pre3'); } },
+                { label: 'Return to Seat', onClick: function() { devGoNarrative('pre4'); } },
+                { label: 'Submission Incomplete', onClick: function() { devGoNarrative('incomplete'); } },
+                { label: 'Submission Accepted', onClick: function() { devGoNarrative('postupdate'); } },
+                { label: 'Phase I Completion', onClick: function() { devGoNarrative('completion'); } },
+                { label: 'Open Legacy Portal (Phase II)', onClick: function() { devGoNarrative('phase2'); } },
+                { label: 'Years Later Narrative (All Steps)', onClick: function() { devGoNarrative('transition'); } },
+                { label: 'Years Later - Time Passes', onClick: function() { devGoNarrative('transition'); if (typeof ptShowStoryStep === 'function') ptShowStoryStep(0); } },
+                { label: 'Years Later - Notice Arrives', onClick: function() { devGoNarrative('transition'); if (typeof ptShowStoryStep === 'function') ptShowStoryStep(1); } },
+                { label: 'Years Later - 2FA Retry', onClick: function() { devGoNarrative('transition'); if (typeof ptShowStoryStep === 'function') ptShowStoryStep(2); } },
+                { label: 'Years Later - Record Path', onClick: function() { devGoNarrative('transition'); if (typeof ptShowStoryStep === 'function') ptShowStoryStep(3); } },
+                { label: 'Years Later - Portal Handoff', onClick: function() { devGoNarrative('transition'); if (typeof ptShowStoryStep === 'function') ptShowStoryStep(4); } },
+                { label: 'Enter Modern Portal (Phase III)', onClick: function() { devGoNarrative('phase3'); } },
+                { label: 'Exodus - Failure Screen', onClick: function() { devPreviewOutcome('exodus'); } },
+                { label: 'Exodus - Release Screen', onClick: function() { devPreviewOutcome('exodus'); setTimeout(function(){ if (typeof exodusLeaveRecord === 'function') exodusLeaveRecord(); }, 1400); } }
             ], 2);
 
             addSection('Bulletin Docs - Theory');
@@ -11527,6 +11717,7 @@ function p3ToggleHelp(id) {
                 { label: 'Methods Note', onClick: function() { devOpenBulletinDoc('methods'); } },
                 { label: 'Research Refs', onClick: function() { devOpenBulletinDoc('references'); } }
             ], 2);
+            devApplyGroupStates(host);
         }
         function devPresetBranch(branchId) {
             devEnsurePhaseThree();
@@ -11595,6 +11786,14 @@ function p3ToggleHelp(id) {
         }
         function devPreviewOutcome(mode) {
             devCloseAll();
+            var p3Overlay = document.getElementById('phaseThreeOverlay');
+            if (p3Overlay) {
+                p3Overlay.classList.remove('post-exodus', 'post-exodus-heavy', 'peh-jitter', 'peh-rgb');
+            }
+            var phase4Exodus = document.getElementById('phase4Exodus');
+            if (phase4Exodus) phase4Exodus.style.display = 'none';
+            var exodusOverlay = document.getElementById('exodusOverlay');
+            if (exodusOverlay) exodusOverlay.classList.remove('active');
             var defaults = {
                 missingDataCount: 0,
                 inconsistencyCount: 0,
@@ -11768,6 +11967,10 @@ function p3ToggleHelp(id) {
         window.devResetSignals = devResetSignals;
         window.devResetLoopback = devResetLoopback;
         window.devCopyGIRSnapshot = devCopyGIRSnapshot;
+        window.devSetGroupOpenState = devSetGroupOpenState;
+        window.devApplyGroupStates = devApplyGroupStates;
+        window.devExpandAllGroups = devExpandAllGroups;
+        window.devCollapseAllGroups = devCollapseAllGroups;
 
         // === PHASE III JS ===
         var p3CurrentPage = 1;
@@ -16553,34 +16756,35 @@ function p3ToggleHelp(id) {
 
 <button id="devQuickToggle" onclick="devToggleMenu(event)" aria-expanded="false" aria-controls="devMenu">DEV NAV</button>
 <div id="devMenu">
+    <div class="dev-menu-tools">
+        <button class="dev-btn" type="button" onclick="devExpandAllGroups()">Expand All</button>
+        <button class="dev-btn" type="button" onclick="devCollapseAllGroups()">Collapse All</button>
+    </div>
+    <details class="dev-group" data-dev-group="static:actions">
+        <summary class="dev-section dev-section-summary">Actions</summary>
+        <div class="dev-group-body">
+            <button class="dev-btn" onclick="devBuildPageMenu()">Refresh Page Lists</button>
+            <button class="dev-btn" onclick="p4xOpen()">Open Phase 4 Glitch Form</button>
+            <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
+            <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
+            <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
+            <button class="dev-btn dev-btn-danger" onclick="localStorage.clear();location.reload()">⟳ Clear + Reload</button>
+            <button class="dev-btn" onclick="location.reload()">⟳ Reload Only</button>
+        </div>
+    </details>
     <div id="devDynamicSections"></div>
 
-    <div class="dev-section">Branch Scenarios</div>
-    <button class="dev-btn" onclick="devPresetBranch('nm')">Branch: Name Mismatch</button>
-    <button class="dev-btn" onclick="devPresetBranch('ad')">Branch: Address Continuity</button>
-    <button class="dev-btn" onclick="devPresetBranch('ps')">Branch: Prior Names Conflict</button>
-    <button class="dev-btn" onclick="devPresetBranch('sig')">Branch: Signature Mismatch</button>
-    <button class="dev-btn" onclick="devPresetBranch('consent')">Branch: Data Use Incomplete</button>
+    <details class="dev-group" data-dev-group="static:outcome-previews">
+        <summary class="dev-section dev-section-summary">Outcome Previews</summary>
+        <div class="dev-group-body">
+            <button class="dev-btn" onclick="devPreviewOutcome('approved')">Outcome: Approved</button>
+            <button class="dev-btn" onclick="devPreviewOutcome('conditional')">Outcome: Conditional</button>
+            <button class="dev-btn" onclick="devPreviewOutcome('flagged')">Outcome: Flagged</button>
+            <button class="dev-btn" onclick="devPreviewOutcome('returned')">Outcome: Returned</button>
+            <button class="dev-btn" onclick="devPreviewOutcome('exodus')">Outcome: Exodus Glitch</button>
+        </div>
+    </details>
 
-    <div class="dev-section">Outcome Previews</div>
-    <button class="dev-btn" onclick="devPreviewOutcome('approved')">Outcome: Approved</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('conditional')">Outcome: Conditional</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('flagged')">Outcome: Flagged</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('returned')">Outcome: Returned</button>
-    <button class="dev-btn" onclick="devPreviewOutcome('exodus')">Outcome: Exodus Glitch</button>
-
-    <div class="dev-section">Actions</div>
-    <button class="dev-btn" onclick="devBuildPageMenu()">Refresh Page Lists</button>
-    <button class="dev-btn" onclick="p4xOpen()">Open Phase 4 Glitch Form</button>
-    <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
-    <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
-    <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
-    <button class="dev-btn" onclick="openAdGallery()">Show Form 3 Ad Gallery</button>
-    <button class="dev-btn" onclick="devResetSignals()">Reset GIR Signals Only</button>
-    <button class="dev-btn" onclick="devResetLoopback()">Reset Loopback Gate</button>
-    <button class="dev-btn" onclick="devCopyGIRSnapshot()">Copy GIR Snapshot</button>
-    <button class="dev-btn dev-btn-danger" onclick="localStorage.clear();location.reload()">⟳ Clear + Reload</button>
-    <button class="dev-btn" onclick="location.reload()">⟳ Reload Only</button>
 </div>
 
 
@@ -16645,11 +16849,22 @@ function p3ToggleHelp(id) {
         if (typeof window.devBuildPageMenu === 'function') {
             try { window.devBuildPageMenu(); } catch (e) { console.warn('Initial dev menu build failed:', e); }
         }
+        if (typeof window.devApplyGroupStates === 'function') {
+            try { window.devApplyGroupStates(menu); } catch (e) { console.warn('Dev group state apply failed:', e); }
+        }
 
         var observer = new MutationObserver(function() {
             syncDevMenuState();
         });
         observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
+
+        menu.addEventListener('toggle', function(event) {
+            var target = event.target;
+            if (!target || target.tagName !== 'DETAILS' || !target.classList.contains('dev-group')) return;
+            var key = target.getAttribute('data-dev-group');
+            if (!key || typeof window.devSetGroupOpenState !== 'function') return;
+            window.devSetGroupOpenState(key, !!target.open);
+        }, true);
 
         document.addEventListener('click', function(event) {
             var toggles = getDevToggles();
@@ -16677,6 +16892,9 @@ function p3ToggleHelp(id) {
     window.addEventListener('load', function() {
         if (typeof window.devBuildPageMenu === 'function') {
             try { window.devBuildPageMenu(); } catch (e) { console.warn('Load-time dev menu build failed:', e); }
+        }
+        if (typeof window.devApplyGroupStates === 'function') {
+            try { window.devApplyGroupStates(document.getElementById('devMenu')); } catch (e) { console.warn('Load-time dev group state apply failed:', e); }
         }
         if (typeof window.ptBindTransitionObserver === 'function') {
             try { window.ptBindTransitionObserver(); } catch (e) { console.warn('Transition observer init failed:', e); }
@@ -18308,11 +18526,14 @@ if (document.readyState === 'loading') {
 /* ── Dev button form-adaptive tracker ───────────────────────────────── */
 (function() {
     function getActiveForm() {
+        var ph4Standard = document.getElementById('phase4');
+        if (ph4Standard && ph4Standard.style.display && ph4Standard.style.display !== 'none') return '4';
         var ph4 = document.getElementById('phase4Exodus');
-        if (ph4 && ph4.style.display && ph4.style.display !== 'none') return '4';
+        if (ph4 && ph4.style.display && ph4.style.display !== 'none') return '4x';
         var exodus = document.getElementById('exodusOverlay');
-        if (exodus && exodus.classList.contains('active')) return '4';
+        if (exodus && exodus.classList.contains('active')) return '4x';
         var ph3 = document.getElementById('phaseThreeOverlay');
+        if (ph3 && ph3.classList.contains('post-exodus')) return '4x';
         if (ph3 && ph3.classList.contains('active')) return '3';
         var ph2 = document.getElementById('phaseTwoOverlay');
         if (ph2 && ph2.classList.contains('active')) return '2';
@@ -18331,7 +18552,11 @@ if (document.readyState === 'loading') {
             if (!el) return;
             new MutationObserver(syncDevBtnForm).observe(el, { attributes: true, attributeFilter: ['class'] });
         });
-        // phase4Exodus uses inline style
+        // phase4 and phase4Exodus use inline style
+        var ph4Standard = document.getElementById('phase4');
+        if (ph4Standard) {
+            new MutationObserver(syncDevBtnForm).observe(ph4Standard, { attributes: true, attributeFilter: ['style'] });
+        }
         var ph4 = document.getElementById('phase4Exodus');
         if (ph4) {
             new MutationObserver(syncDevBtnForm).observe(ph4, { attributes: true, attributeFilter: ['style'] });
