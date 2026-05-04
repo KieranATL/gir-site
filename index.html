@@ -2158,6 +2158,161 @@
             border: 1px solid #d1d5db;
             letter-spacing: .01em;
         }
+        .pt-story-card {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+        .pt-story-visual {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        .pt-story-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .pt-story-clock-wrap {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 52% 44%, #f4f7fb 0%, #dfe6ef 56%, #cdd6e4 100%);
+        }
+        .pt-story-clock-wrap.active { display: flex; }
+        .pt-story-clock {
+            width: min(44vw, 360px);
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 28%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 24%, rgba(244,248,255,0.45) 30%, rgba(232,238,248,0.84) 66%, rgba(218,226,238,0.95) 100%);
+            border: 10px solid #c8d2e1;
+            box-shadow:
+                inset 0 0 0 2px rgba(255,255,255,0.82),
+                inset 0 0 18px rgba(15,35,71,0.12),
+                0 20px 45px rgba(15,23,42,0.22);
+            position: relative;
+            animation: ptClockSpin 22s linear infinite;
+        }
+        .pt-story-clock::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border-radius: 50%;
+            border: 2px dashed rgba(30,58,95,0.16);
+        }
+        .pt-story-clock::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #1e3a5f;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.7);
+            z-index: 4;
+        }
+        .pt-clock-hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: bottom center;
+            border-radius: 8px;
+        }
+        .pt-clock-hand-hour {
+            width: 8px;
+            height: 92px;
+            margin-left: -4px;
+            margin-top: -92px;
+            background: linear-gradient(180deg, #213f69 0%, #0f2747 100%);
+            animation: ptHourHand 5.6s linear infinite;
+            z-index: 2;
+        }
+        .pt-clock-hand-minute {
+            width: 5px;
+            height: 136px;
+            margin-left: -2.5px;
+            margin-top: -136px;
+            background: linear-gradient(180deg, #1d4ed8 0%, #1e3a8a 100%);
+            animation: ptMinuteHand 2.2s linear infinite;
+            z-index: 3;
+        }
+        .pt-clock-hand-second {
+            width: 2px;
+            height: 154px;
+            margin-left: -1px;
+            margin-top: -154px;
+            background: #ef4444;
+            animation: ptSecondHand .65s linear infinite;
+            z-index: 3;
+        }
+        @keyframes ptClockSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes ptHourHand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes ptMinuteHand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes ptSecondHand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .pt-story-body {
+            padding: 16px 20px 10px;
+            color: #1f2937;
+        }
+        .pt-story-kicker {
+            font-size: 11px;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .pt-story-title {
+            margin: 0 0 8px;
+            font-size: 22px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .pt-story-copy {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .pt-story-footer {
+            border-top: 1px solid #e5e7eb;
+            background: #f8fafc;
+            padding: 12px 20px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .pt-story-next-btn {
+            border: none;
+            border-radius: 6px;
+            background: #1d4ed8;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 9px 16px;
+            cursor: pointer;
+            letter-spacing: .02em;
+        }
+        .pt-story-next-btn:hover { background: #1e40af; }
+        .pt-story-step {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .02em;
+            display: none;
+        }
         .pt-email-card {
             background: #fff;
             border: 1px solid #d1d5db;
@@ -2165,6 +2320,8 @@
             border-radius: 0 0 8px 8px;
             overflow: hidden;
         }
+        .pt-story-card.hidden,
+        .pt-email-card.hidden { display: none; }
         .pt-email-header {
             background: #1e3a5f;
             padding: 18px 24px 14px;
@@ -11220,8 +11377,13 @@ function p3ToggleHelp(id) {
             } else if (screenId === 'phase2') {
                 initPhaseTwo();
             } else if (screenId === 'transition') {
-                var trans = document.getElementById('phaseTransitionOverlay');
-                if (trans) trans.classList.add('active');
+                if (typeof showPhaseTransition === 'function') {
+                    showPhaseTransition();
+                } else {
+                    var trans = document.getElementById('phaseTransitionOverlay');
+                    if (trans) trans.classList.add('active');
+                    if (typeof ptResetStory === 'function') ptResetStory();
+                }
             } else if (screenId === 'phase3') {
                 devGoP3(1);
                 return;
@@ -11891,6 +12053,113 @@ function p3ToggleHelp(id) {
             if (el) el.textContent = text || '';
         }
 
+        var ptStorySteps = [
+            {
+                mode: 'clock',
+                kicker: 'Years Later',
+                title: 'The forms left your desk, but not the system.',
+                copy: 'Many years have passed since Intake Window 3. Your file moved from drawer to database as standards, routing rules, and infrastructure kept changing around it.'
+            },
+            {
+                img: 'images/transition-modern-02-notice.png',
+                kicker: 'Automated Notice',
+                title: 'One evening, an action-required email arrives.',
+                copy: 'Your record is still active, but continuity is now conditional under current standards. You open the notice, begin login, and continue into the portal.'
+            },
+            {
+                img: 'images/transition-modern-03-mfa.png',
+                kicker: 'Access Control',
+                title: 'Your first attempt to log in fails and you have to try again.',
+                copy: 'A two-factor authentication code expires before submission completes. You re-enter, re-verify, and proceed.'
+            },
+            {
+                img: 'images/transition-modern-01-timejump.png',
+                kicker: 'Record Path',
+                title: 'You can now see the path your record has taken.',
+                copy: 'The notice renders your administrative trajectory as a chain of updates, migrations, and continuity checks that now shape what can move forward.'
+            },
+            {
+                img: 'images/transition-modern-05-access.png',
+                kicker: 'Portal Handoff',
+                title: 'You read the screen, then continue.',
+                copy: 'The path forward is explicit: access your record and proceed through recertification under the current system.',
+                cta: 'Access Your Record'
+            }
+        ];
+        var ptStoryIndex = 0;
+
+        function ptShowStoryStep(index) {
+            var storyCard = document.getElementById('pt-story-card');
+            var emailCard = document.querySelector('#phaseTransitionOverlay .pt-email-card');
+            if (!storyCard || !emailCard) return;
+
+            if (index >= ptStorySteps.length) index = ptStorySteps.length - 1;
+
+            var step = ptStorySteps[index];
+            var imageEl = document.getElementById('pt-story-image');
+            var clockWrapEl = document.getElementById('pt-story-clock-wrap');
+            var kickerEl = document.getElementById('pt-story-kicker');
+            var titleEl = document.getElementById('pt-story-title');
+            var copyEl = document.getElementById('pt-story-copy');
+            var stepEl = document.getElementById('pt-story-step');
+            var nextBtn = document.getElementById('pt-story-next-btn');
+            var addressBarEl = document.getElementById('ptAddressBar');
+
+            // Hard-lock story image mapping for later steps to avoid stale ordering/cached mismatches.
+            var forcedStepImage = {
+                3: 'images/transition-modern-01-timejump.png?v=4',
+                4: 'images/transition-modern-05-access.png?v=4'
+            };
+            var imageSrc = forcedStepImage.hasOwnProperty(index) ? forcedStepImage[index] : step.img;
+            if (imageEl && imageSrc) imageEl.src = imageSrc;
+            if (clockWrapEl) clockWrapEl.classList.toggle('active', step.mode === 'clock');
+            if (imageEl) imageEl.style.display = (step.mode === 'clock') ? 'none' : 'block';
+            if (kickerEl) kickerEl.textContent = step.kicker;
+            if (titleEl) titleEl.textContent = step.title;
+            if (copyEl) copyEl.textContent = step.copy;
+            if (stepEl) stepEl.textContent = '';
+            if (nextBtn) nextBtn.innerHTML = step.cta || 'Continue &rarr;';
+            if (addressBarEl) {
+                if (index === 3) {
+                    addressBarEl.style.display = 'block';
+                    addressBarEl.innerHTML = 'mail.oap.gov/records';
+                } else if (index === 4) {
+                    addressBarEl.style.display = 'none';
+                } else {
+                    addressBarEl.style.display = 'block';
+                    addressBarEl.innerHTML = 'mail.oap.gov/inbox &mdash; Administrative Notice';
+                }
+            }
+
+            emailCard.classList.add('hidden');
+            storyCard.classList.remove('hidden');
+            ptStoryIndex = index;
+        }
+
+        function ptAdvanceStory() {
+            if (ptStoryIndex >= ptStorySteps.length - 1) {
+                startPhaseThree();
+                return;
+            }
+            ptShowStoryStep(ptStoryIndex + 1);
+        }
+
+        function ptResetStory() {
+            ptShowStoryStep(0);
+        }
+
+        var ptStoryObserverBound = false;
+        function ptBindTransitionObserver() {
+            if (ptStoryObserverBound) return;
+            var overlay = document.getElementById('phaseTransitionOverlay');
+            if (!overlay || !window.MutationObserver) return;
+            var observer = new MutationObserver(function() {
+                if (overlay.classList.contains('active')) ptResetStory();
+            });
+            observer.observe(overlay, { attributes: true, attributeFilter: ['class'] });
+            ptStoryObserverBound = true;
+        }
+
         function ptPopulateNarrative() {
             girLoad();
             var disp = girComputeOutcome() || 'conditional';
@@ -11995,7 +12264,10 @@ function p3ToggleHelp(id) {
             if (p2Overlay) p2Overlay.classList.remove('active');
             p2SessionStop();
             var trans = document.getElementById('phaseTransitionOverlay');
-            if (trans) trans.classList.add('active');
+            if (trans) {
+                trans.classList.add('active');
+                ptResetStory();
+            }
         }
 
         function startPhaseThree() {
@@ -14797,7 +15069,28 @@ function p3ToggleHelp(id) {
             <div class="pt-device-dot"></div>
             <div class="pt-device-dot"></div>
             <div class="pt-device-dot"></div>
-            <div class="pt-address-bar">mail.oap.gov/inbox &mdash; Administrative Notice</div>
+            <div class="pt-address-bar" id="ptAddressBar">mail.oap.gov/inbox &mdash; Administrative Notice</div>
+        </div>
+        <div class="pt-story-card" id="pt-story-card">
+            <div class="pt-story-visual">
+                <img id="pt-story-image" src="images/transition-modern-01-timejump.png" alt="Narrative transition scene">
+                <div class="pt-story-clock-wrap" id="pt-story-clock-wrap" aria-hidden="true">
+                    <div class="pt-story-clock">
+                        <span class="pt-clock-hand pt-clock-hand-hour"></span>
+                        <span class="pt-clock-hand pt-clock-hand-minute"></span>
+                        <span class="pt-clock-hand pt-clock-hand-second"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-story-body">
+                <div class="pt-story-kicker" id="pt-story-kicker">Years Later</div>
+                <h3 class="pt-story-title" id="pt-story-title">The forms left your desk, but not the system.</h3>
+                <p class="pt-story-copy" id="pt-story-copy">Many years have passed since Intake Window 3. Your file moved from drawer to database as standards, routing rules, and infrastructure kept changing around it.</p>
+            </div>
+            <div class="pt-story-footer">
+                <button class="pt-story-next-btn" id="pt-story-next-btn" type="button" onclick="ptAdvanceStory()">Continue &rarr;</button>
+                <div class="pt-story-step" id="pt-story-step"></div>
+            </div>
         </div>
         <div class="pt-email-card">
             <div class="pt-email-header">
@@ -16384,6 +16677,9 @@ function p3ToggleHelp(id) {
     window.addEventListener('load', function() {
         if (typeof window.devBuildPageMenu === 'function') {
             try { window.devBuildPageMenu(); } catch (e) { console.warn('Load-time dev menu build failed:', e); }
+        }
+        if (typeof window.ptBindTransitionObserver === 'function') {
+            try { window.ptBindTransitionObserver(); } catch (e) { console.warn('Transition observer init failed:', e); }
         }
     });
 })();
