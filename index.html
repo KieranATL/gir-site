@@ -11447,6 +11447,17 @@ function p3ToggleHelp(id) {
             }
             document.getElementById('devMenu').classList.remove('open');
         }
+        function devOpenPhase4Glitch(pageNum) {
+            devCloseAll();
+            p4xOpen();
+            var target = parseInt(pageNum, 10) || 1;
+            if (target > 1 && typeof p4xGo === 'function') p4xGo(target);
+            var menu = document.getElementById('devMenu');
+            if (menu) menu.classList.remove('open');
+        }
+        function devGoP4x(pageNum) {
+            devOpenPhase4Glitch(pageNum || 1);
+        }
 
         function devEnsurePhaseThree() {
             devCloseAll();
@@ -11685,6 +11696,15 @@ function p3ToggleHelp(id) {
                 { label: 'Signature Mismatch', onClick: function() { devPresetBranch('sig'); } },
                 { label: 'Data Use Incomplete', onClick: function() { devPresetBranch('consent'); } }
             ], 2);
+
+            var p4xCount = (typeof p4xTotalPages === 'number' && p4xTotalPages > 0) ? p4xTotalPages : 4;
+            var p4xPages = [];
+            for (var p4xIdx = 1; p4xIdx <= p4xCount; p4xIdx++) p4xPages.push(p4xIdx);
+            addSection('Phase IV - Glitch Form (' + p4xCount + ' pp)');
+            addButtonList([
+                { label: 'Open Glitch Form', onClick: function() { devOpenPhase4Glitch(1); } }
+            ], 1);
+            addPageGrid('P4X', p4xPages, 'devGoP4x');
 
             addSection('Narrative');
             addButtonList([
@@ -16764,7 +16784,7 @@ function p3ToggleHelp(id) {
         <summary class="dev-section dev-section-summary">Actions</summary>
         <div class="dev-group-body">
             <button class="dev-btn" onclick="devBuildPageMenu()">Refresh Page Lists</button>
-            <button class="dev-btn" onclick="p4xOpen()">Open Phase 4 Glitch Form</button>
+            <button class="dev-btn" onclick="devOpenPhase4Glitch()">Open Phase IV Glitch Form</button>
             <button class="dev-btn" onclick="devAutofillAllForms()">Auto-Fill All Forms</button>
             <button class="dev-btn" onclick="devAutofillVisiblePage()">Auto-Fill Visible Page</button>
             <button class="dev-btn" onclick="devJumpFirstReviewPage()">Jump to First Flagged Page</button>
